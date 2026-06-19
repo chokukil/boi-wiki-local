@@ -1,0 +1,16 @@
+---
+description: BoI Wiki Local workspace rules
+alwaysApply: true
+---
+
+This workspace is a Local Private BoI folder.
+
+- Start from `data/boi/index.md` and folder `index.md` files.
+- Do not scan everything first unless broad cleanup/search is requested.
+- Save personal BoI documents under `data/boi/private/me/`.
+- Required metadata includes `visibility: local-private`, `local_only: true`, `promotion_status`, lifecycle fields, and `source_refs`.
+- Update `index.md` and `log.md` after changes.
+- Run self-check before completion. Use `check.sh` or `check.ps1` if available.
+- MCP is optional. If not available, use local files and user-provided sources.
+- Never send Local Private originals remotely without explicit user confirmation.
+

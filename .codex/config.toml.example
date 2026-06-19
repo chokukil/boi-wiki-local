@@ -1,0 +1,4 @@
+[mcp_servers.boi-wiki-mcp]
+url = "http://localhost:8200/mcp"
+enabled = true
+
