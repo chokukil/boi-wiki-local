@@ -21,14 +21,14 @@ BoI Wiki Local은 개인 PC에만 저장되는 Local Private BoI 작업공간입
 MCP 설정은 모르겠으니 local만 써줘.
 ```
 
-## What This Is
+## 이것은 무엇인가요
 
 - 개인 업무 메모, 회의록, SOP 초안, 주간보고 초안을 Markdown/OKF 구조로 쌓는 폴더입니다.
 - Web BoI Wiki에는 자동으로 보이지 않습니다.
 - 사용자가 명시적으로 승인하기 전에는 원격으로 전송하거나 공개하지 않습니다.
 - MCP, Python, Docker, Git을 몰라도 쓸 수 있습니다.
 
-## First Use
+## 처음 사용하기
 
 가장 쉬운 방법은 agent에게 repo URL을 주는 것입니다.
 
@@ -36,7 +36,7 @@ MCP 설정은 모르겠으니 local만 써줘.
 이 boi-wiki-local 저장소를 설치하고, 이 폴더를 내 BoI Wiki Local로 설정해줘.
 ```
 
-Agent는 clone, zip 다운로드, 또는 현재 폴더 템플릿 구성을 상황에 맞게 선택합니다. Git이 없으면 일반 폴더로 시작합니다.
+agent는 clone, zip 다운로드, 또는 현재 폴더 템플릿 구성을 상황에 맞게 선택합니다. Git이 없으면 일반 폴더로 시작합니다.
 
 Windows PowerShell:
 
@@ -52,9 +52,9 @@ sh install.sh
 
 설치 스크립트를 실행하지 않아도 됩니다. agent에게 "이 폴더를 BoI Wiki Local로 써줘"라고 말하면 `AGENTS.md`와 skill 규칙을 기준으로 작업합니다.
 
-## Where Things Go
+## 어디에 저장되나요
 
-| Request | Folder |
+| 요청 | 폴더 |
 |---|---|
 | 회의록, 개인 메모 | `data/boi/private/me/notes/` |
 | SOP 초안 | `data/boi/private/me/sop-drafts/` |
@@ -63,9 +63,9 @@ sh install.sh
 | 공유 전 정리본 | `data/boi/private/me/promotion-drafts/` |
 | 오래된 문서 | `data/boi/private/me/_archive/YYYY/MM/` |
 
-## Local Private Rules
+## Local Private 규칙
 
-Agent가 저장하는 Local Private 문서는 다음 값을 가져야 합니다.
+agent가 저장하는 Local Private 문서는 다음 값을 가져야 합니다.
 
 ```yaml
 visibility: local-private
@@ -75,9 +75,9 @@ archive_status: active
 contains_sensitive: unknown
 ```
 
-Agent는 사용자가 lint를 몰라도 저장 전 자체 검증을 수행하고, `index.md`와 `log.md`를 업데이트해야 합니다.
+agent는 사용자가 lint를 몰라도 저장 전 자체 검증을 수행하고, `index.md`와 `log.md`를 업데이트해야 합니다.
 
-## Sharing
+## 공유
 
 "Public으로 공유해줘" 또는 "팀 주간보고로 올려줘"라고 말해도 바로 공개되지 않습니다.
 
@@ -89,7 +89,7 @@ Agent는 사용자가 lint를 몰라도 저장 전 자체 검증을 수행하고
 4. 원격 BoI Wiki에는 draft-only로 요청합니다.
 5. shared repo에서 별도 검증과 commit이 필요합니다.
 
-## Optional MCP
+## 선택 사항: MCP
 
 MCP를 설정하면 agent가 원격 BoI Wiki에서 SOP, Event Type, Action Spec을 검색할 수 있습니다.
 
@@ -97,7 +97,7 @@ MCP를 몰라도 Local Private 작성은 계속 동작합니다.
 
 설정 예시는 `.codex/config.toml.example`을 참고하세요.
 
-## FAQ
+## 자주 묻는 질문
 
 ### Git이 없어도 되나요?
 
