@@ -5,6 +5,7 @@ BoI Wiki Local은 개인 PC에만 저장되는 Local Private BoI 작업공간입
 어렵게 생각하지 않아도 됩니다. Codex, Claude, Cursor 같은 agent에게 아래처럼 말하면 됩니다.
 
 ```text
+이 boi-wiki-local repo URL 보고 내 PC에 설치해줘.
 이 repo 설치해줘.
 이 폴더를 BoI Wiki Local로 써줘.
 ```
@@ -28,6 +29,14 @@ MCP 설정은 모르겠으니 local만 써줘.
 - MCP, Python, Docker, Git을 몰라도 쓸 수 있습니다.
 
 ## First Use
+
+가장 쉬운 방법은 agent에게 repo URL을 주는 것입니다.
+
+```text
+이 boi-wiki-local 저장소를 설치하고, 이 폴더를 내 BoI Wiki Local로 설정해줘.
+```
+
+Agent는 clone, zip 다운로드, 또는 현재 폴더 템플릿 구성을 상황에 맞게 선택합니다. Git이 없으면 일반 폴더로 시작합니다.
 
 Windows PowerShell:
 
@@ -105,4 +114,3 @@ MCP를 몰라도 Local Private 작성은 계속 동작합니다.
 ### 검증은 누가 하나요?
 
 agent가 합니다. 일반 사용자가 lint 명령을 직접 실행하지 않는다는 전제로 `AGENTS.md`와 skill에 검증 규칙이 들어 있습니다.
-
