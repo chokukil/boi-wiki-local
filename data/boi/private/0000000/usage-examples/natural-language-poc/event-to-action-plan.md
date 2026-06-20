@@ -17,7 +17,7 @@ review_after: 2026-09-20
 contains_sensitive: no
 source_refs:
   - type: shared-runtime-trace
-    ref: trace-c8649f71e3e44b5b8b6a8f70963af446
+    ref: trace-f91b32904db0434db27c3f84307103ad
   - type: generated-output
     ref: ../../event-drafts/direct-development-reporting-event-to-action-plan.md
 ---
@@ -37,7 +37,7 @@ source_refs:
 
 # Evidence
 
-Shared BoI Wiki live smoke trace `trace-c8649f71e3e44b5b8b6a8f70963af446`에서 아래가 확인됐다.
+Shared BoI Wiki live smoke trace `trace-f91b32904db0434db27c3f84307103ad`에서 아래가 확인됐다.
 
 - Events: `direct_development.result_check.requested.v1`, `direct_development.map_view.requested.v1`, `direct_development.cross_section.decision_required.v1`, `direct_development.cross_section.requested.v1`, `direct_development.fab_trend.compare_requested.v1`, `direct_development.reporting.requested.v1`, `direct_development.share.requested.v1`
 - Langflow actions: `direct_development.quality_response_trend.simulate`, `direct_development.map_view.simulate`, `direct_development.cross_section_request.simulate`, `direct_development.cross_section_result.simulate`, `direct_development.fab_trend_compare.simulate`, `direct_development.reporting.simulate`, `direct_development.messenger_share_preview.simulate`

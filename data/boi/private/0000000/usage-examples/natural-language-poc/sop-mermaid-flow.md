@@ -45,4 +45,4 @@ source_refs:
 
 # Real vs Simulated
 
-Mermaid 문서는 실제 local output이다. live runtime evidence는 direct-development trace `trace-c8649f71e3e44b5b8b6a8f70963af446`로 검증했다. 사내 시스템 호출은 실제 호출이 아니라 `SIMULATED` Langflow simulator action으로 표시한다.
+Mermaid 문서는 실제 local output이다. live runtime evidence는 direct-development trace `trace-f91b32904db0434db27c3f84307103ad`로 검증했다. 사내 시스템 호출은 실제 호출이 아니라 `SIMULATED` Langflow simulator action으로 표시한다.

@@ -37,7 +37,7 @@ Response Trend 확인 API라고 가정하고, payload schema, risk level, dry-ru
 
 - 근거 SOP stage: `Response Trend 확인`
 - 비교 가능한 live simulator action: shared `boi-wiki` action catalog의 `direct_development.quality_response_trend.simulate`
-- live smoke trace `trace-c8649f71e3e44b5b8b6a8f70963af446`에서 해당 action이 `langflow_invoked`, `SIMULATED`, `real_system_connected=false`로 기록됐다.
+- live smoke trace `trace-f91b32904db0434db27c3f84307103ad`에서 해당 action이 `langflow_invoked`, `SIMULATED`, `real_system_connected=false`로 기록됐다.
 
 # How to Verify
 

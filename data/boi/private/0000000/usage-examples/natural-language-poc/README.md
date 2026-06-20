@@ -19,7 +19,7 @@ source_refs:
   - type: local-evidence
     ref: evidence/sop_sample_image.png
   - type: shared-runtime-trace
-    ref: trace-c8649f71e3e44b5b8b6a8f70963af446
+    ref: trace-f91b32904db0434db27c3f84307103ad
 ---
 
 # Summary
@@ -47,7 +47,7 @@ source_refs:
 
 # Runtime Evidence
 
-Shared BoI Wiki runtime smoke는 `scripts/run_direct_development_sop_poc.py`로 실행된 trace `trace-c8649f71e3e44b5b8b6a8f70963af446`를 근거로 한다. 이 trace는 `direct_development.result_check.requested.v1`부터 `direct_development.share.requested.v1`까지의 event chain, `BoI Universal Action Simulator Flow` 기반 `SIMULATED` Langflow actions, generated Private BoI, `manual_required`, `approval_required` evidence를 모두 포함한다.
+Shared BoI Wiki runtime smoke는 `scripts/run_direct_development_sop_poc.py`로 실행된 trace `trace-f91b32904db0434db27c3f84307103ad`를 근거로 한다. 이 trace는 `direct_development.result_check.requested.v1`부터 `direct_development.share.requested.v1`까지의 event chain, `BoI Universal Action Simulator Flow` 기반 `SIMULATED` Langflow actions, generated Private BoI, `manual_required`, `approval_required` evidence를 모두 포함한다.
 
 # Real vs Simulated
 

@@ -38,4 +38,4 @@ source_refs:
 
 # Runtime Reference
 
-Shared trace `trace-c8649f71e3e44b5b8b6a8f70963af446`는 direct-development SOP 자체의 live evidence다. manual handoff는 `manual_required`로 남고, 협의체 공유 실행은 `approval_required`로 멈춘다. 품질 시스템/Map 분석 시스템/단면 검사 시스템/메신저 호출은 실제 시스템 호출이 아니라 `SIMULATED` action이다.
+Shared trace `trace-f91b32904db0434db27c3f84307103ad`는 direct-development SOP 자체의 live evidence다. manual handoff는 `manual_required`로 남고, 협의체 공유 실행은 `approval_required`로 멈춘다. 품질 시스템/Map 분석 시스템/단면 검사 시스템/메신저 호출은 실제 시스템 호출이 아니라 `SIMULATED` action이다.

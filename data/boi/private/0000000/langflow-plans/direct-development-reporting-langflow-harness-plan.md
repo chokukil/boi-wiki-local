@@ -34,4 +34,4 @@ source_refs:
 
 # Live Reference
 
-`BoI Universal Action Simulator Flow`는 shared runtime trace `trace-c8649f71e3e44b5b8b6a8f70963af446`에서 `langflow_invoked`로 검증됐다. 직개발 reporting flow는 이 official simulator harness를 사용하며, 품질 시스템/Map 분석 시스템/단면 검사 시스템/메신저 connector가 실제로 연결되기 전까지 모든 결과를 `SIMULATED`, `real_system_connected=false`, "실제 시스템 호출 아님"으로 남긴다.
+`BoI Universal Action Simulator Flow`는 shared runtime trace `trace-f91b32904db0434db27c3f84307103ad`에서 `langflow_invoked`로 검증됐다. 직개발 reporting flow는 이 official simulator harness를 사용하며, 품질 시스템/Map 분석 시스템/단면 검사 시스템/메신저 connector가 실제로 연결되기 전까지 모든 결과를 `SIMULATED`, `real_system_connected=false`, "실제 시스템 호출 아님"으로 남긴다.

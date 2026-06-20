@@ -19,7 +19,7 @@ source_refs:
   - type: sop-draft
     ref: ../sop-drafts/direct-development-reporting-sop-draft.md
   - type: shared-runtime-trace
-    ref: trace-c8649f71e3e44b5b8b6a8f70963af446
+    ref: trace-f91b32904db0434db27c3f84307103ad
 ---
 
 # Trigger Candidate
@@ -47,7 +47,7 @@ source_refs:
 
 # Existing Live Reference
 
-Shared runtime trace `trace-c8649f71e3e44b5b8b6a8f70963af446` confirms the pattern below.
+Shared runtime trace `trace-f91b32904db0434db27c3f84307103ad` confirms the pattern below.
 
 | Evidence | Confirmed |
 |---|---|
