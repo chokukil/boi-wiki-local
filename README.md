@@ -12,18 +12,18 @@ BoI Wiki Local은 개인 PC에만 저장되는 Local Private BoI 작업공간입
 
 그 다음부터는 자연어로 요청합니다.
 
-```text
-이 회의 내용을 BoI로 정리해줘.
-이 SOP 이미지를 BoI Wiki 형식으로 초안 만들어줘.
-설비 이상 대응 SOP를 Mermaid 프로세스 플로우로 그려줘.
-이 이벤트가 발생하면 어떤 SOP와 Action이 이어지는지 알려줘.
-기존 API 문서를 BoI Action Spec 초안으로 만들어줘.
-원격 BoI Wiki를 검색해서 이번 업무용 context pack을 만들어줘.
-만들어진 SOP 내용 괜찮네. Public으로 공유해줘.
-팀 주간보고 작성한 거 괜찮아 보이네. 팀 주간보고로 올려줘.
-오래된 Private BoI 정리 후보 보여줘.
-MCP 설정은 모르겠으니 local만 써줘.
-```
+| 요청 문장 | 실행 성격 | 예제와 결과 |
+|---|---|---|
+| 이 회의 내용을 BoI로 정리해줘. | local | [회의 내용 BoI 정리](data/boi/private/0000000/usage-examples/natural-language-poc/meeting-to-boi.md) |
+| 이 SOP 이미지를 BoI Wiki 형식으로 초안 만들어줘. | local + evidence | [SOP 이미지 초안](data/boi/private/0000000/usage-examples/natural-language-poc/image-to-sop-draft.md) |
+| 설비 이상 대응 SOP를 Mermaid 프로세스 플로우로 그려줘. | local | [SOP Mermaid flow](data/boi/private/0000000/usage-examples/natural-language-poc/sop-mermaid-flow.md) |
+| 이 이벤트가 발생하면 어떤 SOP와 Action이 이어지는지 알려줘. | live workflow evidence | [Event to Action plan](data/boi/private/0000000/usage-examples/natural-language-poc/event-to-action-plan.md) |
+| 기존 API 문서를 BoI Action Spec 초안으로 만들어줘. | local | [API to Action Spec](data/boi/private/0000000/usage-examples/natural-language-poc/api-doc-to-action-spec.md) |
+| 원격 BoI Wiki를 검색해서 이번 업무용 context pack을 만들어줘. | remote lookup optional | [Context pack](data/boi/private/0000000/usage-examples/natural-language-poc/remote-context-pack.md) |
+| 만들어진 SOP 내용 괜찮네. Public으로 공유해줘. | approval required | [Public promotion preflight](data/boi/private/0000000/usage-examples/natural-language-poc/promotion-public.md) |
+| 팀 주간보고 작성한 거 괜찮아 보이네. 팀 주간보고로 올려줘. | approval required | [Team weekly report promotion](data/boi/private/0000000/usage-examples/natural-language-poc/weekly-report-promotion.md) |
+| 오래된 Private BoI 정리 후보 보여줘. | local | [Archive candidates](data/boi/private/0000000/usage-examples/natural-language-poc/archive-candidates.md) |
+| MCP 설정은 모르겠으니 local만 써줘. | local-only | [Local only mode](data/boi/private/0000000/usage-examples/natural-language-poc/local-only-mode.md) |
 
 ## 이것은 무엇인가요
 
@@ -127,15 +127,11 @@ http://boi-wiki-mcp.example:28200/mcp
 
 ## 활용 사례
 
-아래 문서를 agent에게 보여주거나 그대로 요청 문장으로 복사해도 됩니다.
+아래 예제 세트는 요청 문장, 생성된 Markdown, source image, shared BoI Wiki runtime trace 근거를 함께 보여줍니다.
 
-- [SOP Mermaid Flow](data/boi/private/0000000/usage-examples/sop-mermaid-flow.md)
-- [Event to Action Plan](data/boi/private/0000000/usage-examples/event-to-action-plan.md)
-- [API Doc to Action Spec](data/boi/private/0000000/usage-examples/api-doc-to-action-spec.md)
-- [Meeting to BoI](data/boi/private/0000000/usage-examples/meeting-to-boi.md)
-- [AI Native Workflow Draft](data/boi/private/0000000/usage-examples/ai-native-workflow-draft.md)
-- [Local Only Mode](data/boi/private/0000000/usage-examples/local-only-mode.md)
-- [Remote Context Pack](data/boi/private/0000000/usage-examples/remote-context-pack.md)
+- [자연어 요청 E2E PoC 예제 세트](data/boi/private/0000000/usage-examples/natural-language-poc/README.md)
+- [SOP 원본 이미지 evidence](data/boi/private/0000000/usage-examples/natural-language-poc/evidence/sop_sample_image.png)
+- 기존 단문 예제: [SOP Mermaid Flow](data/boi/private/0000000/usage-examples/sop-mermaid-flow.md), [Event to Action Plan](data/boi/private/0000000/usage-examples/event-to-action-plan.md), [API Doc to Action Spec](data/boi/private/0000000/usage-examples/api-doc-to-action-spec.md), [Meeting to BoI](data/boi/private/0000000/usage-examples/meeting-to-boi.md)
 
 ## 작업별 Skills
 
