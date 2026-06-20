@@ -17,7 +17,7 @@ review_after: 2026-09-20
 contains_sensitive: no
 source_refs:
   - type: shared-runtime-trace
-    ref: trace-442fd8c619794e73883ee22833abdab2
+    ref: trace-c8649f71e3e44b5b8b6a8f70963af446
   - type: generated-output
     ref: ../../event-drafts/direct-development-reporting-event-to-action-plan.md
 ---
@@ -37,19 +37,20 @@ source_refs:
 
 # Evidence
 
-Shared BoI Wiki live smoke trace `trace-442fd8c619794e73883ee22833abdab2`에서 아래가 확인됐다.
+Shared BoI Wiki live smoke trace `trace-c8649f71e3e44b5b8b6a8f70963af446`에서 아래가 확인됐다.
 
-- Events: `equipment.alarm.raised.v1`, `root_cause.analysis.requested.v1`, `maintenance.guide.requested.v1`, `corrective_action.requested.v1`
-- Langflow actions: `langflow.boi.reference_flow`, `langflow.equipment.stage_analysis`
-- Approval guard: `sop.equipment.block_process_progress`, `sop.equipment.change_spec_rule`는 `approval_required`
-- Manual handoff: `manual.equipment.review_root_cause` 등은 `manual_required`
+- Events: `direct_development.result_check.requested.v1`, `direct_development.map_view.requested.v1`, `direct_development.cross_section.decision_required.v1`, `direct_development.cross_section.requested.v1`, `direct_development.fab_trend.compare_requested.v1`, `direct_development.reporting.requested.v1`, `direct_development.share.requested.v1`
+- Langflow actions: `direct_development.quality_response_trend.simulate`, `direct_development.map_view.simulate`, `direct_development.cross_section_request.simulate`, `direct_development.cross_section_result.simulate`, `direct_development.fab_trend_compare.simulate`, `direct_development.reporting.simulate`, `direct_development.messenger_share_preview.simulate`
+- Approval guard: `direct_development.messenger_share.publish`는 `approval_required`
+- Manual handoff: `manual.direct_development.decide_cross_section`은 `manual_required`
+- Simulation boundary: 모든 simulator action은 `SIMULATED`, `real_system_connected=false`, "실제 시스템 호출 아님"으로 기록된다.
 
 # How to Verify
 
-1. shared `boi-wiki`에서 `python scripts/run_equipment_sop_poc.py`를 실행한다.
-2. output의 `trace_id`, generated BoI, `langflow_invoked`, `approval_required_actions`, `manual_handoffs`를 확인한다.
+1. shared `boi-wiki`에서 `SERVICE_TOKEN="$SERVICE_TOKEN" python scripts/run_direct_development_sop_poc.py`를 실행한다.
+2. output의 `trace_id`, generated BoI, `langflow_invoked`, `approval_required_actions`, `manual_required_actions`를 확인한다.
 3. 이 local 문서의 action 분류가 live evidence와 candidate gap을 혼동하지 않는지 확인한다.
 
 # Real vs Simulated
 
-설비 이상 SOP smoke는 실제 runtime evidence다. 직개발 결과 확인 SOP의 품질 시스템/Map 분석 시스템/단면 검사 시스템/메신저 action은 현재 candidate gap이며, live connector가 생기면 이 계획을 Action Spec으로 승격한다.
+direct-development SOP smoke는 실제 runtime evidence다. 단, 품질 시스템/Map 분석 시스템/단면 검사 시스템/메신저 호출은 실제 시스템 호출이 아니라 `BoI Universal Action Simulator Flow` 기반 `SIMULATED` evidence다.

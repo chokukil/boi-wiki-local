@@ -30,7 +30,7 @@ source_refs:
 |---|---|
 | 원본 이미지 보존 | `sop_sample_image.png`를 evidence로 저장한다. |
 | Local 산출물 | SOP draft, Mermaid, Action draft, context pack, promotion draft를 모두 Local Private에 만든다. |
-| Runtime evidence | shared BoI Wiki의 설비 이상 SOP smoke trace를 live evidence로 연결한다. |
+| Runtime evidence | shared BoI Wiki의 direct-development SOP smoke trace `trace-c8649f71e3e44b5b8b6a8f70963af446`를 live evidence로 연결한다. |
 | Approval boundary | Public/Team promotion과 high-risk action invoke는 preview/preflight까지만 자동화한다. |
 
 # Action Items

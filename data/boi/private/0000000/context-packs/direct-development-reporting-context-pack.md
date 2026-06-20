@@ -38,14 +38,14 @@ SOP 이미지에서 직개발 결과 확인 및 Reporting workflow를 만들고,
 
 | BoI | Purpose |
 |---|---|
-| `boi:public:sop:equipment-abnormal-response` | live SOP workflow pattern |
-| `boi:public:actions:langflow:stage-analysis` | Langflow action pattern |
-| `boi:public:boi-wiki-manual:actions:multi-action-connector-guide` | connector classification |
+| `boi:public:sop:direct-development-reporting` | public redacted SOP and workflow stages |
+| `boi:public:actions:langflow:direct-development-reporting-simulate` | SIMULATED reporting action spec |
+| `boi:public:boi-wiki-manual:use-cases:sop-image-to-e2e-workflow` | trace and screenshot evidence |
 | `boi:public:boi-wiki-manual:local-private:promotion-flow` | promotion approval boundary |
 
 # Working Rules
 
 - Do not publish Local Private originals.
-- Mark unavailable systems as gaps, not as completed actions.
+- Mark unavailable systems as `SIMULATED`, not as real completed system calls.
 - Preserve source image evidence and cite it in every derived SOP/action document.
 - Stop at manual_required when a human must decide.

@@ -44,9 +44,9 @@ source_refs:
 # How to Verify
 
 1. 이미지와 SOP 초안의 stage 번호가 일치하는지 확인한다.
-2. 품질 시스템, Map 분석 시스템, 단면 검사 시스템, 메신저는 live connector가 아니라 candidate/gap으로 표시됐는지 확인한다.
+2. 품질 시스템, Map 분석 시스템, 단면 검사 시스템, 메신저는 실제 시스템 호출이 아니라 `SIMULATED` simulator action으로 표시됐는지 확인한다.
 3. Public 공유는 [Public Promotion](promotion-public.md) 예제처럼 승인 전 draft/preflight까지만 진행한다.
 
 # Real vs Simulated
 
-원본 PNG와 SOP 초안은 실제 local output이다. 이미지 OCR/해석 결과 중 사내 시스템 연결은 현재 live action이 아니므로 candidate action으로 남긴다.
+원본 PNG와 SOP 초안은 실제 local output이다. 이미지 해석 결과 중 사내 시스템 연결은 실제 호출하지 않고, shared BoI Wiki에서는 `BoI Universal Action Simulator Flow` 기반 `SIMULATED` evidence로 검증한다.

@@ -58,6 +58,6 @@ output_schema:
 
 # Draft Notes
 
-- Existing analogous action: `sop.equipment.request_trend_history`.
+- Shared simulator action: `direct_development.quality_response_trend.simulate`.
 - 실제 품질 시스템 endpoint, auth method, response schema는 API 문서 확인 전까지 비워 둔다.
 - trend가 `anomaly_detected`이면 Map View Image 확인 또는 단면검사 판단으로 이어진다.

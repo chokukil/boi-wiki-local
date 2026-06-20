@@ -23,7 +23,7 @@ source_refs:
 # Prompt
 
 ```text
-설비 이상 대응 SOP를 BoI Wiki 형식으로 읽고, 각 단계가 보이도록 Mermaid 프로세스 플로우로 그려줘. MCP가 연결되어 있으면 원격 BoI Wiki에서 SOP와 Action을 찾아서 반영하고, 없으면 내가 제공한 SOP 텍스트만으로 local 초안을 만들어줘.
+직개발 결과 확인 SOP를 BoI Wiki 형식으로 읽고, 각 단계가 보이도록 Mermaid 프로세스 플로우로 그려줘. MCP가 연결되어 있으면 원격 BoI Wiki에서 direct-development SOP와 Action을 찾아서 반영하고, 없으면 내가 제공한 SOP 텍스트만으로 local 초안을 만들어줘.
 ```
 
 # Expected Agent Behavior
@@ -37,11 +37,11 @@ source_refs:
 
 ```mermaid
 flowchart TD
-  A["Event: equipment.alarm.raised.v1"] --> B["Stage: 이상 감지"]
-  B --> C["Action: Trend / Raw Data 확인"]
-  C --> D["Event: root_cause.analysis.requested.v1"]
-  D --> E["Stage: 원인 분석"]
-  E --> F["Manual: 원인 후보 검토"]
+  A["Event: direct_development.result_check.requested.v1"] --> B["Stage: Response Trend 확인"]
+  B --> C["Action: direct_development.quality_response_trend.simulate<br/>SIMULATED"]
+  C --> D["Event: direct_development.map_view.requested.v1"]
+  D --> E["Stage: Map View 확인"]
+  E --> F["Manual: 단면검사 필요 여부 판단"]
 ```
 
 # Citations

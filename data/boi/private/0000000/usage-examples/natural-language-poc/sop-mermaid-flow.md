@@ -23,7 +23,7 @@ source_refs:
 # Prompt
 
 ```text
-설비 이상 대응 SOP를 Mermaid 프로세스 플로우로 그려줘.
+직개발 결과 확인 SOP를 Mermaid 프로세스 플로우로 그려줘.
 각 stage가 어떤 시스템, 사람, AI action으로 이어지는지 같이 보여줘.
 ```
 
@@ -45,4 +45,4 @@ source_refs:
 
 # Real vs Simulated
 
-Mermaid 문서는 실제 local output이다. live runtime trace는 별도 설비 이상 SOP smoke로 검증하며, 이 이미지의 사내 시스템 action은 candidate로 표시한다.
+Mermaid 문서는 실제 local output이다. live runtime evidence는 direct-development trace `trace-c8649f71e3e44b5b8b6a8f70963af446`로 검증했다. 사내 시스템 호출은 실제 호출이 아니라 `SIMULATED` Langflow simulator action으로 표시한다.

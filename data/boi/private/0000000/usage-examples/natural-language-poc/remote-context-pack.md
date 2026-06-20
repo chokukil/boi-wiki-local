@@ -35,7 +35,7 @@ MCP가 되면 public SOP, Event Type, Action Spec, Langflow guide를 찾아 넣�
 # Evidence
 
 - MCP가 없어도 local-only fallback으로 context pack을 만들 수 있다.
-- MCP가 있으면 shared BoI Wiki 문서 `sop/equipment-abnormal-response`, `actions/langflow/stage-analysis`, `boi-wiki-manual/actions/multi-action-connector-guide`를 source_refs로 강화한다.
+- MCP가 있으면 shared BoI Wiki 문서 `boi:public:sop:direct-development-reporting`, `boi:public:actions:langflow:direct-development-quality-response-trend-simulate`, `boi:public:boi-wiki-manual:use-cases:sop-image-to-e2e-workflow`를 source_refs로 강화한다.
 
 # How to Verify
 

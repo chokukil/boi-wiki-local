@@ -19,7 +19,7 @@ source_refs:
   - type: local-evidence
     ref: evidence/sop_sample_image.png
   - type: shared-runtime-trace
-    ref: trace-442fd8c619794e73883ee22833abdab2
+    ref: trace-c8649f71e3e44b5b8b6a8f70963af446
 ---
 
 # Summary
@@ -36,7 +36,7 @@ source_refs:
 |---|---|---|---|
 | 이 회의 내용을 BoI로 정리해줘. | local | [Meeting to BoI](meeting-to-boi.md) | [sample-meeting-to-boi.md](../../notes/sample-meeting-to-boi.md) |
 | 이 SOP 이미지를 BoI Wiki 형식으로 초안 만들어줘. | local + evidence | [SOP Image to Draft](image-to-sop-draft.md) | [direct-development-reporting-sop-draft.md](../../sop-drafts/direct-development-reporting-sop-draft.md) |
-| 설비 이상 대응 SOP를 Mermaid 프로세스 플로우로 그려줘. | local | [SOP Mermaid Flow](sop-mermaid-flow.md) | [direct-development-reporting-mermaid.md](../../diagrams/direct-development-reporting-mermaid.md) |
+| 직개발 결과 확인 SOP를 Mermaid 프로세스 플로우로 그려줘. | local | [SOP Mermaid Flow](sop-mermaid-flow.md) | [direct-development-reporting-mermaid.md](../../diagrams/direct-development-reporting-mermaid.md) |
 | 이 이벤트가 발생하면 어떤 SOP와 Action이 이어지는지 알려줘. | live workflow evidence | [Event to Action Plan](event-to-action-plan.md) | [direct-development-reporting-event-to-action-plan.md](../../event-drafts/direct-development-reporting-event-to-action-plan.md) |
 | 기존 API 문서를 BoI Action Spec 초안으로 만들어줘. | local | [API Doc to Action Spec](api-doc-to-action-spec.md) | [quality-system-response-trend-action-draft.md](../../action-drafts/quality-system-response-trend-action-draft.md) |
 | 원격 BoI Wiki를 검색해서 이번 업무용 context pack을 만들어줘. | remote lookup optional | [Remote Context Pack](remote-context-pack.md) | [direct-development-reporting-context-pack.md](../../context-packs/direct-development-reporting-context-pack.md) |
@@ -47,11 +47,11 @@ source_refs:
 
 # Runtime Evidence
 
-Shared BoI Wiki runtime smoke는 `scripts/run_equipment_sop_poc.py`로 실행된 trace `trace-442fd8c619794e73883ee22833abdab2`를 근거로 한다. 이 trace는 `equipment.alarm.raised.v1`, `root_cause.analysis.requested.v1`, `maintenance.guide.requested.v1`, `corrective_action.requested.v1` 이벤트와 `langflow.boi.reference_flow`, `langflow.equipment.stage_analysis` invocation, generated Private BoI, manual handoff, approval_required action을 모두 포함한다.
+Shared BoI Wiki runtime smoke는 `scripts/run_direct_development_sop_poc.py`로 실행된 trace `trace-c8649f71e3e44b5b8b6a8f70963af446`를 근거로 한다. 이 trace는 `direct_development.result_check.requested.v1`부터 `direct_development.share.requested.v1`까지의 event chain, `BoI Universal Action Simulator Flow` 기반 `SIMULATED` Langflow actions, generated Private BoI, `manual_required`, `approval_required` evidence를 모두 포함한다.
 
 # Real vs Simulated
 
 - Real local output: 이 repo 안의 Markdown 산출물과 `sop_sample_image.png`.
 - Real shared runtime evidence: shared `boi-wiki`에서 실행한 Event/Action/Langflow smoke trace.
-- Simulated or candidate: 품질 시스템, Map 분석 시스템, 단면 검사 시스템, 메신저 같은 사내 시스템 action은 현재 연결된 live connector가 없으므로 Action draft/gap으로 표시한다.
+- SIMULATED: 품질 시스템, Map 분석 시스템, 단면 검사 시스템, 메신저 action은 실제 시스템 호출이 아니라 `BoI Universal Action Simulator Flow`로 생성한 PoC evidence다.
 - Approval required: Public/Team promotion과 high-risk action invoke는 preview/preflight까지만 자동화하고, 최종 게시나 실행은 사용자 승인 후 진행한다.

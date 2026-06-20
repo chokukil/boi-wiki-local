@@ -19,7 +19,7 @@ source_refs:
   - type: sop-draft
     ref: ../sop-drafts/direct-development-reporting-sop-draft.md
   - type: shared-runtime-trace
-    ref: trace-442fd8c619794e73883ee22833abdab2
+    ref: trace-c8649f71e3e44b5b8b6a8f70963af446
 ---
 
 # Trigger Candidate
@@ -35,27 +35,29 @@ source_refs:
 
 | Order | Stage | Action key | Type | Runtime status |
 |---|---|---|---|---|
-| 10 | Response Trend 확인 | `quality_system.response_trend.query` | AI/API | missing system action |
-| 20 | Map View Image 확인 | `map_analysis_system.map_view.inspect` | AI/API | missing system action |
+| 10 | Response Trend 확인 | `direct_development.quality_response_trend.simulate` | Langflow | SIMULATED, 실제 품질 시스템 호출 아님 |
+| 20 | Map View Image 확인 | `direct_development.map_view.simulate` | Langflow | SIMULATED, 실제 Map 분석 시스템 호출 아님 |
 | 30 | 단면검사 필요 여부 | `manual.direct_development.decide_cross_section` | manual | manual_required |
-| 40 | 단면검사 의뢰 | `cross_section_inspection_system.cross_section.request` | API | missing system action |
-| 50 | 단면검사 결과 확인 | `cross_section_inspection_system.cross_section.result.read` | API | missing system action |
-| 60 | 연구소-양산 FAB 비교 Trend 확인 | `quality_system.fab_trend.compare` | AI/API | missing system action |
-| 70 | 결과 Reporting | `langflow.direct_development.reporting` | Langflow | candidate AI action |
-| 80 | 협의체 공유 | `messenger.committee.share` | webhook/API | missing system action |
+| 40 | 단면검사 의뢰 | `direct_development.cross_section_request.simulate` | Langflow | SIMULATED, 실제 단면 검사 시스템 호출 아님 |
+| 50 | 단면검사 결과 확인 | `direct_development.cross_section_result.simulate` | Langflow | SIMULATED, 실제 단면 검사 시스템 호출 아님 |
+| 60 | 연구소-양산 FAB 비교 Trend 확인 | `direct_development.fab_trend_compare.simulate` | Langflow | SIMULATED, 실제 품질 시스템 호출 아님 |
+| 70 | 결과 Reporting | `direct_development.reporting.simulate` | Langflow | SIMULATED |
+| 80 | 협의체 공유 Preview | `direct_development.messenger_share_preview.simulate` | Langflow | SIMULATED, 실제 메신저 발송 아님 |
+| 90 | 협의체 공유 실행 | `direct_development.messenger_share.publish` | webhook | approval_required |
 
 # Existing Live Reference
 
-Shared runtime trace `trace-442fd8c619794e73883ee22833abdab2` confirms the pattern below.
+Shared runtime trace `trace-c8649f71e3e44b5b8b6a8f70963af446` confirms the pattern below.
 
 | Evidence | Confirmed |
 |---|---|
 | Event Broker chain | yes |
 | Action Gateway dispatch | yes |
 | BoI Writer generated docs | yes |
-| Langflow invocation | `langflow.boi.reference_flow`, `langflow.equipment.stage_analysis` |
-| Manual handoff | `manual_required` |
-| Approval guard | `approval_required` |
+| Langflow invocation | `BoI Universal Action Simulator Flow`, 7 simulator actions |
+| Manual handoff | `manual.direct_development.decide_cross_section` -> `manual_required` |
+| Approval guard | `direct_development.messenger_share.publish` -> `approval_required` |
+| Simulation marker | every simulator action has `SIMULATED`, `real_system_connected=false` |
 
 # Manual Stop Rule
 

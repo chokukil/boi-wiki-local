@@ -25,12 +25,12 @@ source_refs:
 | Step | Event or Action | Expected status | Who |
 |---|---|---|---|
 | 1 | `direct_development.result_check.requested.v1` | published | human or agent |
-| 2 | `quality_system.response_trend.query` | candidate/dry-run | AI/API |
-| 3 | `map_analysis_system.map_view.inspect` | candidate/dry-run | AI/API |
+| 2 | `direct_development.quality_response_trend.simulate` | SIMULATED / langflow_invoked | AI |
+| 3 | `direct_development.map_view.simulate` | SIMULATED / langflow_invoked | AI |
 | 4 | `manual.direct_development.decide_cross_section` | manual_required | human |
-| 5 | `cross_section_inspection_system.cross_section.request` | candidate | system |
-| 6 | `langflow.direct_development.reporting` | candidate | AI |
-| 7 | `messenger.committee.share` | approval_required or manual_required | human + system |
+| 5 | `direct_development.cross_section_request.simulate` + `direct_development.cross_section_result.simulate` | SIMULATED / langflow_invoked | AI |
+| 6 | `direct_development.reporting.simulate` | SIMULATED / langflow_invoked | AI |
+| 7 | `direct_development.messenger_share.publish` | approval_required | human + system |
 
 # Human Handoff
 
@@ -38,4 +38,4 @@ source_refs:
 
 # Runtime Reference
 
-Shared trace `trace-442fd8c619794e73883ee22833abdab2`는 같은 구조의 live evidence다. 설비 이상 workflow에서는 manual handoff와 approval_required action이 실제로 남았다.
+Shared trace `trace-c8649f71e3e44b5b8b6a8f70963af446`는 direct-development SOP 자체의 live evidence다. manual handoff는 `manual_required`로 남고, 협의체 공유 실행은 `approval_required`로 멈춘다. 품질 시스템/Map 분석 시스템/단면 검사 시스템/메신저 호출은 실제 시스템 호출이 아니라 `SIMULATED` action이다.

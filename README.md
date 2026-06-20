@@ -16,7 +16,7 @@ BoI Wiki Local은 개인 PC에만 저장되는 Local Private BoI 작업공간입
 |---|---|---|
 | 이 회의 내용을 BoI로 정리해줘. | local | [회의 내용 BoI 정리](data/boi/private/0000000/usage-examples/natural-language-poc/meeting-to-boi.md) |
 | 이 SOP 이미지를 BoI Wiki 형식으로 초안 만들어줘. | local + evidence | [SOP 이미지 초안](data/boi/private/0000000/usage-examples/natural-language-poc/image-to-sop-draft.md) |
-| 설비 이상 대응 SOP를 Mermaid 프로세스 플로우로 그려줘. | local | [SOP Mermaid flow](data/boi/private/0000000/usage-examples/natural-language-poc/sop-mermaid-flow.md) |
+| 직개발 결과 확인 SOP를 Mermaid 프로세스 플로우로 그려줘. | local | [SOP Mermaid flow](data/boi/private/0000000/usage-examples/natural-language-poc/sop-mermaid-flow.md) |
 | 이 이벤트가 발생하면 어떤 SOP와 Action이 이어지는지 알려줘. | live workflow evidence | [Event to Action plan](data/boi/private/0000000/usage-examples/natural-language-poc/event-to-action-plan.md) |
 | 기존 API 문서를 BoI Action Spec 초안으로 만들어줘. | local | [API to Action Spec](data/boi/private/0000000/usage-examples/natural-language-poc/api-doc-to-action-spec.md) |
 | 원격 BoI Wiki를 검색해서 이번 업무용 context pack을 만들어줘. | remote lookup optional | [Context pack](data/boi/private/0000000/usage-examples/natural-language-poc/remote-context-pack.md) |

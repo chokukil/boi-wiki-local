@@ -24,7 +24,7 @@ source_refs:
 
 ```text
 이런 이벤트가 발생했을 때 BoI Wiki 기준으로 어떤 SOP와 Action이 이어져야 하는지 계획해줘.
-event_type 후보는 equipment.alarm.raised.v1이고 payload는 아래와 같아.
+event_type 후보는 direct_development.result_check.requested.v1이고 payload는 아래와 같아.
 ```
 
 # Expected Agent Behavior
