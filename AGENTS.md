@@ -17,6 +17,11 @@ Local Private content stays local unless the user explicitly asks to share and c
 - Notes and meetings: `data/boi/private/me/notes/`
 - SOP drafts: `data/boi/private/me/sop-drafts/`
 - Action drafts: `data/boi/private/me/action-drafts/`
+- Event drafts: `data/boi/private/me/event-drafts/`
+- Diagrams: `data/boi/private/me/diagrams/`
+- Context packs: `data/boi/private/me/context-packs/`
+- Workflow simulations: `data/boi/private/me/workflow-simulations/`
+- Langflow plans: `data/boi/private/me/langflow-plans/`
 - Reports: `data/boi/private/me/reports/`
 - Promotion drafts: `data/boi/private/me/promotion-drafts/`
 - Archive: `data/boi/private/me/_archive/YYYY/MM/`
@@ -67,6 +72,7 @@ Level 0 self-check, always:
 - `log.md` updated
 - citations or source_refs present when source material exists
 - no remote publish without explicit confirmation
+- for Team/Public promotion, local promotion draft, target visibility, source_refs, sensitive-content check, and preview are present
 
 Level 1, if possible:
 
@@ -82,12 +88,32 @@ Level 2, optional:
 If the user says "Public으로 공유해줘" or "팀 주간보고로 올려줘":
 
 1. Create a local promotion draft.
-2. Show the target visibility and preview/diff.
-3. Remove or flag sensitive content.
-4. Ask for explicit confirmation before any remote draft request.
-5. Never publish the Local Private original directly.
+2. Run local preflight if possible.
+3. Show target visibility, source_refs/citations, sensitive-content findings, and preview/diff.
+4. Ask for explicit confirmation before any remote promotion submit.
+5. Submit only the sanitized promotion candidate to remote sync validation/publish; do not ask the user to run Git, lint, or commit commands.
+6. If remote validation and auto-commit pass, report the Team/Public publish status and HOTL watching status.
+7. If remote validation fails, do not retry silently; revise the draft and ask for user confirmation again.
+8. Never publish the Local Private original directly.
 
 ## MCP
 
-MCP is optional. If configured, use BoI Wiki MCP to search shared SOPs, Event Types, Actions, and workflow status. If it is not configured, continue with local files and ask the user for a Web link or pasted source when remote context is required.
+MCP is optional. The official remote MCP is shared BoI Wiki MCP, not a local MCP product. If configured, use BoI Wiki MCP to search shared SOPs, Event Types, Actions, and workflow status. If it is not configured, continue with local files and ask the user for a Web link or pasted source when remote context is required.
 
+Use remote write or execution tools only after explicit user approval:
+
+- `source_apply`
+- `doc_body_apply`
+- `promotion_submit`
+- `action_invoke`
+
+## Task Skills
+
+If the agent supports skills, use the narrowest applicable skill:
+
+- `boi-sop-flow-visualizer` for Mermaid/SVG SOP flow drafts
+- `boi-event-workflow-planner` for event-to-SOP/action plans
+- `boi-action-author` for API/Webhook/MCP/Langflow/Manual action specs
+- `boi-context-pack-builder` for agent-ready context packs
+- `boi-workflow-simulator` for dry-run workflow simulations
+- `boi-langflow-connector-planner` for Langflow workflow plans

@@ -5,9 +5,16 @@ ROOT="${1:-$(pwd)}"
 mkdir -p "$ROOT/data/boi/private/me/notes" \
   "$ROOT/data/boi/private/me/sop-drafts" \
   "$ROOT/data/boi/private/me/action-drafts" \
+  "$ROOT/data/boi/private/me/event-drafts" \
+  "$ROOT/data/boi/private/me/diagrams" \
+  "$ROOT/data/boi/private/me/context-packs" \
+  "$ROOT/data/boi/private/me/workflow-simulations" \
+  "$ROOT/data/boi/private/me/langflow-plans" \
+  "$ROOT/data/boi/private/me/usage-examples" \
   "$ROOT/data/boi/private/me/reports" \
   "$ROOT/data/boi/private/me/promotion-drafts" \
-  "$ROOT/data/boi/private/me/_archive"
+  "$ROOT/data/boi/private/me/_archive" \
+  "$ROOT/assets/diagrams"
 
 ARCHIVE_MONTH="$(date '+%Y/%m' 2>/dev/null || printf 'YYYY/MM')"
 mkdir -p "$ROOT/data/boi/private/me/_archive/$ARCHIVE_MONTH"

@@ -8,9 +8,10 @@ This workspace is a Local Private BoI folder.
 - Start from `data/boi/index.md` and folder `index.md` files.
 - Do not scan everything first unless broad cleanup/search is requested.
 - Save personal BoI documents under `data/boi/private/me/`.
+- Save diagrams, event drafts, context packs, workflow simulations, and Langflow plans in their matching folders under `data/boi/private/me/`.
 - Required metadata includes `visibility: local-private`, `local_only: true`, `promotion_status`, lifecycle fields, and `source_refs`.
 - Update `index.md` and `log.md` after changes.
 - Run self-check before completion. Use `check.sh` or `check.ps1` if available.
-- MCP is optional. If not available, use local files and user-provided sources.
+- MCP is optional. If not available, use local files and user-provided sources. Do not require a local MCP server; the official optional MCP is shared BoI Wiki MCP.
 - Never send Local Private originals remotely without explicit user confirmation.
-
+- For Team/Public sharing, create a sanitized promotion draft, run preflight, show preview, then submit remote sync validation/publish only after explicit confirmation. Remote validation, commit, publish, and HOTL status are handled by BoI Wiki; do not ask the user to run Git commands.

@@ -27,6 +27,19 @@ check_file "data/boi/private/me/inbox.md"
 check_dir "data/boi/private/me/notes"
 check_dir "data/boi/private/me/sop-drafts"
 check_dir "data/boi/private/me/promotion-drafts"
+check_dir "data/boi/private/me/action-drafts"
+check_dir "data/boi/private/me/event-drafts"
+check_dir "data/boi/private/me/diagrams"
+check_dir "data/boi/private/me/context-packs"
+check_dir "data/boi/private/me/workflow-simulations"
+check_dir "data/boi/private/me/langflow-plans"
+check_dir "data/boi/private/me/usage-examples"
+check_file ".agents/skills/boi-sop-flow-visualizer/SKILL.md"
+check_file ".agents/skills/boi-event-workflow-planner/SKILL.md"
+check_file ".agents/skills/boi-action-author/SKILL.md"
+check_file ".agents/skills/boi-context-pack-builder/SKILL.md"
+check_file ".agents/skills/boi-workflow-simulator/SKILL.md"
+check_file ".agents/skills/boi-langflow-connector-planner/SKILL.md"
 
 if command -v git >/dev/null 2>&1; then
   printf '%s\n' "OK git is available"
@@ -38,4 +51,3 @@ if [ "$status" -eq 0 ]; then
   printf '%s\n' "BoI Wiki Local check passed"
 fi
 exit "$status"
-

@@ -4,7 +4,12 @@
 * [Notes](notes/) - 회의록과 개인 업무 메모
 * [SOP Drafts](sop-drafts/) - SOP 초안
 * [Action Drafts](action-drafts/) - action 초안
+* [Event Drafts](event-drafts/) - Event Type 후보와 event-to-workflow 계획
+* [Diagrams](diagrams/) - Mermaid/SVG 도식 초안
+* [Context Packs](context-packs/) - 업무 단위 agent context pack
+* [Workflow Simulations](workflow-simulations/) - Event payload 기반 dry-run
+* [Langflow Plans](langflow-plans/) - BoI 연계 Langflow workflow 설계
 * [Reports](reports/) - 주간보고와 업무증빙
 * [Promotion Drafts](promotion-drafts/) - 공유 전 정리본
+* [Usage Examples](usage-examples/) - 복사해서 쓸 수 있는 대표 요청 예제
 * [Archive](_archive/) - 오래된 문서
-

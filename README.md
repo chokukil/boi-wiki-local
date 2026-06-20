@@ -15,6 +15,10 @@ BoI Wiki Local은 개인 PC에만 저장되는 Local Private BoI 작업공간입
 ```text
 이 회의 내용을 BoI로 정리해줘.
 이 SOP 이미지를 BoI Wiki 형식으로 초안 만들어줘.
+설비 이상 대응 SOP를 Mermaid 프로세스 플로우로 그려줘.
+이 이벤트가 발생하면 어떤 SOP와 Action이 이어지는지 알려줘.
+기존 API 문서를 BoI Action Spec 초안으로 만들어줘.
+원격 BoI Wiki를 검색해서 이번 업무용 context pack을 만들어줘.
 만들어진 SOP 내용 괜찮네. Public으로 공유해줘.
 팀 주간보고 작성한 거 괜찮아 보이네. 팀 주간보고로 올려줘.
 오래된 Private BoI 정리 후보 보여줘.
@@ -27,6 +31,7 @@ MCP 설정은 모르겠으니 local만 써줘.
 - Web BoI Wiki에는 자동으로 보이지 않습니다.
 - 사용자가 명시적으로 승인하기 전에는 원격으로 전송하거나 공개하지 않습니다.
 - MCP, Python, Docker, Git을 몰라도 쓸 수 있습니다.
+- Mermaid 기반 도식, Event-to-Action 계획, API Action 초안, context pack도 local-only로 만들 수 있습니다.
 
 ## 처음 사용하기
 
@@ -59,8 +64,14 @@ sh install.sh
 | 회의록, 개인 메모 | `data/boi/private/me/notes/` |
 | SOP 초안 | `data/boi/private/me/sop-drafts/` |
 | Action 초안 | `data/boi/private/me/action-drafts/` |
+| Event 후보 | `data/boi/private/me/event-drafts/` |
+| Mermaid 도식 | `data/boi/private/me/diagrams/` |
+| Context pack | `data/boi/private/me/context-packs/` |
+| Workflow dry-run | `data/boi/private/me/workflow-simulations/` |
+| Langflow 설계 초안 | `data/boi/private/me/langflow-plans/` |
 | 주간보고, 업무증빙 | `data/boi/private/me/reports/` |
 | 공유 전 정리본 | `data/boi/private/me/promotion-drafts/` |
+| 사용 예제 | `data/boi/private/me/usage-examples/` |
 | 오래된 문서 | `data/boi/private/me/_archive/YYYY/MM/` |
 
 ## Local Private 규칙
@@ -79,23 +90,58 @@ agent는 사용자가 lint를 몰라도 저장 전 자체 검증을 수행하고
 
 ## 공유
 
-"Public으로 공유해줘" 또는 "팀 주간보고로 올려줘"라고 말해도 바로 공개되지 않습니다.
+"Public으로 공유해줘" 또는 "팀 주간보고로 올려줘"라고 말하면 agent가 먼저 공유 전 검증과 preview를 준비합니다.
 
 정상 흐름:
 
 1. agent가 local promotion draft를 만듭니다.
-2. agent가 민감정보, 출처, 공개 범위, preview를 보여줍니다.
+2. agent가 local preflight를 실행하고 민감정보, 출처, 공개 범위, preview를 보여줍니다.
 3. 사용자가 명시적으로 승인합니다.
-4. 원격 BoI Wiki에는 draft-only로 요청합니다.
-5. shared repo에서 별도 검증과 commit이 필요합니다.
+4. 원격 BoI Wiki에 sync validation/publish를 요청합니다.
+5. 원격 자동 검증과 자동 commit을 통과하면 Team/Public에 즉시 게시되고 HOTL이 사후 모니터링합니다.
+6. 검증 실패 시 게시하지 않고 validation report를 받아 agent가 수정안을 만듭니다.
+
+일반 사용자는 원격 Git commit, lint 세부 명령, publish 절차를 직접 실행하지 않습니다. agent가 진행 상태와 오류 피드백을 설명하고, 사용자는 preview 승인 여부만 결정합니다.
 
 ## 선택 사항: MCP
 
-MCP를 설정하면 agent가 원격 BoI Wiki에서 SOP, Event Type, Action Spec을 검색할 수 있습니다.
+MCP를 설정하면 agent가 원격 BoI Wiki에서 SOP, Event Type, Action Spec, Workflow Status를 검색할 수 있습니다.
 
 MCP를 몰라도 Local Private 작성은 계속 동작합니다.
 
 설정 예시는 `.codex/config.toml.example`을 참고하세요.
+
+공식 MCP는 shared BoI Wiki MCP 하나입니다.
+
+```text
+http://mangugil.iptime.org:28200/mcp
+```
+
+agent는 이 MCP를 조회와 승인된 원격 게시에만 사용해야 합니다. Local Private 원본은 사용자 명시 승인 없이 원격으로 보내지 않습니다.
+
+## 활용 사례
+
+아래 문서를 agent에게 보여주거나 그대로 요청 문장으로 복사해도 됩니다.
+
+- [SOP Mermaid Flow](data/boi/private/me/usage-examples/sop-mermaid-flow.md)
+- [Event to Action Plan](data/boi/private/me/usage-examples/event-to-action-plan.md)
+- [API Doc to Action Spec](data/boi/private/me/usage-examples/api-doc-to-action-spec.md)
+- [Meeting to BoI](data/boi/private/me/usage-examples/meeting-to-boi.md)
+- [AI Native Workflow Draft](data/boi/private/me/usage-examples/ai-native-workflow-draft.md)
+- [Local Only Mode](data/boi/private/me/usage-examples/local-only-mode.md)
+- [Remote Context Pack](data/boi/private/me/usage-examples/remote-context-pack.md)
+
+## 작업별 Skills
+
+agent가 skill을 지원하면 다음 skill을 우선 사용합니다. 지원하지 않아도 `AGENTS.md` 규칙만으로 같은 방식으로 진행할 수 있습니다.
+
+- `boi-wiki-local`
+- `boi-sop-flow-visualizer`
+- `boi-event-workflow-planner`
+- `boi-action-author`
+- `boi-context-pack-builder`
+- `boi-workflow-simulator`
+- `boi-langflow-connector-planner`
 
 ## 자주 묻는 질문
 
