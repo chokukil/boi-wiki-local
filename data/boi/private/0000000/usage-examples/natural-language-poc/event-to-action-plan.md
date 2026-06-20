@@ -52,4 +52,4 @@ Shared BoI Wiki live smoke trace `trace-442fd8c619794e73883ee22833abdab2`에서 
 
 # Real vs Simulated
 
-설비 이상 SOP smoke는 실제 runtime evidence다. 직개발 결과 확인 SOP의 smartTAS/smartYES/smartAPS/CUBE action은 현재 candidate gap이며, live connector가 생기면 이 계획을 Action Spec으로 승격한다.
+설비 이상 SOP smoke는 실제 runtime evidence다. 직개발 결과 확인 SOP의 품질 시스템/Map 분석 시스템/단면 검사 시스템/메신저 action은 현재 candidate gap이며, live connector가 생기면 이 계획을 Action Spec으로 승격한다.

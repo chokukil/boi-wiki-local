@@ -35,14 +35,14 @@ source_refs:
 
 | Order | Stage | Action key | Type | Runtime status |
 |---|---|---|---|---|
-| 10 | Response Trend 확인 | `smarttas.response_trend.query` | AI/API | missing system action |
-| 20 | Map View Image 확인 | `smartyes.map_view.inspect` | AI/API | missing system action |
+| 10 | Response Trend 확인 | `quality_system.response_trend.query` | AI/API | missing system action |
+| 20 | Map View Image 확인 | `map_analysis_system.map_view.inspect` | AI/API | missing system action |
 | 30 | 단면검사 필요 여부 | `manual.direct_development.decide_cross_section` | manual | manual_required |
-| 40 | 단면검사 의뢰 | `smartaps.cross_section.request` | API | missing system action |
-| 50 | 단면검사 결과 확인 | `smartaps.cross_section.result.read` | API | missing system action |
-| 60 | FAB Trend 비교 | `smarttas.fab_trend.compare` | AI/API | missing system action |
+| 40 | 단면검사 의뢰 | `cross_section_inspection_system.cross_section.request` | API | missing system action |
+| 50 | 단면검사 결과 확인 | `cross_section_inspection_system.cross_section.result.read` | API | missing system action |
+| 60 | 연구소-양산 FAB 비교 Trend 확인 | `quality_system.fab_trend.compare` | AI/API | missing system action |
 | 70 | 결과 Reporting | `langflow.direct_development.reporting` | Langflow | candidate AI action |
-| 80 | 협의체 공유 | `cube.committee.share` | webhook/API | missing system action |
+| 80 | 협의체 공유 | `messenger.committee.share` | webhook/API | missing system action |
 
 # Existing Live Reference
 

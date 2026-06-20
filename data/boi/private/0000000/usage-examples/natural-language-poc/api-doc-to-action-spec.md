@@ -17,7 +17,7 @@ review_after: 2026-09-20
 contains_sensitive: no
 source_refs:
   - type: generated-output
-    ref: ../../action-drafts/smarttas-response-trend-action-draft.md
+    ref: ../../action-drafts/quality-system-response-trend-action-draft.md
 ---
 
 # Prompt
@@ -29,8 +29,8 @@ Response Trend 확인 API라고 가정하고, payload schema, risk level, dry-ru
 
 # Generated Output
 
-- 생성 문서: [smarttas-response-trend-action-draft.md](../../action-drafts/smarttas-response-trend-action-draft.md)
-- action key 후보: `smarttas.response_trend.query`
+- 생성 문서: [quality-system-response-trend-action-draft.md](../../action-drafts/quality-system-response-trend-action-draft.md)
+- action key 후보: `quality_system.response_trend.query`
 - connector kind 후보: `api`
 
 # Evidence
@@ -47,4 +47,4 @@ Response Trend 확인 API라고 가정하고, payload schema, risk level, dry-ru
 
 # Real vs Simulated
 
-Action Spec Markdown은 실제 local draft다. smartTAS API connector는 아직 live 검증되지 않았으므로 candidate로 표시한다.
+Action Spec Markdown은 실제 local draft다. 품질 시스템 API connector는 아직 live 검증되지 않았으므로 candidate로 표시한다.

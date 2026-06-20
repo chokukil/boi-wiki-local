@@ -37,14 +37,14 @@ source_refs:
 
 # Evidence
 
-- Source image SHA-256: `c77e362a06ed0b0d2fb79bf42862a62e4022e1e23cb6b093446d678a55305180`
+- Source image SHA-256: `002cd35720977227fde31bb523d0a34a0039665e6e891e8ecad7dc907fd1b462`
 - 이미지에서 확인한 제목: `직개발 결과 확인 및 Reporting`
 - 이미지에서 확인한 TAT 절감: `7.3h`, `16.5h -> 9.2h`
 
 # How to Verify
 
 1. 이미지와 SOP 초안의 stage 번호가 일치하는지 확인한다.
-2. smartTAS, smartYES, smartAPS, CUBE는 live connector가 아니라 candidate/gap으로 표시됐는지 확인한다.
+2. 품질 시스템, Map 분석 시스템, 단면 검사 시스템, 메신저는 live connector가 아니라 candidate/gap으로 표시됐는지 확인한다.
 3. Public 공유는 [Public Promotion](promotion-public.md) 예제처럼 승인 전 draft/preflight까지만 진행한다.
 
 # Real vs Simulated

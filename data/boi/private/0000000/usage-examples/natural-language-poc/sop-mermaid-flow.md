@@ -30,7 +30,7 @@ source_refs:
 # Generated Output
 
 - 생성 문서: [direct-development-reporting-mermaid.md](../../diagrams/direct-development-reporting-mermaid.md)
-- 포함 요소: smartTAS, smartYES, smartAPS, manual step, CUBE 공유, human approval decision.
+- 포함 요소: 품질 시스템, Map 분석 시스템, 단면 검사 시스템, manual step, 메신저 공유, human approval decision.
 
 # Evidence
 

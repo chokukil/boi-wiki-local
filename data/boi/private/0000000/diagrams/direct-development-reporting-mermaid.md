@@ -24,24 +24,24 @@ source_refs:
 
 ```mermaid
 flowchart LR
-  S["(1.8) 직개발 수행 및 모니터링"] --> A["1 Response Trend 확인<br/>smartTAS / AI 보조"]
-  A --> B["2 Map View Image 확인<br/>smartYES / 사람+AI"]
+  S["(1.8) 직개발 수행 및 모니터링"] --> A["1 Response Trend 확인<br/>품질 시스템 / AI 보조"]
+  A --> B["2 Map View Image 확인<br/>Map 분석 시스템 / 사람+AI"]
   B --> D{"단면검사 필요 여부"}
   D -- "Y" --> C["3 단면검사 Wafer 대응 검토<br/>Manual / 사람"]
   C --> E{"Wafer 처리"}
-  E -- "In-Line Wafer 필요" --> F["4 의뢰서 작성 및 Wafer 전달<br/>smartAPS / 사람"]
+  E -- "In-Line Wafer 필요" --> F["4 의뢰서 작성 및 Wafer 전달<br/>단면 검사 시스템 / 사람"]
   E -- "FAB-Out" --> G["6 단면검사 요청<br/>Manual / 사람+AI"]
-  F --> H["5 단면검사 결과 확인<br/>smartAPS / 사람"]
+  F --> H["5 단면검사 결과 확인<br/>단면 검사 시스템 / 사람"]
   G --> H
-  D -- "N" --> I["7 연구소-양산FAB 비교 Trend 확인<br/>smartTAS / AI 보조"]
+  D -- "N" --> I["7 연구소-양산 FAB 비교 Trend 확인<br/>품질 시스템 / AI 보조"]
   H --> I
   I --> J["8 직개발 결과 Reporting<br/>Manual / AI 자동화"]
-  J --> K["9 직개발 결과 협의체 공유<br/>CUBE / AI 자동화"]
+  J --> K["9 직개발 결과 협의체 공유<br/>메신저 / AI 자동화"]
   K --> Z["종료"]
 ```
 
 # Notes
 
 - stage 번호 5와 6은 원본 이미지의 배치 순서를 보존하되, 실행 흐름은 `단면검사 요청 -> 결과 확인`으로 해석한다.
-- smartTAS, smartYES, smartAPS, CUBE는 candidate connector다.
+- 품질 시스템, Map 분석 시스템, 단면 검사 시스템, 메신저는 candidate connector다.
 - 사람이 판단해야 하는 node는 decision/manual node로 남긴다.

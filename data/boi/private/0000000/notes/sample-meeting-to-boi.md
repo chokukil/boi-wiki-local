@@ -45,6 +45,6 @@ source_refs:
 
 # Open Questions
 
-- smartTAS, smartYES, smartAPS, CUBE API가 Action Gateway connector로 공개될 수 있는가?
+- 품질 시스템, Map 분석 시스템, 단면 검사 시스템, 메신저 API가 Action Gateway connector로 공개될 수 있는가?
 - 단면검사 의뢰/결과 확인은 사람 승인 단계인지, system action으로 자동화 가능한지?
 - Public 공유 시 원본 SOP 이미지 공개 가능 범위는 어디까지인가?

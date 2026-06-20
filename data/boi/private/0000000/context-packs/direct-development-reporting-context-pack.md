@@ -32,7 +32,7 @@ SOP 이미지에서 직개발 결과 확인 및 Reporting workflow를 만들고,
 - [SOP draft](../sop-drafts/direct-development-reporting-sop-draft.md)
 - [Mermaid flow](../diagrams/direct-development-reporting-mermaid.md)
 - [Event to Action plan](../event-drafts/direct-development-reporting-event-to-action-plan.md)
-- [Action draft](../action-drafts/smarttas-response-trend-action-draft.md)
+- [Action draft](../action-drafts/quality-system-response-trend-action-draft.md)
 
 # Remote Sources When MCP Is Available
 

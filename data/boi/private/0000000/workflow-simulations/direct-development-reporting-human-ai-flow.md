@@ -25,12 +25,12 @@ source_refs:
 | Step | Event or Action | Expected status | Who |
 |---|---|---|---|
 | 1 | `direct_development.result_check.requested.v1` | published | human or agent |
-| 2 | `smarttas.response_trend.query` | candidate/dry-run | AI/API |
-| 3 | `smartyes.map_view.inspect` | candidate/dry-run | AI/API |
+| 2 | `quality_system.response_trend.query` | candidate/dry-run | AI/API |
+| 3 | `map_analysis_system.map_view.inspect` | candidate/dry-run | AI/API |
 | 4 | `manual.direct_development.decide_cross_section` | manual_required | human |
-| 5 | `smartaps.cross_section.request` | candidate | system |
+| 5 | `cross_section_inspection_system.cross_section.request` | candidate | system |
 | 6 | `langflow.direct_development.reporting` | candidate | AI |
-| 7 | `cube.committee.share` | approval_required or manual_required | human + system |
+| 7 | `messenger.committee.share` | approval_required or manual_required | human + system |
 
 # Human Handoff
 

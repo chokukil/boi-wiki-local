@@ -2,8 +2,8 @@
 okf_version: "0.1"
 boi_profile_version: "0.1-local"
 type: boi/local-action-draft
-title: "smartTAS Response Trend Query Action Draft"
-description: "Response Trend 확인 단계를 위한 smartTAS API action 후보"
+title: "품질 시스템 Response Trend Query Action Draft"
+description: "Response Trend 확인 단계를 위한 품질 시스템 API action 후보"
 timestamp: 2026-06-20T22:05:00+09:00
 employee_id: "0000000"
 local_owner_ref: local-private:0000000
@@ -23,7 +23,7 @@ source_refs:
 # Action Spec Candidate
 
 ```yaml
-action_key: smarttas.response_trend.query
+action_key: quality_system.response_trend.query
 action_name: Response Trend 확인
 connector_kind: api
 risk_level: low
@@ -59,5 +59,5 @@ output_schema:
 # Draft Notes
 
 - Existing analogous action: `sop.equipment.request_trend_history`.
-- 실제 smartTAS endpoint, auth method, response schema는 API 문서 확인 전까지 비워 둔다.
+- 실제 품질 시스템 endpoint, auth method, response schema는 API 문서 확인 전까지 비워 둔다.
 - trend가 `anomaly_detected`이면 Map View Image 확인 또는 단면검사 판단으로 이어진다.

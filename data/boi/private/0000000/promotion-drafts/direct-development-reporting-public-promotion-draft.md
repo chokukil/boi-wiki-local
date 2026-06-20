@@ -35,7 +35,7 @@ source_refs:
 
 - [ ] 원본 SOP 이미지 공개 가능성 확인
 - [ ] 사내 시스템명 공개 범위 확인
-- [ ] smartTAS/smartYES/smartAPS/CUBE connector gap을 live action처럼 쓰지 않았는지 확인
+- [ ] 품질 시스템/Map 분석 시스템/단면 검사 시스템/메신저 connector gap을 live action처럼 쓰지 않았는지 확인
 - [ ] source_refs와 evidence image를 포함했는지 확인
 - [ ] 사용자 최종 승인 획득
 

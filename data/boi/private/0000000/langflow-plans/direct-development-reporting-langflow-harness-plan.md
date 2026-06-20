@@ -30,8 +30,8 @@ source_refs:
 | LLM | 결과 reporting 초안 작성 |
 | Policy Guard | 공개 가능 범위와 source refs 확인 |
 | BoI Writer | Local 또는 Private BoI 결과 저장 |
-| Action Invoker | CUBE 공유는 approval_required 전까지 preview만 생성 |
+| Action Invoker | 메신저 공유는 approval_required 전까지 preview만 생성 |
 
 # Live Reference
 
-`langflow.boi.reference_flow`와 `langflow.equipment.stage_analysis`는 shared runtime trace에서 `langflow_invoked`로 검증된 기존 패턴이다. 직개발 reporting flow는 같은 harness 구조를 재사용하되, smartTAS/smartYES/smartAPS/CUBE connector가 준비될 때까지 candidate로 둔다.
+`langflow.boi.reference_flow`와 `langflow.equipment.stage_analysis`는 shared runtime trace에서 `langflow_invoked`로 검증된 기존 패턴이다. 직개발 reporting flow는 같은 harness 구조를 재사용하되, 품질 시스템/Map 분석 시스템/단면 검사 시스템/메신저 connector가 준비될 때까지 candidate로 둔다.

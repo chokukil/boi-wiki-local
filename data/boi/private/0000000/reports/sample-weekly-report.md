@@ -28,6 +28,6 @@ source_refs:
 
 # Next Week
 
-- smartTAS/smartYES/smartAPS/CUBE connector feasibility를 확인한다.
+- 품질 시스템/Map 분석 시스템/단면 검사 시스템/메신저 connector feasibility를 확인한다.
 - 직개발 reporting Langflow harness candidate를 실제 flow로 구성할 수 있는지 검토한다.
 - Public 공유 가능 범위와 redaction 기준을 확정한다.
