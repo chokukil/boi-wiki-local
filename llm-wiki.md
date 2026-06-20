@@ -8,7 +8,7 @@ Agent에게 다음처럼 말하세요.
 이 파일을 내 BoI Wiki Local inbox처럼 써줘.
 ```
 
-커지면 `data/boi/private/me/` 아래 OKF Markdown 문서로 나눕니다.
+커지면 agent가 7자리 사번을 확인한 뒤 `data/boi/private/{7자리사번}/` 아래 OKF Markdown 문서로 나눕니다.
 
 ## Inbox
 

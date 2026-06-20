@@ -9,10 +9,10 @@ Use this skill when the user asks to connect Langflow with a BoI SOP workflow, d
 
 ## Process
 
-1. Read `AGENTS.md`, `data/boi/index.md`, and `data/boi/private/me/langflow-plans/index.md`.
+1. Read `AGENTS.md`, `data/boi/index.md`, and `data/boi/private/{employee_id}/langflow-plans/index.md`.
 2. Identify whether Langflow is actually needed. Prefer API/manual/event actions when LLM reasoning is not needed.
 3. If remote MCP is configured, search shared Langflow guides, action specs, SOPs, and workflow status.
-4. Draft the Langflow plan under `data/boi/private/me/langflow-plans/`.
+4. Draft the Langflow plan under `data/boi/private/{employee_id}/langflow-plans/`.
 5. Do not claim the flow is live unless runtime smoke evidence exists.
 
 ## Output Shape

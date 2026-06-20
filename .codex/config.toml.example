@@ -1,5 +1,5 @@
 [mcp_servers.boi-wiki-mcp]
-url = "http://mangugil.iptime.org:28200/mcp"
+url = "http://boi-wiki-mcp.example:28200/mcp"
 enabled = true
 
 # Local development alternative:

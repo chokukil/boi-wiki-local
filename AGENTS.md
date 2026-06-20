@@ -12,19 +12,27 @@ Local Private content stays local unless the user explicitly asks to share and c
 - Then read the closest folder `index.md`.
 - Do not scan every file first unless the user asks for broad cleanup/search.
 
+## Employee ID Rule
+
+- Local Private work is keyed by a numeric 7-digit employee ID.
+- Read `BOI_LOCAL_EMPLOYEE_ID` from `.env` or environment when available.
+- If no valid 7-digit employee ID is available, ask the user for it before creating personal BoI content.
+- The template scaffold is `data/boi/private/0000000/`. Do not use `0000000` for real personal work.
+- Never create or use a non-numeric placeholder private folder.
+
 ## Write Targets
 
-- Notes and meetings: `data/boi/private/me/notes/`
-- SOP drafts: `data/boi/private/me/sop-drafts/`
-- Action drafts: `data/boi/private/me/action-drafts/`
-- Event drafts: `data/boi/private/me/event-drafts/`
-- Diagrams: `data/boi/private/me/diagrams/`
-- Context packs: `data/boi/private/me/context-packs/`
-- Workflow simulations: `data/boi/private/me/workflow-simulations/`
-- Langflow plans: `data/boi/private/me/langflow-plans/`
-- Reports: `data/boi/private/me/reports/`
-- Promotion drafts: `data/boi/private/me/promotion-drafts/`
-- Archive: `data/boi/private/me/_archive/YYYY/MM/`
+- Notes and meetings: `data/boi/private/{employee_id}/notes/`
+- SOP drafts: `data/boi/private/{employee_id}/sop-drafts/`
+- Action drafts: `data/boi/private/{employee_id}/action-drafts/`
+- Event drafts: `data/boi/private/{employee_id}/event-drafts/`
+- Diagrams: `data/boi/private/{employee_id}/diagrams/`
+- Context packs: `data/boi/private/{employee_id}/context-packs/`
+- Workflow simulations: `data/boi/private/{employee_id}/workflow-simulations/`
+- Langflow plans: `data/boi/private/{employee_id}/langflow-plans/`
+- Reports: `data/boi/private/{employee_id}/reports/`
+- Promotion drafts: `data/boi/private/{employee_id}/promotion-drafts/`
+- Archive: `data/boi/private/{employee_id}/_archive/YYYY/MM/`
 
 ## Required Local Private Metadata
 
@@ -37,6 +45,8 @@ type: boi/local-note
 title: ...
 description: ...
 timestamp: ...
+employee_id: "1234567"
+local_owner_ref: local-private:1234567
 visibility: local-private
 local_only: true
 promotion_status: local_only
@@ -63,7 +73,9 @@ The user will not run lint manually. You must validate before and after writing.
 
 Level 0 self-check, always:
 
-- Correct path under `data/boi/private/me/`
+- Valid 7-digit `employee_id`
+- Correct path under `data/boi/private/{employee_id}/`
+- `employee_id` and `local_owner_ref` metadata match the path
 - Required metadata present
 - `visibility: local-private`
 - `local_only: true`

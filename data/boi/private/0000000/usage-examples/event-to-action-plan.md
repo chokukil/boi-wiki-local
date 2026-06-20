@@ -5,6 +5,8 @@ type: boi/local-example
 title: Event to Action Plan 예제
 description: 업무 이벤트가 발생했을 때 SOP, action, manual handoff 흐름을 계획하는 요청
 timestamp: 2026-06-20T00:01:00+09:00
+employee_id: "0000000"
+local_owner_ref: local-private:0000000
 visibility: local-private
 local_only: true
 promotion_status: local_only

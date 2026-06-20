@@ -5,6 +5,8 @@ type: boi/local-example
 title: AI Native Workflow Draft 예제
 description: 업무 요청을 SOP, Event, Action 중심의 AI Native Workflow 초안으로 바꾸는 요청
 timestamp: 2026-06-20T00:04:00+09:00
+employee_id: "0000000"
+local_owner_ref: local-private:0000000
 visibility: local-private
 local_only: true
 promotion_status: local_only
@@ -28,7 +30,7 @@ source_refs:
 
 1. `boi-event-workflow-planner`와 `boi-workflow-simulator` 관점으로 정리한다.
 2. 실제 실행이 아니라 초안/시뮬레이션임을 명시한다.
-3. `data/boi/private/me/workflow-simulations/`에 저장한다.
+3. `data/boi/private/0000000/workflow-simulations/`에 저장한다.
 
 # Citations
 

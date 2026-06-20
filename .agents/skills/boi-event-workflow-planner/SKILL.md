@@ -12,7 +12,7 @@ Use this skill when the user asks "when this event happens, what should happen?"
 1. Read `AGENTS.md`, `data/boi/index.md`, and local event/workflow draft folders.
 2. Determine whether the request is about an existing event, a new event candidate, or a one-time manual workflow.
 3. If remote MCP is configured, search shared Event Types, SOPs, and Actions before drafting. If not, ask for a Web link, copied source, or proceed local-only.
-4. Draft the event-to-workflow plan under `data/boi/private/me/event-drafts/` or `data/boi/private/me/workflow-simulations/`.
+4. Draft the event-to-workflow plan under `data/boi/private/{employee_id}/event-drafts/` or `data/boi/private/{employee_id}/workflow-simulations/`.
 5. Do not publish or invoke remote workflow/action tools without explicit user approval.
 
 ## Output Shape

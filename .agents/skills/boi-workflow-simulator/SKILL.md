@@ -9,10 +9,10 @@ Use this skill when the user asks what would happen for a given event payload, w
 
 ## Process
 
-1. Read `AGENTS.md`, `data/boi/index.md`, and `data/boi/private/me/workflow-simulations/index.md`.
+1. Read `AGENTS.md`, `data/boi/index.md`, and `data/boi/private/{employee_id}/workflow-simulations/index.md`.
 2. Identify event type, payload, actor, trace candidate, SOP, stages, and action candidates.
 3. If remote MCP is configured, use shared SOP/Event/Action documents to improve the simulation. Do not call `workflow_start`, `action_invoke`, or remote apply tools unless the user explicitly asks and approves.
-4. Save the dry-run under `data/boi/private/me/workflow-simulations/`.
+4. Save the dry-run under `data/boi/private/{employee_id}/workflow-simulations/`.
 
 ## Output Shape
 

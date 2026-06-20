@@ -5,6 +5,8 @@ type: boi/local-example
 title: Local Only Mode 예제
 description: MCP 설정 없이 Local Private workspace만 사용하는 요청
 timestamp: 2026-06-20T00:05:00+09:00
+employee_id: "0000000"
+local_owner_ref: local-private:0000000
 visibility: local-private
 local_only: true
 promotion_status: local_only

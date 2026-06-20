@@ -5,6 +5,8 @@ type: boi/local-example
 title: Meeting to BoI 예제
 description: 회의 내용을 Local Private BoI로 정리하고 관련 Event 후보를 제안하는 요청
 timestamp: 2026-06-20T00:03:00+09:00
+employee_id: "0000000"
+local_owner_ref: local-private:0000000
 visibility: local-private
 local_only: true
 promotion_status: local_only
@@ -27,7 +29,7 @@ source_refs:
 # Expected Agent Behavior
 
 1. 기본 `boi-wiki-local` skill을 사용한다.
-2. 회의록은 `data/boi/private/me/notes/`에 저장한다.
+2. 회의록은 `data/boi/private/0000000/notes/`에 저장한다.
 3. event/action 후보는 확정하지 않고 후보로 표시한다.
 4. 공유 요청이 있으면 promotion draft를 따로 만든다.
 

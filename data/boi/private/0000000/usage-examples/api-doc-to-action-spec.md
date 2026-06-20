@@ -5,6 +5,8 @@ type: boi/local-example
 title: API Doc to Action Spec 예제
 description: 기존 시스템 API 문서를 BoI Action Spec 초안으로 바꾸는 요청
 timestamp: 2026-06-20T00:02:00+09:00
+employee_id: "0000000"
+local_owner_ref: local-private:0000000
 visibility: local-private
 local_only: true
 promotion_status: local_only
@@ -28,7 +30,7 @@ source_refs:
 
 1. `boi-action-author` skill을 사용한다.
 2. connector kind를 `api`, `webhook`, `mcp`, `langflow`, `manual`, `event_broker` 중 하나로 분류한다.
-3. `data/boi/private/me/action-drafts/`에 초안을 저장한다.
+3. `data/boi/private/0000000/action-drafts/`에 초안을 저장한다.
 4. Team/Public 공유는 promotion draft와 사용자 승인 이후에만 진행한다.
 
 # Citations

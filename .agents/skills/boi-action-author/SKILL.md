@@ -9,10 +9,10 @@ Use this skill when the user provides system API documentation, a webhook spec, 
 
 ## Process
 
-1. Read `AGENTS.md`, `data/boi/index.md`, and `data/boi/private/me/action-drafts/index.md`.
+1. Read `AGENTS.md`, `data/boi/index.md`, and `data/boi/private/{employee_id}/action-drafts/index.md`.
 2. Classify the connector kind: `api`, `webhook`, `mcp`, `langflow`, `manual`, `event_broker`, or `boi_writer`.
 3. If remote MCP is configured, search existing shared action specs first. Reuse before creating a new draft.
-4. Create the action draft under `data/boi/private/me/action-drafts/`.
+4. Create the action draft under `data/boi/private/{employee_id}/action-drafts/`.
 5. If the user asks to share, create a sanitized promotion draft and wait for explicit approval before remote submit.
 
 ## Required Draft Sections

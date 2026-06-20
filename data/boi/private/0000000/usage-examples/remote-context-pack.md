@@ -5,6 +5,8 @@ type: boi/local-example
 title: Remote Context Pack 예제
 description: 원격 BoI Wiki MCP가 있을 때 shared SOP/Event/Action을 검색해 context pack을 만드는 요청
 timestamp: 2026-06-20T00:06:00+09:00
+employee_id: "0000000"
+local_owner_ref: local-private:0000000
 visibility: local-private
 local_only: true
 promotion_status: local_only

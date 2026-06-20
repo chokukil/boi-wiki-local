@@ -43,6 +43,8 @@ MCP 설정은 모르겠으니 local만 써줘.
 
 agent는 clone, zip 다운로드, 또는 현재 폴더 템플릿 구성을 상황에 맞게 선택합니다. Git이 없으면 일반 폴더로 시작합니다.
 
+처음 실제 문서를 만들기 전에는 7자리 숫자 사번이 필요합니다. agent가 `.env`의 `BOI_LOCAL_EMPLOYEE_ID`를 확인하고, 값이 없거나 `0000000`이면 사용자에게 사번을 물어본 뒤 `data/boi/private/{사번}/` 폴더를 만듭니다.
+
 Windows PowerShell:
 
 ```powershell
@@ -59,26 +61,30 @@ sh install.sh
 
 ## 어디에 저장되나요
 
+아래 `{7자리사번}`은 실제 사용자의 숫자 7자리 사번입니다. repo에는 템플릿 scaffold로 `data/boi/private/0000000/`만 들어 있습니다.
+
 | 요청 | 폴더 |
 |---|---|
-| 회의록, 개인 메모 | `data/boi/private/me/notes/` |
-| SOP 초안 | `data/boi/private/me/sop-drafts/` |
-| Action 초안 | `data/boi/private/me/action-drafts/` |
-| Event 후보 | `data/boi/private/me/event-drafts/` |
-| Mermaid 도식 | `data/boi/private/me/diagrams/` |
-| Context pack | `data/boi/private/me/context-packs/` |
-| Workflow dry-run | `data/boi/private/me/workflow-simulations/` |
-| Langflow 설계 초안 | `data/boi/private/me/langflow-plans/` |
-| 주간보고, 업무증빙 | `data/boi/private/me/reports/` |
-| 공유 전 정리본 | `data/boi/private/me/promotion-drafts/` |
-| 사용 예제 | `data/boi/private/me/usage-examples/` |
-| 오래된 문서 | `data/boi/private/me/_archive/YYYY/MM/` |
+| 회의록, 개인 메모 | `data/boi/private/{7자리사번}/notes/` |
+| SOP 초안 | `data/boi/private/{7자리사번}/sop-drafts/` |
+| Action 초안 | `data/boi/private/{7자리사번}/action-drafts/` |
+| Event 후보 | `data/boi/private/{7자리사번}/event-drafts/` |
+| Mermaid 도식 | `data/boi/private/{7자리사번}/diagrams/` |
+| Context pack | `data/boi/private/{7자리사번}/context-packs/` |
+| Workflow dry-run | `data/boi/private/{7자리사번}/workflow-simulations/` |
+| Langflow 설계 초안 | `data/boi/private/{7자리사번}/langflow-plans/` |
+| 주간보고, 업무증빙 | `data/boi/private/{7자리사번}/reports/` |
+| 공유 전 정리본 | `data/boi/private/{7자리사번}/promotion-drafts/` |
+| 사용 예제 | `data/boi/private/{7자리사번}/usage-examples/` |
+| 오래된 문서 | `data/boi/private/{7자리사번}/_archive/YYYY/MM/` |
 
 ## Local Private 규칙
 
 agent가 저장하는 Local Private 문서는 다음 값을 가져야 합니다.
 
 ```yaml
+employee_id: "1234567"
+local_owner_ref: local-private:1234567
 visibility: local-private
 local_only: true
 promotion_status: local_only
@@ -114,22 +120,22 @@ MCP를 몰라도 Local Private 작성은 계속 동작합니다.
 공식 MCP는 shared BoI Wiki MCP 하나입니다.
 
 ```text
-http://mangugil.iptime.org:28200/mcp
+http://boi-wiki-mcp.example:28200/mcp
 ```
 
-agent는 이 MCP를 조회와 승인된 원격 게시에만 사용해야 합니다. Local Private 원본은 사용자 명시 승인 없이 원격으로 보내지 않습니다.
+사내 실제 주소는 운영자에게 별도로 공유받아 개인 `.env` 또는 MCP client 설정에만 입력합니다. agent는 이 MCP를 조회와 승인된 원격 게시에만 사용해야 합니다. Local Private 원본은 사용자 명시 승인 없이 원격으로 보내지 않습니다.
 
 ## 활용 사례
 
 아래 문서를 agent에게 보여주거나 그대로 요청 문장으로 복사해도 됩니다.
 
-- [SOP Mermaid Flow](data/boi/private/me/usage-examples/sop-mermaid-flow.md)
-- [Event to Action Plan](data/boi/private/me/usage-examples/event-to-action-plan.md)
-- [API Doc to Action Spec](data/boi/private/me/usage-examples/api-doc-to-action-spec.md)
-- [Meeting to BoI](data/boi/private/me/usage-examples/meeting-to-boi.md)
-- [AI Native Workflow Draft](data/boi/private/me/usage-examples/ai-native-workflow-draft.md)
-- [Local Only Mode](data/boi/private/me/usage-examples/local-only-mode.md)
-- [Remote Context Pack](data/boi/private/me/usage-examples/remote-context-pack.md)
+- [SOP Mermaid Flow](data/boi/private/0000000/usage-examples/sop-mermaid-flow.md)
+- [Event to Action Plan](data/boi/private/0000000/usage-examples/event-to-action-plan.md)
+- [API Doc to Action Spec](data/boi/private/0000000/usage-examples/api-doc-to-action-spec.md)
+- [Meeting to BoI](data/boi/private/0000000/usage-examples/meeting-to-boi.md)
+- [AI Native Workflow Draft](data/boi/private/0000000/usage-examples/ai-native-workflow-draft.md)
+- [Local Only Mode](data/boi/private/0000000/usage-examples/local-only-mode.md)
+- [Remote Context Pack](data/boi/private/0000000/usage-examples/remote-context-pack.md)
 
 ## 작업별 Skills
 
