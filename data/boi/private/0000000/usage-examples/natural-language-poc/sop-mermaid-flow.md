@@ -39,9 +39,11 @@ source_refs:
 
 # How to Verify
 
-1. Mermaid preview에서 decision node `단면검사 필요 여부`가 Y/N 분기로 표시되는지 확인한다.
-2. 사람이 해야 하는 stage와 AI 자동화 stage가 node label에 남아 있는지 확인한다.
-3. flow가 종료 node까지 닫히는지 확인한다.
+1. Overview Mermaid가 10개 이하 node로 전체 흐름을 보여주는지 확인한다.
+2. Swimlane Mermaid가 Event, SOP Stage, Action, Manual Handoff, Generated BoI lane을 분리하는지 확인한다.
+3. Mermaid preview에서 decision node `단면검사 필요 여부`가 labeled edge로 표시되는지 확인한다.
+4. 사람이 해야 하는 stage와 AI 자동화 stage가 Source Mapping에 남아 있는지 확인한다.
+5. flow가 종료 node까지 닫히고 Diagram QA가 통과하는지 확인한다.
 
 # Real vs Simulated
 

@@ -32,6 +32,7 @@ BoI Wiki Local은 개인 PC에만 저장되는 Local Private BoI 작업공간입
 - 사용자가 명시적으로 승인하기 전에는 원격으로 전송하거나 공개하지 않습니다.
 - MCP, Python, Docker, Git을 몰라도 쓸 수 있습니다.
 - Mermaid 기반 도식, Event-to-Action 계획, API Action 초안, context pack도 local-only로 만들 수 있습니다.
+- SOP Mermaid 도식은 기본적으로 `Overview + Swimlane`으로 만들고, 복잡한 구간은 stage detail로 분리합니다. Web BoI Wiki에 올리면 Mermaid block이 실제 diagram으로 렌더링됩니다.
 
 ## 처음 사용하기
 

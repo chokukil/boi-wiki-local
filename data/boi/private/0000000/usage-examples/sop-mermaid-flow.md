@@ -30,19 +30,23 @@ source_refs:
 
 1. `boi-sop-flow-visualizer` skill을 사용한다.
 2. SOP stage, event type, automated action, manual handoff를 추출한다.
-3. `data/boi/private/0000000/diagrams/`에 Mermaid 문서를 저장한다.
-4. 공유는 사용자가 별도 승인하기 전까지 하지 않는다.
+3. Overview Mermaid와 Swimlane Mermaid를 기본으로 만들고, 10개 node를 넘는 복잡한 구간은 Stage Detail Mermaid로 분리한다.
+4. `data/boi/private/0000000/diagrams/`에 Mermaid 문서를 저장한다.
+5. Source Mapping과 Diagram QA를 포함한다.
+6. 공유는 사용자가 별도 승인하기 전까지 하지 않는다.
 
 # Output Example
 
 ```mermaid
 flowchart TD
   A["Event: direct_development.result_check.requested.v1"] --> B["Stage: Response Trend 확인"]
-  B --> C["Action: direct_development.quality_response_trend.simulate<br/>SIMULATED"]
+  B --> C["Action: quality_response_trend"]
   C --> D["Event: direct_development.map_view.requested.v1"]
   D --> E["Stage: Map View 확인"]
   E --> F["Manual: 단면검사 필요 여부 판단"]
 ```
+
+긴 설명, 시스템명, 담당자, simulation 여부는 node label이 아니라 Source Mapping 표에 분리한다.
 
 # Citations
 
