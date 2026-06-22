@@ -110,7 +110,15 @@ If the user says "Public으로 공유해줘" or "팀 주간보고로 올려줘":
 
 ## MCP
 
-MCP is optional. The official remote MCP is shared BoI Wiki MCP, not a local MCP product. If configured, use BoI Wiki MCP to search shared SOPs, Event Types, Actions, and workflow status. If it is not configured, continue with local files and ask the user for a Web link or pasted source when remote context is required.
+MCP is optional. The official remote MCP is shared BoI Wiki MCP, not a local MCP product. If configured, use BoI Wiki MCP to search shared SOPs, Event Types, Actions, Dictionary, ontology search results, Agent answers, action inbox, and workflow status. If it is not configured, continue with local files and ask the user for a Web link or pasted source when remote context is required.
+
+When MCP is available:
+
+- Use `ontology_search` for broad domain questions across SOP/Event/Action/Dictionary/runtime evidence.
+- Use `boi_agent_chat` for page-aware questions and recommendations.
+- Use `dictionary_resolve` before interpreting acronyms, aliases, or shop-floor terms.
+- Use `agent_inbox` when the user asks what they need to act on.
+- Use `boi_search` only for document-only BoI list searches.
 
 Use remote write or execution tools only after explicit user approval:
 

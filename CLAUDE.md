@@ -14,4 +14,5 @@ This folder is a Local Private BoI workspace.
 - Update `data/boi/index.md`, the relevant folder `index.md`, and `data/boi/log.md`.
 - Validate with the checklist in `AGENTS.md` before reporting completion.
 - MCP is optional. If unavailable, work from local files and user-provided sources. The official MCP is the shared BoI Wiki MCP; do not require a local MCP server.
+- If MCP is available, prefer `ontology_search` for broad SOP/Event/Action/Dictionary/runtime lookup, `boi_agent_chat` for page-aware questions, `dictionary_resolve` for terminology, `agent_inbox` for assigned tasks, and `boi_search` only for document-only BoI search.
 - Sharing creates a promotion draft and preflight first; after explicit user confirmation, submit only the sanitized promotion candidate for remote sync validation/publish. Remote validation, commit, publish, and HOTL status are handled by BoI Wiki; do not ask the user to run Git commands.

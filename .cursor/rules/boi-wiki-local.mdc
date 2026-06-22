@@ -14,5 +14,6 @@ This workspace is a Local Private BoI folder.
 - Update `index.md` and `log.md` after changes.
 - Run self-check before completion. Use `check.sh` or `check.ps1` if available.
 - MCP is optional. If not available, use local files and user-provided sources. Do not require a local MCP server; the official optional MCP is shared BoI Wiki MCP.
+- If MCP is available, use `ontology_search` for broad knowledge lookup, `boi_agent_chat` for page-aware questions, `dictionary_resolve` for terms, `agent_inbox` for assigned tasks, and `boi_search` only for document-only search.
 - Never send Local Private originals remotely without explicit user confirmation.
 - For Team/Public sharing, create a sanitized promotion draft, run preflight, show preview, then submit remote sync validation/publish only after explicit confirmation. Remote validation, commit, publish, and HOTL status are handled by BoI Wiki; do not ask the user to run Git commands.

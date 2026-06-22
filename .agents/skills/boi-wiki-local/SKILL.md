@@ -13,6 +13,11 @@ Use this skill for Local Private BoI work.
 2. Read `data/boi/index.md`.
 3. Read the closest folder `index.md` for the target area.
 4. Use MCP only if it is already configured or the user asks for remote lookup.
+   - Prefer `ontology_search` for broad shared Wiki lookup.
+   - Prefer `boi_agent_chat` for page-aware BoI Agent questions.
+   - Use `dictionary_resolve` for terms and acronyms.
+   - Use `agent_inbox` for assigned manual/approval tasks.
+   - Use `boi_search` only when a document-only list is needed.
 
 ## Common Requests
 
@@ -28,6 +33,8 @@ Use this skill for Local Private BoI work.
 ## Remote MCP Policy
 
 The official optional MCP is shared BoI Wiki MCP. Do not require a local MCP server. Use remote write or execution tools only after explicit user confirmation.
+
+Do not send Local Private source text to remote Agent tools unless the user explicitly asks for remote validation/promotion and approves the preview. For local-only work, build a local context pack first.
 
 ## Required Metadata
 

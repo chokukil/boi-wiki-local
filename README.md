@@ -126,6 +126,16 @@ http://boi-wiki-mcp.example:28200/mcp
 
 사내 실제 주소는 운영자에게 별도로 공유받아 개인 `.env` 또는 MCP client 설정에만 입력합니다. agent는 이 MCP를 조회와 승인된 원격 게시에만 사용해야 합니다. Local Private 원본은 사용자 명시 승인 없이 원격으로 보내지 않습니다.
 
+MCP가 있을 때 agent는 다음 도구를 우선 사용합니다.
+
+- `ontology_search`: SOP, Event Type, Action, Dictionary, BoI 문서, runtime evidence를 함께 찾습니다.
+- `boi_agent_chat`: 현재 페이지나 업무 질문에 대해 BoI Agent 답변을 받습니다.
+- `dictionary_resolve`: 현장 용어와 약어를 private -> team -> public 우선순위로 해석합니다.
+- `agent_inbox`: 사용자가 담당자로 처리해야 할 manual/approval task를 확인합니다.
+- `boi_search`: BoI 문서 목록만 필요할 때 사용합니다.
+
+MCP가 없으면 같은 작업을 local 파일과 사용자가 제공한 Web 링크/문서 export를 기반으로 수행합니다.
+
 ## 활용 사례
 
 아래 예제 세트는 요청 문장, 생성된 Markdown, source image, shared BoI Wiki runtime trace 근거를 함께 보여줍니다.
