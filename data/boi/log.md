@@ -13,3 +13,7 @@
 ## 2026-06-21
 
 - Strengthened SOP Mermaid diagram harness with overview, swimlane, stage detail, source mapping, and diagram QA rules.
+
+## 2026-06-23
+
+- Added Local Private dictionary scaffold, dictionary authoring skill, and terminology examples aligned with shared BoI Wiki dictionary rules.

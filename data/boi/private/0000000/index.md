@@ -5,6 +5,7 @@
 * [SOP Drafts](sop-drafts/) - SOP 초안
 * [Action Drafts](action-drafts/) - action 초안
 * [Event Drafts](event-drafts/) - Event Type 후보와 event-to-workflow 계획
+* [Dictionary](dictionary/) - 개인 도메인 용어, 별칭, 개념 연결 초안
 * [Diagrams](diagrams/) - Mermaid/SVG 도식 초안
 * [Context Packs](context-packs/) - 업무 단위 agent context pack
 * [Workflow Simulations](workflow-simulations/) - Event payload 기반 dry-run

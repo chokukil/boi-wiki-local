@@ -34,6 +34,7 @@ mkdir -p "$BASE/notes" \
   "$BASE/sop-drafts" \
   "$BASE/action-drafts" \
   "$BASE/event-drafts" \
+  "$BASE/dictionary" \
   "$BASE/diagrams" \
   "$BASE/context-packs" \
   "$BASE/workflow-simulations" \

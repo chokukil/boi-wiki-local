@@ -26,6 +26,7 @@ Local Private content stays local unless the user explicitly asks to share and c
 - SOP drafts: `data/boi/private/{employee_id}/sop-drafts/`
 - Action drafts: `data/boi/private/{employee_id}/action-drafts/`
 - Event drafts: `data/boi/private/{employee_id}/event-drafts/`
+- Dictionary terms: `data/boi/private/{employee_id}/dictionary/`
 - Diagrams: `data/boi/private/{employee_id}/diagrams/`
 - Context packs: `data/boi/private/{employee_id}/context-packs/`
 - Workflow simulations: `data/boi/private/{employee_id}/workflow-simulations/`
@@ -83,6 +84,7 @@ Level 0 self-check, always:
 - `index.md` updated
 - `log.md` updated
 - citations or source_refs present when source material exists
+- dictionary terms include at least `term`, `definition`, aliases when known, examples when available, and links/source_refs when mapped to BoI concepts
 - no remote publish without explicit confirmation
 - for Team/Public promotion, local promotion draft, target visibility, source_refs, sensitive-content check, and preview are present
 
@@ -114,9 +116,9 @@ MCP is optional. The official remote MCP is shared BoI Wiki MCP, not a local MCP
 
 When MCP is available:
 
+- Use `dictionary_resolve` before interpreting acronyms, aliases, or shop-floor terms.
 - Use `ontology_search` for broad domain questions across SOP/Event/Action/Dictionary/runtime evidence.
 - Use `boi_agent_chat` for page-aware questions and recommendations.
-- Use `dictionary_resolve` before interpreting acronyms, aliases, or shop-floor terms.
 - Use `agent_inbox` when the user asks what they need to act on.
 - Use `boi_search` only for document-only BoI list searches.
 
@@ -134,6 +136,7 @@ If the agent supports skills, use the narrowest applicable skill:
 - `boi-sop-flow-visualizer` for Mermaid/SVG SOP flow drafts
 - `boi-event-workflow-planner` for event-to-SOP/action plans
 - `boi-action-author` for API/Webhook/MCP/Langflow/Manual action specs
+- `boi-dictionary-author` for private/team/public terminology and ontology mapping drafts
 - `boi-context-pack-builder` for agent-ready context packs
 - `boi-workflow-simulator` for dry-run workflow simulations
 - `boi-langflow-connector-planner` for Langflow workflow plans

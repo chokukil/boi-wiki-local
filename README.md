@@ -19,6 +19,7 @@ BoI Wiki Local은 개인 PC에만 저장되는 Local Private BoI 작업공간입
 | 직개발 결과 확인 SOP를 Mermaid 프로세스 플로우로 그려줘. | local | [SOP Mermaid flow](data/boi/private/0000000/usage-examples/natural-language-poc/sop-mermaid-flow.md) |
 | 이 이벤트가 발생하면 어떤 SOP와 Action이 이어지는지 알려줘. | live workflow evidence | [Event to Action plan](data/boi/private/0000000/usage-examples/natural-language-poc/event-to-action-plan.md) |
 | 기존 API 문서를 BoI Action Spec 초안으로 만들어줘. | local | [API to Action Spec](data/boi/private/0000000/usage-examples/natural-language-poc/api-doc-to-action-spec.md) |
+| 현장에서 말하는 Response Trend 용어를 dictionary에 추가해줘. | local | [Dictionary term authoring](data/boi/private/0000000/usage-examples/natural-language-poc/dictionary-term-authoring.md) |
 | 원격 BoI Wiki를 검색해서 이번 업무용 context pack을 만들어줘. | remote lookup optional | [Context pack](data/boi/private/0000000/usage-examples/natural-language-poc/remote-context-pack.md) |
 | 만들어진 SOP 내용 괜찮네. Public으로 공유해줘. | approval required | [Public promotion preflight](data/boi/private/0000000/usage-examples/natural-language-poc/promotion-public.md) |
 | 팀 주간보고 작성한 거 괜찮아 보이네. 팀 주간보고로 올려줘. | approval required | [Team weekly report promotion](data/boi/private/0000000/usage-examples/natural-language-poc/weekly-report-promotion.md) |
@@ -31,8 +32,9 @@ BoI Wiki Local은 개인 PC에만 저장되는 Local Private BoI 작업공간입
 - Web BoI Wiki에는 자동으로 보이지 않습니다.
 - 사용자가 명시적으로 승인하기 전에는 원격으로 전송하거나 공개하지 않습니다.
 - MCP, Python, Docker, Git을 몰라도 쓸 수 있습니다.
-- Mermaid 기반 도식, Event-to-Action 계획, API Action 초안, context pack도 local-only로 만들 수 있습니다.
+- Mermaid 기반 도식, Event-to-Action 계획, API Action 초안, Dictionary 용어, context pack도 local-only로 만들 수 있습니다.
 - SOP Mermaid 도식은 기본적으로 `Overview + Swimlane`으로 만들고, 복잡한 구간은 stage detail로 분리합니다. Web BoI Wiki에 올리면 Mermaid block이 실제 diagram으로 렌더링됩니다.
+- Dictionary는 개인/팀/공용 도메인 용어를 이해하기 위한 BoI 문서입니다. Local에서는 `dictionary/`에 초안을 만들고, 원격 MCP가 있으면 shared dictionary를 조회만 한 뒤 필요한 경우 promotion draft로 공유합니다.
 
 ## 처음 사용하기
 
@@ -70,6 +72,7 @@ sh install.sh
 | SOP 초안 | `data/boi/private/{7자리사번}/sop-drafts/` |
 | Action 초안 | `data/boi/private/{7자리사번}/action-drafts/` |
 | Event 후보 | `data/boi/private/{7자리사번}/event-drafts/` |
+| 개인 dictionary 용어 | `data/boi/private/{7자리사번}/dictionary/` |
 | Mermaid 도식 | `data/boi/private/{7자리사번}/diagrams/` |
 | Context pack | `data/boi/private/{7자리사번}/context-packs/` |
 | Workflow dry-run | `data/boi/private/{7자리사번}/workflow-simulations/` |
@@ -128,13 +131,25 @@ http://boi-wiki-mcp.example:28200/mcp
 
 MCP가 있을 때 agent는 다음 도구를 우선 사용합니다.
 
+- `dictionary_resolve`: 현장 용어와 약어를 private -> team -> public 우선순위로 해석합니다.
 - `ontology_search`: SOP, Event Type, Action, Dictionary, BoI 문서, runtime evidence를 함께 찾습니다.
 - `boi_agent_chat`: 현재 페이지나 업무 질문에 대해 BoI Agent 답변을 받습니다.
-- `dictionary_resolve`: 현장 용어와 약어를 private -> team -> public 우선순위로 해석합니다.
 - `agent_inbox`: 사용자가 담당자로 처리해야 할 manual/approval task를 확인합니다.
 - `boi_search`: BoI 문서 목록만 필요할 때 사용합니다.
 
 MCP가 없으면 같은 작업을 local 파일과 사용자가 제공한 Web 링크/문서 export를 기반으로 수행합니다.
+
+## Dictionary 작성
+
+Dictionary는 검색 성능만을 위한 태그가 아니라, agent가 현장 표현과 공식 BoI 개념을 연결하기 위한 최소 온톨로지입니다. 일반 사용자는 아래 정도만 말하면 됩니다.
+
+```text
+현장에서 말하는 Response Trend 용어를 dictionary에 추가해줘.
+Cpk랑 공정능력 뜻을 우리 업무 기준으로 정리해줘.
+HBM 관련 용어를 shared BoI Wiki dictionary 기준으로 찾아보고 내 업무 context pack에 넣어줘.
+```
+
+agent는 기본 입력 5개만 확인합니다: 용어, 별칭/약어, 뜻, 예시, 연결 문서. MCP가 있으면 `dictionary_resolve`와 `ontology_search`로 shared dictionary를 먼저 확인하고, 없으면 local 문서와 사용자가 준 자료만으로 초안을 만듭니다. 저장 위치는 `data/boi/private/{7자리사번}/dictionary/`입니다.
 
 ## 활용 사례
 
@@ -142,7 +157,7 @@ MCP가 없으면 같은 작업을 local 파일과 사용자가 제공한 Web 링
 
 - [자연어 요청 E2E PoC 예제 세트](data/boi/private/0000000/usage-examples/natural-language-poc/README.md)
 - [SOP 원본 이미지 evidence](data/boi/private/0000000/usage-examples/natural-language-poc/evidence/sop_sample_image.png)
-- 기존 단문 예제: [SOP Mermaid Flow](data/boi/private/0000000/usage-examples/sop-mermaid-flow.md), [Event to Action Plan](data/boi/private/0000000/usage-examples/event-to-action-plan.md), [API Doc to Action Spec](data/boi/private/0000000/usage-examples/api-doc-to-action-spec.md), [Meeting to BoI](data/boi/private/0000000/usage-examples/meeting-to-boi.md)
+- 기존 단문 예제: [SOP Mermaid Flow](data/boi/private/0000000/usage-examples/sop-mermaid-flow.md), [Event to Action Plan](data/boi/private/0000000/usage-examples/event-to-action-plan.md), [API Doc to Action Spec](data/boi/private/0000000/usage-examples/api-doc-to-action-spec.md), [Dictionary Term Authoring](data/boi/private/0000000/usage-examples/dictionary-term-authoring.md), [Meeting to BoI](data/boi/private/0000000/usage-examples/meeting-to-boi.md)
 
 ## 작업별 Skills
 
@@ -152,6 +167,7 @@ agent가 skill을 지원하면 다음 skill을 우선 사용합니다. 지원하
 - `boi-sop-flow-visualizer`
 - `boi-event-workflow-planner`
 - `boi-action-author`
+- `boi-dictionary-author`
 - `boi-context-pack-builder`
 - `boi-workflow-simulator`
 - `boi-langflow-connector-planner`

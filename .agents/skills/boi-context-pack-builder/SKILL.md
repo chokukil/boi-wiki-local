@@ -11,7 +11,7 @@ Use this skill when the user wants an agent to understand a work item, incident,
 
 1. Read `AGENTS.md`, `data/boi/index.md`, and `data/boi/private/{employee_id}/context-packs/index.md`.
 2. Identify the task boundary: decision, SOP, incident, report, action authoring, or workflow simulation.
-3. Gather local docs first. If remote MCP is configured, search shared BoI Wiki for relevant SOPs, Event Types, Actions, workflow status, and graph links.
+3. Gather local docs first. If remote MCP is configured, resolve terminology with `dictionary_resolve`, then search shared BoI Wiki for relevant SOPs, Event Types, Actions, workflow status, dictionary terms, and graph links.
 4. Save the context pack under `data/boi/private/{employee_id}/context-packs/`.
 5. Keep copied remote excerpts concise and cite source links.
 
@@ -24,6 +24,7 @@ Include:
 - SOP and stage references
 - Event Types
 - Actions and manual handoffs
+- Dictionary terms and aliases used
 - Open gaps
 - Suggested next agent actions
 - Citations

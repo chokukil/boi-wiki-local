@@ -34,6 +34,7 @@ $dirs = @(
   "$baseRel/sop-drafts",
   "$baseRel/action-drafts",
   "$baseRel/event-drafts",
+  "$baseRel/dictionary",
   "$baseRel/diagrams",
   "$baseRel/context-packs",
   "$baseRel/workflow-simulations",
