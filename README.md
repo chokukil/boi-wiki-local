@@ -60,7 +60,7 @@ WSL, Ubuntu, Linux:
 sh install.sh
 ```
 
-설치 스크립트를 실행하지 않아도 됩니다. agent에게 "이 폴더를 BoI Wiki Local로 써줘"라고 말하면 `AGENTS.md`와 skill 규칙을 기준으로 작업합니다.
+설치 스크립트를 실행하지 않아도 됩니다. agent에게 "이 폴더를 BoI Wiki Local로 써줘"라고 말하면 `AGENTS.md`와 skill 규칙을 기준으로 작업합니다. agent가 `check.sh` 또는 `check.ps1`를 먼저 실행해도 됩니다. `BOI_LOCAL_EMPLOYEE_ID`가 7자리 숫자이고 실제 사번 폴더가 아직 없으면 check가 template scaffold를 복사해 기본 구조를 준비한 뒤 검증합니다.
 
 ## 어디에 저장되나요
 

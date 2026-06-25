@@ -21,6 +21,23 @@ if ($status -ne 0) {
 }
 
 $baseRel = "data/boi/private/$EmployeeId"
+$basePath = Join-Path $Root $baseRel
+$scaffoldPath = Join-Path $Root "data/boi/private/0000000"
+if ($EmployeeId -ne "0000000" -and !(Test-Path $basePath) -and (Test-Path $scaffoldPath)) {
+  $installPath = Join-Path $Root "install.ps1"
+  if (Test-Path $installPath) {
+    & $installPath -Root $Root | Out-Null
+  } else {
+    Copy-Item -Recurse -Path $scaffoldPath -Destination $basePath
+    Get-ChildItem -Path $basePath -Recurse -Filter "*.md" | ForEach-Object {
+      $content = Get-Content $_.FullName -Raw
+      $content = $content.Replace('employee_id: "0000000"', "employee_id: `"$EmployeeId`"")
+      $content = $content.Replace('local_owner_ref: local-private:0000000', "local_owner_ref: local-private:$EmployeeId")
+      $content = $content.Replace('data/boi/private/0000000', "data/boi/private/$EmployeeId")
+      Set-Content -Path $_.FullName -Value $content -NoNewline
+    }
+  }
+}
 
 function Check-File($Path) {
   if (!(Test-Path (Join-Path $Root $Path))) {
