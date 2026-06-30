@@ -17,3 +17,8 @@
 ## 2026-06-23
 
 - Added Local Private dictionary scaffold, dictionary authoring skill, and terminology examples aligned with shared BoI Wiki dictionary rules.
+
+## 2026-06-30
+
+- Aligned Local Private dictionary authoring with shared bulk curation and granularity rules.
+- Added local guidance for candidate actions: keep, replace_with_canonical, split_into_terms, alias_to_existing, exclude, and needs_parent_curation.

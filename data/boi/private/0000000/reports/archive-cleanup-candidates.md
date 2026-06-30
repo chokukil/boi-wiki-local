@@ -33,6 +33,6 @@ source_refs:
 
 | Path | Reason | Recommendation |
 |---|---|---|
-| `workflow-simulations/old-dry-run.md` | ephemeral review date passed | archive after owner approval |
+| `workflow-simulations/old-preflight.md` | ephemeral review date passed | archive after owner approval |
 | `notes/old-meeting.md` | working note, no source refs | ask owner |
 | `promotion-drafts/public-sop.md` | pending approval | keep |
