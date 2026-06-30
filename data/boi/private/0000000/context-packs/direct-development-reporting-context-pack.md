@@ -31,7 +31,7 @@ SOP 이미지에서 직개발 결과 확인 및 Reporting workflow를 만들고,
 - [SOP image evidence](../usage-examples/natural-language-poc/evidence/sop_sample_image.png)
 - [SOP draft](../sop-drafts/direct-development-reporting-sop-draft.md)
 - [Mermaid flow](../diagrams/direct-development-reporting-mermaid.md)
-- [Event to Action plan](../event-drafts/direct-development-reporting-event-to-action-plan.md)
+- [업무 흐름 계획](../event-drafts/direct-development-reporting-event-to-action-plan.md)
 - [Action draft](../action-drafts/quality-system-response-trend-action-draft.md)
 
 # Remote Sources When MCP Is Available

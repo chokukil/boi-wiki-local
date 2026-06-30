@@ -2,8 +2,8 @@
 okf_version: "0.1"
 boi_profile_version: "0.1-local"
 type: boi/local-example
-title: "API 문서에서 BoI Action Spec 초안 만들기"
-description: "기존 API 설명을 BoI Action Gateway spec 후보로 변환하는 예제"
+title: "API 문서에서 업무 요청 초안 만들기"
+description: "기존 API 설명을 BoI 업무 요청 후보로 변환하고 업무 흐름에 연결하는 예제"
 timestamp: 2026-06-20T21:55:00+09:00
 employee_id: "0000000"
 local_owner_ref: local-private:0000000
@@ -23,8 +23,8 @@ source_refs:
 # Prompt
 
 ```text
-기존 API 문서를 BoI Action Spec 초안으로 만들어줘.
-Response Trend 확인 API라고 가정하고, payload schema, risk level, dry-run, approval 필요 여부를 같이 정리해줘.
+기존 API 문서를 BoI 업무 요청 초안으로 만들고 업무 흐름에 연결해줘.
+Response Trend 확인 API라고 가정하고, payload schema, risk level, 실행 전 확인, approval 필요 여부, 기존 WorkflowDefinition 중복 확인을 같이 정리해줘.
 ```
 
 # Generated Output
@@ -47,4 +47,4 @@ Response Trend 확인 API라고 가정하고, payload schema, risk level, dry-ru
 
 # Real vs Simulated
 
-Action Spec Markdown은 실제 local draft다. 품질 시스템 실제 connector는 아직 연결하지 않고, shared BoI Wiki에서는 `BoI Universal Action Simulator Flow` 기반 `SIMULATED` action으로 검증한다.
+업무 요청 Spec Markdown은 실제 local draft다. 품질 시스템 실제 connector는 아직 연결하지 않고, shared BoI Wiki에서는 `BoI Universal Action Simulator Flow` 기반 `SIMULATED` 업무 요청으로 검증한다.

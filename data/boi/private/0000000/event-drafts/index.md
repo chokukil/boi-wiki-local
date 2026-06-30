@@ -1,5 +1,5 @@
 # Event Drafts
 
-Event Type 후보와 event-to-workflow 계획을 저장합니다.
+Event Type 후보와 업무 흐름 계획을 저장합니다.
 
-* [직개발 Reporting Event to Action Plan](direct-development-reporting-event-to-action-plan.md)
+* [직개발 Reporting 업무 흐름 계획](direct-development-reporting-event-to-action-plan.md)

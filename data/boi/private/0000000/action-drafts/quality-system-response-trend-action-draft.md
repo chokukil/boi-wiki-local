@@ -20,7 +20,7 @@ source_refs:
     ref: ../sop-drafts/direct-development-reporting-sop-draft.md
 ---
 
-# Action Spec Candidate
+# 업무 요청 Spec Candidate
 
 ```yaml
 action_key: quality_system.response_trend.query

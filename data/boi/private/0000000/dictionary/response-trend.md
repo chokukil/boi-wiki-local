@@ -16,6 +16,7 @@ archive_status: active
 review_after: 2026-09-23
 contains_sensitive: no
 term: "Response Trend"
+term_kind: concept
 definition: "시간 순서로 수집된 response 값을 기준선, 최근 변화, 공정 조건과 비교해 이상 징후를 판단하는 분석 관점"
 aliases:
   - response trend

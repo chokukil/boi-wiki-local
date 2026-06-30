@@ -3,7 +3,7 @@ okf_version: "0.1"
 boi_profile_version: "0.1-local"
 type: boi/local-workflow-simulation
 title: "직개발 Reporting Human + AI Workflow Simulation"
-description: "사람과 AI가 함께 진행하는 직개발 Reporting workflow dry-run"
+description: "사람과 AI가 함께 진행하는 직개발 Reporting 업무 흐름 실행 전 확인"
 timestamp: 2026-06-20T22:07:00+09:00
 employee_id: "0000000"
 local_owner_ref: local-private:0000000

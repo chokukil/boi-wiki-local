@@ -37,8 +37,8 @@ source_refs:
 | 이 회의 내용을 BoI로 정리해줘. | local | [Meeting to BoI](meeting-to-boi.md) | [sample-meeting-to-boi.md](../../notes/sample-meeting-to-boi.md) |
 | 이 SOP 이미지를 BoI Wiki 형식으로 초안 만들어줘. | local + evidence | [SOP Image to Draft](image-to-sop-draft.md) | [direct-development-reporting-sop-draft.md](../../sop-drafts/direct-development-reporting-sop-draft.md) |
 | 직개발 결과 확인 SOP를 Mermaid 프로세스 플로우로 그려줘. | local | [SOP Mermaid Flow](sop-mermaid-flow.md) | [direct-development-reporting-mermaid.md](../../diagrams/direct-development-reporting-mermaid.md) |
-| 이 이벤트가 발생하면 어떤 SOP와 Action이 이어지는지 알려줘. | live workflow evidence | [Event to Action Plan](event-to-action-plan.md) | [direct-development-reporting-event-to-action-plan.md](../../event-drafts/direct-development-reporting-event-to-action-plan.md) |
-| 기존 API 문서를 BoI Action Spec 초안으로 만들어줘. | local | [API Doc to Action Spec](api-doc-to-action-spec.md) | [quality-system-response-trend-action-draft.md](../../action-drafts/quality-system-response-trend-action-draft.md) |
+| 이 이벤트가 발생하면 어떤 업무 BoI와 업무 흐름이 이어지는지 알려줘. | live workflow evidence | [업무 흐름 계획](event-to-action-plan.md) | [direct-development-reporting-event-to-action-plan.md](../../event-drafts/direct-development-reporting-event-to-action-plan.md) |
+| 기존 API 문서를 업무 요청 초안으로 만들고 업무 흐름에 연결해줘. | local | [API Doc to 업무 요청 Spec](api-doc-to-action-spec.md) | [quality-system-response-trend-action-draft.md](../../action-drafts/quality-system-response-trend-action-draft.md) |
 | 현장에서 말하는 Response Trend 용어를 dictionary에 추가해줘. | local | [Dictionary Term Authoring](dictionary-term-authoring.md) | [response-trend.md](../../dictionary/response-trend.md) |
 | 원격 BoI Wiki를 검색해서 이번 업무용 context pack을 만들어줘. | remote lookup optional | [Remote Context Pack](remote-context-pack.md) | [direct-development-reporting-context-pack.md](../../context-packs/direct-development-reporting-context-pack.md) |
 | 만들어진 SOP 내용 괜찮네. Public으로 공유해줘. | approval required | [Public Promotion](promotion-public.md) | [direct-development-reporting-public-promotion-draft.md](../../promotion-drafts/direct-development-reporting-public-promotion-draft.md) |

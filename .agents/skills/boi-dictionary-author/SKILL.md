@@ -15,6 +15,21 @@ Use this skill when the user asks to define a term, acronym, shop-floor phrase, 
 4. Create or update a Local Private dictionary term under `data/boi/private/{employee_id}/dictionary/`.
 5. If the user wants Team/Public sharing, create a promotion draft and wait for explicit approval before remote submit.
 
+## Bulk Curation
+
+When the user provides many candidate terms, do not change importer code or resolver behavior for each term. Capture decisions in candidate data, override notes, manifest rows, or promotion drafts.
+
+Use one action per candidate:
+
+- `keep`
+- `replace_with_canonical`
+- `split_into_terms`
+- `alias_to_existing`
+- `exclude`
+- `needs_parent_curation`
+
+Slash bundles, numeric bundles, condition bundles, mode/test variants, and vendor shorthand are not promoted as standalone Team/Public canonical terms by default. First identify the broader parent concept, alias, and broader/narrower relation. If the parent is unclear, keep the item local or mark it `needs_parent_curation`.
+
 ## Required Shape
 
 Use `type: boi/dictionary-term` and include:
@@ -22,6 +37,7 @@ Use `type: boi/dictionary-term` and include:
 - `term`
 - `definition`
 - `aliases` when known
+- `term_kind` when useful: `concept`, `acronym`, `test-method`, `variant-group`, or `variant`
 - `domain`
 - `examples`
 - `links` to local or shared SOP/Event/Action/BoI concepts when available
@@ -36,6 +52,8 @@ Optional relation fields:
 - `maps_to_event_type`
 - `maps_to_action_key`
 - `maps_to_sop`
+
+For `test-method`, `variant-group`, or `variant`, include `broader` or `related_terms` parent links before proposing Team/Public promotion.
 
 ## Self-check
 

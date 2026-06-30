@@ -17,8 +17,8 @@ BoI Wiki Local은 개인 PC에만 저장되는 Local Private BoI 작업공간입
 | 이 회의 내용을 BoI로 정리해줘. | local | [회의 내용 BoI 정리](data/boi/private/0000000/usage-examples/natural-language-poc/meeting-to-boi.md) |
 | 이 SOP 이미지를 BoI Wiki 형식으로 초안 만들어줘. | local + evidence | [SOP 이미지 초안](data/boi/private/0000000/usage-examples/natural-language-poc/image-to-sop-draft.md) |
 | 직개발 결과 확인 SOP를 Mermaid 프로세스 플로우로 그려줘. | local | [SOP Mermaid flow](data/boi/private/0000000/usage-examples/natural-language-poc/sop-mermaid-flow.md) |
-| 이 이벤트가 발생하면 어떤 SOP와 Action이 이어지는지 알려줘. | live workflow evidence | [Event to Action plan](data/boi/private/0000000/usage-examples/natural-language-poc/event-to-action-plan.md) |
-| 기존 API 문서를 BoI Action Spec 초안으로 만들어줘. | local | [API to Action Spec](data/boi/private/0000000/usage-examples/natural-language-poc/api-doc-to-action-spec.md) |
+| 이 이벤트가 발생하면 어떤 업무 BoI와 업무 흐름이 이어지는지 알려줘. | live workflow evidence | [업무 흐름 계획](data/boi/private/0000000/usage-examples/natural-language-poc/event-to-action-plan.md) |
+| 기존 API 문서를 Action 초안으로 만들고 업무 흐름에 연결해줘. | local | [API to Action Spec](data/boi/private/0000000/usage-examples/natural-language-poc/api-doc-to-action-spec.md) |
 | 현장에서 말하는 Response Trend 용어를 dictionary에 추가해줘. | local | [Dictionary term authoring](data/boi/private/0000000/usage-examples/natural-language-poc/dictionary-term-authoring.md) |
 | 원격 BoI Wiki를 검색해서 이번 업무용 context pack을 만들어줘. | remote lookup optional | [Context pack](data/boi/private/0000000/usage-examples/natural-language-poc/remote-context-pack.md) |
 | 만들어진 SOP 내용 괜찮네. Public으로 공유해줘. | approval required | [Public promotion preflight](data/boi/private/0000000/usage-examples/natural-language-poc/promotion-public.md) |
@@ -28,11 +28,12 @@ BoI Wiki Local은 개인 PC에만 저장되는 Local Private BoI 작업공간입
 
 ## 이것은 무엇인가요
 
-- 개인 업무 메모, 회의록, SOP 초안, 주간보고 초안을 Markdown/OKF 구조로 쌓는 폴더입니다.
+- 개인 업무 메모, 회의록, SOP 초안, 주간보고 초안, 비정형 업무 BoI를 Markdown/OKF 구조로 쌓는 폴더입니다.
 - Web BoI Wiki에는 자동으로 보이지 않습니다.
 - 사용자가 명시적으로 승인하기 전에는 원격으로 전송하거나 공개하지 않습니다.
 - MCP, Python, Docker, Git을 몰라도 쓸 수 있습니다.
-- Mermaid 기반 도식, Event-to-Action 계획, API Action 초안, Dictionary 용어, context pack도 local-only로 만들 수 있습니다.
+- Mermaid 기반 도식, 업무 흐름 계획, API Action 초안, Dictionary 용어, context pack도 local-only로 만들 수 있습니다.
+- SOP가 없는 일회성 업무는 Local Private 업무 BoI로 저장하고, 반복성이 보이면 WorkflowDefinition 또는 Skill 후보로 정리합니다.
 - SOP Mermaid 도식은 기본적으로 `Overview + Swimlane`으로 만들고, 복잡한 구간은 stage detail로 분리합니다. Web BoI Wiki에 올리면 Mermaid block이 실제 diagram으로 렌더링됩니다.
 - Dictionary는 개인/팀/공용 도메인 용어를 이해하기 위한 BoI 문서입니다. Local에서는 `dictionary/`에 초안을 만들고, 원격 MCP가 있으면 shared dictionary를 조회만 한 뒤 필요한 경우 promotion draft로 공유합니다.
 
@@ -71,11 +72,11 @@ sh install.sh
 | 회의록, 개인 메모 | `data/boi/private/{7자리사번}/notes/` |
 | SOP 초안 | `data/boi/private/{7자리사번}/sop-drafts/` |
 | Action 초안 | `data/boi/private/{7자리사번}/action-drafts/` |
-| Event 후보 | `data/boi/private/{7자리사번}/event-drafts/` |
+| Event 후보 / 업무 흐름 초안 | `data/boi/private/{7자리사번}/event-drafts/` |
 | 개인 dictionary 용어 | `data/boi/private/{7자리사번}/dictionary/` |
 | Mermaid 도식 | `data/boi/private/{7자리사번}/diagrams/` |
 | Context pack | `data/boi/private/{7자리사번}/context-packs/` |
-| Workflow dry-run | `data/boi/private/{7자리사번}/workflow-simulations/` |
+| 실행 전 확인 / 업무 흐름 시뮬레이션 | `data/boi/private/{7자리사번}/workflow-simulations/` |
 | Langflow 설계 초안 | `data/boi/private/{7자리사번}/langflow-plans/` |
 | 주간보고, 업무증빙 | `data/boi/private/{7자리사번}/reports/` |
 | 공유 전 정리본 | `data/boi/private/{7자리사번}/promotion-drafts/` |
@@ -115,7 +116,7 @@ agent는 사용자가 lint를 몰라도 저장 전 자체 검증을 수행하고
 
 ## 선택 사항: MCP
 
-MCP를 설정하면 agent가 원격 BoI Wiki에서 SOP, Event Type, Action Spec, Workflow Status를 검색할 수 있습니다.
+MCP를 설정하면 agent가 원격 BoI Wiki에서 SOP, Event Type, Action, 실행 현황을 검색할 수 있습니다. 내부 중복 확인에는 WorkflowDefinition tool을 쓰지만, 사용자에게는 SOP 추가, BoI Wiki 탐색, Event/Action 카탈로그 기준으로 설명합니다.
 
 MCP를 몰라도 Local Private 작성은 계속 동작합니다.
 
@@ -133,6 +134,20 @@ MCP가 있을 때 agent는 다음 도구를 우선 사용합니다.
 
 - `dictionary_resolve`: 현장 용어와 약어를 private -> team -> public 우선순위로 해석합니다.
 - `ontology_search`: SOP, Event Type, Action, Dictionary, BoI 문서, runtime evidence를 함께 찾습니다.
+- `workflow_definitions_search`: 내부 WorkflowDefinition 기준으로 기존 연결을 찾아 새 업무/API/MCP/Skill의 중복 개발을 줄입니다.
+- `workflow_definition_get`: 내부 WorkflowDefinition의 업무 목적, 필요한 업무 BoI, 근거, 완결 조건을 확인합니다.
+- `workflow_definition_deduplicate`: 신규 등록 전에 재사용/확장/신규 생성 판단 근거를 받습니다.
+- `sop_registration_plan`: 자연어 SOP/Event/Action 요청을 Event/SOP/Action 3단 흐름의 기존 후보, 추천 필드, draft payload로 정리합니다.
+- `sop_registration_preview`: draft 생성이나 게시 요청 전에 권한, 과거 이력, 연결 SOP/Event/Action을 먼저 확인합니다.
+- `registration_plan` / `registration_verification_preview`: 통합 SOP 흐름으로 부족한 컴포넌트 단위 호환 작업에 사용합니다.
+- `sop_registration_draft_create`: 통합 SOP 추가 draft를 만듭니다. 원격 MCP에서는 사용자 확인 후에만 호출합니다.
+- `registration_draft_create`: SOP/Event/Action 공통 등록 초안을 만듭니다. 원격 MCP에서는 사용자 확인 후에만 호출합니다.
+- `sop_draft_create`: SOP 전용 등록 초안을 만듭니다. shared Wiki에 바로 게시하지 않고 draft로 남깁니다.
+- `action_draft_create`: API/MCP/Webhook/Manual/Event Broker/BoI Writer/Langflow Action 전용 등록 초안을 만듭니다. 기존 Action과 내부 WorkflowDefinition 후보를 먼저 확인하고, 선택한 `connector_kind`에 맞는 `connector_config`를 함께 전달합니다.
+- `event_type_draft_create`: Event Type 전용 초안을 만듭니다. 검증과 별도 승인 전에는 Event catalog에 반영하지 않습니다.
+- `event_publish_plan` / `event_publish_preview`: 업무 Event 발생 요청을 기존 Event 후보와 실행 전 확인으로 바꿉니다.
+- `event_pattern_preview`: 기존 Event 이력 조건을 새 Event 정의 초안 후보로 볼지 검토합니다.
+- `sop_run_history`: SOP 기준 실행 이력과 남은 승인/수동 조치를 확인합니다.
 - `boi_agent_chat`: 현재 페이지나 업무 질문에 대해 BoI Agent 답변을 받습니다.
 - `agent_inbox`: 사용자가 담당자로 처리해야 할 manual/approval task를 확인합니다.
 - `boi_search`: BoI 문서 목록만 필요할 때 사용합니다.
@@ -151,13 +166,15 @@ HBM 관련 용어를 shared BoI Wiki dictionary 기준으로 찾아보고 내 �
 
 agent는 기본 입력 5개만 확인합니다: 용어, 별칭/약어, 뜻, 예시, 연결 문서. MCP가 있으면 `dictionary_resolve`와 `ontology_search`로 shared dictionary를 먼저 확인하고, 없으면 local 문서와 사용자가 준 자료만으로 초안을 만듭니다. 저장 위치는 `data/boi/private/{7자리사번}/dictionary/`입니다.
 
+대량 후보를 정리할 때는 개별 용어마다 code나 route test를 바꾸지 않습니다. 후보 데이터, curator override, manifest, promotion draft에서 `keep`, `replace_with_canonical`, `split_into_terms`, `alias_to_existing`, `exclude`, `needs_parent_curation` 중 하나로 판단을 남깁니다. Slash/숫자 묶음, 조건 묶음, mode/test variant는 상위 개념과 alias/broader 관계를 먼저 정리하고, parent가 없으면 local `needs_parent_curation` 상태로 둡니다.
+
 ## 활용 사례
 
 아래 예제 세트는 요청 문장, 생성된 Markdown, source image, shared BoI Wiki runtime trace 근거를 함께 보여줍니다.
 
 - [자연어 요청 E2E PoC 예제 세트](data/boi/private/0000000/usage-examples/natural-language-poc/README.md)
 - [SOP 원본 이미지 evidence](data/boi/private/0000000/usage-examples/natural-language-poc/evidence/sop_sample_image.png)
-- 기존 단문 예제: [SOP Mermaid Flow](data/boi/private/0000000/usage-examples/sop-mermaid-flow.md), [Event to Action Plan](data/boi/private/0000000/usage-examples/event-to-action-plan.md), [API Doc to Action Spec](data/boi/private/0000000/usage-examples/api-doc-to-action-spec.md), [Dictionary Term Authoring](data/boi/private/0000000/usage-examples/dictionary-term-authoring.md), [Meeting to BoI](data/boi/private/0000000/usage-examples/meeting-to-boi.md)
+- 기존 단문 예제: [SOP Mermaid Flow](data/boi/private/0000000/usage-examples/sop-mermaid-flow.md), [업무 흐름 계획](data/boi/private/0000000/usage-examples/event-to-action-plan.md), [API Doc to Action Spec](data/boi/private/0000000/usage-examples/api-doc-to-action-spec.md), [Dictionary Term Authoring](data/boi/private/0000000/usage-examples/dictionary-term-authoring.md), [Meeting to BoI](data/boi/private/0000000/usage-examples/meeting-to-boi.md)
 
 ## 작업별 Skills
 

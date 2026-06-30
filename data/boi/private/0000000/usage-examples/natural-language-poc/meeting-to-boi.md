@@ -25,7 +25,7 @@ source_refs:
 ```text
 이 회의 내용을 BoI로 정리해줘.
 회의 주제는 직개발 결과 확인 및 Reporting SOP를 AI-native workflow로 PoC하는 것이다.
-결정사항, 액션 아이템, 관련 SOP/Event/Action 후보, 다음 확인 질문을 나눠줘.
+결정사항, 액션 아이템, 관련 업무 BoI/SOP/Event/업무 요청 후보, 다음 확인 질문을 나눠줘.
 ```
 
 # Generated Output

@@ -24,12 +24,12 @@ Local Private content stays local unless the user explicitly asks to share and c
 
 - Notes and meetings: `data/boi/private/{employee_id}/notes/`
 - SOP drafts: `data/boi/private/{employee_id}/sop-drafts/`
-- Action drafts: `data/boi/private/{employee_id}/action-drafts/`
-- Event drafts: `data/boi/private/{employee_id}/event-drafts/`
+- Work request / Action drafts: `data/boi/private/{employee_id}/action-drafts/`
+- Event drafts and workflow-definition drafts: `data/boi/private/{employee_id}/event-drafts/`
 - Dictionary terms: `data/boi/private/{employee_id}/dictionary/`
 - Diagrams: `data/boi/private/{employee_id}/diagrams/`
 - Context packs: `data/boi/private/{employee_id}/context-packs/`
-- Workflow simulations: `data/boi/private/{employee_id}/workflow-simulations/`
+- Pre-execution checks and workflow simulations: `data/boi/private/{employee_id}/workflow-simulations/`
 - Langflow plans: `data/boi/private/{employee_id}/langflow-plans/`
 - Reports: `data/boi/private/{employee_id}/reports/`
 - Promotion drafts: `data/boi/private/{employee_id}/promotion-drafts/`
@@ -85,6 +85,7 @@ Level 0 self-check, always:
 - `log.md` updated
 - citations or source_refs present when source material exists
 - dictionary terms include at least `term`, `definition`, aliases when known, examples when available, and links/source_refs when mapped to BoI concepts
+- dictionary terms may include `term_kind` (`concept`, `acronym`, `test-method`, `variant-group`, `variant`). Detailed test/mode/variant terms need `broader` or `related_terms` parent links before Team/Public promotion.
 - no remote publish without explicit confirmation
 - for Team/Public promotion, local promotion draft, target visibility, source_refs, sensitive-content check, and preview are present
 
@@ -112,12 +113,20 @@ If the user says "Public으로 공유해줘" or "팀 주간보고로 올려줘":
 
 ## MCP
 
-MCP is optional. The official remote MCP is shared BoI Wiki MCP, not a local MCP product. If configured, use BoI Wiki MCP to search shared SOPs, Event Types, Actions, Dictionary, ontology search results, Agent answers, action inbox, and workflow status. If it is not configured, continue with local files and ask the user for a Web link or pasted source when remote context is required.
+MCP is optional. The official remote MCP is shared BoI Wiki MCP, not a local MCP product. If configured, use BoI Wiki MCP to search shared SOPs, Event Types, Actions, Dictionary, ontology search results, Agent answers, action inbox, and workflow status. Use WorkflowDefinition tools only as internal duplicate/connection checks; describe results to users as SOP, BoI Wiki, Event, or Action links. If MCP is not configured, continue with local files and ask the user for a Web link or pasted source when remote context is required.
 
 When MCP is available:
 
 - Use `dictionary_resolve` before interpreting acronyms, aliases, or shop-floor terms.
 - Use `ontology_search` for broad domain questions across SOP/Event/Action/Dictionary/runtime evidence.
+- Use `workflow_definitions_search` before creating a new workflow, API/MCP connector, event, action, or skill, but treat it as an internal WorkflowDefinition check.
+- Use `workflow_definition_get` to inspect the business goal, work BoI outputs, evidence, and completion conditions of an internal shared WorkflowDefinition.
+- Use `workflow_definition_deduplicate` before proposing a new shared workflow definition.
+- Use `sop_registration_plan` and `sop_registration_preview` before remote draft creation when the user describes a new SOP, Event, or Action in natural language. Treat Event and Action as optional sections inside the SOP addition flow.
+- Use `registration_plan` and `registration_verification_preview` only for compatibility or component-level draft work after the integrated SOP flow is not enough.
+- Use `event_publish_plan` and `event_publish_preview` before asking to publish a business Event. Use `event_pattern_preview` when the user wants to turn repeated Event history into a new Event definition.
+- Use `sop_run_history` when the user asks for SOP execution history; do not send them to a raw Event Stream first.
+- Use `sop_registration_draft_create`, `registration_draft_create`, `sop_draft_create`, `event_type_draft_create`, or `action_draft_create` only after showing reusable candidates and getting explicit user confirmation for the remote draft request. For Action drafts, choose one connector kind first: API, MCP, Webhook, Manual, Event Broker, BoI Writer, or Langflow, then pass the matching `connector_config`.
 - Use `boi_agent_chat` for page-aware questions and recommendations.
 - Use `agent_inbox` when the user asks what they need to act on.
 - Use `boi_search` only for document-only BoI list searches.
@@ -127,16 +136,48 @@ Use remote write or execution tools only after explicit user approval:
 - `source_apply`
 - `doc_body_apply`
 - `promotion_submit`
+- `registration_draft_create`
+- `registration_plan`
+- `registration_verification_preview`
+- `sop_registration_plan`
+- `sop_registration_preview`
+- `sop_registration_draft_create`
+- `sop_registration_validate`
+- `sop_registration_publish`
+- `sop_draft_create`
+- `event_type_draft_create`
+- `action_draft_create`
+- `registration_draft_publish`
+- `event_pattern_promote_to_draft`
 - `action_invoke`
+
+## Dictionary Bulk Curation
+
+For many candidate terms, do not edit importer code, API resolver logic, or route tests per term. Normal term decisions belong in source candidate data, curator override notes, local manifest rows, or promotion drafts.
+
+Code changes are only appropriate when the dictionary schema, resolver matching policy, scope priority, context budget, or common quality gates change.
+
+Record each candidate with one action:
+
+| Action | Meaning |
+|---|---|
+| `keep` | Candidate is suitable as a canonical local/team/public term |
+| `replace_with_canonical` | Candidate should become an alias or variant of a broader canonical term |
+| `split_into_terms` | Candidate expression contains more than one independent term |
+| `alias_to_existing` | Preserve only as an alias of an existing term |
+| `exclude` | Noise, extractor error, duplicate, or not suitable for sharing |
+| `needs_parent_curation` | Parent concept or relation is unclear |
+
+Slash bundles, numeric bundles, condition bundles, mode/test variants, and vendor shorthand should not be promoted as standalone Team/Public canonical terms by default. First decide the parent concept, alias, and broader/narrower relation. If the parent is missing, keep the item local or mark it `needs_parent_curation`.
 
 ## Task Skills
 
 If the agent supports skills, use the narrowest applicable skill:
 
 - `boi-sop-flow-visualizer` for Mermaid/SVG SOP flow drafts
-- `boi-event-workflow-planner` for event-to-SOP/action plans
-- `boi-action-author` for API/Webhook/MCP/Langflow/Manual action specs
+- `boi-event-workflow-planner` for event-to-work-BoI/workflow-definition plans
+- `boi-action-author` for API/Webhook/MCP/Langflow/Manual work request specs connected to a workflow definition draft
 - `boi-dictionary-author` for private/team/public terminology and ontology mapping drafts
 - `boi-context-pack-builder` for agent-ready context packs
-- `boi-workflow-simulator` for dry-run workflow simulations
+- `boi-workflow-simulator` for pre-execution workflow simulations
 - `boi-langflow-connector-planner` for Langflow workflow plans

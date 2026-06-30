@@ -24,7 +24,7 @@ source_refs:
 
 ```text
 원격 BoI Wiki를 검색해서 이번 업무용 context pack을 만들어줘.
-MCP가 되면 public SOP, Event Type, Action Spec, Langflow guide를 찾아 넣고, 안 되면 local repo의 기존 문서만 써줘.
+MCP가 되면 public SOP, WorkflowDefinition, Event Type, 업무 요청 Spec, Langflow guide를 찾아 넣고, 안 되면 local repo의 기존 문서만 써줘.
 ```
 
 # Generated Output

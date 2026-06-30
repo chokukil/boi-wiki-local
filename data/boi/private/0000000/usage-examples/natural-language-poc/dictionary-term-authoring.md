@@ -32,8 +32,9 @@ source_refs:
 2. `BOI_LOCAL_EMPLOYEE_ID` 또는 사용자 확인으로 7자리 사번을 확보한다.
 3. remote MCP가 있으면 `dictionary_resolve("Response Trend")`로 shared dictionary를 먼저 조회한다.
 4. 같은 의미가 없거나 개인 해석이 필요하면 Local Private dictionary를 작성한다.
-5. 용어, 별칭, 정의, 예시, 연결 action/SOP/BoI, source_refs를 정리한다.
-6. 결과는 [Response Trend](../../dictionary/response-trend.md)처럼 local-only로 저장한다.
+5. 용어, 별칭, 정의, 예시, `term_kind`, 연결 action/SOP/BoI, source_refs를 정리한다.
+6. 세부 test/mode/variant 성격이면 상위 개념과 broader/related relation을 먼저 정리한다.
+7. 결과는 [Response Trend](../../dictionary/response-trend.md)처럼 local-only로 저장한다.
 
 # Result
 
@@ -44,5 +45,6 @@ source_refs:
 - `visibility: local-private`
 - `employee_id`와 경로 일치
 - 용어와 정의 존재
+- 필요 시 `term_kind`와 parent relation 존재
 - 연결 문서와 source_refs 존재
 - shared publish 없음

@@ -39,7 +39,7 @@ source_refs:
 |---|---|---|
 | Agent | SOP 이미지 해석 | SOP draft |
 | Agent | SOP를 Mermaid로 변환 | Mermaid diagram |
-| Agent | Event to Action 분류 | event/action plan |
+| Agent | 업무 흐름 분류 | event/work request plan |
 | Human | Public/Team 공유 승인 | approval decision |
 | Agent + Runtime | smoke trace 확인 | Event/Action/Langflow evidence |
 
