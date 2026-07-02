@@ -3,6 +3,6 @@
 Thumbs.db
 .cache/
 .tmp/
+.boi-trash/
 *.bak
 *.log
-
