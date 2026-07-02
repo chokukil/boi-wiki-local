@@ -54,6 +54,10 @@ promotion_status: local_only
 retention_class: working
 retention_until: ""
 archive_status: active
+artifact_visibility: working
+lifecycle_state: working
+memory_candidate: false
+cleanup_policy: keep
 review_after: ...
 contains_sensitive: unknown
 source_refs: []
@@ -67,6 +71,25 @@ Reserved files `index.md` and `log.md` must not contain BoI concept frontmatter.
 - Meeting note or work memo: `retention_class: working`
 - Weekly report or evidence record: `retention_class: record`
 - Source kept after promotion: `retention_class: promoted_source`
+- User-adopted Second Brain memory: `artifact_visibility: memory`, `lifecycle_state: memory`, `cleanup_policy: keep`
+- Generated report/sandbox/workflow artifact: `artifact_visibility: background`, `lifecycle_state: background`
+- Duplicate or superseded generated artifact: `lifecycle_state: delete_candidate`
+- Pinned or promotion draft/source: `lifecycle_state: protected`
+
+## Cleanup
+
+Do not let Local Private become a generated-log dump. When the user asks to clean up, first produce a preview that separates `memory`, `working`, `protected`, and generated cleanup candidates. Do not move or delete files without explicit confirmation.
+
+Cleanup flow:
+
+1. Preview candidates and reasons.
+2. Move confirmed candidates to `.boi-trash/{cleanup_id}/` with a manifest.
+3. Keep `original_path`, BoI ID, title, reason, moved time, `delete_after`, and restore instructions in the manifest.
+4. Default quarantine duration is 7 days.
+5. Restore from `.boi-trash` if the user asks during the retention window.
+6. Hard delete only after quarantine expires and only for generated/background artifacts.
+
+Never auto-delete `memory`, `working`, `protected`, pinned, promotion, or manually edited documents.
 
 ## Validation
 
@@ -81,6 +104,7 @@ Level 0 self-check, always:
 - `visibility: local-private`
 - `local_only: true`
 - lifecycle metadata present
+- cleanup metadata present for generated/background artifacts
 - `index.md` updated
 - `log.md` updated
 - citations or source_refs present when source material exists
@@ -130,6 +154,8 @@ When MCP is available:
 - Use `boi_agent_chat` for page-aware questions and recommendations.
 - Use `agent_inbox` when the user asks what they need to act on.
 - Use `boi_search` only for document-only BoI list searches.
+- Use `private_memory_cleanup_preview` before proposing remote Private cleanup.
+- Use `private_memory_cleanup_run`, `private_memory_restore`, and `private_memory_mark_memory` only after explicit user confirmation.
 
 Use remote write or execution tools only after explicit user approval:
 

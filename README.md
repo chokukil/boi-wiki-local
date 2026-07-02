@@ -82,6 +82,7 @@ sh install.sh
 | 공유 전 정리본 | `data/boi/private/{7자리사번}/promotion-drafts/` |
 | 사용 예제 | `data/boi/private/{7자리사번}/usage-examples/` |
 | 오래된 문서 | `data/boi/private/{7자리사번}/_archive/YYYY/MM/` |
+| 정리 전 quarantine | `.boi-trash/{cleanup_id}/` |
 
 ## Local Private 규칙
 
@@ -94,10 +95,20 @@ visibility: local-private
 local_only: true
 promotion_status: local_only
 archive_status: active
+artifact_visibility: working
+lifecycle_state: working
+memory_candidate: false
+cleanup_policy: keep
 contains_sensitive: unknown
 ```
 
 agent는 사용자가 lint를 몰라도 저장 전 자체 검증을 수행하고, `index.md`와 `log.md`를 업데이트해야 합니다.
+
+## Second Brain과 Cleanup
+
+Local Private는 개인 Second Brain입니다. 사용자가 장기 기억으로 채택한 문서는 `artifact_visibility: memory`, `lifecycle_state: memory`, `cleanup_policy: keep`으로 보호합니다. 진행 중 초안과 업무 메모는 `working`으로 둡니다.
+
+반대로 재생성 가능한 generated 산출물은 `background` 또는 `delete_candidate`로 표시합니다. 예: 반복 생성된 보고서, sandbox/report artifact, 임시 분석 output, 오래된 workflow simulation. 이런 파일은 사용자가 요청했을 때만 cleanup preview에 올리고, 승인되면 `.boi-trash/{cleanup_id}/`로 이동합니다. 기본 보존기간은 7일이며, 그 사이에는 manifest 기준으로 복구할 수 있습니다. 사용자가 직접 작성한 memory/working 문서와 promotion draft는 자동 삭제 대상이 아닙니다.
 
 ## 공유
 
@@ -151,6 +162,8 @@ MCP가 있을 때 agent는 다음 도구를 우선 사용합니다.
 - `boi_agent_chat`: 현재 페이지나 업무 질문에 대해 BoI Agent 답변을 받습니다.
 - `agent_inbox`: 사용자가 담당자로 처리해야 할 manual/approval task를 확인합니다.
 - `boi_search`: BoI 문서 목록만 필요할 때 사용합니다.
+- `private_memory_cleanup_preview`: Web Private generated/background 정리 후보를 확인합니다.
+- `private_memory_cleanup_run`, `private_memory_restore`, `private_memory_mark_memory`: 사용자 확인 후에만 Web Private quarantine, 복구, memory 보호 표시를 수행합니다.
 
 MCP가 없으면 같은 작업을 local 파일과 사용자가 제공한 Web 링크/문서 export를 기반으로 수행합니다.
 
