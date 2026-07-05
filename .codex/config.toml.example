@@ -4,3 +4,8 @@ enabled = true
 
 # Local development alternative:
 # url = "http://localhost:8200/mcp"
+#
+# If the shared server has MCP_REQUIRE_SERVICE_TOKEN=true, configure your
+# MCP client to send x-service-token or Authorization: Bearer from a private
+# environment/secret store. Do not commit service tokens here. The server
+# operator should include this host in MCP_ALLOWED_HOSTS.

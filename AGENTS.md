@@ -152,7 +152,7 @@ When MCP is available:
 - Use `sop_run_history` when the user asks for SOP execution history; do not send them to a raw Event Stream first.
 - Use `sop_registration_draft_create`, `registration_draft_create`, `sop_draft_create`, `event_type_draft_create`, or `action_draft_create` only after showing reusable candidates and getting explicit user confirmation for the remote draft request. For Action drafts, choose one connector kind first: API, MCP, Webhook, Manual, Event Broker, BoI Writer, or Langflow, then pass the matching `connector_config`.
 - Use `boi_agent_chat` for page-aware questions and recommendations.
-- Use `agent_inbox` when the user asks what they need to act on.
+- Use `boi_inbox` when the user asks what they need to act on. Treat `agent_inbox` as a deprecated compatibility alias only.
 - Use `boi_search` only for document-only BoI list searches.
 - Use `private_memory_cleanup_preview` before proposing remote Private cleanup.
 - Use `private_memory_cleanup_run`, `private_memory_restore`, and `private_memory_mark_memory` only after explicit user confirmation.

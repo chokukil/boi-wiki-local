@@ -160,7 +160,7 @@ MCP가 있을 때 agent는 다음 도구를 우선 사용합니다.
 - `event_pattern_preview`: 기존 Event 이력 조건을 새 Event 정의 초안 후보로 볼지 검토합니다.
 - `sop_run_history`: SOP 기준 실행 이력과 남은 승인/수동 조치를 확인합니다.
 - `boi_agent_chat`: 현재 페이지나 업무 질문에 대해 BoI Agent 답변을 받습니다.
-- `agent_inbox`: 사용자가 담당자로 처리해야 할 manual/approval task를 확인합니다.
+- `boi_inbox`: 사용자가 담당자로 처리해야 할 검증된 BoI Inbox 보고서와 manual/approval task를 확인합니다. `agent_inbox`는 한 릴리즈 동안 compatibility alias로만 봅니다.
 - `boi_search`: BoI 문서 목록만 필요할 때 사용합니다.
 - `private_memory_cleanup_preview`: Web Private generated/background 정리 후보를 확인합니다.
 - `private_memory_cleanup_run`, `private_memory_restore`, `private_memory_mark_memory`: 사용자 확인 후에만 Web Private quarantine, 복구, memory 보호 표시를 수행합니다.

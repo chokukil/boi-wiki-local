@@ -16,7 +16,7 @@ Use this skill for Local Private BoI work.
    - Use `dictionary_resolve` for terms and acronyms.
    - Prefer `ontology_search` for broad shared Wiki lookup.
    - Prefer `boi_agent_chat` for page-aware BoI Agent questions.
-   - Use `agent_inbox` for assigned manual/approval tasks.
+   - Use `boi_inbox` for assigned BoI Inbox reports and manual/approval tasks. Treat `agent_inbox` as a deprecated compatibility alias only.
    - Use `boi_search` only when a document-only list is needed.
 
 ## Common Requests
