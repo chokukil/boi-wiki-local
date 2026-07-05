@@ -78,11 +78,22 @@ check_file ".agents/skills/boi-dictionary-author/SKILL.md"
 check_file ".agents/skills/boi-context-pack-builder/SKILL.md"
 check_file ".agents/skills/boi-workflow-simulator/SKILL.md"
 check_file ".agents/skills/boi-langflow-connector-planner/SKILL.md"
+check_file "scripts/local_capture.py"
+check_file "scripts/local_review.py"
+check_file "scripts/promotion_preflight.py"
 
 if command -v git >/dev/null 2>&1; then
   printf '%s\n' "OK git is available"
 else
   printf '%s\n' "WARN git is not available; plain folder mode is OK"
+fi
+
+if command -v python3 >/dev/null 2>&1; then
+  python3 "$ROOT/scripts/local_capture.py" --root "$ROOT" --employee-id "$EMPLOYEE_ID" --check >/dev/null || status=1
+  python3 "$ROOT/scripts/local_review.py" --root "$ROOT" --employee-id "$EMPLOYEE_ID" --check >/dev/null || status=1
+  python3 "$ROOT/scripts/promotion_preflight.py" --root "$ROOT" --employee-id "$EMPLOYEE_ID" --check >/dev/null || status=1
+else
+  printf '%s\n' "WARN python3 is not available; local lifecycle helper checks skipped"
 fi
 
 if [ "$status" -eq 0 ]; then

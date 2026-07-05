@@ -20,8 +20,10 @@ Agent에게 다음처럼 말하세요.
 - MCP is optional. The official remote MCP is shared BoI Wiki MCP; do not require a local MCP server.
 - Use skills or the same rules for work BoI notes, SOP diagrams, workflow-definition plans, work request specs, context packs, pre-execution simulations, and Langflow plans.
 - SOP is important for standardized work, but one-off or repeated personal work can start as a Local Private work BoI without forcing an SOP.
+- Use `scripts/local_capture.py`, `scripts/local_review.py`, and `scripts/promotion_preflight.py` when available to turn loose notes into OKF documents, memory candidates, cleanup previews, and sharing previews.
 - Bulk dictionary candidates are curated in data/override/manifest or promotion drafts, not by changing code per term.
 - Before sharing, create a sanitized promotion draft and show preview/diff for confirmation.
+- If remote BoI Wiki MCP is configured, use `boi_inbox`, `agent_memory_review`, `promotion_preview`, `source_wiki_plan`, and `harness_acceptance` through the shared MCP. Treat `agent_inbox` as deprecated compatibility only.
 
 ## Useful Requests
 
@@ -33,5 +35,8 @@ Agent에게 다음처럼 말하세요.
 매주 반복하는 FAB Trend 보고 업무를 SOP 추가 초안과 Action 연결 후보로 정리해줘.
 대량 dictionary 후보를 canonical, alias, 제외, parent curation 후보로 정리해줘.
 원격 BoI Wiki를 검색해서 이번 업무용 context pack을 만들어줘.
+내 local memory 후보와 cleanup 후보를 보여줘.
+이 문서를 팀에 올리기 전에 promotion preflight만 먼저 만들어줘.
+이 repo를 source wiki로 만들 수 있는지 계획만 보여줘.
 MCP 설정은 모르겠으니 local만 써줘.
 ```

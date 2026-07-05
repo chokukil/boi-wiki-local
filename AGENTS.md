@@ -91,6 +91,16 @@ Cleanup flow:
 
 Never auto-delete `memory`, `working`, `protected`, pinned, promotion, or manually edited documents.
 
+## Local Second Brain Helpers
+
+Use the lightweight helper scripts when available. They require only standard Python and must not send raw Local Private content to remote services.
+
+- `scripts/local_capture.py`: create capture-inbox candidates from free-form notes.
+- `scripts/local_review.py`: review stale, duplicate, memory, cleanup, and promotion candidates.
+- `scripts/promotion_preflight.py`: prepare a local-only promotion preview before remote submit.
+
+Run each with `--check` before relying on it in a fresh workspace.
+
 ## Validation
 
 The user will not run lint manually. You must validate before and after writing.
@@ -154,6 +164,10 @@ When MCP is available:
 - Use `boi_agent_chat` for page-aware questions and recommendations.
 - Use `boi_inbox` when the user asks what they need to act on. Treat `agent_inbox` as a deprecated compatibility alias only.
 - Use `boi_search` only for document-only BoI list searches.
+- Use `agent_memory_review` before suggesting remote Web Private memory cleanup or promotion candidates.
+- Use `promotion_preview` before `promotion_submit`.
+- Use `source_wiki_plan` before source-grounded repo wiki generation.
+- Use `harness_acceptance` when checking remote BoI Wiki release readiness.
 - Use `private_memory_cleanup_preview` before proposing remote Private cleanup.
 - Use `private_memory_cleanup_run`, `private_memory_restore`, and `private_memory_mark_memory` only after explicit user confirmation.
 
@@ -176,6 +190,8 @@ Use remote write or execution tools only after explicit user approval:
 - `registration_draft_publish`
 - `event_pattern_promote_to_draft`
 - `action_invoke`
+
+`promotion_preview`, `source_wiki_plan`, `source_wiki_refresh_preview`, `agent_memory_review`, and `harness_acceptance` are non-mutating. They can run before confirmation to prepare a decision.
 
 ## Dictionary Bulk Curation
 

@@ -36,6 +36,7 @@ BoI Wiki Local은 개인 PC에만 저장되는 Local Private BoI 작업공간입
 - SOP가 없는 일회성 업무는 Local Private 업무 BoI로 저장하고, 반복성이 보이면 WorkflowDefinition 또는 Skill 후보로 정리합니다.
 - SOP Mermaid 도식은 기본적으로 `Overview + Swimlane`으로 만들고, 복잡한 구간은 stage detail로 분리합니다. Web BoI Wiki에 올리면 Mermaid block이 실제 diagram으로 렌더링됩니다.
 - Dictionary는 개인/팀/공용 도메인 용어를 이해하기 위한 BoI 문서입니다. Local에서는 `dictionary/`에 초안을 만들고, 원격 MCP가 있으면 shared dictionary를 조회만 한 뒤 필요한 경우 promotion draft로 공유합니다.
+- Local Second Brain은 별도 서버나 DB 없이 동작합니다. agent는 capture inbox, local review, cleanup preview, promotion preflight를 반복해서 개인 업무 지식을 점진적으로 정리합니다.
 
 ## 처음 사용하기
 
@@ -110,6 +111,22 @@ Local Private는 개인 Second Brain입니다. 사용자가 장기 기억으로 
 
 반대로 재생성 가능한 generated 산출물은 `background` 또는 `delete_candidate`로 표시합니다. 예: 반복 생성된 보고서, sandbox/report artifact, 임시 분석 output, 오래된 workflow simulation. 이런 파일은 사용자가 요청했을 때만 cleanup preview에 올리고, 승인되면 `.boi-trash/{cleanup_id}/`로 이동합니다. 기본 보존기간은 7일이며, 그 사이에는 manifest 기준으로 복구할 수 있습니다. 사용자가 직접 작성한 memory/working 문서와 promotion draft는 자동 삭제 대상이 아닙니다.
 
+agent가 사용할 수 있는 경량 helper:
+
+| Script | 목적 |
+|---|---|
+| `scripts/local_capture.py` | 자유 메모를 `notes/capture-inbox/` 아래 capture 후보로 저장 |
+| `scripts/local_review.py` | memory 후보, stale/duplicate 후보, cleanup preview, promotion 후보를 비파괴로 조회 |
+| `scripts/promotion_preflight.py` | 공유 전 target visibility, source_refs, 민감정보 패턴, preview draft를 확인 |
+
+```sh
+python3 scripts/local_capture.py --check
+python3 scripts/local_review.py --check
+python3 scripts/promotion_preflight.py --check
+```
+
+일반 사용자는 이 명령을 외울 필요가 없습니다. agent가 check와 preview에 사용하고, 결과만 설명합니다.
+
 ## 공유
 
 "Public으로 공유해줘" 또는 "팀 주간보고로 올려줘"라고 말하면 agent가 먼저 공유 전 검증과 preview를 준비합니다.
@@ -162,10 +179,19 @@ MCP가 있을 때 agent는 다음 도구를 우선 사용합니다.
 - `boi_agent_chat`: 현재 페이지나 업무 질문에 대해 BoI Agent 답변을 받습니다.
 - `boi_inbox`: 사용자가 담당자로 처리해야 할 검증된 BoI Inbox 보고서와 manual/approval task를 확인합니다. `agent_inbox`는 한 릴리즈 동안 compatibility alias로만 봅니다.
 - `boi_search`: BoI 문서 목록만 필요할 때 사용합니다.
+- `agent_memory_review`: 원격 Web Private Second Brain 후보, cleanup 후보, promotion 후보를 확인합니다.
+- `promotion_preview`: Team/Public 공유 전 원격 validation preview를 확인합니다.
+- `source_wiki_plan`: repo/source wiki 생성 전 inventory, selected/skipped file, citation 계획을 확인합니다.
 - `private_memory_cleanup_preview`: Web Private generated/background 정리 후보를 확인합니다.
 - `private_memory_cleanup_run`, `private_memory_restore`, `private_memory_mark_memory`: 사용자 확인 후에만 Web Private quarantine, 복구, memory 보호 표시를 수행합니다.
 
 MCP가 없으면 같은 작업을 local 파일과 사용자가 제공한 Web 링크/문서 export를 기반으로 수행합니다.
+
+## Source Wiki와 OpenWiki
+
+repo 문서화는 core 기능이 아니라 선택형 검증/문서화 흐름입니다. 고도화 커밋이 merge된 뒤 `https://github.com/chokukil/boi-wiki-local` 기준으로 hosted OpenWiki를 만들어 외부에서 source-grounded wiki 결과를 확인합니다.
+
+사내에서는 GitHub Enterprise, GitLab, Gitea 같은 내부 저장소로 바뀔 수 있습니다. 이때 agent는 repo URL, MCP/API URL, allowlist env만 바꾸고 같은 절차를 유지합니다. Local Private 원문은 여전히 승인 없이 원격으로 보내지 않습니다.
 
 ## Dictionary 작성
 

@@ -77,11 +77,26 @@ Check-File ".agents/skills/boi-dictionary-author/SKILL.md"
 Check-File ".agents/skills/boi-context-pack-builder/SKILL.md"
 Check-File ".agents/skills/boi-workflow-simulator/SKILL.md"
 Check-File ".agents/skills/boi-langflow-connector-planner/SKILL.md"
+Check-File "scripts/local_capture.py"
+Check-File "scripts/local_review.py"
+Check-File "scripts/promotion_preflight.py"
 
 if (Get-Command git -ErrorAction SilentlyContinue) {
   Write-Host "OK git is available"
 } else {
   Write-Host "WARN git is not available; plain folder mode is OK"
+}
+
+$python = Get-Command python -ErrorAction SilentlyContinue
+if ($python) {
+  & $python.Source (Join-Path $Root "scripts/local_capture.py") --root $Root --employee-id $EmployeeId --check | Out-Null
+  if ($LASTEXITCODE -ne 0) { $status = 1 }
+  & $python.Source (Join-Path $Root "scripts/local_review.py") --root $Root --employee-id $EmployeeId --check | Out-Null
+  if ($LASTEXITCODE -ne 0) { $status = 1 }
+  & $python.Source (Join-Path $Root "scripts/promotion_preflight.py") --root $Root --employee-id $EmployeeId --check | Out-Null
+  if ($LASTEXITCODE -ne 0) { $status = 1 }
+} else {
+  Write-Host "WARN python is not available; local lifecycle helper checks skipped"
 }
 
 if ($status -eq 0) {
