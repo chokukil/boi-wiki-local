@@ -2,7 +2,7 @@
 
 상태: **Frozen protocol ready, execution evidence 0/60**
 
-- 합성 fixture: `PUB-AAI-RADAR-001-v1` (6개 실제 파일)
+- 합성 fixture: `PUB-AAI-RADAR-002-v1` (14개 실제 파일)
 - 평가: prompt 5개 × runtime 2개 × repetition 3회 × with/baseline 2개
 - 격리: fresh Windows-native workspace, network off, source SHA256 전후 비교
 - 판정: deterministic hard assertions + 독립 evaluator + blind comparison

@@ -1,0 +1,1 @@
+현재 확보된 공개 자료만 기준으로 Scientific Foundation Model의 법칙 준수, 예측 성능, 재현 가능성과 일반화에 관해 무엇을 유지할 수 있고 무엇이 아직 unknown인가?

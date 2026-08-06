@@ -5,12 +5,12 @@
   "files": [
     {
       "path": "notes/knowledge/existing-knowledge.md",
-      "sha256": "fcd59e82f18e3139d2c03cba81b9d87df99a7dbfe84f9f83eb0965b5c34d71e4",
-      "bytes": 1102
+      "sha256": "960d81a16d851feebf90a7e8810ee2ce8db59d998b0309426e6cba251540b4c7",
+      "bytes": 1311
     },
     {
       "path": "seed.json",
-      "sha256": "b1cca5737e32f98b67f6cafbfcd58b30d1f1052d357bbf2bb04d97f2299fc9ab",
+      "sha256": "baa4d7e25b4737b0f7ae912b3595dcdec57d3d8557ff6eb08197cd64d872d921",
       "bytes": 256
     }
   ]

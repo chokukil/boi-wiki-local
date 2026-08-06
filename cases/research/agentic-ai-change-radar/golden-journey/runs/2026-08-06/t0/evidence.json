@@ -1,0 +1,102 @@
+{
+  "artifact_kind": "evidence",
+  "schema": "boi-global-insight-evidence/v1",
+  "case_id": "agentic-ai-change-radar",
+  "run_id": "agentic-ai-golden-journey-2026-08-06",
+  "snapshot": "T0",
+  "cutoff": "2025-03-26",
+  "local_only": true,
+  "source_refs": [
+    {
+      "type": "source-manifest",
+      "ref": "../source-manifest.json",
+      "sha256": "da34e5ae1078131612466c72a625f1d62f18fd277883fe35ed911b4a55184d4e"
+    }
+  ],
+  "generated_from": [
+    {
+      "type": "source-manifest",
+      "ref": "../source-manifest.json",
+      "sha256": "da34e5ae1078131612466c72a625f1d62f18fd277883fe35ed911b4a55184d4e"
+    }
+  ],
+  "claims": [
+    {
+      "claim_ref": "AAI-001",
+      "claim": "복잡한 framework보다 단순하고 조합 가능한 workflow pattern에서 시작하고, 측정된 필요가 있을 때만 복잡도를 높이는 것이 공개 T0 지침이다.",
+      "supporting_evidence": ["PUB-AAI-RADAR-002-v1:01#simple-composable-patterns"],
+      "counterevidence": [],
+      "verification_level": "official-primary-source-opened",
+      "uncertainty": "일반 설계 지침이며 모든 업무에서 단순 구성이 우월하다는 비교 실험은 아니다.",
+      "access_limitation": "공식 engineering article의 확인 범위만 사용",
+      "unknown": ["SK하이닉스 업무별 복잡도 임계점", "비용·latency 대비 품질 이득"],
+      "source_sha256": "ab34858a1c3227328e2142198f3eb8f227db69a8b85820d483b865bd8b1e31fb"
+    },
+    {
+      "claim_ref": "AAI-002",
+      "claim": "Responses API, built-in web/file/computer tools, Agents SDK와 tracing이 Agent runtime의 공개 building block으로 제공됐다.",
+      "supporting_evidence": ["PUB-AAI-RADAR-002-v1:02#responses-tools-sdk-tracing"],
+      "counterevidence": [],
+      "verification_level": "official-primary-source-opened",
+      "uncertainty": "제품 제공 사실은 확인했지만 비교 우위와 장기 지원성은 확인하지 않았다.",
+      "access_limitation": "출시 문서의 공개 범위",
+      "unknown": ["대상 업무에서의 품질", "운영 비용", "data boundary 적합성"],
+      "source_sha256": "18dc8a38ea052c0cc70a1a1ff68b59e68977c52ad03e900c7a2f1bb13030854d"
+    },
+    {
+      "claim_ref": "AAI-003",
+      "claim": "2025-03-11 시점 OpenAI Agents SDK의 Node.js 지원은 향후 계획으로 기술됐다.",
+      "supporting_evidence": ["PUB-AAI-RADAR-002-v1:02#nodejs-roadmap"],
+      "counterevidence": [],
+      "verification_level": "official-primary-source-opened-time-bound",
+      "uncertainty": "roadmap은 이후 구현 또는 취소될 수 있다.",
+      "access_limitation": "T0 출시 페이지의 시점 한정 문장",
+      "unknown": ["실제 지원 시작일", "현재 SDK 지원 범위"],
+      "source_sha256": "18dc8a38ea052c0cc70a1a1ff68b59e68977c52ad03e900c7a2f1bb13030854d"
+    },
+    {
+      "claim_ref": "AAI-004",
+      "claim": "MCP 2025-03-26 HTTP authorization은 OAuth 기반 discovery와 MCP server base URL fallback을 규정했다.",
+      "supporting_evidence": ["PUB-AAI-RADAR-002-v1:03#authorization-server-discovery"],
+      "counterevidence": [],
+      "verification_level": "official-versioned-specification-opened",
+      "uncertainty": "후속 specification revision이 normative guidance를 바꿀 수 있다.",
+      "access_limitation": "2025-03-26 version에만 적용",
+      "unknown": ["대상 구현이 채택한 MCP version", "실제 conformance"],
+      "source_sha256": "a2a76a099a2b59f4de4478fa431b0bbf07fc6c7187c834da77c6d8e3aa7f54f6"
+    },
+    {
+      "claim_ref": "AAI-005",
+      "claim": "공개 T0 자료만으로 어떤 Agentic AI 구성이 SK하이닉스 업무에 더 적합한지 판단할 수 없다.",
+      "supporting_evidence": [],
+      "counterevidence": [],
+      "verification_level": "unknown-by-scope",
+      "uncertainty": "내부 업무, ACL, 데이터 등급, 비용, latency와 성공 기준이 source set에 없다.",
+      "access_limitation": "public-only source manifest",
+      "unknown": ["업무별 baseline", "허용 가능한 데이터 처리 경계", "human approval 설계", "운영 효과"],
+      "source_sha256": "da34e5ae1078131612466c72a625f1d62f18fd277883fe35ed911b4a55184d4e"
+    },
+    {
+      "claim_ref": "AAI-006",
+      "claim": "T0 공개 지침은 memory를 augmented LLM 구성요소로 언급하지만 durable session, compaction과 장기 handoff의 구체 계약은 이 source set에서 확인되지 않았다.",
+      "supporting_evidence": ["PUB-AAI-RADAR-002-v1:01#augmented-llm-memory"],
+      "counterevidence": [],
+      "verification_level": "official-primary-source-opened-partial",
+      "uncertainty": "memory 개념과 구현 가능한 persistence contract 사이에 근거 공백이 있다.",
+      "access_limitation": "T0 cutoff source set",
+      "unknown": ["persistent session storage", "compaction loss", "resume semantics"],
+      "source_sha256": "ab34858a1c3227328e2142198f3eb8f227db69a8b85820d483b865bd8b1e31fb"
+    },
+    {
+      "claim_ref": "AAI-007",
+      "claim": "MCP authorization은 HTTP transport에서 선택 사항이며 STDIO는 이 flow를 따르지 않는다고 2025-03-26 specification이 구분했다.",
+      "supporting_evidence": ["PUB-AAI-RADAR-002-v1:03#protocol-requirements"],
+      "counterevidence": [],
+      "verification_level": "official-versioned-specification-opened",
+      "uncertainty": "authorization 지원 여부와 별개로 실제 배포 보안 통제는 추가 검증이 필요하다.",
+      "access_limitation": "2025-03-26 normative scope",
+      "unknown": ["배포 transport", "token audience", "조직별 network boundary"],
+      "source_sha256": "a2a76a099a2b59f4de4478fa431b0bbf07fc6c7187c834da77c6d8e3aa7f54f6"
+    }
+  ]
+}

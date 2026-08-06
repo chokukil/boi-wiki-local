@@ -18,9 +18,9 @@
   ],
   "sources": [
     {
-      "source_ref": "PUB-AAI-RADAR-001-v1:01",
+      "source_ref": "PUB-AAI-RADAR-002-v1:01",
       "path": "cases/research/agentic-ai-change-radar/fixtures/sources/01-t0-anthropic-effective-agents.md",
-      "url": "https://www.anthropic.com/research/building-effective-agents",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
       "sha256": "ab34858a1c3227328e2142198f3eb8f227db69a8b85820d483b865bd8b1e31fb",
       "bytes": 838,
       "source_class": "primary",
@@ -30,7 +30,7 @@
       "access_status": "accessed",
       "verified_scope": "public source record with claims and locator, not a live full-page archive",
       "runtime": "native-file",
-      "source_refs": ["PUB-AAI-RADAR-001-v1:01"],
+      "source_refs": ["PUB-AAI-RADAR-002-v1:01"],
       "generated_from": ["fixtures/manifest.json"]
     }
   ]

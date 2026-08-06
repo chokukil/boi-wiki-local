@@ -1,0 +1,6 @@
+{
+  "artifact_kind":"review-decision","schema":"boi-global-insight-review-decision/v1","case_id":"scientific-foundation-model-knowledge","run_id":"scientific-foundation-baseline-2026-08-06","decision":"partial","procedural_independence":true,"human_review_required":true,"semantic_changes_approved":false,"release_scope":"community-local-contract-evidence",
+  "reviewed_source_count":5,
+  "findings":["task별 empirical evidence와 법칙 준수 주장을 분리함","preprint와 publication page의 확인 범위를 보존함","독립 재현, domain review와 production benchmark는 없음"],
+  "remote_activity":{"mcp_writes":0,"remote_submits":0,"boi_remote_source_bytes":0}
+}

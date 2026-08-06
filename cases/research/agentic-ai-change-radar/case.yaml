@@ -48,7 +48,7 @@
   ],
   "eval_prompt_count": 5,
   "evaluation_protocol": "case-eval/v2",
-  "fixture_id": "PUB-AAI-RADAR-001-v1",
+  "fixture_id": "PUB-AAI-RADAR-002-v1",
   "runtime_contract": "boi-local-case-runtime/v1",
   "runtime_manifest": "runtime/runtime.yaml",
   "handoff_schema": "cases/_schema/handoff.schema.json",

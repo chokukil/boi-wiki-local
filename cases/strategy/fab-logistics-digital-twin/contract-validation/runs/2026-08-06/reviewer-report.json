@@ -1,0 +1,6 @@
+{
+  "artifact_kind":"review-decision","schema":"boi-global-insight-review-decision/v1","case_id":"fab-logistics-digital-twin","run_id":"fab-logistics-baseline-2026-08-06","decision":"partial","procedural_independence":true,"human_review_required":true,"semantic_changes_approved":false,"release_scope":"community-local-contract-evidence",
+  "reviewed_source_count":5,
+  "findings":["공개 개념 연결과 실제 FAB 적용 결론이 분리됨","유료 표준 전문과 내부 운영 조건은 unknown으로 보존됨","외부 독립 domain review와 production benchmark는 없음"],
+  "remote_activity":{"mcp_writes":0,"remote_submits":0,"boi_remote_source_bytes":0}
+}

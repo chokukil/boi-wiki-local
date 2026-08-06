@@ -1,0 +1,1 @@
+현재까지 확보된 공개 공식 자료만 기준으로 Agentic AI의 runtime, orchestration, tool use, memory·context, evaluation, security에서 무엇을 채택 판단에 사용할 수 있고, 무엇이 아직 unknown인가?

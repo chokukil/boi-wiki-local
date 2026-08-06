@@ -1,0 +1,37 @@
+{
+  "artifact_kind": "handoff",
+  "schema": "boi-local-case-handoff/v1",
+  "case_id": "agentic-ai-change-radar",
+  "run_id": "agentic-ai-golden-journey-2026-08-06",
+  "phase": "independent-review",
+  "from_role": "change-curator",
+  "to_role": "independent-reviewer",
+  "local_only": true,
+  "source_refs": [
+    {"type": "source-manifest", "ref": "../source-manifest.json", "sha256": "da34e5ae1078131612466c72a625f1d62f18fd277883fe35ed911b4a55184d4e"},
+    {"type": "claim-delta", "ref": "../t1/change-set.json", "sha256": "ff4076dda8b9acd131744a7316cc9964d9b60360ea1447960a8c7deb8d3a8a3f"}
+  ],
+  "generated_from": [
+    {"type": "claim-delta", "ref": "../t1/change-set.json", "sha256": "ff4076dda8b9acd131744a7316cc9964d9b60360ea1447960a8c7deb8d3a8a3f"}
+  ],
+  "input_refs": [
+    {"path": "../source-manifest.json", "bytes": 11505, "sha256": "da34e5ae1078131612466c72a625f1d62f18fd277883fe35ed911b4a55184d4e"},
+    {"path": "../t1/change-set.json", "bytes": 13141, "sha256": "ff4076dda8b9acd131744a7316cc9964d9b60360ea1447960a8c7deb8d3a8a3f"},
+    {"path": "../t1/review-queue.md", "bytes": 2257, "sha256": "96aca4ecebc2655ce2d65baa160583080746e30971fbe2f54a9bb002da69a993"}
+  ],
+  "output_files": [
+    {"path": "../review/reviewer-report.json", "bytes": 5538, "sha256": "0eca25175547cd021cd1082ef090718e7f7ece4b3ea98ac164ca5c655bdaea43"}
+  ],
+  "supported_claims": ["source and artifact integrity for Community authoring evidence"],
+  "counterevidence": ["single-agent review is procedural rather than external independence"],
+  "unknowns": ["human semantic decisions", "organization fit", "cross-runtime reproduction"],
+  "contradictions": ["AAI-004", "AAI-016"],
+  "blockers": ["human Review required before semantic retirement or promotion"],
+  "review_questions": ["Community evidence와 Verified/Reference gate를 혼동하지 않았는가?"],
+  "phase_exit": "partial-community-evidence-human-review-required",
+  "source_integrity": {
+    "before_manifest_sha256": "da34e5ae1078131612466c72a625f1d62f18fd277883fe35ed911b4a55184d4e",
+    "after_manifest_sha256": "da34e5ae1078131612466c72a625f1d62f18fd277883fe35ed911b4a55184d4e",
+    "changed_source_files": []
+  }
+}

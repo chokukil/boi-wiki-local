@@ -1,6 +1,6 @@
 # FAB Logistics Digital Twin
 
-상태: **Community — deterministic public source records 5개, 실제 runtime evidence 미수집**
+상태: **Community — deterministic public source records 5개, Codex baseline contract 실행 1건, production benchmark 0/60**
 
 Case type: `strategy-case`
 기본 검토 주기: 월간 또는 SEMI·vendor 공식 변경 시
@@ -22,6 +22,8 @@ SEMI GEM300 공개 자료와 제조·물류 Digital Twin, Palantir식 Object·Li
 Fixture `PUB-FAB-DT-001-v1`는 공개 1차 자료의 확인 범위와 SHA256을 고정한 source record 5개입니다. 원문 전체 복제본이 아닙니다.
 
 [Fixture 설명](fixtures/fixture.md) · [source pack](fixtures/source-pack.md) · [manifest](fixtures/manifest.json)
+
+공개 fixture를 대상으로 고정 Query, evidence·counterevidence·unknown, review handoff와 privacy 경계를 실행한 [baseline contract validation](contract-validation/README.md)이 있습니다. 이는 실제 FAB domain validation이 아닙니다.
 
 ## Orchestration
 

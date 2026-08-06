@@ -5,18 +5,18 @@
   "files": [
     {
       "path": ".boi-local/processing-state.json",
-      "sha256": "7228f99454af6915aa08b6fad7360212c786d0d323f66c4737dc526d8befa772",
-      "bytes": 1230
+      "sha256": "3793d1e55e4fecce2b293a63dfb98932b204dea47dccdd94af003f8e0c32949f",
+      "bytes": 2473
     },
     {
       "path": "notes/knowledge/existing-knowledge.md",
-      "sha256": "fcd59e82f18e3139d2c03cba81b9d87df99a7dbfe84f9f83eb0965b5c34d71e4",
-      "bytes": 1102
+      "sha256": "960d81a16d851feebf90a7e8810ee2ce8db59d998b0309426e6cba251540b4c7",
+      "bytes": 1311
     },
     {
       "path": "seed.json",
-      "sha256": "7228f99454af6915aa08b6fad7360212c786d0d323f66c4737dc526d8befa772",
-      "bytes": 1230
+      "sha256": "3793d1e55e4fecce2b293a63dfb98932b204dea47dccdd94af003f8e0c32949f",
+      "bytes": 2473
     }
   ]
 }

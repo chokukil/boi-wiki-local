@@ -1,0 +1,156 @@
+{
+  "artifact_kind": "evidence",
+  "schema": "boi-global-insight-evidence/v1",
+  "case_id": "agentic-ai-change-radar",
+  "run_id": "agentic-ai-golden-journey-2026-08-06",
+  "snapshot": "T1",
+  "checked_at": "2026-08-06",
+  "local_only": true,
+  "source_refs": [
+    {
+      "type": "source-manifest",
+      "ref": "../source-manifest.json",
+      "sha256": "da34e5ae1078131612466c72a625f1d62f18fd277883fe35ed911b4a55184d4e"
+    },
+    {
+      "type": "claim-snapshot",
+      "ref": "../t0/claim-snapshot.md",
+      "sha256": "61f1573cab61d5eeb87a9366893adfb2fda26c65872ce312ab6f3ad62b0240f0"
+    }
+  ],
+  "generated_from": [
+    {
+      "type": "source-manifest",
+      "ref": "../source-manifest.json",
+      "sha256": "da34e5ae1078131612466c72a625f1d62f18fd277883fe35ed911b4a55184d4e"
+    },
+    {
+      "type": "claim-snapshot",
+      "ref": "../t0/claim-snapshot.md",
+      "sha256": "61f1573cab61d5eeb87a9366893adfb2fda26c65872ce312ab6f3ad62b0240f0"
+    }
+  ],
+  "claims": [
+    {
+      "claim_ref": "AAI-003",
+      "claim": "TypeScript-first Agents SDK와 persistent Sessions, resumable RunState 및 history compaction이 현재 문서화되어 T0 Node.js roadmap을 대체한다.",
+      "supporting_evidence": ["PUB-AAI-RADAR-002-v1:04#typescript-sessions-compaction"],
+      "counterevidence": ["PUB-AAI-RADAR-002-v1:02#nodejs-roadmap-at-t0"],
+      "verification_level": "official-living-documentation-opened",
+      "uncertainty": "living docs의 최초 지원일과 조직별 storage 선택은 별도 확인이 필요하다.",
+      "access_limitation": "2026-08-06 확인 상태",
+      "unknown": ["지원 version 정책", "내부 retention과 storage backend"],
+      "source_sha256": "60c26ff8d79a5654b67143ba3732f890f2a50e8660474b8ca7b849705f16332b"
+    },
+    {
+      "claim_ref": "AAI-004",
+      "claim": "MCP 2025-06-18은 server를 OAuth resource server로 분류하고 Protected Resource Metadata와 Resource Indicators를 요구해 T0 discovery model을 수정한다.",
+      "supporting_evidence": ["PUB-AAI-RADAR-002-v1:05#protected-resource-metadata"],
+      "counterevidence": ["PUB-AAI-RADAR-002-v1:03#base-url-fallback"],
+      "verification_level": "official-versioned-specification-opened",
+      "uncertainty": "대상 구현의 negotiated protocol version과 conformance는 확인하지 않았다.",
+      "access_limitation": "specification text and changelog; implementation not tested",
+      "unknown": ["실제 MCP client/server version", "resource indicator validation"],
+      "source_sha256": "03eaedc393b03459971ff018504e7a203d09d0ac49c39cff3b3b083fa78f6dda"
+    },
+    {
+      "claim_ref": "AAI-008",
+      "claim": "Responses API는 remote MCP, Code Interpreter, background mode와 encrypted reasoning items를 추가해 long-running tool runtime 선택지를 넓혔다.",
+      "supporting_evidence": ["PUB-AAI-RADAR-002-v1:07#remote-mcp-background-encrypted"],
+      "counterevidence": [],
+      "verification_level": "official-primary-source-opened",
+      "uncertainty": "기능 존재는 확인했지만 enterprise control 적합성은 검증하지 않았다.",
+      "access_limitation": "product announcement and public API guidance",
+      "unknown": ["업무별 latency", "비용", "승인 가능한 remote MCP 목록"],
+      "source_sha256": "cf41e8038d89d8814852d8cbe44622d16887ac3f407269b98349afd1a6b4923a"
+    },
+    {
+      "claim_ref": "AAI-009",
+      "claim": "A2A는 서로 다른 vendor와 framework의 agent 간 communication·coordination을 위한 공개 protocol 선택지로 발표됐다.",
+      "supporting_evidence": ["PUB-AAI-RADAR-002-v1:08#a2a-launch"],
+      "counterevidence": [],
+      "verification_level": "official-primary-source-opened",
+      "uncertainty": "출시 의도와 ecosystem 참여는 conformance·maturity·governance 성과가 아니다.",
+      "access_limitation": "launch announcement only",
+      "unknown": ["상호운용성 시험", "identity·ACL mapping", "MCP와의 운영 분담"],
+      "source_sha256": "2bcfea3c9c07c793410299602ac1ba2847ca6ca10a2e05c848bad3916a2bab06"
+    },
+    {
+      "claim_ref": "AAI-010",
+      "claim": "agent tool은 deterministic API wrapper가 아니라 non-deterministic agent와의 계약으로 설계하고, 소수의 명확한 도구·namespacing·context-efficient output을 evaluation으로 검증해야 한다.",
+      "supporting_evidence": ["PUB-AAI-RADAR-002-v1:09#agent-tool-contracts"],
+      "counterevidence": [],
+      "verification_level": "official-primary-source-opened",
+      "uncertainty": "어떤 도구 경계가 최적인지는 workload evaluation에 의존한다.",
+      "access_limitation": "vendor engineering guidance",
+      "unknown": ["업무별 tool granularity", "held-out eval set", "token-cost threshold"],
+      "source_sha256": "c743229967e427c7173f7ab657146654449743e52086f7b0afd7555df805a9ea"
+    },
+    {
+      "claim_ref": "AAI-011",
+      "claim": "long-horizon agent context는 finite resource로 관리하며 compaction, structured note-taking과 just-in-time retrieval을 선택적으로 결합한다.",
+      "supporting_evidence": ["PUB-AAI-RADAR-002-v1:10#compaction-structured-notes"],
+      "counterevidence": ["PUB-AAI-RADAR-002-v1:10#compaction-information-loss-warning"],
+      "verification_level": "official-primary-source-opened",
+      "uncertainty": "compaction이 제거하는 미세한 상태가 이후 중요해질 수 있다.",
+      "access_limitation": "engineering guidance; no organization retention policy",
+      "unknown": ["보존할 state schema", "compaction recall threshold", "삭제·감사 정책"],
+      "source_sha256": "26e312fa1b1fb23724af1c405ca7da3668446cbb753772ccac81fcf44782310e"
+    },
+    {
+      "claim_ref": "AAI-012",
+      "claim": "Claude Code 사례에서는 filesystem isolation과 network isolation을 함께 둔 sandbox boundary가 bounded autonomy와 보안의 핵심 통제로 제시됐다.",
+      "supporting_evidence": ["PUB-AAI-RADAR-002-v1:11#filesystem-network-isolation"],
+      "counterevidence": [],
+      "verification_level": "official-product-engineering-report",
+      "uncertainty": "Claude Code 구현을 모든 agent runtime의 보안 보증으로 일반화할 수 없다.",
+      "access_limitation": "product-specific report; external reproduction not performed",
+      "unknown": ["Windows·FAB 환경 통제 mapping", "credential scope", "prompt-injection residual risk"],
+      "source_sha256": "d0cc99b57262561cd77374b3dd25a98032a1d8e593abf96c02138f4b2ee8077c"
+    },
+    {
+      "claim_ref": "AAI-013",
+      "claim": "long-running work는 initializer, incremental progress, structured artifacts, clean handoff와 end-to-end tests로 세션 간 상태를 연결할 수 있다.",
+      "supporting_evidence": ["PUB-AAI-RADAR-002-v1:12#initializer-incremental-handoff"],
+      "counterevidence": ["PUB-AAI-RADAR-002-v1:12#compaction-alone-insufficient"],
+      "verification_level": "official-engineering-experiment-opened",
+      "uncertainty": "coding 사례의 구조가 research와 제조 운영에서 동일 효과를 내는지는 미검증이다.",
+      "access_limitation": "coding-focused experiment",
+      "unknown": ["연구 Case에서의 최소 artifact set", "resume 비용", "premature completion detector"],
+      "source_sha256": "253460fc984957367a80f9733f2e409913e52ea2c065e8b16a44f91111fdd284"
+    },
+    {
+      "claim_ref": "AAI-014",
+      "claim": "agent evaluation은 multi-turn·multiple trials, deterministic/model/human grader 조합, outcome와 transcript 분리, capability와 regression suite 구분이 필요하다.",
+      "supporting_evidence": ["PUB-AAI-RADAR-002-v1:13#multi-trial-graders"],
+      "counterevidence": ["PUB-AAI-RADAR-002-v1:13#grader-brittleness-and-calibration"],
+      "verification_level": "official-primary-source-opened",
+      "uncertainty": "model grader는 human calibration 없이는 확정 판정이 아니다.",
+      "access_limitation": "method guidance; no completed Case benchmark",
+      "unknown": ["도메인 rubric", "human calibration sample", "허용 분산"],
+      "source_sha256": "abcc41429426d453a6959005605d05a7fb4c8cd186799c78e4c421202e58127d"
+    },
+    {
+      "claim_ref": "AAI-015",
+      "claim": "planner-generator-evaluator와 decomposition은 고정 교리가 아니라 model capability와 task difficulty에 따라 비용 대비 효용을 재검토해야 하는 harness 선택이다.",
+      "supporting_evidence": ["PUB-AAI-RADAR-002-v1:14#planner-generator-evaluator"],
+      "counterevidence": ["PUB-AAI-RADAR-002-v1:14#removed-sprint-overhead"],
+      "verification_level": "official-engineering-experiment-opened",
+      "uncertainty": "vendor 실험의 비용·품질 결과를 다른 model과 domain에 직접 적용할 수 없다.",
+      "access_limitation": "long-running application experiments",
+      "unknown": ["어떤 phase가 load-bearing인지", "single-agent baseline 대비 실제 lift"],
+      "source_sha256": "eb90b01b52af6f06969d3261fb464aa9548655b182083aa73bc33ce368bab171"
+    },
+    {
+      "claim_ref": "AAI-016",
+      "claim": "Agent Builder와 Evals는 2025-10 출시됐지만 같은 공식 페이지의 2026-06 update에서 2026-11-30 이후 unavailable 예정으로 바뀌었다.",
+      "supporting_evidence": ["PUB-AAI-RADAR-002-v1:06#launch", "PUB-AAI-RADAR-002-v1:06#wind-down"],
+      "counterevidence": ["PUB-AAI-RADAR-002-v1:06#original-durable-platform-framing"],
+      "verification_level": "official-primary-source-opened-with-lifecycle-update",
+      "uncertainty": "최종 migration 상태와 대체 기능 parity는 확인하지 않았다.",
+      "access_limitation": "product page checked 2026-08-06",
+      "unknown": ["migration effort", "replacement feature parity", "existing workflow export"],
+      "source_sha256": "4c91e8105b0e1c001909b7597bf431896cd5784d406cc99775a601ed4277bb7c"
+    }
+  ]
+}

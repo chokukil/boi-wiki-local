@@ -1,11 +1,11 @@
 {
   "schema": "boi-local-case-fixture-manifest/v2",
   "case_id": "agentic-ai-change-radar",
-  "fixture_id": "PUB-AAI-RADAR-001-v1",
+  "fixture_id": "PUB-AAI-RADAR-002-v1",
   "fixed_at": "2026-08-06T09:00:00+09:00",
   "synthetic": false,
   "fixture_policy": "public-only",
-  "source_count": 6,
+  "source_count": 14,
   "required_media": [
     "official-engineering",
     "official-product",
@@ -35,8 +35,8 @@
     },
     {
       "path": "sources/04-t1-openai-agents-typescript.md",
-      "sha256": "3002b305f0a04404061d3794e1ff64defa541e9c07776eecb78025aadd50ee98",
-      "bytes": 832,
+      "sha256": "60c26ff8d79a5654b67143ba3732f890f2a50e8660474b8ca7b849705f16332b",
+      "bytes": 1016,
       "synthetic": false,
       "source_record": true
     },
@@ -49,8 +49,64 @@
     },
     {
       "path": "sources/06-t1-openai-agentkit.md",
-      "sha256": "b79c2634183cb02875121be947691fc2c9dfc1c2249f61752c66bed4aa5288a6",
-      "bytes": 861,
+      "sha256": "4c91e8105b0e1c001909b7597bf431896cd5784d406cc99775a601ed4277bb7c",
+      "bytes": 1038,
+      "synthetic": false,
+      "source_record": true
+    },
+    {
+      "path": "sources/07-t1-openai-responses-mcp-background.md",
+      "sha256": "cf41e8038d89d8814852d8cbe44622d16887ac3f407269b98349afd1a6b4923a",
+      "bytes": 1007,
+      "synthetic": false,
+      "source_record": true
+    },
+    {
+      "path": "sources/08-t1-google-a2a.md",
+      "sha256": "2bcfea3c9c07c793410299602ac1ba2847ca6ca10a2e05c848bad3916a2bab06",
+      "bytes": 1040,
+      "synthetic": false,
+      "source_record": true
+    },
+    {
+      "path": "sources/09-t1-anthropic-effective-tools.md",
+      "sha256": "c743229967e427c7173f7ab657146654449743e52086f7b0afd7555df805a9ea",
+      "bytes": 1043,
+      "synthetic": false,
+      "source_record": true
+    },
+    {
+      "path": "sources/10-t1-anthropic-context-engineering.md",
+      "sha256": "26e312fa1b1fb23724af1c405ca7da3668446cbb753772ccac81fcf44782310e",
+      "bytes": 1065,
+      "synthetic": false,
+      "source_record": true
+    },
+    {
+      "path": "sources/11-t1-anthropic-sandboxing.md",
+      "sha256": "d0cc99b57262561cd77374b3dd25a98032a1d8e593abf96c02138f4b2ee8077c",
+      "bytes": 1045,
+      "synthetic": false,
+      "source_record": true
+    },
+    {
+      "path": "sources/12-t1-anthropic-long-running-harness.md",
+      "sha256": "253460fc984957367a80f9733f2e409913e52ea2c065e8b16a44f91111fdd284",
+      "bytes": 1063,
+      "synthetic": false,
+      "source_record": true
+    },
+    {
+      "path": "sources/13-t1-anthropic-agent-evals.md",
+      "sha256": "abcc41429426d453a6959005605d05a7fb4c8cd186799c78e4c421202e58127d",
+      "bytes": 1031,
+      "synthetic": false,
+      "source_record": true
+    },
+    {
+      "path": "sources/14-t1-anthropic-harness-design-2026.md",
+      "sha256": "eb90b01b52af6f06969d3261fb464aa9548655b182083aa73bc33ce368bab171",
+      "bytes": 1118,
       "synthetic": false,
       "source_record": true
     }

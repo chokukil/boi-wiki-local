@@ -1,0 +1,9 @@
+{
+  "artifact_kind":"handoff","schema":"boi-local-case-handoff/v1","case_id":"fab-logistics-digital-twin","run_id":"fab-logistics-baseline-2026-08-06","phase":"baseline-review","from_role":"ontology-workflow-curator","to_role":"independent-reviewer","local_only":true,
+  "source_refs":[{"type":"fixture-manifest","ref":"../../../fixtures/manifest.json","sha256":"e60b3c3397e4cebcfc264d729cd8ecd89d16a564bc8614b2b1ca400eb49b2f88"}],
+  "generated_from":[{"type":"source-manifest","ref":"source-manifest.json","sha256":"bbcc2daddb5b0a28b115d77dc808fa58ead28a23653b8939a170b8671088b6fc"}],
+  "input_refs":[{"path":"source-manifest.json","sha256":"bbcc2daddb5b0a28b115d77dc808fa58ead28a23653b8939a170b8671088b6fc","bytes":3755}],
+  "output_files":[{"path":"evidence.json","sha256":"a6c562b01a34f7213871d6228d74e825177c2b2bfd564a5abb34aef116a13279","bytes":2903},{"path":"query-answer.md","sha256":"0ef470244e89b6cc929d869542faaa13b4168534a131295ee024daa77ead490e","bytes":1452},{"path":"review-queue.md","sha256":"930fd267b16bead91543357bb927ac81c578ac37ac996c6ae04a07c4fa4a5a88","bytes":623}],
+  "supported_claims":["FAB-001","FAB-002","FAB-003"],"counterevidence":["유료 SEMI 전문 미확인","vendor 사례는 독립 성능 검증이 아님"],"unknowns":["실제 FAB mapping, ACL, fidelity, KPI와 효과"],"contradictions":[],"blockers":["내부 domain evidence와 human review 없음"],"review_questions":["개념 가설과 운영 결론의 경계가 명확한가?"],"phase_exit":"partial; Community contract evidence only",
+  "source_integrity":{"before_manifest_sha256":"e60b3c3397e4cebcfc264d729cd8ecd89d16a564bc8614b2b1ca400eb49b2f88","after_manifest_sha256":"e60b3c3397e4cebcfc264d729cd8ecd89d16a564bc8614b2b1ca400eb49b2f88","changed_source_files":[]}
+}

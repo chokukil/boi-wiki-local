@@ -150,6 +150,143 @@ class GlobalInsightTests(unittest.TestCase):
         self.assertFalse(preview["approved"])
         self.assertFalse(preview["submitted"])
 
+    def test_canonical_handoff_schema_matches_the_native_example(self) -> None:
+        schema = json.loads((REPO / "cases" / "_schema" / "handoff.schema.json").read_text(encoding="utf-8"))
+        example = json.loads(
+            (REPO / "templates" / "global-insight" / "examples" / "handoff.json").read_text(encoding="utf-8")
+        )
+        required = set(schema["required"])
+        self.assertEqual(required, set(example))
+        self.assertTrue(schema["additionalProperties"] is False)
+        for field in (
+            "input_refs",
+            "output_files",
+            "unknowns",
+            "contradictions",
+            "blockers",
+            "source_integrity",
+        ):
+            self.assertIn(field, required)
+        for obsolete in ("input_artifacts", "output_artifacts", "unknown", "contradiction", "blocker"):
+            self.assertNotIn(obsolete, example)
+
+    def test_executed_golden_journey_is_hash_bound_and_keeps_community_status(self) -> None:
+        case = REPO / "cases" / "research" / "agentic-ai-change-radar"
+        journey = case / "golden-journey"
+        hashes = json.loads((journey / "hashes.json").read_text(encoding="utf-8"))
+        self.assertEqual("PUB-AAI-RADAR-002-v1", hashes["fixture_id"])
+        self.assertEqual(14, hashes["source_count"])
+        self.assertEqual(3, hashes["t0_source_count"])
+        self.assertEqual(11, hashes["t1_source_count"])
+        self.assertFalse(hashes["remote_submitted"])
+        for row in hashes["files"]:
+            path = journey / row["path"]
+            self.assertEqual(row["bytes"], path.stat().st_size)
+            self.assertEqual(row["sha256"], hashlib.sha256(path.read_bytes()).hexdigest())
+
+        change = json.loads(
+            (journey / "runs" / "2026-08-06" / "t1" / "change-set.json").read_text(encoding="utf-8")
+        )
+        delta_types = {item["delta_type"] for item in change["deltas"]}
+        self.assertEqual(
+            {"new", "strengthened", "revised", "contradicted", "stale", "retirement-candidate", "unknown"},
+            delta_types,
+        )
+        self.assertTrue(
+            any(item["claim_ref"] == "AAI-016" and item["delta_type"] == "retirement-candidate" for item in change["deltas"])
+        )
+        review = json.loads(
+            (journey / "runs" / "2026-08-06" / "review" / "reviewer-report.json").read_text(encoding="utf-8")
+        )
+        self.assertEqual("partial", review["decision"])
+        self.assertTrue(review["procedural_independence"])
+        self.assertTrue(review["human_review_required"])
+        self.assertFalse(review["semantic_changes_approved"])
+        self.assertEqual("community", json.loads((case / "case.yaml").read_text(encoding="utf-8"))["status"])
+
+    def test_followup_cases_have_hash_bound_community_contract_evidence(self) -> None:
+        cases = (
+            ("fab-logistics-digital-twin", "PUB-FAB-DT-001-v1", 5),
+            ("scientific-foundation-model-knowledge", "PUB-SFM-001-v1", 5),
+        )
+        for case_id, fixture_id, source_count in cases:
+            case = REPO / "cases" / "strategy" / case_id
+            validation = case / "contract-validation"
+            hashes = json.loads((validation / "hashes.json").read_text(encoding="utf-8"))
+            self.assertEqual(fixture_id, hashes["fixture_id"])
+            self.assertEqual(source_count, hashes["source_count"])
+            self.assertTrue(hashes["local_only"])
+            self.assertFalse(hashes["remote_submitted"])
+            for row in hashes["files"]:
+                path = validation / row["path"]
+                self.assertEqual(row["bytes"], path.stat().st_size)
+                self.assertEqual(row["sha256"], hashlib.sha256(path.read_bytes()).hexdigest())
+
+            run = validation / "runs" / "2026-08-06"
+            review = json.loads((run / "reviewer-report.json").read_text(encoding="utf-8"))
+            self.assertEqual("partial", review["decision"])
+            self.assertTrue(review["human_review_required"])
+            self.assertFalse(review["semantic_changes_approved"])
+            self.assertEqual("community-local-contract-evidence", review["release_scope"])
+            self.assertEqual(0, review["remote_activity"]["remote_submits"])
+
+    @unittest.skipUnless(os.name == "nt", "Windows native PowerShell gate")
+    def test_followup_case_verifier_fails_closed_on_query_drift(self) -> None:
+        case_id = "fab-logistics-digital-twin"
+        case = REPO / "cases" / "strategy" / case_id
+        verifier = REPO / "scripts" / "global_insight_case_baseline_check.ps1"
+        command = [
+            "powershell.exe", "-NoLogo", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(verifier),
+            "-CaseRoot", str(case), "-CaseId", case_id, "-FixtureId", "PUB-FAB-DT-001-v1", "-SourceCount", "5",
+        ]
+        valid = subprocess.run(command, cwd=REPO, capture_output=True, text=True, encoding="utf-8", errors="replace", check=False)
+        self.assertEqual(0, valid.returncode, valid.stdout + valid.stderr)
+
+        with tempfile.TemporaryDirectory() as temporary:
+            target = Path(temporary) / case_id
+            shutil.copytree(case, target)
+            query = target / "contract-validation" / "fixed-query.txt"
+            query.write_text(query.read_text(encoding="utf-8") + "drift\n", encoding="utf-8")
+            drift_command = command.copy()
+            drift_command[drift_command.index(str(case))] = str(target)
+            drift = subprocess.run(drift_command, cwd=REPO, capture_output=True, text=True, encoding="utf-8", errors="replace", check=False)
+            self.assertNotEqual(0, drift.returncode)
+            self.assertIn("hash or bytes drift", drift.stdout)
+
+    @unittest.skipUnless(os.name == "nt", "Windows native PowerShell gate")
+    def test_golden_journey_native_verifier_fails_closed_on_query_drift(self) -> None:
+        case = REPO / "cases" / "research" / "agentic-ai-change-radar"
+        verifier = case / "golden-journey" / "verify.ps1"
+        valid = subprocess.run(
+            ["powershell.exe", "-NoLogo", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(verifier), "-Root", str(REPO)],
+            cwd=REPO,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            check=False,
+        )
+        self.assertEqual(0, valid.returncode, valid.stdout + valid.stderr)
+
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            target = root / "cases" / "research" / "agentic-ai-change-radar"
+            target.parent.mkdir(parents=True)
+            shutil.copytree(case, target)
+            query = target / "golden-journey" / "fixed-query.txt"
+            query.write_text(query.read_text(encoding="utf-8") + "drift\n", encoding="utf-8")
+            drift = subprocess.run(
+                ["powershell.exe", "-NoLogo", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(verifier), "-Root", str(root)],
+                cwd=REPO,
+                capture_output=True,
+                text=True,
+                encoding="utf-8",
+                errors="replace",
+                check=False,
+            )
+            self.assertNotEqual(0, drift.returncode)
+            self.assertIn("fixed Query drift", drift.stdout)
+
     def test_native_only_path_runs_without_invoking_python(self) -> None:
         check = (REPO / "check.ps1").read_text(encoding="utf-8")
         native_branch = check.index("if ($NativeOnly)")

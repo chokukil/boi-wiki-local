@@ -1,0 +1,215 @@
+{
+  "artifact_kind": "claim-delta",
+  "schema": "boi-global-insight-claim-delta/v1",
+  "case_id": "agentic-ai-change-radar",
+  "run_id": "agentic-ai-golden-journey-2026-08-06",
+  "local_only": true,
+  "source_refs": [
+    {
+      "type": "claim-snapshot",
+      "ref": "../t0/claim-snapshot.md",
+      "sha256": "61f1573cab61d5eeb87a9366893adfb2fda26c65872ce312ab6f3ad62b0240f0"
+    },
+    {
+      "type": "source-manifest",
+      "ref": "../source-manifest.json",
+      "sha256": "da34e5ae1078131612466c72a625f1d62f18fd277883fe35ed911b4a55184d4e"
+    }
+  ],
+  "generated_from": [
+    {
+      "type": "claim-snapshot",
+      "ref": "../t0/claim-snapshot.md",
+      "sha256": "61f1573cab61d5eeb87a9366893adfb2fda26c65872ce312ab6f3ad62b0240f0"
+    },
+    {
+      "type": "source-manifest",
+      "ref": "../source-manifest.json",
+      "sha256": "da34e5ae1078131612466c72a625f1d62f18fd277883fe35ed911b4a55184d4e"
+    }
+  ],
+  "previous_snapshot_sha256": "61f1573cab61d5eeb87a9366893adfb2fda26c65872ce312ab6f3ad62b0240f0",
+  "source_change_count": 11,
+  "empty_change_set": false,
+  "report_created": false,
+  "new_claims_created": true,
+  "review_queue_created": true,
+  "deltas": [
+    {
+      "delta_type": "new",
+      "claim_ref": "AAI-008",
+      "previous": {"statement": null, "status": "not-present", "snapshot_sha256": "61f1573cab61d5eeb87a9366893adfb2fda26c65872ce312ab6f3ad62b0240f0"},
+      "current": {"statement": "remote MCP, background mode와 encrypted reasoning items가 runtime 선택지에 추가됐다.", "status": "supported-vendor-specific"},
+      "reason": "2025-05-21 공식 Responses API update",
+      "contradiction": [],
+      "next_review_at": "2026-09-06",
+      "downstream_impact": ["runtime option matrix", "remote tool security questions"],
+      "source_refs": ["PUB-AAI-RADAR-002-v1:07"]
+    },
+    {
+      "delta_type": "new",
+      "claim_ref": "AAI-009",
+      "previous": {"statement": null, "status": "not-present", "snapshot_sha256": "61f1573cab61d5eeb87a9366893adfb2fda26c65872ce312ab6f3ad62b0240f0"},
+      "current": {"statement": "A2A가 cross-vendor agent interoperability protocol 후보로 등장했다.", "status": "supported-launch-scope"},
+      "reason": "2025-04-09 공식 A2A 발표",
+      "contradiction": [],
+      "next_review_at": "2026-09-06",
+      "downstream_impact": ["interoperability architecture", "identity and ACL review"],
+      "source_refs": ["PUB-AAI-RADAR-002-v1:08"]
+    },
+    {
+      "delta_type": "new",
+      "claim_ref": "AAI-010",
+      "previous": {"statement": null, "status": "not-present", "snapshot_sha256": "61f1573cab61d5eeb87a9366893adfb2fda26c65872ce312ab6f3ad62b0240f0"},
+      "current": {"statement": "tool surface는 agent affordance와 context cost를 기준으로 설계·평가해야 한다.", "status": "supported-guidance"},
+      "reason": "2025-09-11 agent-oriented tool design guidance",
+      "contradiction": [],
+      "next_review_at": "2026-09-06",
+      "downstream_impact": ["tool schema", "tool eval design"],
+      "source_refs": ["PUB-AAI-RADAR-002-v1:09"]
+    },
+    {
+      "delta_type": "new",
+      "claim_ref": "AAI-011",
+      "previous": {"statement": "memory는 augmented LLM 요소지만 구현 계약은 미확인", "status": "partial", "snapshot_sha256": "61f1573cab61d5eeb87a9366893adfb2fda26c65872ce312ab6f3ad62b0240f0"},
+      "current": {"statement": "persistent sessions, compaction, structured note-taking과 resume가 구체 구현 선택지로 확인됐다.", "status": "supported-options-not-universal"},
+      "reason": "TypeScript Sessions와 context engineering 공식 문서",
+      "contradiction": ["compaction은 state 손실 위험을 동반한다."],
+      "next_review_at": "2026-09-06",
+      "downstream_impact": ["memory architecture", "retention policy", "resume contract"],
+      "source_refs": ["PUB-AAI-RADAR-002-v1:04", "PUB-AAI-RADAR-002-v1:10"]
+    },
+    {
+      "delta_type": "new",
+      "claim_ref": "AAI-012",
+      "previous": {"statement": null, "status": "not-present", "snapshot_sha256": "61f1573cab61d5eeb87a9366893adfb2fda26c65872ce312ab6f3ad62b0240f0"},
+      "current": {"statement": "filesystem와 network isolation을 함께 둔 bounded execution이 product-specific security pattern으로 확인됐다.", "status": "supported-product-specific"},
+      "reason": "2025-10-20 Claude Code sandboxing report",
+      "contradiction": [],
+      "next_review_at": "2026-09-06",
+      "downstream_impact": ["agent execution boundary", "credential and egress controls"],
+      "source_refs": ["PUB-AAI-RADAR-002-v1:11"]
+    },
+    {
+      "delta_type": "new",
+      "claim_ref": "AAI-013",
+      "previous": {"statement": null, "status": "not-present", "snapshot_sha256": "61f1573cab61d5eeb87a9366893adfb2fda26c65872ce312ab6f3ad62b0240f0"},
+      "current": {"statement": "initializer, incremental progress와 structured handoff가 long-running resume pattern으로 확인됐다.", "status": "supported-coding-experiment"},
+      "reason": "2025-11-26 long-running harness report",
+      "contradiction": ["compaction alone was insufficient in the reported experiment"],
+      "next_review_at": "2026-09-06",
+      "downstream_impact": ["resume checkpoint", "clean-state requirement", "premature completion tests"],
+      "source_refs": ["PUB-AAI-RADAR-002-v1:12"]
+    },
+    {
+      "delta_type": "strengthened",
+      "claim_ref": "AAI-002",
+      "previous": {"statement": "tracing과 evaluation 지원이 runtime building block에 포함", "status": "supported-vendor-specific", "snapshot_sha256": "61f1573cab61d5eeb87a9366893adfb2fda26c65872ce312ab6f3ad62b0240f0"},
+      "current": {"statement": "agent evaluation은 tracing에서 multi-turn·multiple trials, outcome/transcript grader, regression suite와 human calibration까지 구체화됐다.", "status": "strengthened-method-guidance"},
+      "reason": "2026-01-09 agent eval lifecycle guidance",
+      "contradiction": ["model grader는 human calibration 없이는 확정 판정이 아니다."],
+      "next_review_at": "2026-09-06",
+      "downstream_impact": ["evaluation protocol", "reviewer calibration", "repeated-run requirements"],
+      "source_refs": ["PUB-AAI-RADAR-002-v1:02", "PUB-AAI-RADAR-002-v1:13"]
+    },
+    {
+      "delta_type": "strengthened",
+      "claim_ref": "AAI-001",
+      "previous": {"statement": "단순 pattern에서 시작", "status": "supported-scope-limited", "snapshot_sha256": "61f1573cab61d5eeb87a9366893adfb2fda26c65872ce312ab6f3ad62b0240f0"},
+      "current": {"statement": "harness 구성도 model capability와 task edge에 따라 load-bearing 여부를 측정하고 불필요해진 phase를 제거해야 한다.", "status": "strengthened-with-evolution-rule"},
+      "reason": "2026-03-24 harness evolution experiment",
+      "contradiction": ["어려운 edge task에서는 evaluator가 여전히 lift를 제공했다."],
+      "next_review_at": "2026-09-06",
+      "downstream_impact": ["orchestration complexity budget", "baseline comparison"],
+      "source_refs": ["PUB-AAI-RADAR-002-v1:01", "PUB-AAI-RADAR-002-v1:14"]
+    },
+    {
+      "delta_type": "revised",
+      "claim_ref": "AAI-003",
+      "previous": {"statement": "Node.js 지원은 향후 계획", "status": "time-bound", "snapshot_sha256": "61f1573cab61d5eeb87a9366893adfb2fda26c65872ce312ab6f3ad62b0240f0"},
+      "current": {"statement": "TypeScript-first SDK가 현재 제공되고 persistent Sessions와 resume 기능도 문서화됐다.", "status": "supported-current-docs"},
+      "reason": "현재 TypeScript SDK 공식 living docs 확인",
+      "contradiction": ["T0 roadmap 문장은 당시 사실이나 현재 지원 상태와 충돌"],
+      "next_review_at": "2026-09-06",
+      "downstream_impact": ["runtime language matrix", "memory implementation options"],
+      "source_refs": ["PUB-AAI-RADAR-002-v1:02", "PUB-AAI-RADAR-002-v1:04"]
+    },
+    {
+      "delta_type": "contradicted",
+      "claim_ref": "AAI-004",
+      "previous": {"statement": "authorization server discovery를 MCP server base URL fallback 중심으로 설명", "status": "version-bound", "snapshot_sha256": "61f1573cab61d5eeb87a9366893adfb2fda26c65872ce312ab6f3ad62b0240f0"},
+      "current": {"statement": "2025-06-18 current guidance는 Protected Resource Metadata와 Resource Indicators를 요구", "status": "contradicted-by-later-spec"},
+      "reason": "normative security model revision",
+      "contradiction": ["PUB-AAI-RADAR-002-v1:03#base-url-fallback", "PUB-AAI-RADAR-002-v1:05#protected-resource-metadata"],
+      "next_review_at": "2026-08-20",
+      "downstream_impact": ["MCP auth implementation", "security review", "token audience"],
+      "source_refs": ["PUB-AAI-RADAR-002-v1:03", "PUB-AAI-RADAR-002-v1:05"]
+    },
+    {
+      "delta_type": "contradicted",
+      "claim_ref": "AAI-016",
+      "previous": {"statement": "Agent Builder와 Evals가 지속 가능한 새 platform option으로 출시", "status": "launch-claim", "snapshot_sha256": "61f1573cab61d5eeb87a9366893adfb2fda26c65872ce312ab6f3ad62b0240f0"},
+      "current": {"statement": "2026-11-30 이후 Agent Builder와 Evals는 unavailable 예정", "status": "wind-down-announced"},
+      "reason": "같은 공식 페이지의 2026-06-03 lifecycle update",
+      "contradiction": ["PUB-AAI-RADAR-002-v1:06#launch", "PUB-AAI-RADAR-002-v1:06#wind-down"],
+      "next_review_at": "2026-11-30",
+      "downstream_impact": ["visual workflow option", "migration planning", "product selection evidence"],
+      "source_refs": ["PUB-AAI-RADAR-002-v1:06"]
+    },
+    {
+      "delta_type": "stale",
+      "claim_ref": "AAI-003",
+      "previous": {"statement": "Node.js support is coming later", "status": "time-bound", "snapshot_sha256": "61f1573cab61d5eeb87a9366893adfb2fda26c65872ce312ab6f3ad62b0240f0"},
+      "current": {"statement": "역사 기록으로 보존하되 현재 지원 상태 설명에는 사용하지 않음", "status": "stale-history-preserved"},
+      "reason": "TypeScript-first SDK current docs",
+      "contradiction": [],
+      "next_review_at": "2026-09-06",
+      "downstream_impact": ["current runtime comparison"],
+      "source_refs": ["PUB-AAI-RADAR-002-v1:02", "PUB-AAI-RADAR-002-v1:04"]
+    },
+    {
+      "delta_type": "stale",
+      "claim_ref": "AAI-016",
+      "previous": {"statement": "Agent Builder와 Evals를 신규 채택 후보로 평가", "status": "launch-claim", "snapshot_sha256": "61f1573cab61d5eeb87a9366893adfb2fda26c65872ce312ab6f3ad62b0240f0"},
+      "current": {"statement": "출시 이력은 보존하되 장기 신규 채택 후보 판단에는 사용하지 않음", "status": "stale-current-choice"},
+      "reason": "공식 wind-down notice",
+      "contradiction": [],
+      "next_review_at": "2026-11-30",
+      "downstream_impact": ["orchestration shortlist"],
+      "source_refs": ["PUB-AAI-RADAR-002-v1:06"]
+    },
+    {
+      "delta_type": "retirement-candidate",
+      "claim_ref": "AAI-004",
+      "previous": {"statement": "2025-03 discovery model을 current normative guidance로 사용", "status": "version-bound", "snapshot_sha256": "61f1573cab61d5eeb87a9366893adfb2fda26c65872ce312ab6f3ad62b0240f0"},
+      "current": {"statement": "현재 구현 지침에서는 제거 후보, version history에는 보존", "status": "human-review-required"},
+      "reason": "2025-06 normative revision",
+      "contradiction": ["March and June version scopes must remain distinct"],
+      "next_review_at": "2026-08-20",
+      "downstream_impact": ["MCP security guide"],
+      "source_refs": ["PUB-AAI-RADAR-002-v1:03", "PUB-AAI-RADAR-002-v1:05"]
+    },
+    {
+      "delta_type": "retirement-candidate",
+      "claim_ref": "AAI-016",
+      "previous": {"statement": "Agent Builder/Evals를 future platform choice로 유지", "status": "launch-claim", "snapshot_sha256": "61f1573cab61d5eeb87a9366893adfb2fda26c65872ce312ab6f3ad62b0240f0"},
+      "current": {"statement": "2026-11-30 이후 신규 채택 guidance에서 제거 후보, migration history는 보존", "status": "human-review-required"},
+      "reason": "official wind-down schedule",
+      "contradiction": ["original launch and later retirement notice"],
+      "next_review_at": "2026-11-30",
+      "downstream_impact": ["product shortlist", "migration plan"],
+      "source_refs": ["PUB-AAI-RADAR-002-v1:06"]
+    },
+    {
+      "delta_type": "unknown",
+      "claim_ref": "AAI-005",
+      "previous": {"statement": "공개 자료만으로 SK하이닉스 적용 적합성을 판단할 수 없음", "status": "unknown", "snapshot_sha256": "61f1573cab61d5eeb87a9366893adfb2fda26c65872ce312ab6f3ad62b0240f0"},
+      "current": {"statement": "공개 선택지는 늘었지만 내부 data·ACL·cost·quality·operations evidence가 없어 적용 결론은 계속 unknown", "status": "unknown-preserved"},
+      "reason": "T1 source도 모두 public vendor/spec/method 자료이며 내부 pilot evidence가 아님",
+      "contradiction": [],
+      "next_review_at": "2026-09-06",
+      "downstream_impact": ["pilot question set", "human review"],
+      "source_refs": ["PUB-AAI-RADAR-002-v1:04", "PUB-AAI-RADAR-002-v1:14"]
+    }
+  ]
+}
