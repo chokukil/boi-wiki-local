@@ -30,7 +30,7 @@ guide_prerequisites: "정제 문서와 evidence가 연결된 Local Case 또는 �
 guide_execution: "query-pack의 읽기 순서와 답변 계약에 따라 정제 Wiki, 지지 근거, 반증, 미확인 항목을 함께 확인한다"
 guide_success: "답변의 각 주장에 Local 문서 경로와 SHA256이 있고 관찰·추론·사람의 판정이 구분된다"
 guide_failure_page: "60-troubleshooting.md"
-guide_next_page: "35-recurrence-fingerprint.md"
+guide_next_page: "38-knowledge-change-operations.md"
 guide_boundary: "local-with-optional-mcp-read"
 source_refs:
   - type: local-guide-source
@@ -101,4 +101,4 @@ Second Brain의 품질은 파일 개수나 Graph 모양이 아니라, 질문했�
 
 질문은 Local Private 정제 Wiki와 evidence를 근거로 재현 가능한 답을 만들며, 단순 MCP 조회만으로 Local 문서가 원격에 올라가지 않습니다. 답을 조직지식으로 공유하려면 검토된 `boi/local-knowledge`, context pack 또는 SOP로 정제한 뒤 [Team/Public promotion preview](50-mcp-and-promotion.md)를 거쳐야 합니다.
 
-이전: [지속 분석 로그와 인수인계](34-continuous-analysis-log.md) · 다음: [재발 fingerprint](35-recurrence-fingerprint.md)
+이전: [지속 분석 로그와 인수인계](34-continuous-analysis-log.md) · 다음: [지식 변화 운영과 사용자 프롬프트](38-knowledge-change-operations.md)

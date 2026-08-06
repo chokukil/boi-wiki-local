@@ -81,6 +81,8 @@ AI에게 다음 문장을 그대로 전달합니다.
 
 시작: [AI에게 설치 맡기기](templates/second-brain-guide/12-ai-assisted-setup.md) · [Second Brain 전체 사례](cases/flagship/second-brain/CASE.md)
 
+지식 업데이트를 실제 공개 사례로 따라 하려면 [지식 변화 운영과 사용자 프롬프트 가이드](templates/second-brain-guide/38-knowledge-change-operations.md)와 [Agentic AI Change Radar Golden Journey](cases/research/agentic-ai-change-radar/CASE.md)를 함께 봅니다.
+
 ## 5. Local 지식에서 조직 지식으로
 
 Local Private 원문은 BoI Wiki에 자동 적재되지 않습니다.

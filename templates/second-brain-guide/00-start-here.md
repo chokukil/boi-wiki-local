@@ -78,6 +78,7 @@ AI는 필요한 질문만 최대 3개 하고, 변경 내용을 쉬운 말로 보
 - 다른 구성원이 만든 비공식 walkthrough와 현재 검증 상태를 참고하려면 [활용 사례 허브](25-use-case-playbook.md)
 - OKF와 BoI 문서 구조를 이해하려면 [OKF와 BoI Profile](21-okf-and-boi-profile.md)
 - 대화·메일·웹·문서를 오래 축적하고 재사용하려면 [Capture에서 지식까지](23-capture-distill-review.md)
+- 승인된 지식을 기준으로 지난 검토 이후 무엇이 달라졌는지 관리하려면 [지식 변화 운영과 사용자 프롬프트](38-knowledge-change-operations.md)
 - 여러 자료로 근거·가설·판정을 관리하려면 [범용 Investigation Pattern](29-investigation-pattern.md)
 - Obsidian 없이 사용하려면 [Obsidian 없는 사용법](26-no-obsidian.md)
 - Obsidian으로 링크·Graph·Bases·Canvas를 보려면 [Obsidian 설치와 Vault 연결](30-obsidian-install-and-vault.md)

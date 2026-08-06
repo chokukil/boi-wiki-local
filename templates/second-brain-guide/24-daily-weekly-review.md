@@ -53,6 +53,8 @@ source_refs:
 2. 오래된 inbox, 끊어진 출처, review 기한, promotion 후보를 확인합니다.
 3. 조직에 반복 가치가 있는 지식만 Team/Public 후보로 보냅니다.
 
+지난 승인 이후 달라진 내용만 조사하고 revision을 관리하려면 [지식 변화 운영과 사용자 프롬프트](38-knowledge-change-operations.md)의 정기 업데이트 요청문을 사용합니다.
+
 ## 정상 결과, 실패, 다음 여정
 
 미분류 inbox 수와 overdue review가 설명 가능한 상태면 정상입니다. hash·link 오류는 [문제 해결](60-troubleshooting.md)로 이동합니다. Review는 Local 파일만 읽으며 자동 업로드하지 않습니다. 다음: [활용 사례](25-use-case-playbook.md)
