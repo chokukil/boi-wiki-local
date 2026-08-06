@@ -230,9 +230,19 @@ function Test-JsonArtifact([string]$Path) {
     }
   }
   if ($kind -eq 'handoff') {
-    Require-JsonFields $value @('schema', 'case_id', 'run_id', 'phase', 'from_role', 'to_role', 'input_artifacts', 'output_artifacts', 'supported_claims', 'counterevidence', 'unknown', 'contradiction', 'blocker', 'review_questions', 'phase_exit') "handoff artifact $Path"
+    Require-JsonFields $value @('schema', 'case_id', 'run_id', 'phase', 'from_role', 'to_role', 'local_only', 'source_refs', 'generated_from', 'input_refs', 'output_files', 'supported_claims', 'counterevidence', 'unknowns', 'contradictions', 'blockers', 'review_questions', 'phase_exit', 'source_integrity') "handoff artifact $Path"
     if ([string]$value.schema -cne 'boi-local-case-handoff/v1') { Add-Failure "handoff schema is invalid: $Path" }
-    foreach ($row in @($value.input_artifacts)) { Test-FileBinding $Path $row "handoff input in $Path" }
+    if ($value.local_only -ne $true) { Add-Failure "handoff must remain local-only: $Path" }
+    foreach ($row in @($value.input_refs)) { Test-FileBinding $Path $row "handoff input in $Path" }
+    foreach ($row in @($value.output_files)) { Test-FileBinding $Path $row "handoff output in $Path" }
+    Require-JsonFields $value.source_integrity @('before_manifest_sha256', 'after_manifest_sha256', 'changed_source_files') "handoff source integrity in $Path"
+    if (!(Test-Sha256 $value.source_integrity.before_manifest_sha256) -or !(Test-Sha256 $value.source_integrity.after_manifest_sha256)) {
+      Add-Failure "handoff source integrity has invalid SHA256: $Path"
+    }
+    if ([string]$value.source_integrity.before_manifest_sha256 -cne [string]$value.source_integrity.after_manifest_sha256 -or
+        @($value.source_integrity.changed_source_files).Count -ne 0) {
+      Add-Failure "handoff source integrity changed during the phase: $Path"
+    }
   }
   if ($kind -eq 'failure') {
     Require-JsonFields $value @('status', 'failure_phase', 'verified_artifacts', 'invalidated_dependent_artifacts', 'retry_count', 'resume_checkpoint', 'resume_condition', 'blocker') "failure artifact $Path"
@@ -245,6 +255,20 @@ function Test-JsonArtifact([string]$Path) {
     Require-JsonFields $value @('status', 'scope', 'findings', 'semantic_mutations') "scoped lint artifact $Path"
     Require-JsonFields $value.scope @('changed_documents', 'linked_topics', 'affected_claims', 'navigation', 'new_contradictions', 'stale_downstream') "scoped lint scope in $Path"
     if (@($value.semantic_mutations).Count -ne 0) { Add-Failure "scoped lint must not mutate semantic conclusions: $Path" }
+  }
+  if ($kind -eq 'review-decision') {
+    Require-JsonFields $value @('schema', 'case_id', 'run_id', 'decision', 'reviewer', 'producer', 'execution_mode', 'procedural_independence', 'human_review_required', 'semantic_changes_approved', 'release_scope', 'reviewed_source_sha256', 'reviewed_artifacts', 'contradictions', 'unresolved', 'decision_reason', 'remote_activity') "review decision $Path"
+    if ([string]$value.decision -notin @('approve', 'revise', 'partial', 'blocked', 'reject')) { Add-Failure "review decision is invalid: $Path" }
+    if ([string]$value.execution_mode -eq 'single-agent' -and ($value.procedural_independence -ne $true -or $value.human_review_required -ne $true)) {
+      Add-Failure "single-agent review must remain procedural and human-review-required: $Path"
+    }
+    if ($value.semantic_changes_approved -ne $false) { Add-Failure "native review may not self-approve semantic changes: $Path" }
+    foreach ($row in @($value.reviewed_artifacts)) { Test-FileBinding $Path $row "reviewed artifact in $Path" }
+    Require-JsonFields $value.remote_activity @('mcp_writes', 'remote_submits', 'boi_remote_source_bytes') "review remote activity in $Path"
+    if ([long]$value.remote_activity.mcp_writes -ne 0 -or [long]$value.remote_activity.remote_submits -ne 0 -or
+        [long]$value.remote_activity.boi_remote_source_bytes -ne 0) {
+      Add-Failure "review decision records unauthorized remote activity: $Path"
+    }
   }
   if ($kind -eq 'promotion-preview') {
     Require-JsonFields $value @('candidate_path', 'candidate_sha256', 'candidate_bytes', 'reviewer', 'target_visibility', 'target_scope', 'source_refs', 'blockers', 'approved', 'submitted', 'remote_submit_allowed', 'approval_invalidated_when') "promotion preview $Path"
@@ -459,6 +483,23 @@ foreach ($caseRoot in $caseRoots) {
     } catch {
       Add-Failure "Global Insight fixture manifest is not valid JSON: $caseRoot"
     }
+  }
+}
+
+$goldenVerifier = Require-File "cases/research/agentic-ai-change-radar/golden-journey/verify.ps1"
+if ($goldenVerifier) {
+  & powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -File $goldenVerifier -Root $Root
+  if ($LASTEXITCODE -ne 0) { Add-Failure "Agentic AI Golden Journey verification failed" }
+}
+
+foreach ($caseVerifier in @(
+  'cases/strategy/fab-logistics-digital-twin/contract-validation/verify.ps1',
+  'cases/strategy/scientific-foundation-model-knowledge/contract-validation/verify.ps1'
+)) {
+  $verifierPath = Require-File $caseVerifier
+  if ($verifierPath) {
+    & powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -File $verifierPath
+    if ($LASTEXITCODE -ne 0) { Add-Failure "Community Case contract verification failed: $caseVerifier" }
   }
 }
 

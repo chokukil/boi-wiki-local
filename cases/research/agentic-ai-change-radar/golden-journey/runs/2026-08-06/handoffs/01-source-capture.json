@@ -1,0 +1,34 @@
+{
+  "artifact_kind": "handoff",
+  "schema": "boi-local-case-handoff/v1",
+  "case_id": "agentic-ai-change-radar",
+  "run_id": "agentic-ai-golden-journey-2026-08-06",
+  "phase": "source-capture",
+  "from_role": "research-coordinator",
+  "to_role": "source-researcher",
+  "local_only": true,
+  "source_refs": [
+    {"type": "request-contract", "ref": "../request-contract.json", "sha256": "1bf84f222b7dafcaeb3e793fb763e40a2e6e0253698feddbf4e2a51316d46f0d"}
+  ],
+  "generated_from": [
+    {"type": "request-contract", "ref": "../request-contract.json", "sha256": "1bf84f222b7dafcaeb3e793fb763e40a2e6e0253698feddbf4e2a51316d46f0d"}
+  ],
+  "input_refs": [
+    {"path": "../request-contract.json", "bytes": 1630, "sha256": "1bf84f222b7dafcaeb3e793fb763e40a2e6e0253698feddbf4e2a51316d46f0d"}
+  ],
+  "output_files": [
+    {"path": "../source-manifest.json", "bytes": 11505, "sha256": "da34e5ae1078131612466c72a625f1d62f18fd277883fe35ed911b4a55184d4e"}
+  ],
+  "supported_claims": [],
+  "counterevidence": [],
+  "unknowns": ["organization-specific applicability"],
+  "contradictions": [],
+  "blockers": [],
+  "review_questions": ["모든 확정 evidence가 opened official source의 verified scope 안에 있는가?"],
+  "phase_exit": "source-manifest-hash-bound",
+  "source_integrity": {
+    "before_manifest_sha256": "da34e5ae1078131612466c72a625f1d62f18fd277883fe35ed911b4a55184d4e",
+    "after_manifest_sha256": "da34e5ae1078131612466c72a625f1d62f18fd277883fe35ed911b4a55184d4e",
+    "changed_source_files": []
+  }
+}

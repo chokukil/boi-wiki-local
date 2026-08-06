@@ -1,0 +1,40 @@
+{
+  "artifact_kind": "handoff",
+  "schema": "boi-local-case-handoff/v1",
+  "case_id": "agentic-ai-change-radar",
+  "run_id": "agentic-ai-golden-journey-2026-08-06",
+  "phase": "change-curation",
+  "from_role": "evidence-analyst",
+  "to_role": "change-curator",
+  "local_only": true,
+  "source_refs": [
+    {"type": "t0-evidence", "ref": "../t0/evidence.json", "sha256": "ea05a38342dcb62ad847098e778c72ed564b7c890117900c76f61ac39ef82104"},
+    {"type": "t1-evidence", "ref": "../t1/evidence.json", "sha256": "de1baae6b959d57d02316a8d7c88ef0fd595b949c0ebaddc089d32ab1a7378ec"}
+  ],
+  "generated_from": [
+    {"type": "claim-snapshot", "ref": "../t0/claim-snapshot.md", "sha256": "61f1573cab61d5eeb87a9366893adfb2fda26c65872ce312ab6f3ad62b0240f0"}
+  ],
+  "input_refs": [
+    {"path": "../t0/claim-snapshot.md", "bytes": 1935, "sha256": "61f1573cab61d5eeb87a9366893adfb2fda26c65872ce312ab6f3ad62b0240f0"},
+    {"path": "../t0/evidence.json", "bytes": 5757, "sha256": "ea05a38342dcb62ad847098e778c72ed564b7c890117900c76f61ac39ef82104"},
+    {"path": "../t1/evidence.json", "bytes": 9897, "sha256": "de1baae6b959d57d02316a8d7c88ef0fd595b949c0ebaddc089d32ab1a7378ec"}
+  ],
+  "output_files": [
+    {"path": "../t1/change-set.json", "bytes": 13141, "sha256": "ff4076dda8b9acd131744a7316cc9964d9b60360ea1447960a8c7deb8d3a8a3f"},
+    {"path": "../t1/review-queue.md", "bytes": 2257, "sha256": "96aca4ecebc2655ce2d65baa160583080746e30971fbe2f54a9bb002da69a993"},
+    {"path": "../query-diff.md", "bytes": 2199, "sha256": "2ba91556128a4c0f93470a3d2c872e7dc6aeffa6fbc06a0ba5198181ebf22f7c"},
+    {"path": "../scoped-lint.json", "bytes": 2300, "sha256": "af3eadd55578addd44026e59f0821a3fe4abd6616a38259625b50d2a3611e95c"}
+  ],
+  "supported_claims": ["AAI-001", "AAI-002", "AAI-003", "AAI-008", "AAI-009", "AAI-010", "AAI-011", "AAI-012", "AAI-013", "AAI-014", "AAI-015"],
+  "counterevidence": ["compaction loss", "model-dependent harness overhead"],
+  "unknowns": ["AAI-005 organization fit"],
+  "contradictions": ["AAI-004", "AAI-016"],
+  "blockers": [],
+  "review_questions": ["모든 revised·stale·retirement-candidate가 T0 snapshot hash와 원문 history를 보존하는가?"],
+  "phase_exit": "delta-and-review-queue-ready",
+  "source_integrity": {
+    "before_manifest_sha256": "da34e5ae1078131612466c72a625f1d62f18fd277883fe35ed911b4a55184d4e",
+    "after_manifest_sha256": "da34e5ae1078131612466c72a625f1d62f18fd277883fe35ed911b4a55184d4e",
+    "changed_source_files": []
+  }
+}

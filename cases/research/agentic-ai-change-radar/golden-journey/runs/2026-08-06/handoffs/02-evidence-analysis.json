@@ -1,0 +1,35 @@
+{
+  "artifact_kind": "handoff",
+  "schema": "boi-local-case-handoff/v1",
+  "case_id": "agentic-ai-change-radar",
+  "run_id": "agentic-ai-golden-journey-2026-08-06",
+  "phase": "evidence-analysis",
+  "from_role": "source-researcher",
+  "to_role": "evidence-analyst",
+  "local_only": true,
+  "source_refs": [
+    {"type": "source-manifest", "ref": "../source-manifest.json", "sha256": "da34e5ae1078131612466c72a625f1d62f18fd277883fe35ed911b4a55184d4e"}
+  ],
+  "generated_from": [
+    {"type": "source-manifest", "ref": "../source-manifest.json", "sha256": "da34e5ae1078131612466c72a625f1d62f18fd277883fe35ed911b4a55184d4e"}
+  ],
+  "input_refs": [
+    {"path": "../source-manifest.json", "bytes": 11505, "sha256": "da34e5ae1078131612466c72a625f1d62f18fd277883fe35ed911b4a55184d4e"}
+  ],
+  "output_files": [
+    {"path": "../t0/evidence.json", "bytes": 5757, "sha256": "ea05a38342dcb62ad847098e778c72ed564b7c890117900c76f61ac39ef82104"},
+    {"path": "../t1/evidence.json", "bytes": 9897, "sha256": "de1baae6b959d57d02316a8d7c88ef0fd595b949c0ebaddc089d32ab1a7378ec"}
+  ],
+  "supported_claims": ["AAI-001", "AAI-002", "AAI-003", "AAI-004", "AAI-006", "AAI-007", "AAI-008", "AAI-009", "AAI-010", "AAI-011", "AAI-012", "AAI-013", "AAI-014", "AAI-015", "AAI-016"],
+  "counterevidence": ["AAI-004 version conflict", "AAI-011 compaction loss", "AAI-015 harness overhead", "AAI-016 product wind-down"],
+  "unknowns": ["AAI-005 organization fit", "actual conformance", "internal cost and security"],
+  "contradictions": ["AAI-004", "AAI-016"],
+  "blockers": [],
+  "review_questions": ["fact, vendor guidance, inference와 unknown이 분리됐는가?"],
+  "phase_exit": "evidence-separated-and-source-linked",
+  "source_integrity": {
+    "before_manifest_sha256": "da34e5ae1078131612466c72a625f1d62f18fd277883fe35ed911b4a55184d4e",
+    "after_manifest_sha256": "da34e5ae1078131612466c72a625f1d62f18fd277883fe35ed911b4a55184d4e",
+    "changed_source_files": []
+  }
+}

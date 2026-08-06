@@ -1,0 +1,12 @@
+{
+  "schema":"boi-global-insight-case-validation-hashes/v1","case_id":"fab-logistics-digital-twin","fixture_id":"PUB-FAB-DT-001-v1","source_count":5,"local_only":true,"remote_submitted":false,
+  "files":[
+    {"path":"fixed-query.txt","sha256":"a5346d896245d8e38e6bebbb4eda77555c0a793e689a5376f9c54cccb880c964","bytes":202},
+    {"path":"runs/2026-08-06/source-manifest.json","sha256":"bbcc2daddb5b0a28b115d77dc808fa58ead28a23653b8939a170b8671088b6fc","bytes":3755},
+    {"path":"runs/2026-08-06/evidence.json","sha256":"a6c562b01a34f7213871d6228d74e825177c2b2bfd564a5abb34aef116a13279","bytes":2903},
+    {"path":"runs/2026-08-06/query-answer.md","sha256":"0ef470244e89b6cc929d869542faaa13b4168534a131295ee024daa77ead490e","bytes":1452},
+    {"path":"runs/2026-08-06/review-queue.md","sha256":"930fd267b16bead91543357bb927ac81c578ac37ac996c6ae04a07c4fa4a5a88","bytes":623},
+    {"path":"runs/2026-08-06/reviewer-report.json","sha256":"4b6a7830afd743887f1fe60cf40fca564dbeff4c0425bea79d7687d08801764c","bytes":672},
+    {"path":"runs/2026-08-06/handoff.json","sha256":"95c9596f2e2955252446ac84ec62b9dc88f13b38d7a464ead3ef1620969ce678","bytes":1762}
+  ]
+}

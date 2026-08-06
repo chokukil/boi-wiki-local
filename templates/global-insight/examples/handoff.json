@@ -21,19 +21,30 @@
       "sha256": "ab34858a1c3227328e2142198f3eb8f227db69a8b85820d483b865bd8b1e31fb"
     }
   ],
-  "input_artifacts": [
+  "input_refs": [
     {
       "path": "cases/research/agentic-ai-change-radar/fixtures/sources/01-t0-anthropic-effective-agents.md",
       "bytes": 838,
       "sha256": "ab34858a1c3227328e2142198f3eb8f227db69a8b85820d483b865bd8b1e31fb"
     }
   ],
-  "output_artifacts": ["evidence.json"],
+  "output_files": [
+    {
+      "path": "evidence.json",
+      "bytes": 1270,
+      "sha256": "6c2d6122fc10bbef20f54a0fe3db27ce356b8c34a2824beb23703e866d87604f"
+    }
+  ],
   "supported_claims": ["AAI-001"],
   "counterevidence": [],
-  "unknown": ["특정 조직 적용성"],
-  "contradiction": [],
-  "blocker": [],
+  "unknowns": ["특정 조직 적용성"],
+  "contradictions": [],
+  "blockers": [],
   "review_questions": ["일반 원칙을 조직 적용 결론으로 확대하지 않았는가?"],
-  "phase_exit": "ready-for-evidence-analysis"
+  "phase_exit": "ready-for-evidence-analysis",
+  "source_integrity": {
+    "before_manifest_sha256": "d2b2f7d2620b7945c0bdc08a7b18932c9352608718388a047bd9284f7ba1d020",
+    "after_manifest_sha256": "d2b2f7d2620b7945c0bdc08a7b18932c9352608718388a047bd9284f7ba1d020",
+    "changed_source_files": []
+  }
 }

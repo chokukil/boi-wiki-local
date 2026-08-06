@@ -1,6 +1,6 @@
 # SK하이닉스 Agentic AI Change Radar
 
-상태: **Community — deterministic public source records 6개, 실제 runtime evidence 미수집**
+상태: **Community — deterministic public source records 14개, Codex authoring execution 1건, production benchmark 0/60**
 
 Case type: `golden-journey`
 기본 검토 주기: 주간 또는 사용자가 요청할 때
@@ -19,7 +19,7 @@ Case type: `golden-journey`
 
 ## 검증 입력
 
-Fixture `PUB-AAI-RADAR-001-v1`는 공개 1차 자료의 확인 범위와 SHA256을 고정한 source record 6개입니다. 원문 전체 복제본이 아닙니다.
+Fixture `PUB-AAI-RADAR-002-v1`는 공개 1차 자료의 확인 범위와 SHA256을 고정한 source record 14개입니다. 원문 전체 복제본이 아닙니다.
 
 [Fixture 설명](fixtures/fixture.md) · [source pack](fixtures/source-pack.md) · [manifest](fixtures/manifest.json)
 
@@ -33,7 +33,7 @@ Pattern: `route and scope → source capture → evidence comparison → delta c
 
 ## 정상 결과
 
-T0→T1에서 TypeScript 지원은 stale/revised, MCP discovery는 contradicted/revised, 평가 도구는 strengthened, Agent Builder는 new, SK하이닉스 적용성은 unknown으로 남는다.
+T0→T1에서 TypeScript와 persistent session 지원은 revised, MCP discovery는 contradicted/revised, agent evaluation은 strengthened, A2A·context engineering·bounded execution·long-running handoff는 new로 추가된다. Agent Builder의 2025년 출시는 history로 보존하되 2026년 종료 공지로 stale/retirement-candidate가 되며, SK하이닉스 적용성은 unknown으로 남는다.
 
 ## Second Brain 연결 — 선택
 
@@ -52,4 +52,4 @@ T0→T1에서 TypeScript 지원은 stale/revised, MCP discovery는 contradicted/
 
 ## Golden Journey oracle
 
-[T0 baseline snapshot](expected/t0-snapshot.md) · [T1 expected change set](expected/t1-change-set.md) · [expected review queue](expected/review-queue.md)
+[T0 baseline snapshot](expected/t0-snapshot.md) · [T1 expected change set](expected/t1-change-set.md) · [expected review queue](expected/review-queue.md) · [실제 T0/T1 실행](golden-journey/README.md)

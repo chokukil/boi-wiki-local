@@ -43,13 +43,14 @@
 
 ## Handoff
 
-- phase와 `from_role`, `to_role`
-- input/output path, bytes, SHA256
-- supported claims, counterevidence, unknown, contradiction
-- blocker, 다음 phase 진입 조건
-- source manifest before/after hash와 changed source files 0건
+- `artifact_kind`, `schema`, `case_id`, `run_id`, `phase`, `from_role`, `to_role`, `local_only`
+- `source_refs`, `generated_from`
+- `input_refs`, `output_files`: 각 path, bytes, SHA256
+- `supported_claims`, `counterevidence`, `unknowns`, `contradictions`
+- `blockers`, `review_questions`, `phase_exit`
+- `source_integrity`: manifest before/after hash와 `changed_source_files` 0건
 
-Case 실행은 `boi-local-case-handoff/v1`을 사용합니다.
+Case 실행은 [canonical JSON Schema](../../cases/_schema/handoff.schema.json)의 `boi-local-case-handoff/v1`을 사용합니다. 단수형 과거 별칭인 `unknown`, `contradiction`, `blocker`와 `input_artifacts`, `output_artifacts`는 허용하지 않습니다.
 
 ## 실패와 resume
 

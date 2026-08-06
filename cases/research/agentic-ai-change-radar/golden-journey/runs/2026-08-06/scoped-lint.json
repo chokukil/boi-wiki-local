@@ -1,0 +1,52 @@
+{
+  "artifact_kind": "scoped-lint",
+  "schema": "boi-global-insight-scoped-lint/v1",
+  "case_id": "agentic-ai-change-radar",
+  "run_id": "agentic-ai-golden-journey-2026-08-06",
+  "status": "passed-with-review-queue",
+  "local_only": true,
+  "source_refs": [
+    {
+      "type": "claim-delta",
+      "ref": "t1/change-set.json",
+      "sha256": "ff4076dda8b9acd131744a7316cc9964d9b60360ea1447960a8c7deb8d3a8a3f"
+    }
+  ],
+  "generated_from": [
+    {
+      "type": "claim-delta",
+      "ref": "t1/change-set.json",
+      "sha256": "ff4076dda8b9acd131744a7316cc9964d9b60360ea1447960a8c7deb8d3a8a3f"
+    }
+  ],
+  "scope": {
+    "changed_documents": [
+      "fixtures/manifest.json",
+      "fixtures/source-pack.md",
+      "fixtures/sources/04-t1-openai-agents-typescript.md",
+      "fixtures/sources/06-t1-openai-agentkit.md",
+      "fixtures/sources/07-t1-openai-responses-mcp-background.md",
+      "fixtures/sources/08-t1-google-a2a.md",
+      "fixtures/sources/09-t1-anthropic-effective-tools.md",
+      "fixtures/sources/10-t1-anthropic-context-engineering.md",
+      "fixtures/sources/11-t1-anthropic-sandboxing.md",
+      "fixtures/sources/12-t1-anthropic-long-running-harness.md",
+      "fixtures/sources/13-t1-anthropic-agent-evals.md",
+      "fixtures/sources/14-t1-anthropic-harness-design-2026.md",
+      "golden-journey/runs/2026-08-06"
+    ],
+    "linked_topics": ["agentic-ai-change-radar", "global-insight-runtime-contract"],
+    "affected_claims": ["AAI-001", "AAI-002", "AAI-003", "AAI-004", "AAI-005", "AAI-006", "AAI-007", "AAI-008", "AAI-009", "AAI-010", "AAI-011", "AAI-012", "AAI-013", "AAI-014", "AAI-015", "AAI-016"],
+    "navigation": ["cases/research/agentic-ai-change-radar/CASE.md", "cases/research/agentic-ai-change-radar/golden-journey/README.md"],
+    "new_contradictions": ["AAI-004 March versus June MCP authorization", "AAI-016 AgentKit launch versus wind-down"],
+    "stale_downstream": ["AAI-003 Node.js roadmap", "AAI-016 Agent Builder/Evals as long-term adoption choice"]
+  },
+  "findings": [
+    {
+      "severity": "review-required",
+      "finding": "MCP normative version, AgentKit lifecycle and all organization-fit claims remain human decisions.",
+      "action": "Keep both evidence sides and use t1/review-queue.md."
+    }
+  ],
+  "semantic_mutations": []
+}

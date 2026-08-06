@@ -44,7 +44,7 @@ CASES = {
         "failures": COMMON_FAILURES + [("새 자료 또는 변화 없음", "빈 change set으로 정상 종료", "다음 정기 검토")],
         "eligible": "사람이 검토한 정제 지식과 주문된 sanitized brief candidate",
         "blocked": "raw source, evidence, hypothesis, analysis log, agent memory, 개인 Harness card",
-        "normal": "T0→T1에서 TypeScript 지원은 stale/revised, MCP discovery는 contradicted/revised, 평가 도구는 strengthened, Agent Builder는 new, SK하이닉스 적용성은 unknown으로 남는다.",
+        "normal": "T0→T1에서 TypeScript와 persistent session 지원은 revised, MCP discovery는 contradicted/revised, agent evaluation은 strengthened, A2A·context engineering·bounded execution·long-running handoff는 new로 추가된다. Agent Builder의 2025년 출시는 history로 보존하되 2026년 종료 공지로 stale/retirement-candidate가 되며, SK하이닉스 적용성은 unknown으로 남는다.",
         "cadence": "주간 또는 사용자가 요청할 때",
         "case_type": "golden-journey",
     },
@@ -110,12 +110,29 @@ def case_page(spec: dict, fixture_id: str, source_count: int) -> str:
         "\n## Golden Journey oracle\n\n"
         "[T0 baseline snapshot](expected/t0-snapshot.md) · "
         "[T1 expected change set](expected/t1-change-set.md) · "
-        "[expected review queue](expected/review-queue.md)\n"
+        "[expected review queue](expected/review-queue.md) · "
+        "[실제 T0/T1 실행](golden-journey/README.md)\n"
         if spec["case_type"] == "golden-journey" else ""
     )
+    evidence_status = (
+        f"deterministic public source records {source_count}개, Codex authoring execution 1건, production benchmark 0/60"
+        if spec["case_type"] == "golden-journey"
+        else f"deterministic public source records {source_count}개, Codex baseline contract 실행 1건, production benchmark 0/60"
+    )
+    contract_validation = ""
+    if spec["case_type"] == "strategy-case":
+        contract_validation = (
+            "\n\n공개 fixture를 대상으로 고정 Query, evidence·counterevidence·unknown, review handoff와 privacy 경계를 실행한 "
+            "[baseline contract validation](contract-validation/README.md)이 있습니다. 이는 실제 FAB domain validation이 아닙니다."
+        )
+    elif spec["case_type"] == "long-term-knowledge-case":
+        contract_validation = (
+            "\n\n공개 fixture를 대상으로 고정 Query, evidence·counterevidence·unknown, review handoff와 privacy 경계를 실행한 "
+            "[baseline contract validation](contract-validation/README.md)이 있습니다. 이는 독립 scientific review나 재현 evidence가 아닙니다."
+        )
     return f'''# {spec["title"]}
 
-상태: **Community — deterministic public source records {source_count}개, 실제 runtime evidence 미수집**
+상태: **Community — {evidence_status}**
 
 Case type: `{spec["case_type"]}`
 기본 검토 주기: {spec["cadence"]}
@@ -136,7 +153,7 @@ Case type: `{spec["case_type"]}`
 
 Fixture `{fixture_id}`는 공개 1차 자료의 확인 범위와 SHA256을 고정한 source record {source_count}개입니다. 원문 전체 복제본이 아닙니다.
 
-[Fixture 설명](fixtures/fixture.md) · [source pack](fixtures/source-pack.md) · [manifest](fixtures/manifest.json)
+[Fixture 설명](fixtures/fixture.md) · [source pack](fixtures/source-pack.md) · [manifest](fixtures/manifest.json){contract_validation}
 
 ## Orchestration
 

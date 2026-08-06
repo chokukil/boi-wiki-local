@@ -1,0 +1,99 @@
+{
+  "artifact_kind": "review-decision",
+  "schema": "boi-global-insight-review-decision/v1",
+  "case_id": "agentic-ai-change-radar",
+  "run_id": "agentic-ai-golden-journey-2026-08-06",
+  "decision": "partial",
+  "reviewer": "codex-single-agent-source-first-review",
+  "producer": "codex-single-agent-producer-pass",
+  "execution_mode": "single-agent",
+  "procedural_independence": true,
+  "human_review_required": true,
+  "semantic_changes_approved": false,
+  "release_scope": "community-local-authoring-evidence",
+  "local_only": true,
+  "source_refs": [
+    {
+      "type": "source-manifest",
+      "ref": "../source-manifest.json",
+      "sha256": "da34e5ae1078131612466c72a625f1d62f18fd277883fe35ed911b4a55184d4e"
+    },
+    {
+      "type": "claim-delta",
+      "ref": "../t1/change-set.json",
+      "sha256": "ff4076dda8b9acd131744a7316cc9964d9b60360ea1447960a8c7deb8d3a8a3f"
+    }
+  ],
+  "generated_from": [
+    {
+      "type": "source-manifest",
+      "ref": "../source-manifest.json",
+      "sha256": "da34e5ae1078131612466c72a625f1d62f18fd277883fe35ed911b4a55184d4e"
+    },
+    {
+      "type": "claim-delta",
+      "ref": "../t1/change-set.json",
+      "sha256": "ff4076dda8b9acd131744a7316cc9964d9b60360ea1447960a8c7deb8d3a8a3f"
+    }
+  ],
+  "source_first_sequence": [
+    "fixture manifest and all 14 source records",
+    "official page checked scopes",
+    "T0 claim snapshot",
+    "T0 and T1 evidence",
+    "change set, review queue and same-Query answers"
+  ],
+  "reviewed_source_sha256": [
+    "ab34858a1c3227328e2142198f3eb8f227db69a8b85820d483b865bd8b1e31fb",
+    "18dc8a38ea052c0cc70a1a1ff68b59e68977c52ad03e900c7a2f1bb13030854d",
+    "a2a76a099a2b59f4de4478fa431b0bbf07fc6c7187c834da77c6d8e3aa7f54f6",
+    "60c26ff8d79a5654b67143ba3732f890f2a50e8660474b8ca7b849705f16332b",
+    "03eaedc393b03459971ff018504e7a203d09d0ac49c39cff3b3b083fa78f6dda",
+    "4c91e8105b0e1c001909b7597bf431896cd5784d406cc99775a601ed4277bb7c",
+    "cf41e8038d89d8814852d8cbe44622d16887ac3f407269b98349afd1a6b4923a",
+    "2bcfea3c9c07c793410299602ac1ba2847ca6ca10a2e05c848bad3916a2bab06",
+    "c743229967e427c7173f7ab657146654449743e52086f7b0afd7555df805a9ea",
+    "26e312fa1b1fb23724af1c405ca7da3668446cbb753772ccac81fcf44782310e",
+    "d0cc99b57262561cd77374b3dd25a98032a1d8e593abf96c02138f4b2ee8077c",
+    "253460fc984957367a80f9733f2e409913e52ea2c065e8b16a44f91111fdd284",
+    "abcc41429426d453a6959005605d05a7fb4c8cd186799c78e4c421202e58127d",
+    "eb90b01b52af6f06969d3261fb464aa9548655b182083aa73bc33ce368bab171"
+  ],
+  "reviewed_artifacts": [
+    {"path": "../source-manifest.json", "bytes": 11505, "sha256": "da34e5ae1078131612466c72a625f1d62f18fd277883fe35ed911b4a55184d4e"},
+    {"path": "../t0/evidence.json", "bytes": 5757, "sha256": "ea05a38342dcb62ad847098e778c72ed564b7c890117900c76f61ac39ef82104"},
+    {"path": "../t0/claim-snapshot.md", "bytes": 1935, "sha256": "61f1573cab61d5eeb87a9366893adfb2fda26c65872ce312ab6f3ad62b0240f0"},
+    {"path": "../t0/query-answer.md", "bytes": 2041, "sha256": "4927321e941a7611e12653883141f3b570f616797a4ff0637aca6c29838b4ace"},
+    {"path": "../t1/evidence.json", "bytes": 9897, "sha256": "de1baae6b959d57d02316a8d7c88ef0fd595b949c0ebaddc089d32ab1a7378ec"},
+    {"path": "../t1/change-set.json", "bytes": 13141, "sha256": "ff4076dda8b9acd131744a7316cc9964d9b60360ea1447960a8c7deb8d3a8a3f"},
+    {"path": "../t1/review-queue.md", "bytes": 2257, "sha256": "96aca4ecebc2655ce2d65baa160583080746e30971fbe2f54a9bb002da69a993"},
+    {"path": "../t1/query-answer.md", "bytes": 4327, "sha256": "531ec30321de2e0060aea1ed7690298df9deb3e1f3933373bb4a42e0d5c585e0"},
+    {"path": "../query-diff.md", "bytes": 2199, "sha256": "2ba91556128a4c0f93470a3d2c872e7dc6aeffa6fbc06a0ba5198181ebf22f7c"},
+    {"path": "../scoped-lint.json", "bytes": 2300, "sha256": "af3eadd55578addd44026e59f0821a3fe4abd6616a38259625b50d2a3611e95c"}
+  ],
+  "material_claims": [
+    {"claim_ref": "AAI-003", "finding": "T0 roadmap and current TypeScript support are correctly separated; history preserved."},
+    {"claim_ref": "AAI-004", "finding": "March and June MCP authorization guidance materially conflict across versions; no implementation version was assumed."},
+    {"claim_ref": "AAI-016", "finding": "AgentKit launch and later wind-down are both preserved; durable adoption claim is not approved."},
+    {"claim_ref": "AAI-005", "finding": "Organization fit remains unknown; no internal condition was inferred."}
+  ],
+  "contradictions": [
+    "AAI-004: MCP 2025-03 base URL fallback versus 2025-06 Protected Resource Metadata and Resource Indicators",
+    "AAI-016: Agent Builder/Evals launch framing versus 2026-06-03 wind-down notice",
+    "AAI-011: compaction continuity benefit versus possible loss of subtle state",
+    "AAI-015: planner/evaluator lift at the task edge versus avoidable overhead for stronger models"
+  ],
+  "unresolved": [
+    "actual SK hynix data, ACL, network and model-processing boundary",
+    "representative-task baseline, quality, latency and cost",
+    "MCP/A2A conformance and identity mapping",
+    "memory retention, deletion and compaction recall policy",
+    "external independent reviewer and human semantic decision"
+  ],
+  "decision_reason": "Source and artifact integrity pass for a public Community example, but material security, retirement and organization-fit decisions require a human reviewer. Single-agent procedural separation is not independent human approval.",
+  "remote_activity": {
+    "mcp_writes": 0,
+    "remote_submits": 0,
+    "boi_remote_source_bytes": 0
+  }
+}

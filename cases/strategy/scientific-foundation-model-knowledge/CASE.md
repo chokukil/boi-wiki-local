@@ -1,6 +1,6 @@
 # Scientific Foundation Model Knowledge
 
-상태: **Community — deterministic public source records 5개, 실제 runtime evidence 미수집**
+상태: **Community — deterministic public source records 5개, Codex baseline contract 실행 1건, production benchmark 0/60**
 
 Case type: `long-term-knowledge-case`
 기본 검토 주기: 분기 또는 정정·철회·반례·중요 후속 연구 발생 시
@@ -22,6 +22,8 @@ Scientific Foundation Model 자료를 법칙·가정·prediction·재현·반례
 Fixture `PUB-SFM-001-v1`는 공개 1차 자료의 확인 범위와 SHA256을 고정한 source record 5개입니다. 원문 전체 복제본이 아닙니다.
 
 [Fixture 설명](fixtures/fixture.md) · [source pack](fixtures/source-pack.md) · [manifest](fixtures/manifest.json)
+
+공개 fixture를 대상으로 고정 Query, evidence·counterevidence·unknown, review handoff와 privacy 경계를 실행한 [baseline contract validation](contract-validation/README.md)이 있습니다. 이는 독립 scientific review나 재현 evidence가 아닙니다.
 
 ## Orchestration
 

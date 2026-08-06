@@ -649,7 +649,7 @@ Capture → Curator → Reviewer → Local result → optional promotion preview
                 self.assertTrue(path.is_file(), f"{entry['case_id']}: {item['path']}")
                 self.assertEqual(item["bytes"], path.stat().st_size)
                 self.assertEqual(item["sha256"], hashlib.sha256(path.read_bytes()).hexdigest())
-        self.assertEqual(36, source_total)
+        self.assertEqual(44, source_total)
 
     def test_every_case_uses_a_frozen_v2_runtime_protocol(self) -> None:
         catalog = json.loads((REPO / "cases" / "catalog.json").read_text(encoding="utf-8"))

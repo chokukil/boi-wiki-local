@@ -7,14 +7,14 @@
       "prompt_id": "p01",
       "scenario": "normal-full-request",
       "label": "T0 공개 source Capture와 baseline snapshot 생성",
-      "user_prompt": "T0 공개 source Capture와 baseline snapshot 생성 입력 범위는 sources/01-t0-anthropic-effective-agents.md, sources/02-t0-openai-agent-building-blocks.md, sources/03-t0-mcp-authorization-2025-03.md, sources/04-t1-openai-agents-typescript.md, sources/05-t1-mcp-key-changes-2025-06.md, sources/06-t1-openai-agentkit.md이다. 원본 SHA256과 Local Private 경계를 지키고 확인되지 않은 사실은 추측하지 마. OKF 0.1과 BoI Profile 0.1-local 결과만 만들며, 독립 검토와 실패 경로를 남기고 원격 제출은 수행하지 마.",
+      "user_prompt": "T0 공개 source Capture와 baseline snapshot 생성 입력 범위는 sources/01-t0-anthropic-effective-agents.md, sources/02-t0-openai-agent-building-blocks.md, sources/03-t0-mcp-authorization-2025-03.md, sources/04-t1-openai-agents-typescript.md, sources/05-t1-mcp-key-changes-2025-06.md, sources/06-t1-openai-agentkit.md, sources/07-t1-openai-responses-mcp-background.md, sources/08-t1-google-a2a.md, sources/09-t1-anthropic-effective-tools.md, sources/10-t1-anthropic-context-engineering.md, sources/11-t1-anthropic-sandboxing.md, sources/12-t1-anthropic-long-running-harness.md, sources/13-t1-anthropic-agent-evals.md, sources/14-t1-anthropic-harness-design-2026.md이다. 원본 SHA256과 Local Private 경계를 지키고 확인되지 않은 사실은 추측하지 마. OKF 0.1과 BoI Profile 0.1-local 결과만 만들며, 독립 검토와 실패 경로를 남기고 원격 제출은 수행하지 마.",
       "interaction": {
         "mode": "single-turn",
         "turns": [
           {
             "turn": 1,
             "role": "user",
-            "text": "T0 공개 source Capture와 baseline snapshot 생성 입력 범위는 sources/01-t0-anthropic-effective-agents.md, sources/02-t0-openai-agent-building-blocks.md, sources/03-t0-mcp-authorization-2025-03.md, sources/04-t1-openai-agents-typescript.md, sources/05-t1-mcp-key-changes-2025-06.md, sources/06-t1-openai-agentkit.md이다. 원본 SHA256과 Local Private 경계를 지키고 확인되지 않은 사실은 추측하지 마. OKF 0.1과 BoI Profile 0.1-local 결과만 만들며, 독립 검토와 실패 경로를 남기고 원격 제출은 수행하지 마."
+            "text": "T0 공개 source Capture와 baseline snapshot 생성 입력 범위는 sources/01-t0-anthropic-effective-agents.md, sources/02-t0-openai-agent-building-blocks.md, sources/03-t0-mcp-authorization-2025-03.md, sources/04-t1-openai-agents-typescript.md, sources/05-t1-mcp-key-changes-2025-06.md, sources/06-t1-openai-agentkit.md, sources/07-t1-openai-responses-mcp-background.md, sources/08-t1-google-a2a.md, sources/09-t1-anthropic-effective-tools.md, sources/10-t1-anthropic-context-engineering.md, sources/11-t1-anthropic-sandboxing.md, sources/12-t1-anthropic-long-running-harness.md, sources/13-t1-anthropic-agent-evals.md, sources/14-t1-anthropic-harness-design-2026.md이다. 원본 SHA256과 Local Private 경계를 지키고 확인되지 않은 사실은 추측하지 마. OKF 0.1과 BoI Profile 0.1-local 결과만 만들며, 독립 검토와 실패 경로를 남기고 원격 제출은 수행하지 마."
           }
         ]
       },
@@ -25,7 +25,15 @@
         "sources/03-t0-mcp-authorization-2025-03.md",
         "sources/04-t1-openai-agents-typescript.md",
         "sources/05-t1-mcp-key-changes-2025-06.md",
-        "sources/06-t1-openai-agentkit.md"
+        "sources/06-t1-openai-agentkit.md",
+        "sources/07-t1-openai-responses-mcp-background.md",
+        "sources/08-t1-google-a2a.md",
+        "sources/09-t1-anthropic-effective-tools.md",
+        "sources/10-t1-anthropic-context-engineering.md",
+        "sources/11-t1-anthropic-sandboxing.md",
+        "sources/12-t1-anthropic-long-running-harness.md",
+        "sources/13-t1-anthropic-agent-evals.md",
+        "sources/14-t1-anthropic-harness-design-2026.md"
       ],
       "expected_operations": [
         "inventory-and-hash",
@@ -37,7 +45,7 @@
         "evidence-matrix.md",
         "change-set.md",
         "review-queue.md",
-        "T0→T1에서 TypeScript 지원은 stale/revised, MCP discovery는 contradicted/revised, 평가 도구는 strengthened, Agent Builder는 new, SK하이닉스 적용성은 unknown으로 남는다."
+        "T0→T1에서 TypeScript와 persistent session 지원은 revised, MCP discovery는 contradicted/revised, agent evaluation은 strengthened, A2A·context engineering·bounded execution·long-running handoff는 new로 추가된다. Agent Builder의 2025년 출시는 history로 보존하되 2026년 종료 공지로 stale/retirement-candidate가 되며, SK하이닉스 적용성은 unknown으로 남는다."
       ],
       "forbidden_outcomes": [
         "source mutation",
@@ -90,21 +98,21 @@
       "prompt_id": "p03",
       "scenario": "missing-damaged-inaccessible-input",
       "label": "접근 불가 source의 partial 또는 blocked 처리",
-      "user_prompt": "접근 불가 source의 partial 또는 blocked 처리 입력 범위는 sources/05-t1-mcp-key-changes-2025-06.md, sources/06-t1-openai-agentkit.md이다. 원본 SHA256과 Local Private 경계를 지키고 확인되지 않은 사실은 추측하지 마. OKF 0.1과 BoI Profile 0.1-local 결과만 만들며, 독립 검토와 실패 경로를 남기고 원격 제출은 수행하지 마.",
+      "user_prompt": "접근 불가 source의 partial 또는 blocked 처리 입력 범위는 sources/13-t1-anthropic-agent-evals.md, sources/14-t1-anthropic-harness-design-2026.md이다. 원본 SHA256과 Local Private 경계를 지키고 확인되지 않은 사실은 추측하지 마. OKF 0.1과 BoI Profile 0.1-local 결과만 만들며, 독립 검토와 실패 경로를 남기고 원격 제출은 수행하지 마.",
       "interaction": {
         "mode": "single-turn",
         "turns": [
           {
             "turn": 1,
             "role": "user",
-            "text": "접근 불가 source의 partial 또는 blocked 처리 입력 범위는 sources/05-t1-mcp-key-changes-2025-06.md, sources/06-t1-openai-agentkit.md이다. 원본 SHA256과 Local Private 경계를 지키고 확인되지 않은 사실은 추측하지 마. OKF 0.1과 BoI Profile 0.1-local 결과만 만들며, 독립 검토와 실패 경로를 남기고 원격 제출은 수행하지 마."
+            "text": "접근 불가 source의 partial 또는 blocked 처리 입력 범위는 sources/13-t1-anthropic-agent-evals.md, sources/14-t1-anthropic-harness-design-2026.md이다. 원본 SHA256과 Local Private 경계를 지키고 확인되지 않은 사실은 추측하지 마. OKF 0.1과 BoI Profile 0.1-local 결과만 만들며, 독립 검토와 실패 경로를 남기고 원격 제출은 수행하지 마."
           }
         ]
       },
       "seed_id": "s00-empty",
       "inputs": [
-        "sources/05-t1-mcp-key-changes-2025-06.md",
-        "sources/06-t1-openai-agentkit.md"
+        "sources/13-t1-anthropic-agent-evals.md",
+        "sources/14-t1-anthropic-harness-design-2026.md"
       ],
       "expected_operations": [
         "validate-input",
@@ -164,14 +172,14 @@
       "prompt_id": "p05",
       "scenario": "large-pack-follow-up-and-resume",
       "label": "중단된 대규모 Update의 hash 기반 resume",
-      "user_prompt": "중단된 대규모 Update의 hash 기반 resume 입력 범위는 sources/01-t0-anthropic-effective-agents.md, sources/02-t0-openai-agent-building-blocks.md, sources/03-t0-mcp-authorization-2025-03.md, sources/04-t1-openai-agents-typescript.md, sources/05-t1-mcp-key-changes-2025-06.md, sources/06-t1-openai-agentkit.md이다. 원본 SHA256과 Local Private 경계를 지키고 확인되지 않은 사실은 추측하지 마. OKF 0.1과 BoI Profile 0.1-local 결과만 만들며, 독립 검토와 실패 경로를 남기고 원격 제출은 수행하지 마.",
+      "user_prompt": "중단된 대규모 Update의 hash 기반 resume 입력 범위는 sources/01-t0-anthropic-effective-agents.md, sources/02-t0-openai-agent-building-blocks.md, sources/03-t0-mcp-authorization-2025-03.md, sources/04-t1-openai-agents-typescript.md, sources/05-t1-mcp-key-changes-2025-06.md, sources/06-t1-openai-agentkit.md, sources/07-t1-openai-responses-mcp-background.md, sources/08-t1-google-a2a.md, sources/09-t1-anthropic-effective-tools.md, sources/10-t1-anthropic-context-engineering.md, sources/11-t1-anthropic-sandboxing.md, sources/12-t1-anthropic-long-running-harness.md, sources/13-t1-anthropic-agent-evals.md, sources/14-t1-anthropic-harness-design-2026.md이다. 원본 SHA256과 Local Private 경계를 지키고 확인되지 않은 사실은 추측하지 마. OKF 0.1과 BoI Profile 0.1-local 결과만 만들며, 독립 검토와 실패 경로를 남기고 원격 제출은 수행하지 마.",
       "interaction": {
         "mode": "single-turn",
         "turns": [
           {
             "turn": 1,
             "role": "user",
-            "text": "중단된 대규모 Update의 hash 기반 resume 입력 범위는 sources/01-t0-anthropic-effective-agents.md, sources/02-t0-openai-agent-building-blocks.md, sources/03-t0-mcp-authorization-2025-03.md, sources/04-t1-openai-agents-typescript.md, sources/05-t1-mcp-key-changes-2025-06.md, sources/06-t1-openai-agentkit.md이다. 원본 SHA256과 Local Private 경계를 지키고 확인되지 않은 사실은 추측하지 마. OKF 0.1과 BoI Profile 0.1-local 결과만 만들며, 독립 검토와 실패 경로를 남기고 원격 제출은 수행하지 마."
+            "text": "중단된 대규모 Update의 hash 기반 resume 입력 범위는 sources/01-t0-anthropic-effective-agents.md, sources/02-t0-openai-agent-building-blocks.md, sources/03-t0-mcp-authorization-2025-03.md, sources/04-t1-openai-agents-typescript.md, sources/05-t1-mcp-key-changes-2025-06.md, sources/06-t1-openai-agentkit.md, sources/07-t1-openai-responses-mcp-background.md, sources/08-t1-google-a2a.md, sources/09-t1-anthropic-effective-tools.md, sources/10-t1-anthropic-context-engineering.md, sources/11-t1-anthropic-sandboxing.md, sources/12-t1-anthropic-long-running-harness.md, sources/13-t1-anthropic-agent-evals.md, sources/14-t1-anthropic-harness-design-2026.md이다. 원본 SHA256과 Local Private 경계를 지키고 확인되지 않은 사실은 추측하지 마. OKF 0.1과 BoI Profile 0.1-local 결과만 만들며, 독립 검토와 실패 경로를 남기고 원격 제출은 수행하지 마."
           }
         ]
       },
@@ -182,7 +190,15 @@
         "sources/03-t0-mcp-authorization-2025-03.md",
         "sources/04-t1-openai-agents-typescript.md",
         "sources/05-t1-mcp-key-changes-2025-06.md",
-        "sources/06-t1-openai-agentkit.md"
+        "sources/06-t1-openai-agentkit.md",
+        "sources/07-t1-openai-responses-mcp-background.md",
+        "sources/08-t1-google-a2a.md",
+        "sources/09-t1-anthropic-effective-tools.md",
+        "sources/10-t1-anthropic-context-engineering.md",
+        "sources/11-t1-anthropic-sandboxing.md",
+        "sources/12-t1-anthropic-long-running-harness.md",
+        "sources/13-t1-anthropic-agent-evals.md",
+        "sources/14-t1-anthropic-harness-design-2026.md"
       ],
       "expected_operations": [
         "verify-processing-state",

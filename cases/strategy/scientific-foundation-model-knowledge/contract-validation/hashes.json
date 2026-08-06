@@ -1,0 +1,12 @@
+{
+  "schema":"boi-global-insight-case-validation-hashes/v1","case_id":"scientific-foundation-model-knowledge","fixture_id":"PUB-SFM-001-v1","source_count":5,"local_only":true,"remote_submitted":false,
+  "files":[
+    {"path":"fixed-query.txt","sha256":"9de99466e4c5872585ab6934cab4931d65951a27779235cc6af58c32ba4af548","bytes":211},
+    {"path":"runs/2026-08-06/source-manifest.json","sha256":"4e4252641c8c1b9a379e48115ed0da9ff54f0a0e4543475ce63d9d3c9e2e61e3","bytes":3651},
+    {"path":"runs/2026-08-06/evidence.json","sha256":"4ff4325e3c1131caf49139fc140234902b2d66530a884dff2fbfc5bf5970a760","bytes":2968},
+    {"path":"runs/2026-08-06/query-answer.md","sha256":"b66901942407663686649a185adce920a40fda22eb0f53b42edcbafa9125a207","bytes":1541},
+    {"path":"runs/2026-08-06/review-queue.md","sha256":"0740e3a167211cff076c3896c2a31a106d74260f7fe6df0cc6787ad4517feb6e","bytes":594},
+    {"path":"runs/2026-08-06/reviewer-report.json","sha256":"8689b212454b51aba242710a6dd04a7c20f3c4a76741c160f2ca0bb57a2e009c","bytes":681},
+    {"path":"runs/2026-08-06/handoff.json","sha256":"987096dfca35bdc9d9690a9f576ebb431011e1278a4c09a786c95a6d1d4eed04","bytes":1853}
+  ]
+}

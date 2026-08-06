@@ -1,0 +1,9 @@
+{
+  "artifact_kind":"handoff","schema":"boi-local-case-handoff/v1","case_id":"scientific-foundation-model-knowledge","run_id":"scientific-foundation-baseline-2026-08-06","phase":"baseline-review","from_role":"change-curator","to_role":"independent-reviewer","local_only":true,
+  "source_refs":[{"type":"fixture-manifest","ref":"../../../fixtures/manifest.json","sha256":"d2a5261631c34f0fd6e5b1a30df13ae84d30819fee30a45c7078b3dfccda7207"}],
+  "generated_from":[{"type":"source-manifest","ref":"source-manifest.json","sha256":"4e4252641c8c1b9a379e48115ed0da9ff54f0a0e4543475ce63d9d3c9e2e61e3"}],
+  "input_refs":[{"path":"source-manifest.json","sha256":"4e4252641c8c1b9a379e48115ed0da9ff54f0a0e4543475ce63d9d3c9e2e61e3","bytes":3651}],
+  "output_files":[{"path":"evidence.json","sha256":"4ff4325e3c1131caf49139fc140234902b2d66530a884dff2fbfc5bf5970a760","bytes":2968},{"path":"query-answer.md","sha256":"b66901942407663686649a185adce920a40fda22eb0f53b42edcbafa9125a207","bytes":1541},{"path":"review-queue.md","sha256":"0740e3a167211cff076c3896c2a31a106d74260f7fe6df0cc6787ad4517feb6e","bytes":594}],
+  "supported_claims":["SFM-001","SFM-002","SFM-003"],"counterevidence":["강한 task-specific empirical results는 존재함","preprint와 simulation evidence에는 범위 제한이 있음"],"unknowns":["독립 재현, law violation, cross-domain 및 semiconductor applicability"],"contradictions":[],"blockers":["external scientific review와 reproduction evidence 없음"],"review_questions":["prediction, law satisfaction와 reproduction이 분리됐는가?"],"phase_exit":"partial; Community contract evidence only",
+  "source_integrity":{"before_manifest_sha256":"d2a5261631c34f0fd6e5b1a30df13ae84d30819fee30a45c7078b3dfccda7207","after_manifest_sha256":"d2a5261631c34f0fd6e5b1a30df13ae84d30819fee30a45c7078b3dfccda7207","changed_source_files":[]}
+}

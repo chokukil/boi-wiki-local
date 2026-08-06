@@ -20,7 +20,7 @@
     {
       "claim_ref": "AAI-001",
       "claim": "단순 workflow와 자율 agent를 구분하고 복잡도에 따라 선택해야 한다.",
-      "supporting_evidence": ["PUB-AAI-RADAR-001-v1:01#verified-claims"],
+      "supporting_evidence": ["PUB-AAI-RADAR-002-v1:01#verified-claims"],
       "counterevidence": [],
       "verification_level": "primary-source-record",
       "uncertainty": "공개 일반론이며 특정 조직 적용성은 검증하지 않음",

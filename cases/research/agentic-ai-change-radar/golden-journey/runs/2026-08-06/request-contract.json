@@ -1,0 +1,37 @@
+{
+  "artifact_kind": "request-contract",
+  "schema": "boi-global-insight-request/v1",
+  "case_id": "agentic-ai-change-radar",
+  "run_id": "agentic-ai-golden-journey-2026-08-06",
+  "tool_id": "deep-research",
+  "objective": "공개 공식 자료로 T0 baseline을 고정하고 T1 Update 뒤 같은 Query의 답변 변화를 재현한다.",
+  "success_conditions": [
+    "T0 claim snapshot과 Query 답변이 source hash에 고정됨",
+    "T1 change set이 new, strengthened, revised, contradicted, stale, retirement-candidate, unknown을 보존함",
+    "review queue와 과거 판단 이력이 source-first review까지 연결됨",
+    "Windows PowerShell에서 Python 없이 동일 hash와 Query를 재검증함"
+  ],
+  "scope": {
+    "topics": ["runtime", "orchestration", "tool-use", "memory-context", "evaluation", "security"],
+    "source_policy": "public-official-primary-first",
+    "t0_cutoff": "2025-03-26",
+    "t1_checked_at": "2026-08-06",
+    "fixture_id": "PUB-AAI-RADAR-002-v1"
+  },
+  "exclusions": [
+    "SK하이닉스 내부 데이터 또는 비공개 운영 조건 추정",
+    "제품 발표를 비교 효과나 조직 적합성 증거로 일반화",
+    "주문하지 않은 임원 보고서 생성",
+    "Local Private 또는 원격 promotion"
+  ],
+  "fixed_query": {
+    "path": "../../fixed-query.txt",
+    "bytes": 233,
+    "sha256": "2d9541b2df6271e8fcfcc812529e2006e5c069b6b57ae83e7fb03772350c7b13"
+  },
+  "reviewer": "codex-single-agent-source-first-review",
+  "execution_mode": "single-agent",
+  "review_independence": "procedural-source-first-pass",
+  "local_only": true,
+  "remote_submit": false
+}

@@ -3,7 +3,7 @@ okf_version: "0.1"
 boi_profile_version: "0.1-local"
 type: boi/local-knowledge
 title: "SK하이닉스 Agentic AI Change Radar existing evaluation knowledge"
-description: "PUB-AAI-RADAR-001-v1 evaluation seed"
+description: "PUB-AAI-RADAR-002-v1 evaluation seed"
 tags: [CaseEval, PublicFixture]
 boi_id: boi:private:0000000:eval:agentic-ai-change-radar
 visibility: local-private
@@ -28,4 +28,4 @@ source_refs:
 
 # SK하이닉스 Agentic AI Change Radar existing evaluation knowledge
 
-T0→T1에서 TypeScript 지원은 stale/revised, MCP discovery는 contradicted/revised, 평가 도구는 strengthened, Agent Builder는 new, SK하이닉스 적용성은 unknown으로 남는다.
+T0→T1에서 TypeScript와 persistent session 지원은 revised, MCP discovery는 contradicted/revised, agent evaluation은 strengthened, A2A·context engineering·bounded execution·long-running handoff는 new로 추가된다. Agent Builder의 2025년 출시는 history로 보존하되 2026년 종료 공지로 stale/retirement-candidate가 되며, SK하이닉스 적용성은 unknown으로 남는다.
