@@ -1,0 +1,73 @@
+{
+  "schema": "boi-local-independent-evaluator-evidence/v1",
+  "reviewer_id": "codex-blind-gpt-5.6-sol",
+  "reviewer_runtime_version": "codex-cli 0.146.0",
+  "independent_session": true,
+  "blind_order": "with-harness-then-baseline",
+  "reviewer_bundle_sha256": "e932f017ea46af60be638863f076af0e90ff3eca27e64856a768000dcac3a823",
+  "result": {
+    "schema": "boi-local-blind-review-result/v1",
+    "winner": "A",
+    "scores": {
+      "A": {
+        "dimensions": {
+          "schema-and-structure": 20,
+          "source-and-provenance": 19,
+          "knowledge-maintenance": 9,
+          "grounded-reasoning": 13,
+          "review-and-failure-path": 7,
+          "promotion-boundary": 10,
+          "non-developer-ux": 8
+        },
+        "total": 86
+      },
+      "B": {
+        "dimensions": {
+          "schema-and-structure": 5,
+          "source-and-provenance": 4,
+          "knowledge-maintenance": 4,
+          "grounded-reasoning": 9,
+          "review-and-failure-path": 2,
+          "promotion-boundary": 5,
+          "non-developer-ux": 9
+        },
+        "total": 0
+      }
+    },
+    "hard_failures": {
+      "A": [],
+      "B": [
+        "Missing conforming OKF 0.1 / BoI Profile 0.1-local: profile.json has no schema or profile-version declaration, and the knowledge artifact has no OKF/BoI metadata."
+      ]
+    },
+    "evidence": {
+      "A": [
+        "Knowledge and source-record front matter explicitly declare okf_version 0.1 and boi_profile_version 0.1-local with Local Private types and lifecycle fields.",
+        "source-records/01-decision-chat.md records the source filename, local reference, and exact SHA256; the knowledge note links back through generated_from.",
+        "The knowledge note retains only the durable Friday 15:00 decision and its stated reason; the lunch instruction is absent.",
+        "The note marks the claim direct, identifies the unspecified timezone as a limitation, and records creation history and a review date.",
+        "Per-artifact local_only and promotion_status fields, disabled remote activity, and preview-required scope changes establish a strong promotion boundary.",
+        "setup-audit.json provides validation evidence, but it does not document an actionable failure workflow or clearly independent review.",
+        "The completion summary is concise and understandable, though it contains schema jargon and an absolute link outside the review bundle."
+      ],
+      "B": [
+        "profile.json contains useful local-private, durable-only, and remote-disabled preferences but does not implement the required versioned OKF/BoI profile.",
+        "weekly-knowledge-review.md accurately preserves the durable decision and reason while excluding the transient lunch note.",
+        "The source link resolves toward B/sources/01-decision-chat.txt, which is absent, and there is no source hash, immutable source record, or generated_from relationship.",
+        "The active status and change-trigger sentence provide limited maintenance guidance, but there is no create/noop/append/revise model, preserved correction history, or review queue.",
+        "Remote access is disabled in profile.json, but the decision file lies outside the private profile hierarchy and has no artifact-level Local-only or promotion metadata.",
+        "README.md and COMPLETION_SUMMARY.txt provide the clearest non-developer explanation of the two candidates."
+      ]
+    },
+    "rationale": "A is the clear winner because it supplies versioned OKF/BoI metadata, strong provenance, structured Local-only controls, grounded limitations, indexes, and an audit trail. Its main weaknesses are incomplete maintenance-operation coverage and limited failure-path documentation. B communicates well and captures the source decision accurately, but its generic profile is not a conforming OKF 0.1 / BoI Profile 0.1-local artifact, triggering the rubric's hard-failure cap; it also lacks verifiable provenance and artifact-level promotion controls.",
+    "validated_capped_totals": {
+      "A": 86,
+      "B": 0
+    },
+    "review_result_sha256": "1e143632ebadc0e2f767c5a3ccff4df24ad876966ede38bc8275ede2a945149d",
+    "mapping_capture_sha256": {
+      "A": "81c5782107e664c439dec5e40a4634901ad906bc1e1160720641c51351cd2ec7",
+      "B": "ae96603808f9d5a13912bde9bb64ef18f50f836b8fc1fb813ae3ee097e5e465c"
+    }
+  }
+}

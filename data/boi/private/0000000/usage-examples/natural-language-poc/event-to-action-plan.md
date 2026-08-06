@@ -4,6 +4,13 @@ boi_profile_version: "0.1-local"
 type: boi/local-example
 title: "Event to SOP/Action/Langflow 계획 예제"
 description: "업무 이벤트가 발생했을 때 SOP, Action, Manual handoff, Langflow가 이어지는 흐름을 계획하는 예제"
+boi_id: boi:private:0000000:legacy:event-to-action-plan:06835aa10e
+classification: internal
+owner: "0000000"
+artifact_visibility: working
+lifecycle_state: working
+memory_candidate: false
+cleanup_policy: keep
 timestamp: 2026-06-20T21:54:00+09:00
 employee_id: "0000000"
 local_owner_ref: local-private:0000000

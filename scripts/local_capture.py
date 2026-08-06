@@ -1,77 +1,72 @@
 #!/usr/bin/env python3
-"""Capture a local work note as a private BoI Markdown candidate."""
+"""Capture an immutable Local Private source note."""
 
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
-import os
-import re
 import sys
-from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-KST = timezone(timedelta(hours=9))
-
-
-def slugify(value: str) -> str:
-    slug = re.sub(r"[^A-Za-z0-9._-]+", "-", value.strip().lower()).strip("-")
-    return slug[:80] or "local-capture"
-
-
-def employee_id_from_env(raw: str | None) -> str:
-    employee_id = raw or os.getenv("BOI_LOCAL_EMPLOYEE_ID") or "0000000"
-    if not re.fullmatch(r"[0-9]{7}", employee_id):
-        raise SystemExit("BOI_LOCAL_EMPLOYEE_ID must be a numeric 7-digit employee ID")
-    return employee_id
-
-
-def private_root(root: Path, employee_id: str) -> Path:
-    return root / "data" / "boi" / "private" / employee_id
+from boi_local_common import (
+    SOURCE_END,
+    SOURCE_START,
+    append_index_link,
+    append_log,
+    atomic_write,
+    workspace_employee_id,
+    local_frontmatter,
+    normalize_text,
+    now_kst,
+    private_root,
+    relative_to_root,
+    sha256_text,
+    slugify,
+)
 
 
 def check_workspace(root: Path, employee_id: str) -> dict[str, object]:
     base = private_root(root, employee_id)
     required = [base / "notes", base / "promotion-drafts", base / "reports"]
-    missing = [str(path.relative_to(root)) for path in required if not path.exists()]
+    missing = [relative_to_root(root, path) for path in required if not path.exists()]
     return {"ok": not missing, "employee_id": employee_id, "missing": missing}
 
 
 def markdown_doc(employee_id: str, title: str, body: str, source: str, kind: str) -> str:
-    now = datetime.now(KST)
-    digest = hashlib.sha256(body.encode("utf-8")).hexdigest()[:12]
-    review_after = (now + timedelta(days=30)).date().isoformat()
-    metadata = f"""---
-okf_version: "0.1"
-boi_profile_version: "0.1"
-type: boi/local-capture
-title: {json.dumps(title, ensure_ascii=False)}
-description: {json.dumps("Local Private capture candidate", ensure_ascii=False)}
-tags: [LocalPrivate, SecondBrain, Capture]
-timestamp: {now.isoformat()}
-boi_id: boi:private:{employee_id}:capture:{now.strftime('%Y%m%d%H%M%S')}:{digest}
-visibility: private
-classification: internal
-owner: "{employee_id}"
-employee_id: "{employee_id}"
-local_owner_ref: local-private:{employee_id}
-promotion_status: local_only
-artifact_visibility: working
-lifecycle_state: working
-memory_candidate: true
-cleanup_policy: keep
-retention_class: working_note
-review_after: {review_after}
-source_refs:
-  - type: local-capture
-    ref: {json.dumps(source or kind, ensure_ascii=False)}
-review:
-  reviewer: local-owner
-  review_status: draft
----
-"""
-    return metadata + "\n# Summary\n\n" + body.strip() + "\n\n# Review Checklist\n\n- Keep as working note, mark as memory, archive, or create a promotion draft.\n- Do not send raw local content to remote BoI Wiki without explicit approval.\n"
+    current = now_kst()
+    normalized = normalize_text(body)
+    digest = sha256_text(normalized)
+    frontmatter = local_frontmatter(
+        employee_id=employee_id,
+        doc_type="boi/local-capture",
+        title=title,
+        description="수정하지 않고 보존하는 Local Private 원문 수집 자료",
+        boi_id=f"boi:private:{employee_id}:capture:{current.strftime('%Y%m%d%H%M%S')}:{digest[:12]}",
+        tags=["LocalPrivate", "SecondBrain", "Capture"],
+        source_refs=[{"type": "local-capture", "ref": source or kind}],
+        timestamp=current,
+        retention_class="working",
+        memory_candidate=True,
+        extra={
+            "capture_kind": kind,
+            "source_sha256": digest,
+            "source_hash_scope": "captured_source_section",
+            "source_immutability": "locked",
+        },
+    )
+    return (
+        frontmatter
+        + "\n# 수집 원문\n\n"
+        + SOURCE_START
+        + "\n"
+        + normalized
+        + "\n"
+        + SOURCE_END
+        + "\n\n# 다음 작업\n\n"
+        + "- 원문은 직접 고치지 않습니다. 수정이 필요하면 새 원문을 수집합니다.\n"
+        + "- 정제할 때는 `local_distill.py` 또는 에이전트에게 정제를 요청합니다.\n"
+        + "- 원격 공유 전에는 별도의 promotion 초안과 미리보기가 필요합니다.\n"
+    )
 
 
 def main() -> int:
@@ -89,7 +84,10 @@ def main() -> int:
     args = parser.parse_args()
 
     root = Path(args.root).resolve()
-    employee_id = employee_id_from_env(args.employee_id)
+    try:
+        employee_id, _ = workspace_employee_id(root, args.employee_id)
+    except ValueError as exc:
+        raise SystemExit(str(exc)) from exc
     check = check_workspace(root, employee_id)
     if args.check:
         print(json.dumps(check, ensure_ascii=False, indent=2))
@@ -105,15 +103,25 @@ def main() -> int:
         body = sys.stdin.read()
     if not body.strip():
         raise SystemExit("capture body is required")
+
+    current = now_kst()
     target_dir = private_root(root, employee_id) / "notes" / "capture-inbox"
-    filename = f"{datetime.now(KST).strftime('%Y%m%d-%H%M%S')}-{slugify(args.title)}.md"
+    filename = f"{current.strftime('%Y%m%d-%H%M%S')}-{slugify(args.title)}.md"
     target = target_dir / filename
-    result = {"ok": True, "employee_id": employee_id, "path": str(target.relative_to(root)), "dry_run": args.dry_run}
+    result = {
+        "ok": True,
+        "employee_id": employee_id,
+        "path": relative_to_root(root, target),
+        "source_sha256": sha256_text(body),
+        "dry_run": args.dry_run,
+    }
     if args.dry_run:
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return 0
-    target_dir.mkdir(parents=True, exist_ok=True)
-    target.write_text(markdown_doc(employee_id, args.title, body, args.source, args.kind), encoding="utf-8")
+
+    atomic_write(target, markdown_doc(employee_id, args.title, body, args.source, args.kind))
+    append_index_link(target_dir / "index.md", args.title, filename)
+    append_log(root, f"수집 원문 생성: [{args.title}]({relative_to_root(root, target)})")
     print(json.dumps(result, ensure_ascii=False, indent=2))
     return 0
 

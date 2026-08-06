@@ -1,0 +1,12 @@
+{
+  "schema": "boi-local-eval-seed-manifest/v1",
+  "seed_id": "s00-empty",
+  "synthetic": true,
+  "files": [
+    {
+      "path": "seed.json",
+      "sha256": "89f3726ee022d843ba8250d9fa809670756c22785eebe645bd8694106c6a29f0",
+      "bytes": 220
+    }
+  ]
+}

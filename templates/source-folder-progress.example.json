@@ -1,0 +1,10 @@
+{
+  "schema": "boi-local-source-folder-progress/v1",
+  "approved_plan_hash": "<sha256>",
+  "source_manifest_hash": "<sha256>",
+  "completed_sha256": [],
+  "already_reflected_sha256": [],
+  "remaining_source_refs": [],
+  "next_batch": {},
+  "status": "in_progress"
+}

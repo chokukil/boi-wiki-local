@@ -1,0 +1,17 @@
+{
+  "schema": "boi-local-case-rubric/v2",
+  "case_id": "second-brain",
+  "total_points": 100,
+  "dimensions": [
+    {"id": "schema-and-structure", "points": 20, "objective": true, "description": "OKF 0.1, BoI Profile 0.1-local, allowed types and structured outputs"},
+    {"id": "source-and-provenance", "points": 20, "objective": true, "description": "exact source hashes, immutable originals, generated_from and duplicate handling"},
+    {"id": "knowledge-maintenance", "points": 15, "objective": false, "description": "noop, append, revise, history-preserving correction and review queue choices"},
+    {"id": "grounded-reasoning", "points": 15, "objective": false, "description": "observation, inference, counterevidence, unknowns and confidence are separated"},
+    {"id": "review-and-failure-path", "points": 10, "objective": false, "description": "independent review and actionable failure handling without invented facts"},
+    {"id": "promotion-boundary", "points": 10, "objective": true, "description": "blocked types stay Local and sanitized exact preview remains unconfirmed"},
+    {"id": "non-developer-ux", "points": 10, "objective": false, "description": "natural-language completion summary is understandable without Python or schema jargon"}
+  ],
+  "hard_failure_score_cap": 0,
+  "missing_evidence_score_cap": 70,
+  "reference_median_threshold": 85
+}

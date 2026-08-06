@@ -1,0 +1,41 @@
+{
+  "schema": "boi-local-case-runtime/v1",
+  "case_id": "agentic-ai-change-radar",
+  "orchestrator": "../orchestrator.md",
+  "handoff_schema": "../../../_schema/handoff.schema.json",
+  "reviewer_role": "independent-reviewer",
+  "role_cards": [
+    {
+      "role": "research-coordinator",
+      "path": "../roles/research-coordinator.md",
+      "independent_reviewer": false
+    },
+    {
+      "role": "source-researcher",
+      "path": "../roles/source-researcher.md",
+      "independent_reviewer": false
+    },
+    {
+      "role": "evidence-analyst",
+      "path": "../roles/evidence-analyst.md",
+      "independent_reviewer": false
+    },
+    {
+      "role": "change-curator",
+      "path": "../roles/change-curator.md",
+      "independent_reviewer": false
+    },
+    {
+      "role": "independent-reviewer",
+      "path": "../roles/independent-reviewer.md",
+      "independent_reviewer": true
+    }
+  ],
+  "scale_modes": [
+    "full",
+    "reduced",
+    "single-agent",
+    "no-team-fallback"
+  ],
+  "remote_mutation_default": false
+}

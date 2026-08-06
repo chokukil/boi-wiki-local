@@ -1,0 +1,90 @@
+{
+  "schema": "boi-local-case-blind-comparison/v1",
+  "case_id": "second-brain",
+  "comparisons": [
+    {
+      "prompt_id": "p01",
+      "runtime": "codex",
+      "repetition": 1,
+      "winner": "with-harness",
+      "reviewer_id": "codex-blind-gpt-5.6-sol",
+      "blind_order": "A-B",
+      "with_harness_sha256": "18a55c37a644538c5d2e34269f39d6b4e44ff83a753f79a9dbd0d6caf031d4d9",
+      "baseline_sha256": "c1816cb41a04fb1fda4e018b9df1bd65dade8e269dd8ceb9da023b0f9c52a336",
+      "evidence_path": "evals/blind-comparison/evidence/p01-codex-r1.json",
+      "evidence_sha256": "225ac034402cfbd4ae6b66e58dd47712c1a3cfc5f7e160dc62e7a2fdde76af6c"
+    },
+    {
+      "prompt_id": "p02",
+      "runtime": "codex",
+      "repetition": 1,
+      "winner": "with-harness",
+      "reviewer_id": "codex-blind-gpt-5.6-sol",
+      "blind_order": "A-B",
+      "with_harness_sha256": "39660c32fa16775192225d7a9b91121e01af272c649d4610ec9c605408d62810",
+      "baseline_sha256": "8cec6869e3dd679a35e8b9b19fc5dbb0213e00e91c96c0f0c32a82033cb7b02e",
+      "evidence_path": "evals/blind-comparison/evidence/p02-codex-r1.json",
+      "evidence_sha256": "40d6a0075c8cb4835ef985759a58e533021ac4c9c169f623603351673973e019"
+    },
+    {
+      "prompt_id": "p03",
+      "runtime": "codex",
+      "repetition": 1,
+      "winner": "with-harness",
+      "reviewer_id": "codex-blind-gpt-5.6-sol",
+      "blind_order": "A-B",
+      "with_harness_sha256": "9f5fcddd2463f9a4863adfef4145c03caa9827930f605ffb7edc08138433c42f",
+      "baseline_sha256": "8c142b6bc4e58dfb10629e74dc2fed83c4d1b5b2fccc36ec8fc693f3bcf3185c",
+      "evidence_path": "evals/blind-comparison/evidence/p03-codex-r1.json",
+      "evidence_sha256": "fd1c43652a9722b6760d79454cdb6a8b57e5bf51a4f5a053e1eb32f039af60f9"
+    },
+    {
+      "prompt_id": "p04",
+      "runtime": "codex",
+      "repetition": 1,
+      "winner": "with-harness",
+      "reviewer_id": "codex-blind-gpt-5.6-sol",
+      "blind_order": "A-B",
+      "with_harness_sha256": "1c6b51ca24abc1ce1f1e4343e09040094ba35faf18657d2d5887a3e8644562e4",
+      "baseline_sha256": "4f19d18f26c66319b986e6801363ff4ed8637dabda93c49eda1667634f9e7db6",
+      "evidence_path": "evals/blind-comparison/evidence/p04-codex-r1.json",
+      "evidence_sha256": "52b418348dbd4ae81f0fbae8bb9ba7884da43ba648f94b5301fc3f7e3967a43a"
+    },
+    {
+      "prompt_id": "p05",
+      "runtime": "codex",
+      "repetition": 1,
+      "winner": "with-harness",
+      "reviewer_id": "codex-blind-gpt-5.6-sol",
+      "blind_order": "A-B",
+      "with_harness_sha256": "f6c0a0a10b222f66f75fcc280f2c79c247122f62ad181be7d3547563cd570d61",
+      "baseline_sha256": "299ae5b9dade0cf457df23e41dd8671ccb54a481515e0df80b487e7114102d36",
+      "evidence_path": "evals/blind-comparison/evidence/p05-codex-r1.json",
+      "evidence_sha256": "ca53aef20f9cffcdd3cac9f7a9e0cd7d3504da315aa32bfd210cce9e872df308"
+    },
+    {
+      "prompt_id": "p06",
+      "runtime": "codex",
+      "repetition": 1,
+      "winner": "with-harness",
+      "reviewer_id": "codex-blind-gpt-5.6-sol",
+      "blind_order": "A-B",
+      "with_harness_sha256": "2578ff73bc84e406ea9a9c27c2fdafb1e5394c4ee745c27c1e53a773523d6858",
+      "baseline_sha256": "0db109a71461dabd8c2d1047da802351c044d060c6d6d6930cf3391306d71664",
+      "evidence_path": "evals/blind-comparison/evidence/p06-codex-r1.json",
+      "evidence_sha256": "932709b6c45c689f5c556efbabd6959d78cd6db80b26d37d3df22bc51cf851ae"
+    },
+    {
+      "prompt_id": "p07",
+      "runtime": "codex",
+      "repetition": 1,
+      "winner": "with-harness",
+      "reviewer_id": "codex-blind-gpt-5.6-sol",
+      "blind_order": "A-B",
+      "with_harness_sha256": "7a47acda712d6d31bf9970a65d745b6c7e130188c308a609ed15a4a9359378d8",
+      "baseline_sha256": "a087dd38dd07bab51fb852f5a2ed4b71657ab969808364d4e1a9bf6179719e9c",
+      "evidence_path": "evals/blind-comparison/evidence/p07-codex-r1.json",
+      "evidence_sha256": "ba0ee0e0c1bd326e2a103585aa6170461086e929996092d5a8b1c69c074d9bc8"
+    }
+  ]
+}

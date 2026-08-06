@@ -1,0 +1,73 @@
+{
+  "schema": "boi-local-independent-evaluator-evidence/v1",
+  "reviewer_id": "codex-blind-gpt-5.6-sol",
+  "reviewer_runtime_version": "codex-cli 0.146.0",
+  "independent_session": true,
+  "blind_order": "baseline-then-with-harness",
+  "reviewer_bundle_sha256": "d1209a848ec2a8079520c650d9745a142feefb7f9105c0fc584ced47effb4019",
+  "result": {
+    "schema": "boi-local-blind-review-result/v1",
+    "winner": "B",
+    "scores": {
+      "A": {
+        "dimensions": {
+          "schema-and-structure": 19,
+          "source-and-provenance": 17,
+          "knowledge-maintenance": 14,
+          "grounded-reasoning": 15,
+          "review-and-failure-path": 9,
+          "promotion-boundary": 10,
+          "non-developer-ux": 9
+        },
+        "total": 93
+      },
+      "B": {
+        "dimensions": {
+          "schema-and-structure": 20,
+          "source-and-provenance": 19,
+          "knowledge-maintenance": 15,
+          "grounded-reasoning": 15,
+          "review-and-failure-path": 10,
+          "promotion-boundary": 10,
+          "non-developer-ux": 7
+        },
+        "total": 96
+      }
+    },
+    "hard_failures": {
+      "A": [],
+      "B": []
+    },
+    "evidence": {
+      "A": [
+        "All derived knowledge records declare OKF 0.1 and BoI Profile 0.1-local metadata.",
+        "second-brain-comparison.md directly distinguishes email, web clip, CSV, PDF, image, meeting memo, and other notes, and gives mutually exclusive counts totaling 19 unique sources.",
+        "The SHA256 recorded for source 08 in review-schedule-conflict.md is only 63 hexadecimal characters, so its provenance is not exact.",
+        "synthesis-progress.md accounts for 20 paths, 19 unique hashes, and the 03/09 byte-identical duplicate without claiming deletion or movement.",
+        "Conflict, unsupported research, stale FAQ, sensitive content, and recurrence records preserve uncertainty and give actionable human-review steps.",
+        "The promotion candidate remains Local Private with an exact candidate hash, reviewer pending, user_confirmed false, and remote_submit_allowed false.",
+        "The Korean completion experience is clear, although its absolute progress link points outside the submitted bundle."
+      ],
+      "B": [
+        "Every substantive source, knowledge, review, and log record carries OKF 0.1 and BoI Profile 0.1-local metadata with specialized local types.",
+        "Nineteen source records preserve filenames, source kinds, exact SHA256 values, source_refs, and generated_from; the 03/09 duplicate is represented once with both paths.",
+        "The source-08 hash is a valid 64-character SHA256 throughout the evidence and review records.",
+        "Knowledge pages append dated evidence histories, preserve already-reflected items, retain drafts, and separate conflicts and pending validation into an indexed review queue.",
+        "The incident analysis explicitly separates observation, contributing factor, counterevidence, unknown, and decision; research and recurrence claims remain unconfirmed.",
+        "The Team promotion preview is sanitized, hashed, blocked by unresolved evidence and review, and explicitly sets user_confirmed and remote_submit_allowed to false.",
+        "Provenance clarity is slightly reduced because log.md lists the same progress-file reference with several hashes but no revision labels, and the decision-chat source is classified as a meeting-note.",
+        "COMPLETION_SUMMARY.txt is readable Korean, but its overlapping counts for reinforcement, new topics, review-required items, and drafts do not reconcile into a single comparison total, and its absolute progress link is outside the bundle."
+      ]
+    },
+    "rationale": "B wins narrowly because its per-source evidence records, indexed review queue, history-preserving maintenance, and structured failure paths are more complete. A provides the better direct comparison and final-count UX, but its malformed source-08 SHA256 is a material objective provenance defect. Neither output crosses a hard-failure boundary: both include the required profiles, preserve unsupported claims as unresolved, keep sensitive and blocked types Local, and leave promotion unconfirmed.",
+    "validated_capped_totals": {
+      "A": 93,
+      "B": 96
+    },
+    "review_result_sha256": "7e34f885463a9611573e7961c5d122a70762cfd1d29316bfff24785556e62522",
+    "mapping_capture_sha256": {
+      "A": "b6dd20265980becd6f3a59ff364a4fdbfdddd01c9125947a3967d22491b0cae5",
+      "B": "d6e6e26f786cb392166e2ecbf6a6cf6e031e6164113eef7cd4b256fafd632adc"
+    }
+  }
+}

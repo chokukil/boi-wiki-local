@@ -4,6 +4,13 @@ boi_profile_version: "0.1-local"
 type: boi/local-action-draft
 title: "품질 시스템 Response Trend Query Action Draft"
 description: "Response Trend 확인 단계를 위한 품질 시스템 API action 후보"
+boi_id: boi:private:0000000:legacy:quality-system-response-trend-action-draft:0ee6884406
+classification: internal
+owner: "0000000"
+artifact_visibility: working
+lifecycle_state: working
+memory_candidate: false
+cleanup_policy: keep
 timestamp: 2026-06-20T22:05:00+09:00
 employee_id: "0000000"
 local_owner_ref: local-private:0000000

@@ -1,0 +1,16 @@
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.pdf binary
+
+# Runtime-evaluation evidence is content-addressed. Preserve the exact captured
+# bytes across GitHub/Bitbucket clones instead of normalizing line endings.
+cases/**/fixtures/** -text
+cases/**/evals/seeds/** -text
+cases/**/evals/prompts/** -text
+cases/**/evals/runs/** -text
+cases/**/evals/blind-comparison/** -text

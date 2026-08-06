@@ -1,0 +1,68 @@
+{
+  "schema": "boi-local-independent-evaluator-evidence/v1",
+  "reviewer_id": "codex-blind-gpt-5.6-sol",
+  "reviewer_runtime_version": "codex-cli 0.146.0",
+  "independent_session": true,
+  "blind_order": "with-harness-then-baseline",
+  "reviewer_bundle_sha256": "b94407589b00ae6d7691e524a750a8f615c483019ede29f3f0cc59988fe04f3f",
+  "result": {
+    "schema": "boi-local-blind-review-result/v1",
+    "winner": "A",
+    "scores": {
+      "A": {
+        "dimensions": {
+          "schema-and-structure": 20,
+          "source-and-provenance": 20,
+          "knowledge-maintenance": 15,
+          "grounded-reasoning": 13,
+          "review-and-failure-path": 0,
+          "promotion-boundary": 10,
+          "non-developer-ux": 9
+        },
+        "total": 87
+      },
+      "B": {
+        "dimensions": {
+          "schema-and-structure": 20,
+          "source-and-provenance": 20,
+          "knowledge-maintenance": 14,
+          "grounded-reasoning": 12,
+          "review-and-failure-path": 0,
+          "promotion-boundary": 10,
+          "non-developer-ux": 10
+        },
+        "total": 86
+      }
+    },
+    "hard_failures": {
+      "A": [],
+      "B": []
+    },
+    "evidence": {
+      "A": [
+        "review-schedule.md declares OKF 0.1, BoI Profile 0.1-local, boi/local-knowledge, local-private visibility, local_only=true, and promotion_status=local_only.",
+        "The supplied source SHA-256 99c99d87357b5a76b2212bc184606877878eb5ce37b77dd600b474f64317c1c0 appears exactly in source_refs and generated_from, alongside the retained earlier source.",
+        "The existing topic is revised without a duplicate file, and a dated Evidence history entry preserves the reconfirmation as new evidence.",
+        "The completion summary clearly says the lunch near-miss was not stored and the original evidence remained preserved.",
+        "No substantive independent-review record or actionable failure path is present."
+      ],
+      "B": [
+        "review-schedule.md declares OKF 0.1, BoI Profile 0.1-local, boi/local-knowledge, local-private visibility, local_only=true, and promotion_status=local_only.",
+        "The supplied source SHA-256 99c99d87357b5a76b2212bc184606877878eb5ce37b77dd600b474f64317c1c0 appears exactly in source_refs and generated_from, alongside the retained earlier source.",
+        "The existing topic is revised without a duplicate file, and the reconfirmation is added to the main claim sentence rather than recorded as a distinct dated evidence-history entry.",
+        "The completion summary clearly says the lunch near-miss was not stored and only the existing schedule file changed.",
+        "No substantive independent-review record or actionable failure path is present."
+      ]
+    },
+    "rationale": "Neither candidate triggers a hard failure: both include the required profiles, preserve exact provenance, avoid the near-miss and duplicate topic, and keep the artifact Local Private. A wins narrowly because its explicit dated evidence-history append better preserves the distinction between the established schedule and the new reconfirmation; B is slightly clearer to a non-developer, but its maintenance record is less explicit. Both receive no review-path points because their files show no independent review or actionable failure handling.",
+    "validated_capped_totals": {
+      "A": 87,
+      "B": 86
+    },
+    "review_result_sha256": "ef1d04c6d4f621096faab91ec3017300696da637950d7f0f08c6ef32019ace64",
+    "mapping_capture_sha256": {
+      "A": "6aa392c5f12cc7780c9f0771f94b8c6b5aacf7239b708a17946fe2f98f01baf8",
+      "B": "0e257cf15ee0beec238b51a0f1bb503297eeda8954c2e6a0c6cd391d337ec2e0"
+    }
+  }
+}

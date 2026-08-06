@@ -1,22 +1,50 @@
-# Claude Rules for BoI Wiki Local
+<!-- boi-harness-bootstrap:managed -->
+# Claude Bootstrap for BoI Wiki Local
 
-This folder is a Local Private BoI workspace.
+This file is a thin client bootstrap generated from the pinned BoI Wiki HarnessPackage.
+It is not the canonical policy source.
 
-- Keep personal content local unless the user explicitly confirms sharing.
-- Before creating personal BoI content, confirm a numeric 7-digit employee ID from `BOI_LOCAL_EMPLOYEE_ID` or the user.
-- Store notes in `data/boi/private/{employee_id}/notes/`.
-- Store SOP drafts in `data/boi/private/{employee_id}/sop-drafts/`.
-- Store diagrams in `data/boi/private/{employee_id}/diagrams/`.
-- Store event/workflow-definition plans in `data/boi/private/{employee_id}/event-drafts/` or `data/boi/private/{employee_id}/workflow-simulations/`.
-- One-off or repeated personal work can start as a Local Private work BoI without forcing an SOP.
-- Store dictionary terms in `data/boi/private/{employee_id}/dictionary/`.
-- For bulk dictionary candidates, record curation decisions in local candidate/override/manifest or promotion drafts instead of changing code per term. Use `keep`, `replace_with_canonical`, `split_into_terms`, `alias_to_existing`, `exclude`, or `needs_parent_curation`.
-- Store context packs in `data/boi/private/{employee_id}/context-packs/`.
-- Store reports in `data/boi/private/{employee_id}/reports/`.
-- Use `employee_id`, `local_owner_ref`, `visibility: local-private`, `local_only: true`, and lifecycle metadata.
-- Update `data/boi/index.md`, the relevant folder `index.md`, and `data/boi/log.md`.
-- Validate with the checklist in `AGENTS.md` before reporting completion.
-- MCP is optional. If unavailable, work from local files and user-provided sources. The official MCP is the shared BoI Wiki MCP; do not require a local MCP server.
-- If local helper scripts are available, use `scripts/local_capture.py`, `scripts/local_review.py`, and `scripts/promotion_preflight.py` for capture inbox, memory/cleanup review, and sharing preview.
-- If MCP is available, prefer `dictionary_resolve` for terminology before interpreting acronyms, `ontology_search` for broad SOP/Event/Action/Dictionary/runtime lookup, `workflow_definitions_search` and `workflow_definition_deduplicate` as internal duplicate checks before proposing new shared connections, `boi_agent_chat` for page-aware questions, `boi_inbox` for assigned reports/tasks, `agent_memory_review` for Web Private memory candidates, `promotion_preview` before remote promotion submit, `source_wiki_plan` before repo wiki generation, `harness_acceptance` for release readiness, and `boi_search` only for document-only BoI search. Treat `agent_inbox` as a deprecated compatibility alias. Present user-facing links as BoI Wiki, SOP, Event, Action, or BoI Inbox destinations, not as WorkflowDefinition pages.
-- Sharing creates a promotion draft and preflight first; after explicit user confirmation, submit only the sanitized promotion candidate for remote sync validation/publish. Remote validation, commit, publish, and HOTL status are handled by BoI Wiki; do not ask the user to run Git commands.
+- Harness release: `harness-2.0-44d7fde6838a`
+- Harness checksum: `b7b9afe61d88b07279e3460de25c0feb1186ac9d5d3cfbed0564c7b4cbf04ffa`
+- Canonical snapshot: `.boi-harness/package.json`
+- Local lock: `harness.lock`
+
+Before using shared BoI capabilities, read the pinned package contracts. If an optional
+validation runtime is available, run `scripts/harness_sync.py verify`; otherwise compare the
+embedded release, canonical checksum, signature, and signature algorithm in the lock and snapshot
+and label the reduced check. The canonical package checksum is not the raw `package.json` file
+SHA256; never compare those two values. If the shared endpoint is unavailable, continue with the
+pinned offline snapshot and Local Private files only.
+
+- Fetch the current HarnessPackage before claiming or executing work.
+- Use the authenticated principal ACL and package checksum on every TaskPackage.
+- Preview mutations and require the shared confirmation contract.
+
+Local Private source text under `data/boi/private/` must never be published to BoI Wiki, MCP,
+Team, or Public scope without an explicit user-approved preview. A user-selected AI runtime may
+process selected content under the approved provider and company policy; record that separately
+from BoI remote activity and never claim false zero-byte processing. Shared execution must inherit
+the authenticated principal ACL, use expected revision and idempotency, and follow preview then confirmation.
+
+## Local Second Brain session check
+
+When a real Local Profile contains `.boi-local/second-brain-preferences.json`, use the
+`boi-second-brain` Skill. Check the configured source folder at session start only when
+`agent_session_check` is true. In `suggest` mode, show a grouped preview before knowledge writes.
+In `explicit-only` mode, do not inspect the folder or retain conversation knowledge automatically;
+act only after an explicit natural-language request. Never copy raw chat transcripts. This check
+must not require Python, open an external window, run without the agent, or upload Local Private content.
+
+## Meta Harness and Case Harnesses
+
+Load project Skills from `.claude/skills/`. Use `boi-harness-builder` when a user wants to turn a recurring work description into a
+reusable BoI Harness, or to package, evaluate, register, or evolve that repeatable pattern.
+Do not use it for ordinary one-off document authoring or merely running an existing Case.
+When a user asks to run a previously configured personal Harness, search the active Local Profile's
+`notes/harnesses/` directory, load the matching profiled Harness card, and execute its declared DAG
+and output contract. Invoke the builder again only to audit or evolve that card. Reuse existing generic
+BoI Skills before proposing a new Skill. Case-specific domain knowledge
+belongs under `cases/`; it must not silently create a new OKF schema or global domain Skill.
+Never call a Case `reference` or `production-ready` unless its stored cross-runtime benchmark,
+hard safety assertions, blind review, non-developer acceptance, and actual BoI Wiki contract
+evidence satisfy the production gates.

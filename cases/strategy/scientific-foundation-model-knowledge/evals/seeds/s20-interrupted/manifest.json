@@ -1,0 +1,22 @@
+{
+  "schema": "boi-local-eval-seed-manifest/v1",
+  "seed_id": "s20-interrupted",
+  "synthetic": false,
+  "files": [
+    {
+      "path": ".boi-local/processing-state.json",
+      "sha256": "fa0300d2efbc4ee1d4f7df133bbbf62db0cca8da4d2daf794ade964ab12466c2",
+      "bytes": 1091
+    },
+    {
+      "path": "notes/knowledge/existing-knowledge.md",
+      "sha256": "816c6112f347f8ba0d9baec16bc846b727f90c4604aa0a037cc1667231dc5a81",
+      "bytes": 1149
+    },
+    {
+      "path": "seed.json",
+      "sha256": "fa0300d2efbc4ee1d4f7df133bbbf62db0cca8da4d2daf794ade964ab12466c2",
+      "bytes": 1091
+    }
+  ]
+}

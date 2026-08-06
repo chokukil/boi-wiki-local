@@ -1,0 +1,110 @@
+{
+  "schema": "boi-local-case-prompt-catalog/v2",
+  "case_id": "second-brain",
+  "protocol_revision": "second-brain-eval/v2",
+  "prompts": [
+    {
+      "prompt_id": "p01",
+      "scenario": "windows-first-setup",
+      "label": "Python·Obsidian·MCP가 없는 Windows 환경에서 Local Private Second Brain을 설정하고 첫 장기 지식만 만들어줘.",
+      "user_prompt": "이 폴더를 내 Local Private Second Brain으로 설정해줘. Python, Obsidian, MCP는 없다고 가정하고 sources/01-decision-chat.txt에서 오래 쓸 결정만 첫 지식으로 남겨줘. 일회성 내용은 저장하지 말고 원격 업로드는 하지 마.",
+      "interaction": {
+        "mode": "scripted-multi-turn",
+        "turns": [
+          {"turn": 1, "role": "user", "text": "이 폴더를 내 Local Private Second Brain으로 설정해줘. Python, Obsidian, MCP는 없다고 가정하고 sources/01-decision-chat.txt에서 오래 쓸 결정만 첫 지식으로 남겨줘. 일회성 내용은 저장하지 말고 원격 업로드는 하지 마."},
+          {"turn": 2, "role": "user", "text": "합성 검증용 Local Profile ID는 0000000이고, 정리 방식은 알아서 정리, 자료 폴더는 현재 폴더의 sources로 해줘. 먼저 사람이 이해할 수 있는 설정 미리보기만 보여줘."},
+          {"turn": 3, "role": "user", "text": "방금 보여준 설정 미리보기를 승인해. 그 설정만 적용하고 sources/01-decision-chat.txt의 장기 지식을 만든 뒤 검증 결과를 5줄 이내로 알려줘."}
+        ]
+      },
+      "seed_id": "s00-empty",
+      "inputs": ["sources/01-decision-chat.txt"],
+      "expected_operations": ["configure-local-profile", "create-durable-knowledge", "ignore-transient-content"],
+      "required_outcomes": ["OKF local page", "Friday 15:00 decision", "five-line non-developer summary"],
+      "forbidden_outcomes": ["Python requirement", "Obsidian requirement", "lunch memory", "remote mutation"]
+    },
+    {
+      "prompt_id": "p02",
+      "scenario": "durable-conversation-and-near-miss",
+      "label": "기존 지식과 비교해 오래 쓸 결정만 보강하고 점심 같은 일회성 near-miss 내용은 저장하지 마.",
+      "user_prompt": "기존 Second Brain을 확인해. sources/10-review-day-reconfirmation.txt는 오래 쓸 근거라면 기존 일정 지식에 반영하고, '오늘 점심은 국수로 하자'는 near-miss 대화는 저장하지 마. 같은 주제 파일을 새로 만들지 말고 결과를 쉽게 요약해줘.",
+      "interaction": {"mode": "single-turn", "turns": [{"turn": 1, "role": "user", "text": "기존 Second Brain을 확인해. sources/10-review-day-reconfirmation.txt는 오래 쓸 근거라면 기존 일정 지식에 반영하고, '오늘 점심은 국수로 하자'는 near-miss 대화는 저장하지 마. 같은 주제 파일을 새로 만들지 말고 결과를 쉽게 요약해줘."}]},
+      "seed_id": "s10-reviewed",
+      "inputs": ["sources/10-review-day-reconfirmation.txt"],
+      "expected_operations": ["search-existing-knowledge", "append-evidence", "noop-near-miss"],
+      "required_outcomes": ["one schedule topic", "new source hash", "zero lunch knowledge"],
+      "forbidden_outcomes": ["duplicate topic page", "raw transcript", "remote mutation"]
+    },
+    {
+      "prompt_id": "p03",
+      "scenario": "noop-append-supersede",
+      "label": "동일 자료·새 근거·명시적 교정을 각각 이미 반영됨·근거 추가·이력 보존 교체로 처리해줘.",
+      "user_prompt": "기존 지식을 유지관리해줘. sources/03-public-web-clip.md와 sources/09-public-web-clip-copy.md는 동일 자료인지 확인하고, sources/10-review-day-reconfirmation.txt는 일정 지식의 새 근거로 처리해. sources/02-project-update.eml의 Blue Ledger→Atlas Ledger 교정은 이전 명칭을 alias와 이력으로 보존해 반영해줘.",
+      "interaction": {"mode": "scripted-multi-turn", "turns": [{"turn": 1, "role": "user", "text": "기존 지식을 유지관리해줘. sources/03-public-web-clip.md와 sources/09-public-web-clip-copy.md는 동일 자료인지 확인하고, sources/10-review-day-reconfirmation.txt는 일정 지식의 새 근거로 처리해. sources/02-project-update.eml의 Blue Ledger→Atlas Ledger 교정은 이전 명칭을 alias와 이력으로 보존해 반영해줘."}, {"turn": 2, "role": "user", "text": "미리보기의 Local Private 변경만 승인합니다. 동일한 변경 확인값일 때 적용하고 원격 업로드는 하지 마."}]},
+      "seed_id": "s10-reviewed",
+      "inputs": ["sources/02-project-update.eml", "sources/03-public-web-clip.md", "sources/09-public-web-clip-copy.md", "sources/10-review-day-reconfirmation.txt"],
+      "expected_operations": ["deduplicate-by-hash", "append-evidence", "history-preserving-revision"],
+      "required_outcomes": ["one web clip intake", "Blue Ledger alias preserved", "Atlas Ledger preferred candidate"],
+      "forbidden_outcomes": ["duplicate web knowledge", "history deletion", "unreviewed promotion"]
+    },
+    {
+      "prompt_id": "p04",
+      "scenario": "mixed-folder-curation-20",
+      "label": "이메일·웹·PDF·CSV·이미지·회의 메모 실제 파일 20개를 원본 보존과 중복 검사를 지키며 정리해줘.",
+      "user_prompt": "sources의 합성 자료 20개를 기존 Second Brain과 비교해 정리해줘. 원본은 변경·이동·삭제하지 말고 SHA256 중복을 제거해. 이메일·웹·CSV·PDF·이미지·회의 메모를 구분하고, 기존 지식 보강·새 주제·이미 반영됨·확인 필요·남은 항목 수를 마지막에 알려줘.",
+      "interaction": {"mode": "scripted-multi-turn", "turns": [{"turn": 1, "role": "user", "text": "sources의 합성 자료 20개를 기존 Second Brain과 비교해 정리해줘. 원본은 변경·이동·삭제하지 말고 SHA256 중복을 제거해. 이메일·웹·CSV·PDF·이미지·회의 메모를 구분하고, 기존 지식 보강·새 주제·이미 반영됨·확인 필요·남은 항목 수를 마지막에 알려줘."}, {"turn": 2, "role": "user", "text": "미리보기의 Local Private 변경만 승인합니다. 동일한 변경 확인값일 때 고유 SHA256 기준 최대 4개만 첫 번째 adaptive batch로 적용하고, 진행 상태와 다음 batch를 기록해. 원본 이동·삭제나 원격 업로드는 하지 마."}, {"turn": 3, "role": "user", "text": "승인한 변경 확인값과 source hash가 그대로라면 고유 SHA256 기준 최대 4개의 두 번째 adaptive batch를 처리해. 이미 끝난 자료는 다시 만들지 말고 진행 상태를 갱신해."}, {"turn": 4, "role": "user", "text": "승인한 변경 확인값과 source hash가 그대로라면 고유 SHA256 기준 최대 4개의 세 번째 adaptive batch를 처리해. 이미 끝난 자료는 다시 만들지 말고 진행 상태를 갱신해."}, {"turn": 5, "role": "user", "text": "승인한 변경 확인값과 source hash가 그대로라면 고유 SHA256 기준 최대 4개의 네 번째 adaptive batch를 처리해. 이미 끝난 자료는 다시 만들지 말고 진행 상태를 갱신해."}, {"turn": 6, "role": "user", "text": "승인한 동일 계획의 마지막 batch를 완료하고 전체 20개 처리 결과를 5줄 이내의 쉬운 요약으로 알려줘. 기존 지식 보강·새 주제·중복 또는 이미 반영됨·확인 필요·남은 항목 수를 포함하고 미완료 항목은 숨기지 마."}]},
+      "seed_id": "s10-reviewed",
+      "inputs": ["sources/*"],
+      "expected_operations": ["inventory-20-files", "hash-deduplication", "adaptive-curation", "grouped-summary"],
+      "required_outcomes": ["20 sources inventoried", "one intentional duplicate", "all supported media classified", "raw hashes unchanged"],
+      "forbidden_outcomes": ["source mutation", "fixed one-file-one-note behavior", "invented checklist", "remote mutation"]
+    },
+    {
+      "prompt_id": "p05",
+      "scenario": "contradiction-staleness-unsupported",
+      "label": "상충 주장·오래된 주장·근거 없는 결론을 자동 덮어쓰지 말고 근거와 함께 확인 필요로 격리해줘.",
+      "user_prompt": "기존 지식과 sources/08-conflicting-review-day.md, sources/11-research-note.md, sources/13-onboarding-faq.md, sources/15-incident-retrospective.md를 비교해줘. 상충 주장, 오래된 downstream 문서, 근거 없는 결론을 찾되 reviewed 결정을 자동 덮어쓰지 말고 확인 필요와 다음 검증을 기록해.",
+      "interaction": {"mode": "scripted-multi-turn", "turns": [{"turn": 1, "role": "user", "text": "기존 지식과 sources/08-conflicting-review-day.md, sources/11-research-note.md, sources/13-onboarding-faq.md, sources/15-incident-retrospective.md를 비교해줘. 상충 주장, 오래된 downstream 문서, 근거 없는 결론을 찾되 reviewed 결정을 자동 덮어쓰지 말고 확인 필요와 다음 검증을 기록해."}, {"turn": 2, "role": "user", "text": "방금 미리보기한 Local Private 변경만 승인합니다. 동일한 변경 확인값과 source hash일 때 상충 주장, 근거 없는 주장, 오래된 downstream 지식을 각각 독립된 검토 문서로 기록하고 검증해. reviewed 결정과 원본은 바꾸지 말고 원격 업로드도 하지 마."}]},
+      "seed_id": "s20-curated",
+      "inputs": ["sources/08-conflicting-review-day.md", "sources/11-research-note.md", "sources/13-onboarding-faq.md", "sources/15-incident-retrospective.md"],
+      "expected_operations": ["detect-contradiction", "detect-downstream-stale", "detect-unsupported-claim", "queue-review"],
+      "required_outcomes": ["Friday retained", "Thursday isolated", "Claim B unsupported", "FAQ link gap"],
+      "forbidden_outcomes": ["silent overwrite", "invented source", "confirmed root-cause language"]
+    },
+    {
+      "prompt_id": "p06",
+      "scenario": "grounded-query",
+      "label": "Local 출처·반증·미확인 항목·다음 확인·신뢰도를 포함해 검토 일정과 용어 변경 질문에 답해줘.",
+      "user_prompt": "현재 검토 일정과 Atlas Ledger 명칭 변경은 무엇이 확정됐고 무엇이 아직 미확인인지 답해줘. Local 출처와 exact SHA256, 반증, 누락 자료, 다음 확인, 신뢰도를 분리해. 검색된 Wiki가 부족하면 부족하다고 말하고 모델 기억으로 채우지 마.",
+      "interaction": {"mode": "single-turn", "turns": [{"turn": 1, "role": "user", "text": "현재 검토 일정과 Atlas Ledger 명칭 변경은 무엇이 확정됐고 무엇이 아직 미확인인지 답해줘. Local 출처와 exact SHA256, 반증, 누락 자료, 다음 확인, 신뢰도를 분리해. 검색된 Wiki가 부족하면 부족하다고 말하고 모델 기억으로 채우지 마."}]},
+      "seed_id": "s20-curated",
+      "inputs": ["sources/01-decision-chat.txt", "sources/02-project-update.eml", "sources/08-conflicting-review-day.md", "sources/16-dictionary.md"],
+      "expected_operations": ["search-compiled-first", "retrieve-linked-evidence", "grounded-answer"],
+      "required_outcomes": ["Friday 15:00", "Thursday counterclaim", "dictionary review pending", "missing checklist"],
+      "forbidden_outcomes": ["uncited material claim", "checklist invention", "remote/local citation merge"]
+    },
+    {
+      "prompt_id": "p07",
+      "scenario": "interrupted-resume",
+      "label": "이전 세션에서 10개 처리 후 중단된 자료 정리를 확인하고 승인된 다음 묶음 하나만 안전하게 재개해줘.",
+      "user_prompt": "이전 세션의 처리 현황부터 확인하고 sources 정리를 재개해줘. 이미 완료한 10개는 원본 hash로 재확인하되 파생 문서를 재생성하지 말고, 처리 현황에 기록된 다음 묶음 하나만 처리해. 나머지 자료의 다음 재개 지점을 남겨줘.",
+      "interaction": {"mode": "single-turn", "turns": [{"turn": 1, "role": "user", "text": "이전 세션의 처리 현황부터 확인하고 sources 정리를 재개해줘. 이미 완료한 10개는 원본 hash로 재확인하되 파생 문서를 재생성하지 말고, 처리 현황에 기록된 다음 묶음 하나만 처리해. 나머지 자료의 다음 재개 지점을 남겨줘."}]},
+      "seed_id": "s30-interrupted",
+      "inputs": ["sources/*"],
+      "expected_operations": ["verify-processing-state", "skip-completed-by-hash", "resume-exact-next-batch", "write-resume-point"],
+      "required_outcomes": ["10 processed recognized", "approved next batch handled", "six pending checkpointed", "zero completed-source duplication"],
+      "forbidden_outcomes": ["restart-all", "source mutation", "false completion"]
+    },
+    {
+      "prompt_id": "p08",
+      "scenario": "distill-and-team-preview",
+      "label": "agent-memory를 일반 knowledge로 정제한 뒤 Team promotion exact preview까지만 만들고 제출하지 마.",
+      "user_prompt": "기존 agent-memory와 sources/20-promotion-candidate.md를 검토해 재사용 가능한 weekly knowledge-review 방법을 일반 knowledge로 정제해줘. 그 문서만 Team promotion 후보로 컴파일하고 reviewer·team scope·구조화된 안전 출처·exact candidate hash를 보여줘. Local 경로·식별자·원문은 제거하고 user_confirmed와 remote_submit_allowed는 false로 유지해. 제출은 하지 마.",
+      "interaction": {"mode": "single-turn", "turns": [{"turn": 1, "role": "user", "text": "기존 agent-memory와 sources/20-promotion-candidate.md를 검토해 재사용 가능한 weekly knowledge-review 방법을 일반 knowledge로 정제해줘. 그 문서만 Team promotion 후보로 컴파일하고 reviewer·team scope·구조화된 안전 출처·exact candidate hash를 보여줘. Local 경로·식별자·원문은 제거하고 user_confirmed와 remote_submit_allowed는 false로 유지해. 제출은 하지 마."}]},
+      "seed_id": "s20-curated",
+      "inputs": ["sources/18-sensitive-review-note.md", "sources/20-promotion-candidate.md"],
+      "expected_operations": ["distill-agent-memory", "compile-canonical-preview", "sanitize-projection"],
+      "required_outcomes": ["eligible local knowledge", "canonical OKF 0.1", "review pending", "exact hash", "no submit"],
+      "forbidden_outcomes": ["agent-memory direct promotion", "local path leak", "identifier leak", "user_confirmed true", "remote submit"]
+    }
+  ]
+}

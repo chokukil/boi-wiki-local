@@ -4,6 +4,13 @@ boi_profile_version: "0.1-local"
 type: boi/local-example
 title: "MCP 없이 Local Only 작업 예제"
 description: "MCP 설정 없이 local files만 사용해 BoI 작업을 완료하는 예제"
+boi_id: boi:private:0000000:legacy:local-only-mode:2a7c0f3aae
+classification: internal
+owner: "0000000"
+artifact_visibility: working
+lifecycle_state: working
+memory_candidate: false
+cleanup_policy: keep
 timestamp: 2026-06-20T22:00:00+09:00
 employee_id: "0000000"
 local_owner_ref: local-private:0000000

@@ -1,0 +1,93 @@
+{
+  "schema": "boi-local-eval-seed/v1",
+  "fixture_id": "SYN-SB-001-v1",
+  "employee_id": "0000000",
+  "remote_enabled": false,
+  "synthetic": true,
+  "seed_id": "s30-interrupted",
+  "description": "First ten sources were processed; ten remain",
+  "processed": [
+    {
+      "path": "sources/01-decision-chat.txt",
+      "sha256": "5be16cc0e29d799b9ed63670979e18a88ae2c849beb55d3dbb59bac09b216463"
+    },
+    {
+      "path": "sources/02-project-update.eml",
+      "sha256": "b1f652f17ac06c5fcb45cb489ed887ff92af7187e480618c6d6029bd1bf6165c"
+    },
+    {
+      "path": "sources/03-public-web-clip.md",
+      "sha256": "bae4daa95a7cdaee037e60833467b9c4173f109fda59628e6f20e3ee43fa8c71"
+    },
+    {
+      "path": "sources/04-action-register.csv",
+      "sha256": "27f8da41d9560b604e9b8fdb44db72d39da0b5a13a7702fdda9db967617d2cac"
+    },
+    {
+      "path": "sources/05-operating-guide.pdf",
+      "sha256": "6b2b928c844f99b1d8eddc01384ef9cc59429f171ab3810ff14e1d2a2b35dc92"
+    },
+    {
+      "path": "sources/06-whiteboard-decisions.png",
+      "sha256": "9f3ab52e54823b36f5cd1c0abcd9fc101e75bf951735c48977939b809f11de17"
+    },
+    {
+      "path": "sources/07-meeting-note.md",
+      "sha256": "aa91ab6bcedec80ea716e17a4b90c6b97d5cf18c54cd1b9966042604d14daf61"
+    },
+    {
+      "path": "sources/08-conflicting-review-day.md",
+      "sha256": "1b6154bc142104502974e5e85d48e1bc7f4a5123fb75c1aaae3ebc5f69223e18"
+    },
+    {
+      "path": "sources/09-public-web-clip-copy.md",
+      "sha256": "bae4daa95a7cdaee037e60833467b9c4173f109fda59628e6f20e3ee43fa8c71"
+    },
+    {
+      "path": "sources/10-review-day-reconfirmation.txt",
+      "sha256": "99c99d87357b5a76b2212bc184606877878eb5ce37b77dd600b474f64317c1c0"
+    }
+  ],
+  "pending": [
+    {
+      "path": "sources/11-research-note.md",
+      "sha256": "ee2faef63c53eb1b0f37834ccd55f756d27e4db542b6bad86e57cf92effb43c5"
+    },
+    {
+      "path": "sources/12-sop-draft.md",
+      "sha256": "2276ef126f67ec52ebe9e6b76d6b9bd6ad04b501a8e44451f19a9c67ec903a40"
+    },
+    {
+      "path": "sources/13-onboarding-faq.md",
+      "sha256": "69cb0bc9c07a8bcf74cff589aa60e369a7800ab26f9ac78a0c6f7fefd5f485bf"
+    },
+    {
+      "path": "sources/14-readonly-api-note.md",
+      "sha256": "97e7d613c9254f6412c08793670ae7a792f3e56f583ca69119a1e7d6c4562006"
+    },
+    {
+      "path": "sources/15-incident-retrospective.md",
+      "sha256": "e0f7c994becf1125cbef6f670670564b95384ac591fffbe9e851315ae6e41e1e"
+    },
+    {
+      "path": "sources/16-dictionary.md",
+      "sha256": "02f6b5e44f5a684fa7dd0dc7f64e5a9b3eeda4b77878dc27548f42441364c6e7"
+    },
+    {
+      "path": "sources/17-weekly-report.md",
+      "sha256": "8fbb6e1ff9d684767b17fea8a3b897cccae818b7968493364f7dff6a08e25887"
+    },
+    {
+      "path": "sources/18-sensitive-review-note.md",
+      "sha256": "de7331ebf1fe35797eb840e958f20ce168a886eba6595dbca1a4d1638891dc98"
+    },
+    {
+      "path": "sources/19-recurrence-note.md",
+      "sha256": "b25d3a36cf95c94af54967ffabd16041d3177b389768264c6ff0e122724898cd"
+    },
+    {
+      "path": "sources/20-promotion-candidate.md",
+      "sha256": "d95ff29032181e4622018c9ce6389bc9094ffa05b025690861e9912018814eaf"
+    }
+  ]
+}

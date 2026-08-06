@@ -1,0 +1,67 @@
+{
+  "schema": "boi-local-case-nonproduction-comparison/v1",
+  "case_id": "second-brain",
+  "prompt_id": "p01",
+  "observed_at": "2026-08-02T12:55:01+09:00",
+  "runtime": "codex-cli 0.146.0",
+  "runtime_sha256": "bc343ba420dc2e2e9f59e6fc5e5bf0aae1cd8c771fc319665241fc9c0271fddb",
+  "model_id": "gpt-5.6-sol",
+  "reasoning_setting": "high",
+  "production_evidence": false,
+  "reason": "Both arms used an explicitly unsandboxed synthetic diagnostic because the local Codex restricted-token Windows sandbox could not write. This comparison can guide Harness evolution but cannot enter the official run index.",
+  "matched_contract": {
+    "interaction_script_sha256": "b35b585f13dbc07b831934316b2a957f36ea14c498b6ae5937a988c244797699",
+    "runtime_envelope_sha256": "f033ba5759a2343e3f2274081f58dfec93d35910dc66c4450852e9710ec452a8",
+    "evaluated_interaction_sha256": "1cc8319d03362e75c1da6a58ead6995f6964c5025eceb408db6853f2123bc40c",
+    "runtime_policy_sha256": "b143954eaafa8eb1d92f932901b5bea84eb486d9a4eb489d9b4b5d17c468cd84",
+    "selected_input_manifest_sha256": "82416ade75a0bf3566f4e2b8c72e7f044b564ebc435c0861ad99c999f78363e0",
+    "selected_input_bytes": 289,
+    "boi_remote_source_bytes": 0,
+    "source_mutations": 0
+  },
+  "with_harness": {
+    "run_id": "codex-with-harness-p01-r1-20260802T034509969Z",
+    "execution_capture_sha256": "c377cf02ae1adaa6f76fbf55bb3553def7f2411ef67263f8b3487192ff9867f7",
+    "deterministic_evaluation_sha256": "21d717fdec3ebca534d28e9298c03d89c2717b7fa0eddb90a13501889dd9adf8",
+    "final_message_sha256": "3ef8a71c91ceb5e03e2f66c16e9cd081be9be3e5650cf6f9131c6cfcfd04df5e",
+    "required_assertions_passed": 14,
+    "required_assertions_failed": 0,
+    "okf_profile_pages": 2,
+    "result": "diagnostic-pass"
+  },
+  "baseline": {
+    "run_id": "codex-baseline-p01-r1-20260802T035209992Z",
+    "execution_capture_sha256": "6978163e933d0371945c6d724ef798ed80788048bc77d4f53fddb60612d880a8",
+    "deterministic_evaluation_sha256": "7dd224eac5bd7286fd2bfc0cdf432402ba3c5944a939cc18d430b443e6b9624e",
+    "final_message_sha256": "b9d5350d8e2103e340ffaea741e765f37d949d6defbf5b47f1bef9e2e60b84ae",
+    "required_assertions_passed": 6,
+    "required_assertions_failed": 8,
+    "okf_profile_pages": 0,
+    "result": "diagnostic-fail"
+  },
+  "observed_delta": {
+    "assertion_pass_delta": 8,
+    "with_harness_unique_passes": [
+      "okf_0_1",
+      "boi_profile_0_1_local",
+      "local_private",
+      "no_direct_blocked_promotion",
+      "no_raw_transcript",
+      "no_invented_missing_evidence",
+      "structured_outputs",
+      "promotion_boundary"
+    ],
+    "interpretation": "The corrected Harness supplied the BoI-compatible document contract and Local Private safety boundary that the same-model baseline did not infer from the user request alone. One diagnostic pair is not a Reference benchmark."
+  },
+  "independent_blind_review_completed": false,
+  "completed_execution_credit_per_arm": 0,
+  "remaining_gates": [
+    "verified Windows restricted-token sandbox",
+    "three repetitions",
+    "independent blind comparison",
+    "Claude authenticated comparison",
+    "non-developer acceptance",
+    "actual BoI Wiki contract",
+    "internal Bitbucket when reachable"
+  ]
+}

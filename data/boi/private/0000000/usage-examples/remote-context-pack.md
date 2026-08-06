@@ -4,6 +4,13 @@ boi_profile_version: "0.1-local"
 type: boi/local-example
 title: Remote Context Pack 예제
 description: 원격 BoI Wiki MCP가 있을 때 shared SOP/WorkflowDefinition/Event/업무 요청을 검색해 context pack을 만드는 요청
+boi_id: boi:private:0000000:legacy:remote-context-pack:f485fffafe
+classification: internal
+owner: "0000000"
+artifact_visibility: working
+lifecycle_state: working
+memory_candidate: false
+cleanup_policy: keep
 timestamp: 2026-06-20T00:06:00+09:00
 employee_id: "0000000"
 local_owner_ref: local-private:0000000

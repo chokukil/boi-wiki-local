@@ -1,0 +1,72 @@
+{
+  "schema": "boi-local-independent-evaluator-evidence/v1",
+  "reviewer_id": "codex-blind-gpt-5.6-sol",
+  "reviewer_runtime_version": "codex-cli 0.146.0",
+  "independent_session": true,
+  "blind_order": "with-harness-then-baseline",
+  "reviewer_bundle_sha256": "ab8e47cad2110b622bb4eb874292d5e2d7b53345177bfb8e724bdaa32ec7fdf6",
+  "result": {
+    "schema": "boi-local-blind-review-result/v1",
+    "winner": "A",
+    "scores": {
+      "A": {
+        "dimensions": {
+          "schema-and-structure": 20,
+          "source-and-provenance": 20,
+          "knowledge-maintenance": 15,
+          "grounded-reasoning": 13,
+          "review-and-failure-path": 6,
+          "promotion-boundary": 10,
+          "non-developer-ux": 8
+        },
+        "total": 92
+      },
+      "B": {
+        "dimensions": {
+          "schema-and-structure": 20,
+          "source-and-provenance": 7,
+          "knowledge-maintenance": 12,
+          "grounded-reasoning": 8,
+          "review-and-failure-path": 1,
+          "promotion-boundary": 10,
+          "non-developer-ux": 4
+        },
+        "total": 62
+      }
+    },
+    "hard_failures": {
+      "A": [],
+      "B": []
+    },
+    "evidence": {
+      "A": [
+        "All structured records declare OKF 0.1 and BoI Profile 0.1-local with Local Private controls.",
+        "The web-clip source record gives the same exact SHA256 for both observed paths and consolidates them into one canonical record.",
+        "Both maintained knowledge pages include exact source hashes in source_refs and generated_from.",
+        "The schedule reconfirmation is appended to the existing topic without changing the decision.",
+        "Atlas Ledger is the current term while Blue Ledger remains an alias and dated history entry.",
+        "The absent email attachment is explicitly recorded as missing evidence without invented contents.",
+        "The activity log and completion summary state that no remote upload occurred."
+      ],
+      "B": [
+        "Both knowledge records declare OKF 0.1 and BoI Profile 0.1-local with Local Private controls.",
+        "The schedule page adds the reconfirmation to the existing evidence history.",
+        "The terminology page preserves Blue Ledger as an alias and historical name.",
+        "The two public web clips are not processed, compared, or represented, so the explicit duplicate-handling request lacks evidence.",
+        "The missing email attachment is not recorded as missing evidence.",
+        "There is no source index, source record, activity log, independent review evidence, or actionable failure path.",
+        "The completion summary names files but does not explain the duplicate result, schedule evidence update, terminology correction, or missing attachment."
+      ]
+    },
+    "rationale": "A fulfills every requested maintenance operation with structured Local Private records, exact provenance, byte-duplicate consolidation, history-preserving updates, and explicit treatment of missing evidence. Its main weaknesses are limited evidence of an independent review, no actionable follow-up for the missing attachment, and completion links tied to an external workspace path. B preserves the two existing knowledge topics correctly and maintains a safe promotion boundary, but omits the entire duplicate-source task and the required missing-evidence record; its completion summary is also too sparse for a non-developer to verify the outcome.",
+    "validated_capped_totals": {
+      "A": 92,
+      "B": 62
+    },
+    "review_result_sha256": "33c857971e7005955fb72665cd530c974fa2c6fcc893a459bfdf626aa973def1",
+    "mapping_capture_sha256": {
+      "A": "f697c9083177e8f2bdbdf5ba981684065e191646b34e8faf8917505d4743073c",
+      "B": "3b79097949c3e66b612b78050eb56c39ca156dd24ba40e81c4f3de2279fbef9d"
+    }
+  }
+}

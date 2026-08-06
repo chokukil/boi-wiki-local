@@ -1,0 +1,69 @@
+{
+  "schema": "boi-local-independent-evaluator-evidence/v1",
+  "reviewer_id": "codex-blind-gpt-5.6-sol",
+  "reviewer_runtime_version": "codex-cli 0.146.0",
+  "independent_session": true,
+  "blind_order": "baseline-then-with-harness",
+  "reviewer_bundle_sha256": "fcebe18524e4ca304d19253067ffe6fb1fa0c23ae6dfb36d6278dff816aad842",
+  "result": {
+    "schema": "boi-local-blind-review-result/v1",
+    "winner": "B",
+    "scores": {
+      "A": {
+        "dimensions": {
+          "schema-and-structure": 16,
+          "source-and-provenance": 12,
+          "knowledge-maintenance": 13,
+          "grounded-reasoning": 15,
+          "review-and-failure-path": 9,
+          "promotion-boundary": 10,
+          "non-developer-ux": 8
+        },
+        "total": 83
+      },
+      "B": {
+        "dimensions": {
+          "schema-and-structure": 20,
+          "source-and-provenance": 20,
+          "knowledge-maintenance": 14,
+          "grounded-reasoning": 14,
+          "review-and-failure-path": 9,
+          "promotion-boundary": 10,
+          "non-developer-ux": 8
+        },
+        "total": 95
+      }
+    },
+    "hard_failures": {
+      "A": [],
+      "B": []
+    },
+    "evidence": {
+      "A": [
+        "모든 지식 문서에 OKF 0.1과 BoI Profile 0.1-local, Local Private 경계 및 promotion 차단 상태가 기록되어 있다.",
+        "세 개의 개별 검토 문서는 source_refs와 comparison_refs에 SHA-256을 기록하고 reviewed 결정과 원본을 변경하지 않았다고 명시한다.",
+        "reconciliation-review는 상충 주장, stale downstream, 근거 공백, 반증, 미확인 사항과 다음 검증을 가장 포괄적으로 분리한다.",
+        "reconciliation-review의 네 source_refs에는 해시가 없고 generated_from은 개별 원본이 아닌 디렉터리만 가리켜 추적성이 약하다.",
+        "COMPLETION_SUMMARY는 독립 검토 문서가 3개라고 하지만 A 아래에는 사용자 대상 검토 문서가 4개 있어 산출물 설명과 실제 구조가 불일치한다."
+      ],
+      "B": [
+        "다섯 지식 문서 모두 OKF 0.1과 BoI Profile 0.1-local을 포함하며 analysis-case, hypothesis, analysis-log로 결과 역할을 명확히 구분한다.",
+        "모든 이슈 문서와 비교 로그가 source_refs 및 generated_from에 개별 출처와 정확한 SHA-256을 반복 기록한다.",
+        "source-comparison-log가 네 독립 이슈 문서의 소유 claim_status와 검증 단계를 연결하고 기존 reviewed 지식 및 source 불변 경계를 명시한다.",
+        "각 이슈 문서는 evidence, counterevidence, unknowns, decision boundary, next validation, confidence를 분리하며 reviewed 금요일 결정을 자동 덮어쓰지 않는다.",
+        "Claim B를 unsupported로 확인하면서도 반대 명제까지 입증된 것으로 확대하지 않고, stale FAQ의 검색 반증과 reminder 미확인을 보존한다.",
+        "COMPLETION_SUMMARY는 실제 다섯 Local Private 파일과 일치하지만 SHA-256·claim_status 같은 용어가 많고 본문이 영어여서 한국어 비개발자 경험은 다소 약하다."
+      ]
+    },
+    "rationale": "B가 구조와 출처 추적성에서 뚜렷하게 우수하다. 특히 모든 산출물에 역할별 허용 유형, 개별 source hash, generated_from을 일관되게 제공하고 비교 로그로 중복 이슈의 소유권을 정리했다. A는 분석 내용 자체는 더 포괄적이고 근거·반증·미확인 사항을 매우 잘 분리했지만, 종합 문서의 해시 누락과 디렉터리 수준 generated_from, 개별 문서와 종합 문서의 내용 중복, 완료 요약의 파일 수 불일치 때문에 객관적 구조·provenance 점수가 낮다. 두 출력 모두 Local 경계를 지키고 reviewed 결정을 보존하며, 확인 가능한 invented fact나 unsafe promotion은 발견되지 않았다.",
+    "validated_capped_totals": {
+      "A": 83,
+      "B": 95
+    },
+    "review_result_sha256": "f558eb0a6a819d3d0b319a1a1082e4d2bf4d794dd66df49c4dcfac205253cb67",
+    "mapping_capture_sha256": {
+      "A": "8e5c1dcdb75bdd339e9c9fb323aab7c9a5d41c683dab2ea5bdcca3a71d255f06",
+      "B": "957cdadfa2307ca8c2b48d6f6c90d686e4403ec69a4ebb75f72c05276091f73f"
+    }
+  }
+}

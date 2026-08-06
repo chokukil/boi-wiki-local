@@ -4,6 +4,13 @@ boi_profile_version: "0.1-local"
 type: boi/local-diagram
 title: "직개발 결과 확인 및 Reporting Mermaid Flow"
 description: "SOP 이미지 기반 직개발 결과 확인 workflow Mermaid 도식"
+boi_id: boi:private:0000000:legacy:direct-development-reporting-mermaid:9cce96f981
+classification: internal
+owner: "0000000"
+artifact_visibility: working
+lifecycle_state: working
+memory_candidate: false
+cleanup_policy: keep
 timestamp: 2026-06-20T22:03:00+09:00
 employee_id: "0000000"
 local_owner_ref: local-private:0000000

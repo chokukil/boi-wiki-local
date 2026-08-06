@@ -1,0 +1,33 @@
+{
+  "schema": "boi-local-eval-seed-catalog/v1",
+  "case_id": "fab-logistics-digital-twin",
+  "fixture_id": "PUB-FAB-DT-001-v1",
+  "seeds": [
+    {
+      "seed_id": "s00-empty",
+      "manifest": "s00-empty/manifest.json",
+      "manifest_sha256": "067a90886a095e7bc1088c566f87176d464c877de88c7bb232e707dacc748881",
+      "used_by_prompts": [
+        "p01",
+        "p03",
+        "p04"
+      ]
+    },
+    {
+      "seed_id": "s10-existing",
+      "manifest": "s10-existing/manifest.json",
+      "manifest_sha256": "cb6e81179db56702fcf3bea065ccb3071a2097261adddc2686f61460df8bd5b9",
+      "used_by_prompts": [
+        "p02"
+      ]
+    },
+    {
+      "seed_id": "s20-interrupted",
+      "manifest": "s20-interrupted/manifest.json",
+      "manifest_sha256": "889907470695da9beac665f91e1d819073bbe75df2ae6d7be9291e1fca68471f",
+      "used_by_prompts": [
+        "p05"
+      ]
+    }
+  ]
+}

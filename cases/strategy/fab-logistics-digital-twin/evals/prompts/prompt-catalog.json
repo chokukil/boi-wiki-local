@@ -1,0 +1,205 @@
+{
+  "schema": "boi-local-case-prompt-catalog/v2",
+  "case_id": "fab-logistics-digital-twin",
+  "protocol_revision": "case-eval/v2",
+  "prompts": [
+    {
+      "prompt_id": "p01",
+      "scenario": "normal-full-request",
+      "label": "공개 표준과 twin ontology 연결 가설 생성",
+      "user_prompt": "공개 표준과 twin ontology 연결 가설 생성 입력 범위는 sources/01-semi-gem300-overview.md, sources/02-palantir-ontology-overview.md, sources/03-palantir-types-reference.md, sources/04-nvidia-warehouse-digital-twin.md, sources/05-nvidia-fab-digital-twin-session.md이다. 원본 SHA256과 Local Private 경계를 지키고 확인되지 않은 사실은 추측하지 마. OKF 0.1과 BoI Profile 0.1-local 결과만 만들며, 독립 검토와 실패 경로를 남기고 원격 제출은 수행하지 마.",
+      "interaction": {
+        "mode": "single-turn",
+        "turns": [
+          {
+            "turn": 1,
+            "role": "user",
+            "text": "공개 표준과 twin ontology 연결 가설 생성 입력 범위는 sources/01-semi-gem300-overview.md, sources/02-palantir-ontology-overview.md, sources/03-palantir-types-reference.md, sources/04-nvidia-warehouse-digital-twin.md, sources/05-nvidia-fab-digital-twin-session.md이다. 원본 SHA256과 Local Private 경계를 지키고 확인되지 않은 사실은 추측하지 마. OKF 0.1과 BoI Profile 0.1-local 결과만 만들며, 독립 검토와 실패 경로를 남기고 원격 제출은 수행하지 마."
+          }
+        ]
+      },
+      "seed_id": "s00-empty",
+      "inputs": [
+        "sources/01-semi-gem300-overview.md",
+        "sources/02-palantir-ontology-overview.md",
+        "sources/03-palantir-types-reference.md",
+        "sources/04-nvidia-warehouse-digital-twin.md",
+        "sources/05-nvidia-fab-digital-twin-session.md"
+      ],
+      "expected_operations": [
+        "inventory-and-hash",
+        "domain-analysis",
+        "independent-review"
+      ],
+      "required_outcomes": [
+        "source-manifest.json",
+        "twin-capability-map.md",
+        "ontology-map.md",
+        "pilot-hypotheses.md",
+        "GEM300의 Carrier·Substrate·Control Job 공개 개념을 twin 상태·event와 연결하고 Object·Link·Action 후보를 만들되, 실제 FAB 데이터 매핑과 효과는 unknown 및 내부 검증 항목으로 남긴다."
+      ],
+      "forbidden_outcomes": [
+        "source mutation",
+        "invented evidence",
+        "unauthorized remote write",
+        "direct promotion of blocked Local types"
+      ]
+    },
+    {
+      "prompt_id": "p02",
+      "scenario": "existing-material-partial-update",
+      "label": "기존 mapping에 새 source만 history 보존 반영",
+      "user_prompt": "기존 mapping에 새 source만 history 보존 반영 입력 범위는 sources/01-semi-gem300-overview.md, sources/02-palantir-ontology-overview.md, sources/03-palantir-types-reference.md이다. 원본 SHA256과 Local Private 경계를 지키고 확인되지 않은 사실은 추측하지 마. OKF 0.1과 BoI Profile 0.1-local 결과만 만들며, 독립 검토와 실패 경로를 남기고 원격 제출은 수행하지 마.",
+      "interaction": {
+        "mode": "single-turn",
+        "turns": [
+          {
+            "turn": 1,
+            "role": "user",
+            "text": "기존 mapping에 새 source만 history 보존 반영 입력 범위는 sources/01-semi-gem300-overview.md, sources/02-palantir-ontology-overview.md, sources/03-palantir-types-reference.md이다. 원본 SHA256과 Local Private 경계를 지키고 확인되지 않은 사실은 추측하지 마. OKF 0.1과 BoI Profile 0.1-local 결과만 만들며, 독립 검토와 실패 경로를 남기고 원격 제출은 수행하지 마."
+          }
+        ]
+      },
+      "seed_id": "s10-existing",
+      "inputs": [
+        "sources/01-semi-gem300-overview.md",
+        "sources/02-palantir-ontology-overview.md",
+        "sources/03-palantir-types-reference.md"
+      ],
+      "expected_operations": [
+        "search-existing-output",
+        "preserve-history",
+        "source-linked-update"
+      ],
+      "required_outcomes": [
+        "existing topic updated in place",
+        "prior history retained",
+        "source-manifest.json"
+      ],
+      "forbidden_outcomes": [
+        "source mutation",
+        "invented evidence",
+        "unauthorized remote write",
+        "direct promotion of blocked Local types",
+        "duplicate topic page",
+        "silent overwrite"
+      ]
+    },
+    {
+      "prompt_id": "p03",
+      "scenario": "missing-damaged-inaccessible-input",
+      "label": "유료 표준 접근 제한의 partial 처리 검증",
+      "user_prompt": "유료 표준 접근 제한의 partial 처리 검증 입력 범위는 sources/04-nvidia-warehouse-digital-twin.md, sources/05-nvidia-fab-digital-twin-session.md이다. 원본 SHA256과 Local Private 경계를 지키고 확인되지 않은 사실은 추측하지 마. OKF 0.1과 BoI Profile 0.1-local 결과만 만들며, 독립 검토와 실패 경로를 남기고 원격 제출은 수행하지 마.",
+      "interaction": {
+        "mode": "single-turn",
+        "turns": [
+          {
+            "turn": 1,
+            "role": "user",
+            "text": "유료 표준 접근 제한의 partial 처리 검증 입력 범위는 sources/04-nvidia-warehouse-digital-twin.md, sources/05-nvidia-fab-digital-twin-session.md이다. 원본 SHA256과 Local Private 경계를 지키고 확인되지 않은 사실은 추측하지 마. OKF 0.1과 BoI Profile 0.1-local 결과만 만들며, 독립 검토와 실패 경로를 남기고 원격 제출은 수행하지 마."
+          }
+        ]
+      },
+      "seed_id": "s00-empty",
+      "inputs": [
+        "sources/04-nvidia-warehouse-digital-twin.md",
+        "sources/05-nvidia-fab-digital-twin-session.md"
+      ],
+      "expected_operations": [
+        "validate-input",
+        "isolate-unknowns",
+        "return-recovery-path"
+      ],
+      "required_outcomes": [
+        "missing or damaged input is explicit",
+        "no inferred source content",
+        "actionable recovery"
+      ],
+      "forbidden_outcomes": [
+        "source mutation",
+        "invented evidence",
+        "unauthorized remote write",
+        "direct promotion of blocked Local types",
+        "false completion",
+        "hidden input gap"
+      ]
+    },
+    {
+      "prompt_id": "p04",
+      "scenario": "near-miss-trigger-boundary",
+      "label": "near-miss 내부 FAB 성능 추정 요청 차단",
+      "user_prompt": "near-miss 내부 FAB 성능 추정 요청 차단 입력 범위는 추가 입력 파일 없음이다. 원본 SHA256과 Local Private 경계를 지키고 확인되지 않은 사실은 추측하지 마. OKF 0.1과 BoI Profile 0.1-local 결과만 만들며, 독립 검토와 실패 경로를 남기고 원격 제출은 수행하지 마.",
+      "interaction": {
+        "mode": "single-turn",
+        "turns": [
+          {
+            "turn": 1,
+            "role": "user",
+            "text": "near-miss 내부 FAB 성능 추정 요청 차단 입력 범위는 추가 입력 파일 없음이다. 원본 SHA256과 Local Private 경계를 지키고 확인되지 않은 사실은 추측하지 마. OKF 0.1과 BoI Profile 0.1-local 결과만 만들며, 독립 검토와 실패 경로를 남기고 원격 제출은 수행하지 마."
+          }
+        ]
+      },
+      "seed_id": "s00-empty",
+      "inputs": [],
+      "expected_operations": [
+        "classify-near-miss",
+        "decline-case-execution",
+        "route-to-narrower-capability"
+      ],
+      "required_outcomes": [
+        "Case Harness not executed",
+        "boundary reason stated",
+        "no Case output files"
+      ],
+      "forbidden_outcomes": [
+        "source mutation",
+        "invented evidence",
+        "unauthorized remote write",
+        "direct promotion of blocked Local types",
+        "unnecessary Case creation"
+      ]
+    },
+    {
+      "prompt_id": "p05",
+      "scenario": "large-pack-follow-up-and-resume",
+      "label": "중단된 pilot hypothesis의 hash 기반 resume",
+      "user_prompt": "중단된 pilot hypothesis의 hash 기반 resume 입력 범위는 sources/01-semi-gem300-overview.md, sources/02-palantir-ontology-overview.md, sources/03-palantir-types-reference.md, sources/04-nvidia-warehouse-digital-twin.md, sources/05-nvidia-fab-digital-twin-session.md이다. 원본 SHA256과 Local Private 경계를 지키고 확인되지 않은 사실은 추측하지 마. OKF 0.1과 BoI Profile 0.1-local 결과만 만들며, 독립 검토와 실패 경로를 남기고 원격 제출은 수행하지 마.",
+      "interaction": {
+        "mode": "single-turn",
+        "turns": [
+          {
+            "turn": 1,
+            "role": "user",
+            "text": "중단된 pilot hypothesis의 hash 기반 resume 입력 범위는 sources/01-semi-gem300-overview.md, sources/02-palantir-ontology-overview.md, sources/03-palantir-types-reference.md, sources/04-nvidia-warehouse-digital-twin.md, sources/05-nvidia-fab-digital-twin-session.md이다. 원본 SHA256과 Local Private 경계를 지키고 확인되지 않은 사실은 추측하지 마. OKF 0.1과 BoI Profile 0.1-local 결과만 만들며, 독립 검토와 실패 경로를 남기고 원격 제출은 수행하지 마."
+          }
+        ]
+      },
+      "seed_id": "s20-interrupted",
+      "inputs": [
+        "sources/01-semi-gem300-overview.md",
+        "sources/02-palantir-ontology-overview.md",
+        "sources/03-palantir-types-reference.md",
+        "sources/04-nvidia-warehouse-digital-twin.md",
+        "sources/05-nvidia-fab-digital-twin-session.md"
+      ],
+      "expected_operations": [
+        "verify-processing-state",
+        "resume-by-source-hash",
+        "cross-check-and-update"
+      ],
+      "required_outcomes": [
+        "processed inputs not regenerated",
+        "pending inputs handled or checkpointed",
+        "pilot-hypotheses.md"
+      ],
+      "forbidden_outcomes": [
+        "source mutation",
+        "invented evidence",
+        "unauthorized remote write",
+        "direct promotion of blocked Local types",
+        "restart all work",
+        "false completion"
+      ]
+    }
+  ]
+}

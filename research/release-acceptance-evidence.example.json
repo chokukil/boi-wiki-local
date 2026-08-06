@@ -1,0 +1,86 @@
+{
+  "schema": "boi-local-release-acceptance/v3",
+  "build_commit": "replace-with-tested-commit",
+  "tested_at": "YYYY-MM-DDTHH:MM:SS+09:00",
+  "reviewer_role": "knowledge-steward",
+  "testers": [
+    {
+      "journey": "no-obsidian",
+      "tester_profile": "non-developer",
+      "windows_native": {
+        "approved_git_clone_succeeded": false,
+        "install_from_wiki_succeeded": false,
+        "first_capture_succeeded": false,
+        "search_succeeded": false,
+        "promotion_preview_succeeded": false,
+        "duration_minutes": 0,
+        "install_duration_minutes": 0,
+        "first_knowledge_duration_minutes": 0,
+        "promotion_preview_duration_minutes": 0
+      },
+      "obsidian": {
+        "support_claimed": false,
+        "app_version": "",
+        "vault_opened": false,
+        "external_file_watcher_succeeded": false,
+        "properties_succeeded": false,
+        "backlinks_succeeded": false,
+        "graph_succeeded": false
+      },
+      "security": {
+        "local_private_uploaded": false,
+        "remote_mutations_before_approval": false,
+        "usage_telemetry_observed": false
+      },
+      "ux_observations": {
+        "blocked_steps": [],
+        "misclicked_steps": [],
+        "helpful_capture_ids": []
+      },
+      "tester_confirmed": false
+    },
+    {
+      "journey": "obsidian-core",
+      "tester_profile": "non-developer",
+      "windows_native": {
+        "approved_git_clone_succeeded": false,
+        "install_from_wiki_succeeded": false,
+        "first_capture_succeeded": false,
+        "search_succeeded": false,
+        "promotion_preview_succeeded": false,
+        "duration_minutes": 0,
+        "install_duration_minutes": 0,
+        "first_knowledge_duration_minutes": 0,
+        "promotion_preview_duration_minutes": 0
+      },
+      "obsidian": {
+        "support_claimed": true,
+        "app_version": "",
+        "vault_opened": false,
+        "external_file_watcher_succeeded": false,
+        "properties_succeeded": false,
+        "backlinks_succeeded": false,
+        "graph_succeeded": false
+      },
+      "security": {
+        "local_private_uploaded": false,
+        "remote_mutations_before_approval": false,
+        "usage_telemetry_observed": false
+      },
+      "ux_observations": {
+        "blocked_steps": [],
+        "misclicked_steps": [],
+        "helpful_capture_ids": []
+      },
+      "tester_confirmed": false
+    }
+  ],
+  "domain_review": {
+    "reviewer_profile": "pending-domain-review",
+    "synthetic_case_reviewed": false,
+    "workflow_plausibility_confirmed": false,
+    "claims_marked_synthetic": false,
+    "domain_persona_validated": false
+  },
+  "reviewer_confirmed": false
+}

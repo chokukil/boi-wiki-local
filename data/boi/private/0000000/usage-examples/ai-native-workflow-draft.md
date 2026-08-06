@@ -4,6 +4,13 @@ boi_profile_version: "0.1-local"
 type: boi/local-example
 title: AI Native Workflow Draft 예제
 description: 업무 요청을 SOP, Event, Action 중심의 AI Native Workflow 초안으로 바꾸는 요청
+boi_id: boi:private:0000000:legacy:ai-native-workflow-draft:0029acedb0
+classification: internal
+owner: "0000000"
+artifact_visibility: working
+lifecycle_state: working
+memory_candidate: false
+cleanup_policy: keep
 timestamp: 2026-06-20T00:04:00+09:00
 employee_id: "0000000"
 local_owner_ref: local-private:0000000

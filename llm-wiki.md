@@ -1,42 +1,23 @@
 # Local LLM Wiki
 
-이 파일 하나만으로도 시작할 수 있습니다.
+> Schema priority: 기존 BoI Wiki 계약 → OKF 0.1 → BoI Profile 0.1-local/0.1 변환 → Local Private 보안 경계 → LLM Wiki Ingest·Query·Lint → 선택형 Obsidian. LLM Wiki 운영 방식은 이 계약을 대체하지 않습니다.
 
-Agent에게 다음처럼 말하세요.
+이 파일은 자유 입력을 시작하기 위한 최소 진입점입니다. 본격적인 설치와 사용 안내는 [BoI Wiki Local 가이드 홈](templates/second-brain-guide/00-start-here.md)에서 이어집니다.
+
+에이전트에게 다음과 같이 요청할 수 있습니다.
 
 ```text
-이 파일을 내 BoI Wiki Local inbox처럼 써줘.
+이 내용을 BoI Wiki Local의 수정하지 않는 원문으로 수집해줘.
 ```
-
-커지면 agent가 7자리 사번을 확인한 뒤 `data/boi/private/{7자리사번}/` 아래 OKF Markdown 문서로 나눕니다.
 
 ## Inbox
 
-- 아직 정리되지 않은 개인 메모를 여기에 임시로 둡니다.
+- 아직 정리하지 않은 메모를 이 아래에 적을 수 있습니다.
 
-## Core Rules
+## 기본 규칙
 
-- Local Private content stays local unless the user explicitly approves sharing.
-- MCP is optional. The official remote MCP is shared BoI Wiki MCP; do not require a local MCP server.
-- Use skills or the same rules for work BoI notes, SOP diagrams, workflow-definition plans, work request specs, context packs, pre-execution simulations, and Langflow plans.
-- SOP is important for standardized work, but one-off or repeated personal work can start as a Local Private work BoI without forcing an SOP.
-- Use `scripts/local_capture.py`, `scripts/local_review.py`, and `scripts/promotion_preflight.py` when available to turn loose notes into OKF documents, memory candidates, cleanup previews, and sharing previews.
-- Bulk dictionary candidates are curated in data/override/manifest or promotion drafts, not by changing code per term.
-- Before sharing, create a sanitized promotion draft and show preview/diff for confirmation.
-- If remote BoI Wiki MCP is configured, use `boi_inbox`, `agent_memory_review`, `promotion_preview`, `source_wiki_plan`, and `harness_acceptance` through the shared MCP. Treat `agent_inbox` as deprecated compatibility only.
-
-## Useful Requests
-
-```text
-설비 이상 대응 SOP를 Mermaid 프로세스 플로우로 그려줘.
-이 이벤트가 발생하면 어떤 업무 BoI와 업무 흐름이 이어지는지 알려줘.
-기존 API 문서를 Action 초안으로 만들고 업무 흐름에 연결해줘.
-이번 회의 내용을 비정형 업무 BoI로 정리해줘.
-매주 반복하는 FAB Trend 보고 업무를 SOP 추가 초안과 Action 연결 후보로 정리해줘.
-대량 dictionary 후보를 canonical, alias, 제외, parent curation 후보로 정리해줘.
-원격 BoI Wiki를 검색해서 이번 업무용 context pack을 만들어줘.
-내 local memory 후보와 cleanup 후보를 보여줘.
-이 문서를 팀에 올리기 전에 promotion preflight만 먼저 만들어줘.
-이 repo를 source wiki로 만들 수 있는지 계획만 보여줘.
-MCP 설정은 모르겠으니 local만 써줘.
-```
+- 원문은 잠근 뒤 별도 지식 문서로 정제합니다.
+- Local Private 콘텐츠는 정확한 promotion 미리보기와 사용자 승인 전에는 원격으로 보내지 않습니다.
+- MCP와 Obsidian은 선택 사항입니다.
+- 관계의 근거는 `source_refs`, `generated_from`, Markdown 링크에 남깁니다.
+- 시각적 탐색은 Obsidian의 Backlinks와 Graph에 맡깁니다.

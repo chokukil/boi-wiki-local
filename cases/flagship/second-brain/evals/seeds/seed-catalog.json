@@ -1,0 +1,43 @@
+{
+  "schema": "boi-local-eval-seed-catalog/v1",
+  "case_id": "second-brain",
+  "fixture_id": "SYN-SB-001-v1",
+  "seeds": [
+    {
+      "seed_id": "s00-empty",
+      "manifest": "s00-empty/manifest.json",
+      "manifest_sha256": "c09001cd1b6fed21691913e7b3e95fb26909911ef8f012acabaf9b16152d7459",
+      "used_by_prompts": [
+        "p01"
+      ]
+    },
+    {
+      "seed_id": "s10-reviewed",
+      "manifest": "s10-reviewed/manifest.json",
+      "manifest_sha256": "1f7bfe9c460b5563ba434255307f7db409546810ef20ba6f905eb67ec87ebd92",
+      "used_by_prompts": [
+        "p02",
+        "p03",
+        "p04"
+      ]
+    },
+    {
+      "seed_id": "s20-curated",
+      "manifest": "s20-curated/manifest.json",
+      "manifest_sha256": "bb1c5719b41d0066f20805f25c6d084ce7bd44567ee39781a5c33e649d683a44",
+      "used_by_prompts": [
+        "p05",
+        "p06",
+        "p08"
+      ]
+    },
+    {
+      "seed_id": "s30-interrupted",
+      "manifest": "s30-interrupted/manifest.json",
+      "manifest_sha256": "8c4f3163b063ae4b396b4114e73f6247782c4930e6375f47e0048997d2022c11",
+      "used_by_prompts": [
+        "p07"
+      ]
+    }
+  ]
+}

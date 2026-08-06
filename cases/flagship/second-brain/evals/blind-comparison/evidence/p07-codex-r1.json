@@ -1,0 +1,73 @@
+{
+  "schema": "boi-local-independent-evaluator-evidence/v1",
+  "reviewer_id": "codex-blind-gpt-5.6-sol",
+  "reviewer_runtime_version": "codex-cli 0.146.0",
+  "independent_session": true,
+  "blind_order": "baseline-then-with-harness",
+  "reviewer_bundle_sha256": "ca2eec9d3e816cc7e5dca40900bbc5b4a8d5917826f20610c2bbfcc687c7eee0",
+  "result": {
+    "schema": "boi-local-blind-review-result/v1",
+    "winner": "B",
+    "scores": {
+      "A": {
+        "dimensions": {
+          "schema-and-structure": 0,
+          "source-and-provenance": 16,
+          "knowledge-maintenance": 15,
+          "grounded-reasoning": 14,
+          "review-and-failure-path": 9,
+          "promotion-boundary": 10,
+          "non-developer-ux": 8
+        },
+        "total": 0
+      },
+      "B": {
+        "dimensions": {
+          "schema-and-structure": 20,
+          "source-and-provenance": 20,
+          "knowledge-maintenance": 15,
+          "grounded-reasoning": 15,
+          "review-and-failure-path": 9,
+          "promotion-boundary": 10,
+          "non-developer-ux": 9
+        },
+        "total": 98
+      }
+    },
+    "hard_failures": {
+      "A": [
+        "All four created Profile artifacts omit the required archive_status, evidence_sha256, and evidence_type fields.",
+        "research-comparison.md uses invalid lifecycle_state review_required, invalid knowledge_role research-note, and invalid claim_status mixed.",
+        "promotion-sop-draft.md uses invalid lifecycle_state draft and invalid knowledge_role draft-procedure; onboarding-faq.md and readonly-knowledge-search-api.md also use disallowed knowledge_role values."
+      ],
+      "B": []
+    },
+    "evidence": {
+      "A": [
+        "The progress record correctly advances only sources 11–14, preserves 13 unique completed hashes for 14 files, and records sources 15–18 as the next batch.",
+        "Each new note contains source_refs and generated_from entries whose hashes match the corresponding seed manifest values.",
+        "The research note preserves the missing-citation limitation and rejects the unsupported recall claim without filling gaps from model memory.",
+        "All artifacts remain local-only, and the SOP is clearly marked unapproved and ineligible for promotion.",
+        "The completion-summary progress link points to an external baseline workspace rather than the supplied artifact tree."
+      ],
+      "B": [
+        "All four artifacts contain every contract-required Profile field and use allowed lifecycle_state, claim_status, knowledge_role, and evidence_type values.",
+        "Each source from 11 through 14 has exactly one useful source-record artifact with the exact 64-character evidence hash repeated in evidence_sha256, source_refs, and generated_from.",
+        "The progress record correctly represents the 03/09 duplicate as one unique completed hash, processes only sources 11–14, and leaves sources 15–18 as batch-05.",
+        "The research record separates source claims, unsupported evidence, unknowns, and verification steps; the remaining records preserve their source constraints without invented facts.",
+        "The draft SOP remains protected and local-only, requires human conflict review, and is explicitly not treated as execution or publication approval.",
+        "The Korean completion summary clearly reports validation, duplicate handling, completed scope, next batch, and lack of external transmission, with only minor technical jargon."
+      ],
+      "rationale": "B fully satisfies the Profile contract, provenance requirements, resume semantics, grounding rules, and Local-only boundary. A performs the substantive maintenance task well, but its four newly created Profiles violate mandatory metadata and allowed-value requirements, triggering the rubric's hard-failure score cap of zero; its dimension scores show the otherwise creditable work before that cap."
+    },
+    "validated_capped_totals": {
+      "A": 0,
+      "B": 98
+    },
+    "review_result_sha256": "3c1164fd6852c22e20c1a39e69f9ef9925031f30940a347881c4a16f00de8715",
+    "mapping_capture_sha256": {
+      "A": "a83c6789907fe91eb684d2a161a20e6de3dd7bf59d7ca34433df5472e35bdfbd",
+      "B": "421e49dd80ce3d024ba5ddedc9f614b4d1922d305e12ac33a5ae2a4354df3ea7"
+    }
+  }
+}

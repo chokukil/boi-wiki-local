@@ -4,6 +4,13 @@ boi_profile_version: "0.1-local"
 type: boi/local-sop-draft
 title: "직개발 결과 확인 및 Reporting SOP 초안"
 description: "SOP 이미지에서 추출한 직개발 결과 확인 및 Reporting 절차의 BoI Wiki 초안"
+boi_id: boi:private:0000000:legacy:direct-development-reporting-sop-draft:d20f70724e
+classification: internal
+owner: "0000000"
+artifact_visibility: working
+lifecycle_state: working
+memory_candidate: false
+cleanup_policy: keep
 timestamp: 2026-06-20T22:02:00+09:00
 employee_id: "0000000"
 local_owner_ref: local-private:0000000

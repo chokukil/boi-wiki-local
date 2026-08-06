@@ -1,0 +1,5 @@
+설정 완료: `0000000` / 알아서 정리 / 현재 폴더의 `sources`.
+첫 지식: [공유 지식 검토 일정](C:/Users/choku/AppData/Local/BoI-Wiki-Local-Evals/codex-with-harness-p01-r1-20260802T041532031Z/workspace/data/boi/private/0000000/notes/knowledge/shared-knowledge-review-schedule.md).
+일회성 내용은 저장하지 않았고 원본 SHA256도 그대로입니다.
+필수 OKF·Local Private 메타데이터와 로컬 색인을 검증했습니다.
+Python·Obsidian·MCP는 사용하지 않았으며 원격 업로드도 없었습니다.

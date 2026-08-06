@@ -1,0 +1,100 @@
+{
+  "schema": "boi-global-insight-runtime/v1",
+  "interface_revision": "global-insight-tools/v1",
+  "tools": [
+    {
+      "name": "Capture",
+      "id": "capture",
+      "intent": "승인된 URL·파일·문서·대화를 원문과 provenance가 있는 Local source로 보존",
+      "default_result": ["source-manifest"],
+      "external_research": "forbidden",
+      "semantic_mutation": false,
+      "remote_submit": false
+    },
+    {
+      "name": "Update",
+      "id": "update",
+      "intent": "새 source를 기존 claim snapshot과 비교해 변화만 검토 후보로 생성",
+      "default_result": ["claim-delta", "review-queue"],
+      "empty_change_set_allowed": true,
+      "report_on_no_change": false,
+      "remote_submit": false
+    },
+    {
+      "name": "Query",
+      "id": "query",
+      "intent": "현재 Local durable knowledge만 사용해 출처가 있는 답과 unknown을 반환",
+      "default_result": ["query-answer"],
+      "knowledge_scope": "current-local-only",
+      "auto_deep_research": false,
+      "remote_submit": false
+    },
+    {
+      "name": "DeepResearch",
+      "id": "deep-research",
+      "intent": "명시적 요청 또는 승인된 Query 범위에서 공식·1차 자료를 우선 조사",
+      "default_result": ["source-manifest", "evidence", "claim-delta", "change-preview"],
+      "start_policy": ["explicit-user-request", "approved-query-scope"],
+      "unread_full_text_policy": "partial-or-blocked",
+      "remote_submit": false
+    },
+    {
+      "name": "Health",
+      "id": "health",
+      "intent": "link·provenance·staleness·review due·hash 문제를 찾고 수정 후보만 제시",
+      "default_result": ["health-findings"],
+      "semantic_mutation": false,
+      "remote_submit": false
+    },
+    {
+      "name": "Review",
+      "id": "review",
+      "intent": "원문과 manifest부터 확인해 유지·수정·partial·blocked·reject를 사람이 판정",
+      "default_result": ["review-decision"],
+      "producer_self_approval": false,
+      "remote_submit": false
+    },
+    {
+      "name": "Promote",
+      "id": "promote",
+      "intent": "검토된 정제 지식의 sanitized candidate와 exact preview를 생성",
+      "default_result": ["promotion-preview"],
+      "requires_exact_preview_approval": true,
+      "remote_submit": false
+    }
+  ],
+  "delta_types": [
+    "new",
+    "strengthened",
+    "revised",
+    "contradicted",
+    "stale",
+    "retirement-candidate",
+    "unknown"
+  ],
+  "artifact_kinds": [
+    "request-contract",
+    "source-manifest",
+    "evidence",
+    "claim-snapshot",
+    "claim-delta",
+    "handoff",
+    "failure",
+    "scoped-lint",
+    "review-queue",
+    "review-decision",
+    "query-answer",
+    "health-findings",
+    "change-preview",
+    "promotion-preview"
+  ],
+  "scale_modes": ["full", "reduced", "single-agent", "no-team-fallback"],
+  "safety": {
+    "local_private_default": true,
+    "source_mutation": false,
+    "semantic_health_mutation": false,
+    "remote_auto_upload": false,
+    "promotion_requires_user_approval": true,
+    "approval_invalidated_by": ["candidate", "source", "reviewer", "target_scope", "candidate_sha256"]
+  }
+}

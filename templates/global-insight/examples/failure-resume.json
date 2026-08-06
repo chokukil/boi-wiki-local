@@ -1,0 +1,30 @@
+{
+  "artifact_kind": "failure",
+  "case_id": "agentic-ai-change-radar",
+  "status": "blocked",
+  "local_only": true,
+  "source_refs": [
+    {
+      "type": "public-source-record",
+      "ref": "cases/research/agentic-ai-change-radar/fixtures/sources/01-t0-anthropic-effective-agents.md",
+      "sha256": "ab34858a1c3227328e2142198f3eb8f227db69a8b85820d483b865bd8b1e31fb"
+    }
+  ],
+  "generated_from": [
+    {
+      "type": "public-source-record",
+      "ref": "cases/research/agentic-ai-change-radar/fixtures/sources/01-t0-anthropic-effective-agents.md",
+      "sha256": "ab34858a1c3227328e2142198f3eb8f227db69a8b85820d483b865bd8b1e31fb"
+    }
+  ],
+  "failure_phase": "source-validation",
+  "verified_artifacts": ["request-contract.json"],
+  "invalidated_dependent_artifacts": ["evidence.json", "claim-delta.json"],
+  "retry_count": 1,
+  "resume_checkpoint": {
+    "phase": "source-validation",
+    "input_sha256": "ab34858a1c3227328e2142198f3eb8f227db69a8b85820d483b865bd8b1e31fb"
+  },
+  "resume_condition": "같은 입력 hash에서 필수 source 접근이 복구되면 source-validation부터 재개",
+  "blocker": "필수 source 접근 상태를 확인할 수 없음"
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "boi-local-eval-seed-manifest/v1",
+  "seed_id": "s10-existing",
+  "synthetic": false,
+  "files": [
+    {
+      "path": "notes/knowledge/existing-knowledge.md",
+      "sha256": "a5b99e9f5c76f2b8abf613d6a7e089ca9da2906fb6a428a6da37b6a058b9390b",
+      "bytes": 1101
+    },
+    {
+      "path": "seed.json",
+      "sha256": "7e7e638e283cc38097738dddcb02be8a1353bb0c73c0c4a3079f8f8fa2c0130d",
+      "bytes": 253
+    }
+  ]
+}

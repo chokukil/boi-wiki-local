@@ -1,0 +1,33 @@
+{
+  "schema": "boi-local-eval-seed-catalog/v1",
+  "case_id": "scientific-foundation-model-knowledge",
+  "fixture_id": "PUB-SFM-001-v1",
+  "seeds": [
+    {
+      "seed_id": "s00-empty",
+      "manifest": "s00-empty/manifest.json",
+      "manifest_sha256": "6ca9db7d87702e07961821fbd4f6bbba3264535745dd5fe213c22807a6d910e4",
+      "used_by_prompts": [
+        "p01",
+        "p03",
+        "p04"
+      ]
+    },
+    {
+      "seed_id": "s10-existing",
+      "manifest": "s10-existing/manifest.json",
+      "manifest_sha256": "e21ad00b6abfce1679db695a45286869cf485ff637a17adf4977ebb0e947d0a9",
+      "used_by_prompts": [
+        "p02"
+      ]
+    },
+    {
+      "seed_id": "s20-interrupted",
+      "manifest": "s20-interrupted/manifest.json",
+      "manifest_sha256": "a5d1c3ee7b5b9a560617a7f579779d5247f81f7cffd250ade56f4a2c540bf5fc",
+      "used_by_prompts": [
+        "p05"
+      ]
+    }
+  ]
+}

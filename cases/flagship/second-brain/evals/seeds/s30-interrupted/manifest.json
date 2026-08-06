@@ -1,0 +1,27 @@
+{
+  "schema": "boi-local-eval-seed-manifest/v1",
+  "seed_id": "s30-interrupted",
+  "synthetic": true,
+  "files": [
+    {
+      "path": ".boi-local/source-folder-plan.json",
+      "sha256": "f60ef57232fd10ebe4b494be3a83e8d04e7f887f439d0142bc68969d77d90d99",
+      "bytes": 5021
+    },
+    {
+      "path": ".boi-local/source-folder-progress.json",
+      "sha256": "eb4a488bdb6b35509fde3ab876861b90a6ef7f6c2927d4bbcab627b1873c9d05",
+      "bytes": 1609
+    },
+    {
+      "path": "notes/knowledge/review-schedule.md",
+      "sha256": "a7e5af255a4f8bea4fe9ee57e950de4b01146a19f1d55b386f0a3dfe6c58c2bd",
+      "bytes": 1039
+    },
+    {
+      "path": "seed.json",
+      "sha256": "90a1e8348d0a56f87f0be72be906c045332ad831c473cdff40fa5093eec9c663",
+      "bytes": 3177
+    }
+  ]
+}

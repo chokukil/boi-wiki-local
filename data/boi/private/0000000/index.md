@@ -1,4 +1,15 @@
-# Local Private
+# 내 BoI Wiki Local
+
+`0000000` 합성 Profile의 개인 Meta Harness와 Local Private 지식 공간입니다. 명시적인 promotion 승인 없이 원격으로 전송하지 않습니다.
+
+## 먼저 할 일
+
+1. [내 업무용 BoI Harness 만들기](../../../../templates/second-brain-guide/02-build-your-harness.md) - 업무 설명을 역할·Skill·작업 흐름·검토 계약으로 구성
+2. [Flagship Second Brain 설정](../../../../templates/second-brain-guide/12-ai-assisted-setup.md) - 대화와 자료에서 오래 쓸 지식을 축적·교정·재사용
+3. [처음 시작하기](../../../../templates/second-brain-guide/00-start-here.md) - 전체 제품 구조와 Local/Remote 경계 확인
+4. [승인된 개인 Harness](notes/harnesses/index.md) - 다음 세션에도 다시 사용할 실행 계약
+
+## 내 작업 공간
 
 * [Inbox](inbox.md) - 아직 분류되지 않은 메모
 * [Notes](notes/) - 회의록과 개인 업무 메모

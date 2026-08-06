@@ -1,0 +1,9 @@
+{
+  "schema": "boi-local-eval-seed/v1",
+  "fixture_id": "PUB-SFM-001-v1",
+  "employee_id": "0000000",
+  "remote_enabled": false,
+  "synthetic": false,
+  "seed_id": "s00-empty",
+  "description": "No prior Local Case output exists"
+}

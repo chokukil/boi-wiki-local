@@ -1,0 +1,33 @@
+{
+  "schema": "boi-local-eval-seed-catalog/v1",
+  "case_id": "agentic-ai-change-radar",
+  "fixture_id": "PUB-AAI-RADAR-001-v1",
+  "seeds": [
+    {
+      "seed_id": "s00-empty",
+      "manifest": "s00-empty/manifest.json",
+      "manifest_sha256": "73c42f917bf5da6b93cd160d98e082ae6586a2dc939bcb4d939c73caa7f928f7",
+      "used_by_prompts": [
+        "p01",
+        "p03",
+        "p04"
+      ]
+    },
+    {
+      "seed_id": "s10-existing",
+      "manifest": "s10-existing/manifest.json",
+      "manifest_sha256": "82ae658728796655d22def96bce280e15f2dbaa4f6a95d4907035a7e0819c085",
+      "used_by_prompts": [
+        "p02"
+      ]
+    },
+    {
+      "seed_id": "s20-interrupted",
+      "manifest": "s20-interrupted/manifest.json",
+      "manifest_sha256": "478d388e3b13111cd24f62037e16aeda7423606d8c9b3ff521c07b062bde7114",
+      "used_by_prompts": [
+        "p05"
+      ]
+    }
+  ]
+}

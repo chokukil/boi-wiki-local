@@ -1,0 +1,37 @@
+{
+  "schema": "boi-local-eval-seed/v1",
+  "fixture_id": "PUB-AAI-RADAR-001-v1",
+  "employee_id": "0000000",
+  "remote_enabled": false,
+  "synthetic": false,
+  "seed_id": "s20-interrupted",
+  "description": "A previous session processed part of the source pack",
+  "processed": [
+    {
+      "path": "sources/01-t0-anthropic-effective-agents.md",
+      "sha256": "ab34858a1c3227328e2142198f3eb8f227db69a8b85820d483b865bd8b1e31fb"
+    },
+    {
+      "path": "sources/02-t0-openai-agent-building-blocks.md",
+      "sha256": "18dc8a38ea052c0cc70a1a1ff68b59e68977c52ad03e900c7a2f1bb13030854d"
+    },
+    {
+      "path": "sources/03-t0-mcp-authorization-2025-03.md",
+      "sha256": "a2a76a099a2b59f4de4478fa431b0bbf07fc6c7187c834da77c6d8e3aa7f54f6"
+    }
+  ],
+  "pending": [
+    {
+      "path": "sources/04-t1-openai-agents-typescript.md",
+      "sha256": "3002b305f0a04404061d3794e1ff64defa541e9c07776eecb78025aadd50ee98"
+    },
+    {
+      "path": "sources/05-t1-mcp-key-changes-2025-06.md",
+      "sha256": "03eaedc393b03459971ff018504e7a203d09d0ac49c39cff3b3b083fa78f6dda"
+    },
+    {
+      "path": "sources/06-t1-openai-agentkit.md",
+      "sha256": "b79c2634183cb02875121be947691fc2c9dfc1c2249f61752c66bed4aa5288a6"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+﻿# Local source records
+
+- [Decision chat](source-5be16cc0-decision-chat.md) — meeting note, already reflected
+- [Project update email](source-b1f652f1-project-update.md) — email, already reflected
+- [Public knowledge review web clip](source-bae4daa9-public-web-clip.md) — web clip; two identical source paths recorded once
+- [Review day reconfirmation](source-99c99d87-review-day-reconfirmation.md) — meeting note
+- [Action register](source-27f8da41-action-register.md) — tabular data
+- [Operating guide](source-6b2b928c-operating-guide.md) — PDF document
+- [Whiteboard decisions](source-9f3ab52e-whiteboard-decisions.md) — image; visual review pending
+- [Meeting note](source-aa91ab6b-meeting-note.md) — meeting note
+- [Conflicting review day](source-1b6154bc-conflicting-review-day.md) — document; conflict preserved
+- [Research comparison](source-ee2faef6-research-note.md) — document; evidence gap preserved
+- [Knowledge review SOP draft](source-2276ef12-sop-draft.md) — document; unapproved draft
+- [Onboarding FAQ](source-69cb0bc9-onboarding-faq.md) — document
+- [Read-only API note](source-97e7d613-readonly-api-note.md) — document
+- [Incident retrospective](source-e0f7c994-incident-retrospective.md) — analysis export
+- [Atlas Ledger dictionary candidate](source-02f6b5e4-dictionary-candidate.md) — document; owner review pending
+- [Weekly report](source-8fbb6e1f-weekly-report.md) — analysis export
+- [Sensitive review note](source-de7331eb-sensitive-review-note.md) — sensitive document; remote exclusion
+- [FAQ recurrence note](source-b25d3a36-recurrence-note.md) — analysis export; human review pending
+- [Promotion candidate](source-d95ff290-promotion-candidate.md) — document; Local Private preview only

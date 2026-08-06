@@ -1,0 +1,16 @@
+﻿{
+  "profile_id": "0000000",
+  "storage": {
+    "scope": "local-private",
+    "format": "utf-8-markdown",
+    "workspace_only": true
+  },
+  "organization": "auto",
+  "sources_path": "sources",
+  "home": "README.md",
+  "retention": {
+    "durable_only": true,
+    "store_transient_content": false
+  },
+  "remote_enabled": false
+}

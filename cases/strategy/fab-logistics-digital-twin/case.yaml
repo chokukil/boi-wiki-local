@@ -1,0 +1,61 @@
+{
+  "schema": "boi-local-case-harness/v1",
+  "case_id": "fab-logistics-digital-twin",
+  "title": "FAB Logistics Digital Twin",
+  "category": "strategy",
+  "status": "community",
+  "version": "0.1.0",
+  "audience": "SEMI 표준, FAB 물류 자동화, Digital Twin과 Ontology 연결을 공개 자료로 검토하는 구성원",
+  "start_prompt": "SEMI GEM300 공개 자료와 물류 Digital Twin, Object·Link·Action을 연결해 FAB 적용 가설과 검증 질문을 만들어줘.",
+  "logical_roles": [
+    "research-coordinator",
+    "standards-source-researcher",
+    "twin-model-analyst",
+    "ontology-workflow-curator",
+    "independent-reviewer"
+  ],
+  "reviewer_role": "independent-reviewer",
+  "orchestration_pattern": "standards-map-hypothesis-review",
+  "scale_modes": [
+    "full",
+    "reduced",
+    "single-agent",
+    "no-team-fallback"
+  ],
+  "required_skills": [
+    "boi-wiki-local"
+  ],
+  "optional_features": [
+    "boi-second-brain",
+    "mcp",
+    "obsidian"
+  ],
+  "fixture_policy": "public-only",
+  "expected_local_types": [
+    "boi/local-knowledge-note",
+    "boi/local-guide"
+  ],
+  "direct_promotion_blocked_types": [
+    "boi/local-evidence",
+    "boi/local-capture",
+    "boi/local-hypothesis",
+    "boi/local-analysis-log",
+    "boi/local-analysis-case"
+  ],
+  "direct_promotion_blocked_roles": [
+    "agent-memory",
+    "source-record"
+  ],
+  "eval_prompt_count": 5,
+  "evaluation_protocol": "case-eval/v2",
+  "fixture_id": "PUB-FAB-DT-001-v1",
+  "runtime_contract": "boi-local-case-runtime/v1",
+  "runtime_manifest": "runtime/runtime.yaml",
+  "handoff_schema": "cases/_schema/handoff.schema.json",
+  "reference_gate": {
+    "codex_runs": 3,
+    "claude_runs": 3,
+    "baseline_required": true
+  },
+  "domain_validation": false
+}

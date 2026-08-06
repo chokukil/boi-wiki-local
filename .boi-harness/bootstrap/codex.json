@@ -1,0 +1,9 @@
+{
+  "schema": "boi-harness-bootstrap/v1",
+  "client": "codex",
+  "generated_from_checksum": "b7b9afe61d88b07279e3460de25c0feb1186ac9d5d3cfbed0564c7b4cbf04ffa",
+  "instructions": [
+    "Use the pinned offline Harness snapshot and Local Private files when the shared endpoint is unavailable.",
+    "Route recurring work descriptions through boi-harness-builder and preserve preview-before-write approval."
+  ]
+}

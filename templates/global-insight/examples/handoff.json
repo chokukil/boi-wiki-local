@@ -1,0 +1,39 @@
+{
+  "artifact_kind": "handoff",
+  "schema": "boi-local-case-handoff/v1",
+  "case_id": "agentic-ai-change-radar",
+  "run_id": "native-contract-example",
+  "phase": "evidence-analysis",
+  "from_role": "source-researcher",
+  "to_role": "evidence-analyst",
+  "local_only": true,
+  "source_refs": [
+    {
+      "type": "public-source-record",
+      "ref": "cases/research/agentic-ai-change-radar/fixtures/sources/01-t0-anthropic-effective-agents.md",
+      "sha256": "ab34858a1c3227328e2142198f3eb8f227db69a8b85820d483b865bd8b1e31fb"
+    }
+  ],
+  "generated_from": [
+    {
+      "type": "public-source-record",
+      "ref": "cases/research/agentic-ai-change-radar/fixtures/sources/01-t0-anthropic-effective-agents.md",
+      "sha256": "ab34858a1c3227328e2142198f3eb8f227db69a8b85820d483b865bd8b1e31fb"
+    }
+  ],
+  "input_artifacts": [
+    {
+      "path": "cases/research/agentic-ai-change-radar/fixtures/sources/01-t0-anthropic-effective-agents.md",
+      "bytes": 838,
+      "sha256": "ab34858a1c3227328e2142198f3eb8f227db69a8b85820d483b865bd8b1e31fb"
+    }
+  ],
+  "output_artifacts": ["evidence.json"],
+  "supported_claims": ["AAI-001"],
+  "counterevidence": [],
+  "unknown": ["특정 조직 적용성"],
+  "contradiction": [],
+  "blocker": [],
+  "review_questions": ["일반 원칙을 조직 적용 결론으로 확대하지 않았는가?"],
+  "phase_exit": "ready-for-evidence-analysis"
+}

@@ -1,0 +1,19 @@
+﻿{
+  "schema": "boi-local-second-brain-setup-plan/v1",
+  "employee_id": "0000000",
+  "synthetic_validation_profile": true,
+  "conversation_mode": "auto-curate",
+  "source_folders": [
+    "C:\\Users\\choku\\AppData\\Local\\BoI-Wiki-Local-Evals\\codex-with-harness-p01-r1-20260802T041532031Z\\workspace\\sources"
+  ],
+  "approved_at": "2026-08-02T13:17:39.1108854+09:00",
+  "approved_scope": [
+    "Local Private Second Brain configuration",
+    "immutable source record for sources/01-decision-chat.txt",
+    "one durable decision knowledge page",
+    "required local indexes and log"
+  ],
+  "transient_content_policy": "do not retain",
+  "preserve_originals": true,
+  "remote_activity": "disabled"
+}

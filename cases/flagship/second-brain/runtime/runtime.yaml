@@ -1,0 +1,41 @@
+{
+  "schema": "boi-local-case-runtime/v1",
+  "case_id": "second-brain",
+  "orchestrator": "../orchestrator.md",
+  "handoff_schema": "../../../_schema/handoff.schema.json",
+  "reviewer_role": "privacy-reviewer",
+  "role_cards": [
+    {
+      "role": "source-curator",
+      "path": "../roles/source-curator.md",
+      "independent_reviewer": false
+    },
+    {
+      "role": "knowledge-distiller",
+      "path": "../roles/knowledge-distiller.md",
+      "independent_reviewer": false
+    },
+    {
+      "role": "memory-maintainer",
+      "path": "../roles/memory-maintainer.md",
+      "independent_reviewer": false
+    },
+    {
+      "role": "grounded-query-analyst",
+      "path": "../roles/grounded-query-analyst.md",
+      "independent_reviewer": false
+    },
+    {
+      "role": "privacy-reviewer",
+      "path": "../roles/privacy-reviewer.md",
+      "independent_reviewer": true
+    }
+  ],
+  "scale_modes": [
+    "full",
+    "reduced",
+    "single-agent",
+    "no-team-fallback"
+  ],
+  "remote_mutation_default": false
+}

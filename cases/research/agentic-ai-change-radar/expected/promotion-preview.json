@@ -1,0 +1,21 @@
+{
+  "artifact_kind": "promotion-preview",
+  "case_id": "agentic-ai-change-radar",
+  "candidate_path": "promotion-candidate.md",
+  "candidate_sha256": "e551b37807690fa6fea3c00c048c046da032f02a550b78dfe65496acfd594a26",
+  "candidate_bytes": 919,
+  "reviewer": "pending-human-review",
+  "target_visibility": "team",
+  "target_scope": "team-candidate",
+  "source_refs": [
+    {"type": "url", "ref": "https://openai.com/index/new-tools-for-building-agents/"},
+    {"type": "url", "ref": "https://openai.github.io/openai-agents-js/"},
+    {"type": "url", "ref": "https://modelcontextprotocol.io/specification/2025-06-18/changelog"},
+    {"type": "url", "ref": "https://openai.com/index/introducing-agentkit/"}
+  ],
+  "blockers": ["human-review-required", "exact-preview-approval-required"],
+  "approved": false,
+  "submitted": false,
+  "remote_submit_allowed": false,
+  "approval_invalidated_when": ["candidate", "source", "reviewer", "target_scope", "candidate_sha256"]
+}

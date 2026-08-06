@@ -1,0 +1,9 @@
+처리를 재개해 `batch-04`만 완료했습니다.
+
+- 기존 10개 원본: 계획의 SHA-256과 모두 일치
+- 기존 파생 문서: 재생성·수정하지 않음
+- 신규 반영: 연구 비교, 미승인 SOP, 온보딩 FAQ, 읽기 전용 API 노트
+- [처리 현황](/C:/Users/choku/AppData/Local/BoI-Wiki-Local-Evals/codex-baseline-p07-r1-20260802T125740847Z/workspace/data/boi/private/0000000/.boi-local/source-folder-progress.json): 완료 14개 파일·고유 해시 13개로 갱신
+- 다음 재개 지점: `batch-05` — `sources/15`부터 `sources/18`까지
+- 이후 남은 자료: `sources/19`, `sources/20`
+- Git 변경 범위: 처리 현황 1개와 신규 노트 4개뿐이며, 기존 `review-schedule.md`는 변경되지 않았습니다.

@@ -1,0 +1,37 @@
+{
+  "artifact_kind": "source-manifest",
+  "case_id": "agentic-ai-change-radar",
+  "local_only": true,
+  "source_refs": [
+    {
+      "type": "public-source-record",
+      "ref": "cases/research/agentic-ai-change-radar/fixtures/sources/01-t0-anthropic-effective-agents.md",
+      "sha256": "ab34858a1c3227328e2142198f3eb8f227db69a8b85820d483b865bd8b1e31fb"
+    }
+  ],
+  "generated_from": [
+    {
+      "type": "public-source-record",
+      "ref": "cases/research/agentic-ai-change-radar/fixtures/sources/01-t0-anthropic-effective-agents.md",
+      "sha256": "ab34858a1c3227328e2142198f3eb8f227db69a8b85820d483b865bd8b1e31fb"
+    }
+  ],
+  "sources": [
+    {
+      "source_ref": "PUB-AAI-RADAR-001-v1:01",
+      "path": "cases/research/agentic-ai-change-radar/fixtures/sources/01-t0-anthropic-effective-agents.md",
+      "url": "https://www.anthropic.com/research/building-effective-agents",
+      "sha256": "ab34858a1c3227328e2142198f3eb8f227db69a8b85820d483b865bd8b1e31fb",
+      "bytes": 838,
+      "source_class": "primary",
+      "published_at": "2024-12-19",
+      "checked_at": "2026-08-06",
+      "version": "page checked 2026-08-06",
+      "access_status": "accessed",
+      "verified_scope": "public source record with claims and locator, not a live full-page archive",
+      "runtime": "native-file",
+      "source_refs": ["PUB-AAI-RADAR-001-v1:01"],
+      "generated_from": ["fixtures/manifest.json"]
+    }
+  ]
+}

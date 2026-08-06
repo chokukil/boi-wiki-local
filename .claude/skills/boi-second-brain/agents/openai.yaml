@@ -1,0 +1,4 @@
+interface:
+  display_name: "BoI Second Brain"
+  short_description: "Local Private 지식을 수집, 정제, 검색, 검토하고 안전하게 공유 준비합니다."
+  default_prompt: "Use $boi-second-brain to capture and distill this into my Local Private BoI Wiki."

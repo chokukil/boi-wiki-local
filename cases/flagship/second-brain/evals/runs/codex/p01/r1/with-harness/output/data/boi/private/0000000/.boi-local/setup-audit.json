@@ -1,0 +1,16 @@
+﻿{
+  "schema": "boi-local-second-brain-setup-audit/v1",
+  "employee_id": "0000000",
+  "synthetic_validation_profile": true,
+  "applied_at": "2026-08-02T13:17:39.1108854+09:00",
+  "approval": "user-approved human-readable preview",
+  "approved_plan_ref": "data/boi/private/0000000/.boi-local/setup-plan.json",
+  "approved_plan_sha256": "bc4974aa05e54d90027258ccd10bf715d4efcfe2d973e18154f76855794b9798",
+  "source_ref": "sources/01-decision-chat.txt",
+  "source_sha256": "5be16cc0e29d799b9ed63670979e18a88ae2c849beb55d3dbb59bac09b216463",
+  "harness_release": "harness-2.0-44d7fde6838a",
+  "harness_lock_checksum": "b7b9afe61d88b07279e3460de25c0feb1186ac9d5d3cfbed0564c7b4cbf04ffa",
+  "harness_signature": "adcfa0b8f6e82f587f55f617f686c7e9fb1ee948915f440e5257c84c9ab4717a",
+  "harness_validation": "reduced native validation; lock release and signature match pinned offline snapshot",
+  "remote_activity": "none"
+}

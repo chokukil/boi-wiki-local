@@ -1,0 +1,48 @@
+# Neutral, read-only command policy used by both Case evaluation arms.
+# File creation and edits must use the runtime's native patch/write tools and
+# remain constrained by the workspace-write sandbox.
+prefix_rule(
+    pattern=["git", "status"],
+    decision="allow",
+    justification="Inspect synthetic evaluation workspace changes"
+)
+prefix_rule(
+    pattern=["git", "ls-tree"],
+    decision="allow",
+    justification="Inspect the committed synthetic evaluation seed"
+)
+prefix_rule(
+    pattern=["git", "diff"],
+    decision="allow",
+    justification="Inspect synthetic evaluation workspace changes"
+)
+prefix_rule(
+    pattern=["git", "rev-parse"],
+    decision="allow",
+    justification="Identify the synthetic evaluation seed revision"
+)
+prefix_rule(
+    pattern=["rg"],
+    decision="allow",
+    justification="Search only the synthetic evaluation workspace"
+)
+
+# Explicitly forbid command-line mutation, process launch, and network clients.
+# Workspace files must be changed through the runtime's native edit tool.
+prefix_rule(pattern=["Set-Content"], decision="forbidden", justification="Shell writes are outside the evaluation contract")
+prefix_rule(pattern=["Add-Content"], decision="forbidden", justification="Shell writes are outside the evaluation contract")
+prefix_rule(pattern=["Out-File"], decision="forbidden", justification="Shell writes are outside the evaluation contract")
+prefix_rule(pattern=["Copy-Item"], decision="forbidden", justification="Shell mutation is outside the evaluation contract")
+prefix_rule(pattern=["Move-Item"], decision="forbidden", justification="Shell mutation is outside the evaluation contract")
+prefix_rule(pattern=["Remove-Item"], decision="forbidden", justification="Shell mutation is outside the evaluation contract")
+prefix_rule(pattern=["New-Item"], decision="forbidden", justification="Shell mutation is outside the evaluation contract")
+prefix_rule(pattern=["Start-Process"], decision="forbidden", justification="Child process launch is outside the evaluation contract")
+prefix_rule(pattern=["Invoke-Expression"], decision="forbidden", justification="Dynamic command execution is outside the evaluation contract")
+prefix_rule(pattern=["Invoke-WebRequest"], decision="forbidden", justification="Network access is disabled for evaluation")
+prefix_rule(pattern=["Invoke-RestMethod"], decision="forbidden", justification="Network access is disabled for evaluation")
+prefix_rule(pattern=["curl"], decision="forbidden", justification="Network access is disabled for evaluation")
+prefix_rule(pattern=["wget"], decision="forbidden", justification="Network access is disabled for evaluation")
+prefix_rule(pattern=["git", "push"], decision="forbidden", justification="Remote Git mutation is disabled for evaluation")
+prefix_rule(pattern=["git", "pull"], decision="forbidden", justification="Remote Git access is disabled for evaluation")
+prefix_rule(pattern=["git", "fetch"], decision="forbidden", justification="Remote Git access is disabled for evaluation")
+prefix_rule(pattern=["git", "clone"], decision="forbidden", justification="Remote Git access is disabled for evaluation")

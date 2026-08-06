@@ -1,0 +1,5 @@
+전체 20개 자료(고유 SHA256 19개) 처리를 완료했습니다.
+- 기존 지식 5건을 보강했고, 새 주제 7건을 만들었습니다.
+- 이미 반영된 SHA256 2건과 동일본 경로 1건(`03`=`09`)은 중복 생성하지 않았습니다.
+- 확인 필요 9건과 미승인 초안 4건은 그대로 남겼습니다. 자료 처리 잔여는 0건입니다.
+- [진행 상태](C:/Users/choku/AppData/Local/BoI-Wiki-Local-Evals/codex-with-harness-p04-r1-20260802T084018156Z/workspace/data/boi/private/0000000/.boi-local/source-folder-progress.json)는 완료이며, 원본 변경·이동·삭제 및 원격 업로드는 없었습니다.

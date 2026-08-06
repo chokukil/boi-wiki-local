@@ -4,6 +4,13 @@ boi_profile_version: "0.1-local"
 type: boi/local-workflow-simulation
 title: "Local Only Runbook"
 description: "MCP나 원격 publish 없이 Local Private만 사용하는 실행 기준"
+boi_id: boi:private:0000000:legacy:local-only-runbook:8c2552c7ec
+classification: internal
+owner: "0000000"
+artifact_visibility: working
+lifecycle_state: working
+memory_candidate: false
+cleanup_policy: keep
 timestamp: 2026-06-20T22:08:00+09:00
 employee_id: "0000000"
 local_owner_ref: local-private:0000000

@@ -1,0 +1,21 @@
+{
+  "artifact_kind": "promotion-preview",
+  "case_id": "agentic-ai-change-radar",
+  "candidate_path": "promotion-candidate.md",
+  "candidate_sha256": "ec0900118fcc0e87393021afd00c513ec87c6e550df4cf06b764ed672b4ba6e5",
+  "candidate_bytes": 663,
+  "reviewer": "pending-human-review",
+  "target_visibility": "team",
+  "target_scope": "team-candidate",
+  "source_refs": [
+    {
+      "type": "url",
+      "ref": "https://www.anthropic.com/research/building-effective-agents"
+    }
+  ],
+  "blockers": ["human-review-required", "exact-preview-approval-required"],
+  "approved": false,
+  "submitted": false,
+  "remote_submit_allowed": false,
+  "approval_invalidated_when": ["candidate", "source", "reviewer", "target_scope", "candidate_sha256"]
+}

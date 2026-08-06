@@ -1,0 +1,37 @@
+{
+  "schema": "boi-obsidian-plugin-compatibility/v1",
+  "verified_at": "2026-08-02",
+  "reference_app_version": "1.12.7",
+  "selection_rule": "Use the first candidate whose min_app_version is not greater than the installed Obsidian version.",
+  "plugins": [
+    {
+      "id": "quickadd",
+      "name": "QuickAdd",
+      "optional": true,
+      "distribution_policy": "optional-manual-install",
+      "candidates": [
+        {"version": "2.20.0", "min_app_version": "1.13.0", "channel": "latest"},
+        {"version": "2.12.3", "min_app_version": "1.11.4", "channel": "latest-compatible-for-1.12.7"}
+      ],
+      "sources": [
+        "https://raw.githubusercontent.com/chhoumann/quickadd/master/manifest.json",
+        "https://raw.githubusercontent.com/chhoumann/quickadd/master/versions.json"
+      ]
+    },
+    {
+      "id": "omnisearch",
+      "name": "Omnisearch",
+      "optional": true,
+      "distribution_policy": "deferred-until-core-search-gap",
+      "candidates": [
+        {"version": "1.30.1", "min_app_version": "1.13.3", "channel": "latest"},
+        {"version": "1.29.3", "min_app_version": "1.7.2", "channel": "latest-compatible-for-1.12.7"}
+      ],
+      "sources": [
+        "https://raw.githubusercontent.com/scambier/obsidian-omnisearch/master/manifest.json",
+        "https://raw.githubusercontent.com/scambier/obsidian-omnisearch/master/versions.json"
+      ],
+      "required_settings": {"enable_http_server": false}
+    }
+  ]
+}

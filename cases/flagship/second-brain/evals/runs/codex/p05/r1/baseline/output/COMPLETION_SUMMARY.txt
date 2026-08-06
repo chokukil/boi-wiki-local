@@ -1,0 +1,14 @@
+승인된 Local Private 범위에서 독립 검토 문서 3개를 작성·검증했습니다.
+
+- [상충 주장 검토](C:/Users/choku/AppData/Local/BoI-Wiki-Local-Evals/codex-baseline-p05-r1-20260802T104439573Z/workspace/data/boi/private/0000000/notes/knowledge/review-conflicting-claims-2026-08-02.md)
+- [근거 없는 주장 검토](C:/Users/choku/AppData/Local/BoI-Wiki-Local-Evals/codex-baseline-p05-r1-20260802T104439573Z/workspace/data/boi/private/0000000/notes/knowledge/review-unsupported-claims-2026-08-02.md)
+- [오래된 downstream 지식 검토](C:/Users/choku/AppData/Local/BoI-Wiki-Local-Evals/codex-baseline-p05-r1-20260802T104439573Z/workspace/data/boi/private/0000000/notes/knowledge/review-stale-downstream-2026-08-02.md)
+
+검증 결과:
+
+- 공통 변경 확인값: `39f96600...f01f3de`
+- 네 source의 SHA-256이 기록 전후 동일함
+- 세 문서 모두 `local-private`, `review_required`, `remote_upload: false`
+- reviewed 결정과 기존 지식·source 원본은 변경되지 않음
+- Git 상태에는 승인된 미리보기와 새 검토 문서 세 개만 로컬 untracked 파일로 표시됨
+- 원격 업로드·push·외부 시스템 변경은 수행하지 않음

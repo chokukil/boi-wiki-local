@@ -4,6 +4,13 @@ boi_profile_version: "0.1-local"
 type: boi/local-workflow-simulation
 title: "직개발 Reporting Human + AI Workflow Simulation"
 description: "사람과 AI가 함께 진행하는 직개발 Reporting 업무 흐름 실행 전 확인"
+boi_id: boi:private:0000000:legacy:direct-development-reporting-human-ai-flow:b07404af65
+classification: internal
+owner: "0000000"
+artifact_visibility: working
+lifecycle_state: working
+memory_candidate: false
+cleanup_policy: keep
 timestamp: 2026-06-20T22:07:00+09:00
 employee_id: "0000000"
 local_owner_ref: local-private:0000000

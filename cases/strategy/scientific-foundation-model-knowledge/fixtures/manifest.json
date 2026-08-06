@@ -1,0 +1,52 @@
+{
+  "schema": "boi-local-case-fixture-manifest/v2",
+  "case_id": "scientific-foundation-model-knowledge",
+  "fixture_id": "PUB-SFM-001-v1",
+  "fixed_at": "2026-08-06T09:00:00+09:00",
+  "synthetic": false,
+  "fixture_policy": "public-only",
+  "source_count": 5,
+  "required_media": [
+    "peer-reviewed-paper",
+    "primary-paper",
+    "preprint",
+    "research-page"
+  ],
+  "files": [
+    {
+      "path": "sources/01-materials-foundation-model-perspective.md",
+      "sha256": "aae311054ecdab57f6229fe0e40e83f5a87b15884f7043988559842ecb4cc3e2",
+      "bytes": 950,
+      "synthetic": false,
+      "source_record": true
+    },
+    {
+      "path": "sources/02-mattergen-primary-paper.md",
+      "sha256": "d63a738d7f28099cb03dbc93c2c4ca7e5ba9beea2bd0b0d2fe9fe306f2ee7370",
+      "bytes": 912,
+      "synthetic": false,
+      "source_record": true
+    },
+    {
+      "path": "sources/03-graphcast-primary-publication.md",
+      "sha256": "3c87eaa03923e963f58c661c77d969ad5cf69d3378b9f8981d7e8bbdb58551ab",
+      "bytes": 948,
+      "synthetic": false,
+      "source_record": true
+    },
+    {
+      "path": "sources/04-physics-guided-foundation-model.md",
+      "sha256": "ff099437ad04192bbd43bdfd4e908912d7e5d06533b6afa47a057972804e2a13",
+      "bytes": 884,
+      "synthetic": false,
+      "source_record": true
+    },
+    {
+      "path": "sources/05-physics-foundation-model-preprint.md",
+      "sha256": "f136d6754392560d4e8dba6c4118ebdce5c0ca3cf48c9e3d92048e8e2963a334",
+      "bytes": 879,
+      "synthetic": false,
+      "source_record": true
+    }
+  ]
+}
