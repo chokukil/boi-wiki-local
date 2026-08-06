@@ -1,0 +1,41 @@
+{
+  "schema": "boi-local-case-runtime/v1",
+  "case_id": "fab-logistics-digital-twin",
+  "orchestrator": "../orchestrator.md",
+  "handoff_schema": "../../../_schema/handoff.schema.json",
+  "reviewer_role": "independent-reviewer",
+  "role_cards": [
+    {
+      "role": "research-coordinator",
+      "path": "../roles/research-coordinator.md",
+      "independent_reviewer": false
+    },
+    {
+      "role": "standards-source-researcher",
+      "path": "../roles/standards-source-researcher.md",
+      "independent_reviewer": false
+    },
+    {
+      "role": "twin-model-analyst",
+      "path": "../roles/twin-model-analyst.md",
+      "independent_reviewer": false
+    },
+    {
+      "role": "ontology-workflow-curator",
+      "path": "../roles/ontology-workflow-curator.md",
+      "independent_reviewer": false
+    },
+    {
+      "role": "independent-reviewer",
+      "path": "../roles/independent-reviewer.md",
+      "independent_reviewer": true
+    }
+  ],
+  "scale_modes": [
+    "full",
+    "reduced",
+    "single-agent",
+    "no-team-fallback"
+  ],
+  "remote_mutation_default": false
+}

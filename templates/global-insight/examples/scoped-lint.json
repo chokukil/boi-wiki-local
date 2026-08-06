@@ -1,0 +1,30 @@
+{
+  "artifact_kind": "scoped-lint",
+  "case_id": "agentic-ai-change-radar",
+  "status": "passed",
+  "local_only": true,
+  "source_refs": [
+    {
+      "type": "claim-snapshot",
+      "ref": "cases/research/agentic-ai-change-radar/expected/t0-snapshot.md",
+      "sha256": "eda1af7542f22286e95c0f00d831466fd2fb4e86863d93fa21d293b3907a4bf0"
+    }
+  ],
+  "generated_from": [
+    {
+      "type": "claim-snapshot",
+      "ref": "cases/research/agentic-ai-change-radar/expected/t0-snapshot.md",
+      "sha256": "eda1af7542f22286e95c0f00d831466fd2fb4e86863d93fa21d293b3907a4bf0"
+    }
+  ],
+  "scope": {
+    "changed_documents": ["empty-change-set.json"],
+    "linked_topics": ["agentic-ai-change-radar"],
+    "affected_claims": [],
+    "navigation": ["cases/research/agentic-ai-change-radar/CASE.md"],
+    "new_contradictions": [],
+    "stale_downstream": []
+  },
+  "findings": [],
+  "semantic_mutations": []
+}

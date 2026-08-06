@@ -1,0 +1,63 @@
+2026-08-02 현재 로컬 자료만 확인했습니다. Git 작업트리는 깨끗하며 HEAD는 `d4e575ff9f917d4e8c26a392f0270372b7de1539`입니다. 모델 기억은 사용하지 않았습니다.
+
+## 확정된 내용
+
+- 정기 지식 검토 일정은 **매주 금요일 15:00**입니다.
+  - 원 결정은 이를 “Durable decision”으로 기록합니다.
+  - 이후 프로젝트 업데이트도 금요일 15:00 일정이 변경되지 않았다고 재확인합니다.
+- `Blue Ledger`를 `Atlas Ledger`로 바꾸라는 **명칭 변경 지시 자체는 기록되어 있습니다.**
+- 현재 용어 자료에서 `Atlas Ledger`는 선호 명칭, `Blue Ledger`는 별칭으로 취급됩니다.
+- 관련 reviewed-knowledge 문서의 다음 내용 검토일(`review_after`)은 **2026-08-09**입니다. 이는 매주 검토 회의 시간과는 별도인 문서 갱신 기준일입니다.
+
+## 아직 미확인인 내용
+
+- `Atlas Ledger`가 dictionary owner의 최종 승인을 받았는지는 확인되지 않습니다.
+  - Wiki는 “Preferred term candidate”라고 표현합니다.
+  - 사전 후보 문서도 `dictionary owner review pending`이라고 명시합니다.
+  - 따라서 **변경 결정/지시는 확인되지만, 용어 사전 차원의 최종 확정과 전환 완료는 미확인**입니다.
+- 변경 효력 발생일, 기존 문서 일괄 교체 여부, 별칭 유지 종료일은 없습니다.
+- 검토 절차를 담았다는 이메일 첨부 체크리스트가 없어 세부 절차는 확인할 수 없습니다.
+
+## Local 출처와 정확한 SHA-256
+
+| 출처 | 의미 | SHA-256 |
+|---|---|---|
+| [01-decision-chat.txt](C:/Users/choku/AppData/Local/BoI-Wiki-Local-Evals/codex-baseline-p06-r1-20260802T115232128Z/workspace/sources/01-decision-chat.txt:3) | 금요일 15:00 원 결정 | `5be16cc0e29d799b9ed63670979e18a88ae2c849beb55d3dbb59bac09b216463` |
+| [02-project-update.eml](C:/Users/choku/AppData/Local/BoI-Wiki-Local-Evals/codex-baseline-p06-r1-20260802T115232128Z/workspace/sources/02-project-update.eml:9) | Blue→Atlas 변경 지시, 금요일 일정 유지 | `b1f652f17ac06c5fcb45cb489ed887ff92af7187e480618c6d6029bd1bf6165c` |
+| [review-schedule.md](C:/Users/choku/AppData/Local/BoI-Wiki-Local-Evals/codex-baseline-p06-r1-20260802T115232128Z/workspace/data/boi/private/0000000/notes/knowledge/review-schedule.md:35) | reviewed-knowledge 일정 문서 | `a7e5af255a4f8bea4fe9ee57e950de4b01146a19f1d55b386f0a3dfe6c58c2bd` |
+| [atlas-ledger.md](C:/Users/choku/AppData/Local/BoI-Wiki-Local-Evals/codex-baseline-p06-r1-20260802T115232128Z/workspace/data/boi/private/0000000/notes/knowledge/atlas-ledger.md:35) | 후보 명칭 및 별칭 유지 상태 | `c50d55d03676c8271641932d982d62f78263fe8a5f1a03af5776f69df94371d7` |
+| [16-dictionary.md](C:/Users/choku/AppData/Local/BoI-Wiki-Local-Evals/codex-baseline-p06-r1-20260802T115232128Z/workspace/sources/16-dictionary.md:3) | Atlas 선호 명칭, owner 검토 대기 | `02f6b5e44f5a684fa7dd0dc7f64e5a9b3eeda4b77878dc27548f42441364c6e7` |
+
+두 reviewed-knowledge 문서에 기록된 원문 해시는 실제 `01`, `02` 파일의 계산값과 정확히 일치합니다.
+
+## 반증·상충 기록
+
+- [08-conflicting-review-day.md](C:/Users/choku/AppData/Local/BoI-Wiki-Local-Evals/codex-baseline-p06-r1-20260802T115232128Z/workspace/sources/08-conflicting-review-day.md:3)는 **목요일 15:00**이라고 주장합니다.
+  - SHA-256: `1b6154bc142104502974e5e85d48e1bc7f4a5123fb75c1aaae3ebc5f69223e18`
+  - 그러나 작성자가 불명이고 회의 링크나 결정 기록이 없으며, 문서 자체가 “unverified” 및 “금요일 결정을 덮어쓰지 말 것”이라고 규정합니다.
+  - 따라서 존재하는 반증이지만 증거력은 낮습니다.
+- 명칭 변경 이메일의 단정적 “Rename”과 Wiki의 “candidate/pending” 표기는 **변경 지시와 최종 사전 승인 상태가 다름**을 보여줍니다. 완료·최종 승인까지 확정됐다는 주장에는 반증이 됩니다.
+
+## 누락 자료
+
+- `sources/10-review-day-reconfirmation.txt`: 실제 파일 없음.  
+  Wiki에 선언된 해시 `99c99d87357b5a76b2212bc184606877878eb5ce37b77dd600b474f64317c1c0`은 원문 부재로 검증 불가입니다.
+- 이메일이 언급한 첨부 체크리스트: 없음, 해시도 없음.
+- dictionary owner 승인 기록: 없음.
+- `sources/13-onboarding-faq.md`: 실제 파일 없음. Wiki에 선언된 해시는 있으나 원문 검증 불가입니다.
+- 현재 Wiki는 관련 노트가 4개뿐이어서 최종 승인 및 실제 전환 완료 여부를 판단하기에 부족합니다.
+
+## 다음 확인
+
+1. dictionary owner의 승인 기록과 승인일을 확보합니다.
+2. 누락된 이메일 첨부 체크리스트를 확보해 변경 범위와 검토 절차를 확인합니다.
+3. `sources/10-review-day-reconfirmation.txt` 원문을 복구하고 선언된 SHA-256과 대조합니다.
+4. 실제 캘린더나 회의 결정 기록에서 금요일 15:00 일정을 최종 교차검증합니다.
+5. FAQ와 기존 문서에서 `Blue Ledger`가 별칭으로 남아 있는지, 교체가 완료됐는지 점검합니다.
+
+## 신뢰도
+
+- **금요일 15:00 일정: 높음** — 직접 결정 원문과 후속 이메일이 일치하고 해시도 검증됨.
+- **Atlas Ledger로 변경하라는 결정: 높음** — 직접 이메일과 사전 후보가 일치함.
+- **Atlas Ledger의 최종 승인·전환 완료: 낮음/미확인** — owner 검토 대기가 명시되고 승인 자료가 없음.
+- **누락 자료 판정: 높음** — 전체 로컬 파일 목록과 경로 존재 여부를 확인함.

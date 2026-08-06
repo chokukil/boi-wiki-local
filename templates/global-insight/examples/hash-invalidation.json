@@ -1,0 +1,32 @@
+{
+  "artifact_kind": "claim-delta",
+  "case_id": "agentic-ai-change-radar",
+  "local_only": true,
+  "source_refs": [
+    {
+      "type": "public-source-record",
+      "ref": "cases/research/agentic-ai-change-radar/fixtures/sources/01-t0-anthropic-effective-agents.md",
+      "sha256": "ab34858a1c3227328e2142198f3eb8f227db69a8b85820d483b865bd8b1e31fb"
+    }
+  ],
+  "generated_from": [
+    {
+      "type": "public-source-record",
+      "ref": "cases/research/agentic-ai-change-radar/fixtures/sources/01-t0-anthropic-effective-agents.md",
+      "sha256": "ab34858a1c3227328e2142198f3eb8f227db69a8b85820d483b865bd8b1e31fb"
+    }
+  ],
+  "delta_type": "revised",
+  "previous": {
+    "claim_ref": "AAI-001",
+    "snapshot_sha256": "eda1af7542f22286e95c0f00d831466fd2fb4e86863d93fa21d293b3907a4bf0"
+  },
+  "current": {
+    "status": "blocked-pending-recapture"
+  },
+  "input_hash_changed": true,
+  "approval_valid": false,
+  "invalidated_dependent_artifacts": ["evidence.json", "review-decision.json", "promotion-preview.json"],
+  "resume_from": "capture",
+  "reason": "필수 source hash가 승인된 snapshot 이후 변경됨"
+}

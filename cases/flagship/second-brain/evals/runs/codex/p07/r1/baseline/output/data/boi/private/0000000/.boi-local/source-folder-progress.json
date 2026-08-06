@@ -1,0 +1,39 @@
+﻿{
+  "schema": "boi-local-source-folder-progress/v1",
+  "approved_plan_hash": "f60ef57232fd10ebe4b494be3a83e8d04e7f887f439d0142bc68969d77d90d99",
+  "source_manifest_hash": "ab0724d789437e0d3aaea510f0bbbf104f28651de94f846e534a9ff9127ee479",
+  "completed_sha256": [
+    "1b6154bc142104502974e5e85d48e1bc7f4a5123fb75c1aaae3ebc5f69223e18",
+    "2276ef126f67ec52ebe9e6b76d6b9bd6ad04b501a8e44451f19a9c67ec903a40",
+    "27f8da41d9560b604e9b8fdb44db72d39da0b5a13a7702fdda9db967617d2cac",
+    "5be16cc0e29d799b9ed63670979e18a88ae2c849beb55d3dbb59bac09b216463",
+    "69cb0bc9c07a8bcf74cff589aa60e369a7800ab26f9ac78a0c6f7fefd5f485bf",
+    "6b2b928c844f99b1d8eddc01384ef9cc59429f171ab3810ff14e1d2a2b35dc92",
+    "97e7d613c9254f6412c08793670ae7a792f3e56f583ca69119a1e7d6c4562006",
+    "99c99d87357b5a76b2212bc184606877878eb5ce37b77dd600b474f64317c1c0",
+    "9f3ab52e54823b36f5cd1c0abcd9fc101e75bf951735c48977939b809f11de17",
+    "aa91ab6bcedec80ea716e17a4b90c6b97d5cf18c54cd1b9966042604d14daf61",
+    "b1f652f17ac06c5fcb45cb489ed887ff92af7187e480618c6d6029bd1bf6165c",
+    "bae4daa95a7cdaee037e60833467b9c4173f109fda59628e6f20e3ee43fa8c71",
+    "ee2faef63c53eb1b0f37834ccd55f756d27e4db542b6bad86e57cf92effb43c5"
+  ],
+  "already_reflected_sha256": [],
+  "remaining_source_refs": [
+    "sources/15-incident-retrospective.md",
+    "sources/16-dictionary.md",
+    "sources/17-weekly-report.md",
+    "sources/18-sensitive-review-note.md",
+    "sources/19-recurrence-note.md",
+    "sources/20-promotion-candidate.md"
+  ],
+  "next_batch": {
+    "batch_id": "batch-05",
+    "source_refs": [
+      "sources/15-incident-retrospective.md",
+      "sources/16-dictionary.md",
+      "sources/17-weekly-report.md",
+      "sources/18-sensitive-review-note.md"
+    ]
+  },
+  "status": "in_progress"
+}

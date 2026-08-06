@@ -4,6 +4,13 @@ boi_profile_version: "0.1-local"
 type: boi/local-note
 title: "직개발 Reporting SOP PoC 회의 정리"
 description: "SOP 이미지 기반 BoI Wiki Local 활용 사례와 shared runtime evidence 자산화 회의 정리"
+boi_id: boi:private:0000000:legacy:sample-meeting-to-boi:449e17a1a4
+classification: internal
+owner: "0000000"
+artifact_visibility: working
+lifecycle_state: working
+memory_candidate: false
+cleanup_policy: keep
 timestamp: 2026-06-20T22:01:00+09:00
 employee_id: "0000000"
 local_owner_ref: local-private:0000000

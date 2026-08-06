@@ -1,0 +1,22 @@
+﻿{
+  "schema": "boi-local-second-brain-preferences/v1",
+  "employee_id": "0000000",
+  "conversation_mode": "auto-curate",
+  "source_folders": [
+    "C:\\Users\\choku\\AppData\\Local\\BoI-Wiki-Local-Evals\\codex-with-harness-p01-r1-20260802T041532031Z\\workspace\\sources"
+  ],
+  "preserve_originals": true,
+  "copy_raw_transcripts": false,
+  "remote_auto_upload": false,
+  "agent_session_check": true,
+  "obsidian_optional": true,
+  "mcp_optional": true,
+  "obsidian_enabled": false,
+  "mcp_enabled": false,
+  "configured_at": "2026-08-02T13:17:39.1108854+09:00",
+  "authorization": {
+    "approved_summary": "오래 쓸 결정만 sources 폴더에서 Local Private 지식으로 정리",
+    "requires_preview_for_scope_change": true,
+    "approved_at": "2026-08-02T13:17:39.1108854+09:00"
+  }
+}

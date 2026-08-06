@@ -4,6 +4,13 @@ boi_profile_version: "0.1-local"
 type: boi/local-example
 title: "원격 BoI Wiki Context Pack 예제"
 description: "원격 BoI Wiki MCP가 있을 때 shared SOP/Action/Manual 문서를 묶어 context pack을 만드는 예제"
+boi_id: boi:private:0000000:legacy:remote-context-pack:f149647a3e
+classification: internal
+owner: "0000000"
+artifact_visibility: working
+lifecycle_state: working
+memory_candidate: false
+cleanup_policy: keep
 timestamp: 2026-06-20T21:56:00+09:00
 employee_id: "0000000"
 local_owner_ref: local-private:0000000

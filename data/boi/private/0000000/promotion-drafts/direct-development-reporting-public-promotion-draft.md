@@ -4,6 +4,13 @@ boi_profile_version: "0.1-local"
 type: boi/local-promotion-draft
 title: "직개발 Reporting SOP Public Promotion Draft"
 description: "직개발 Reporting SOP를 Public BoI Wiki로 공유하기 전 preview/preflight 초안"
+boi_id: boi:private:0000000:legacy:direct-development-reporting-public-promotion-draft:182548e584
+classification: internal
+owner: "0000000"
+artifact_visibility: working
+lifecycle_state: protected
+memory_candidate: false
+cleanup_policy: keep
 timestamp: 2026-06-20T22:10:00+09:00
 employee_id: "0000000"
 local_owner_ref: local-private:0000000

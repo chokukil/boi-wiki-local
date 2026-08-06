@@ -1,0 +1,61 @@
+{
+  "schema": "boi-local-case-harness/v1",
+  "case_id": "scientific-foundation-model-knowledge",
+  "title": "Scientific Foundation Model Knowledge",
+  "category": "strategy",
+  "status": "community",
+  "version": "0.1.0",
+  "audience": "물리·화학 법칙, 예측 성능과 반례를 장기 추적하는 연구·기술기획 구성원",
+  "start_prompt": "Scientific Foundation Model 자료를 법칙·가정·prediction·재현·반례·철회 상태로 정리해줘.",
+  "logical_roles": [
+    "research-coordinator",
+    "paper-source-researcher",
+    "scientific-evidence-analyst",
+    "change-curator",
+    "independent-reviewer"
+  ],
+  "reviewer_role": "independent-reviewer",
+  "orchestration_pattern": "paper-evidence-change-review",
+  "scale_modes": [
+    "full",
+    "reduced",
+    "single-agent",
+    "no-team-fallback"
+  ],
+  "required_skills": [
+    "boi-wiki-local"
+  ],
+  "optional_features": [
+    "boi-second-brain",
+    "mcp",
+    "obsidian"
+  ],
+  "fixture_policy": "public-only",
+  "expected_local_types": [
+    "boi/local-knowledge-note",
+    "boi/local-guide"
+  ],
+  "direct_promotion_blocked_types": [
+    "boi/local-evidence",
+    "boi/local-capture",
+    "boi/local-hypothesis",
+    "boi/local-analysis-log",
+    "boi/local-analysis-case"
+  ],
+  "direct_promotion_blocked_roles": [
+    "agent-memory",
+    "source-record"
+  ],
+  "eval_prompt_count": 5,
+  "evaluation_protocol": "case-eval/v2",
+  "fixture_id": "PUB-SFM-001-v1",
+  "runtime_contract": "boi-local-case-runtime/v1",
+  "runtime_manifest": "runtime/runtime.yaml",
+  "handoff_schema": "cases/_schema/handoff.schema.json",
+  "reference_gate": {
+    "codex_runs": 3,
+    "claude_runs": 3,
+    "baseline_required": true
+  },
+  "domain_validation": false
+}

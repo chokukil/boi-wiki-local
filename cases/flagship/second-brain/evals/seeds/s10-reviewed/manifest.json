@@ -1,0 +1,22 @@
+{
+  "schema": "boi-local-eval-seed-manifest/v1",
+  "seed_id": "s10-reviewed",
+  "synthetic": true,
+  "files": [
+    {
+      "path": "notes/knowledge/atlas-ledger.md",
+      "sha256": "c50d55d03676c8271641932d982d62f78263fe8a5f1a03af5776f69df94371d7",
+      "bytes": 1050
+    },
+    {
+      "path": "notes/knowledge/review-schedule.md",
+      "sha256": "a7e5af255a4f8bea4fe9ee57e950de4b01146a19f1d55b386f0a3dfe6c58c2bd",
+      "bytes": 1039
+    },
+    {
+      "path": "seed.json",
+      "sha256": "c650e58a6da0658b94cbf2a27b578d48ffdb7fedb9595afb84d5d77800b02614",
+      "bytes": 239
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+    "schema":  "boi-local-case-catalog/v1",
+    "version":  "3.1.0-candidate",
+    "reference_claims_allowed":  false,
+    "catalog_scope":  "public-candidate",
+    "cases":  [
+                  {
+                      "case_id":  "second-brain",
+                      "path":  "flagship/second-brain",
+                      "status":  "community",
+                      "flagship":  true
+                  },
+                  {
+                      "case_id":  "agentic-ai-change-radar",
+                      "path":  "research/agentic-ai-change-radar",
+                      "status":  "community",
+                      "flagship":  false
+                  },
+                  {
+                      "case_id":  "fab-logistics-digital-twin",
+                      "path":  "strategy/fab-logistics-digital-twin",
+                      "status":  "community",
+                      "flagship":  false
+                  },
+                  {
+                      "case_id":  "scientific-foundation-model-knowledge",
+                      "path":  "strategy/scientific-foundation-model-knowledge",
+                      "status":  "community",
+                      "flagship":  false
+                  }
+              ]
+}

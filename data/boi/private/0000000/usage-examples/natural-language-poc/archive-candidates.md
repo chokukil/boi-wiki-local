@@ -4,6 +4,13 @@ boi_profile_version: "0.1-local"
 type: boi/local-example
 title: "오래된 Private BoI 정리 후보 예제"
 description: "Local Private 문서 중 review_after가 지난 문서를 정리 후보로 보여주는 예제"
+boi_id: boi:private:0000000:legacy:archive-candidates:06cde97ae7
+classification: internal
+owner: "0000000"
+artifact_visibility: working
+lifecycle_state: working
+memory_candidate: false
+cleanup_policy: keep
 timestamp: 2026-06-20T21:59:00+09:00
 employee_id: "0000000"
 local_owner_ref: local-private:0000000

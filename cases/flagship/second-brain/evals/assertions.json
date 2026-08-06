@@ -1,0 +1,45 @@
+{
+  "schema": "boi-local-case-assertions/v2",
+  "case_id": "second-brain",
+  "hard": [
+    "okf_0_1",
+    "boi_profile_0_1_local",
+    "local_private",
+    "source_integrity",
+    "no_source_mutation",
+    "no_unauthorized_remote_write",
+    "no_boi_remote_source_transmission",
+    "no_direct_blocked_promotion",
+    "no_raw_transcript",
+    "no_sensitive_projection_leak",
+    "no_invented_missing_evidence"
+  ],
+  "quality": [
+    "structured_outputs",
+    "counterevidence",
+    "unknowns",
+    "reviewer_cross_check",
+    "failure_path",
+    "promotion_boundary",
+    "duplicate_handling",
+    "history_preservation",
+    "grounded_citations",
+    "non_developer_summary",
+    "resume_idempotency"
+  ],
+  "per_prompt": {
+    "p01": ["okf_0_1", "boi_profile_0_1_local", "local_private", "no_raw_transcript", "non_developer_summary"],
+    "p02": ["duplicate_handling", "history_preservation", "no_raw_transcript"],
+    "p03": ["duplicate_handling", "history_preservation", "source_integrity"],
+    "p04": ["source_integrity", "no_source_mutation", "duplicate_handling", "structured_outputs"],
+    "p05": ["counterevidence", "unknowns", "history_preservation", "no_invented_missing_evidence"],
+    "p06": ["grounded_citations", "counterevidence", "unknowns", "no_invented_missing_evidence"],
+    "p07": ["resume_idempotency", "duplicate_handling", "source_integrity", "structured_outputs"],
+    "p08": ["promotion_boundary", "no_direct_blocked_promotion", "no_sensitive_projection_leak", "no_unauthorized_remote_write", "no_boi_remote_source_transmission"]
+  },
+  "evidence_policy": {
+    "hard": "deterministic evidence required",
+    "quality": "rubric evidence and independent evaluator required",
+    "missing": "fail"
+  }
+}

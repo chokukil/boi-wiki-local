@@ -4,6 +4,13 @@ boi_profile_version: "0.1-local"
 type: boi/local-example
 title: "회의 내용 BoI 정리 예제"
 description: "회의 메모를 Local Private BoI note로 정리하는 자연어 요청 예제"
+boi_id: boi:private:0000000:legacy:meeting-to-boi:20ad6f6810
+classification: internal
+owner: "0000000"
+artifact_visibility: working
+lifecycle_state: working
+memory_candidate: false
+cleanup_policy: keep
 timestamp: 2026-06-20T21:51:00+09:00
 employee_id: "0000000"
 local_owner_ref: local-private:0000000

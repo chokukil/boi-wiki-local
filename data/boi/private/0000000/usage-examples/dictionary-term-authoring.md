@@ -4,6 +4,13 @@ boi_profile_version: "0.1-local"
 type: boi/local-example
 title: "Dictionary Term Authoring"
 description: "현장 용어를 Local Private dictionary BoI로 정리하는 예제"
+boi_id: boi:private:0000000:legacy:dictionary-term-authoring:1f4c3ed229
+classification: internal
+owner: "0000000"
+artifact_visibility: working
+lifecycle_state: working
+memory_candidate: false
+cleanup_policy: keep
 timestamp: 2026-06-23T09:05:00+09:00
 employee_id: "0000000"
 local_owner_ref: local-private:0000000

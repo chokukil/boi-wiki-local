@@ -1,0 +1,32 @@
+{
+  "schema": "boi-local-eval-seed-manifest/v1",
+  "seed_id": "s20-curated",
+  "synthetic": true,
+  "files": [
+    {
+      "path": "notes/knowledge/agent-memory.md",
+      "sha256": "2597568afdf5262ab0aff5f522dc8285cbc638744bc36dc8fd83267c99cba5be",
+      "bytes": 1076
+    },
+    {
+      "path": "notes/knowledge/atlas-ledger.md",
+      "sha256": "c50d55d03676c8271641932d982d62f78263fe8a5f1a03af5776f69df94371d7",
+      "bytes": 1050
+    },
+    {
+      "path": "notes/knowledge/onboarding-faq.md",
+      "sha256": "801fc5e936fd047c8c627fb9f7d2b610f1854e7369f8c74e5a5fd479773f8d65",
+      "bytes": 1047
+    },
+    {
+      "path": "notes/knowledge/review-schedule.md",
+      "sha256": "a7e5af255a4f8bea4fe9ee57e950de4b01146a19f1d55b386f0a3dfe6c58c2bd",
+      "bytes": 1039
+    },
+    {
+      "path": "seed.json",
+      "sha256": "8614eca74f6c6d937e483cd75646537c4582b55473bcb6ba6fad0c218d6bd2d8",
+      "bytes": 252
+    }
+  ]
+}

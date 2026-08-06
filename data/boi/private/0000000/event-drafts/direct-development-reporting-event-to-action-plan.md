@@ -4,6 +4,13 @@ boi_profile_version: "0.1-local"
 type: boi/local-event-plan
 title: "직개발 Reporting 업무 흐름 계획"
 description: "직개발 결과 확인 업무를 Event/업무 요청/Manual/Langflow 흐름으로 연결하는 계획"
+boi_id: boi:private:0000000:legacy:direct-development-reporting-event-to-action-plan:01a362b63a
+classification: internal
+owner: "0000000"
+artifact_visibility: working
+lifecycle_state: working
+memory_candidate: false
+cleanup_policy: keep
 timestamp: 2026-06-20T22:04:00+09:00
 employee_id: "0000000"
 local_owner_ref: local-private:0000000

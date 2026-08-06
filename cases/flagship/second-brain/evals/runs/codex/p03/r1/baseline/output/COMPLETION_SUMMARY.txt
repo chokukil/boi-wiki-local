@@ -1,0 +1,6 @@
+승인 조건대로 Local Private 변경만 로컬에 유지했습니다.
+
+- 대상: `atlas-ledger.md`, `review-schedule.md`
+- 미리보기 이후 추가 변경 없음
+- 커밋·원격 업로드·동기화 없음
+- 다른 파일 변경 없음

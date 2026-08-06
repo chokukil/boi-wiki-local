@@ -4,3 +4,5 @@ Team/Public 공유 전 정리본과 preflight 결과를 저장합니다. 사용�
 
 * [직개발 Reporting SOP Public Promotion Draft](direct-development-reporting-public-promotion-draft.md)
 * [BoI Wiki Local 자연어 PoC 팀 주간보고 승격 초안](sample-weekly-report-team-promotion-draft.md)
+
+시각이 포함된 preflight 결과는 사용자가 preview를 실행할 때 Local Private에 생성되며 배포 scaffold에는 포함하지 않습니다.

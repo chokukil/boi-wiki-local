@@ -4,6 +4,13 @@ boi_profile_version: "0.1-local"
 type: boi/local-example
 title: "자연어 요청: Dictionary 용어 작성"
 description: "현장 용어를 Local Private dictionary로 만들고 shared dictionary 조회를 선택적으로 사용하는 예제"
+boi_id: boi:private:0000000:legacy:dictionary-term-authoring:a6764dae39
+classification: internal
+owner: "0000000"
+artifact_visibility: working
+lifecycle_state: working
+memory_candidate: false
+cleanup_policy: keep
 timestamp: 2026-06-23T09:10:00+09:00
 employee_id: "0000000"
 local_owner_ref: local-private:0000000

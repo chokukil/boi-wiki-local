@@ -4,6 +4,13 @@ boi_profile_version: "0.1-local"
 type: boi/local-example
 title: "SOP 이미지에서 BoI Wiki SOP 초안 만들기"
 description: "사용자가 제공한 SOP 이미지를 근거로 BoI Wiki 형식 SOP 초안을 만드는 예제"
+boi_id: boi:private:0000000:legacy:image-to-sop-draft:5c42d957fc
+classification: internal
+owner: "0000000"
+artifact_visibility: working
+lifecycle_state: working
+memory_candidate: false
+cleanup_policy: keep
 timestamp: 2026-06-20T21:52:00+09:00
 employee_id: "0000000"
 local_owner_ref: local-private:0000000

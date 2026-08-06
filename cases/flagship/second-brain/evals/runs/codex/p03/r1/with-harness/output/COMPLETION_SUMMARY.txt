@@ -1,0 +1,6 @@
+승인된 변경 확인값 `460d…3165d` 그대로 Local Private 변경을 적용했습니다.
+
+- `03`·`09`는 동일 SHA256으로 확인해 [원본 정보 문서](C:/Users/choku/AppData/Local/BoI-Wiki-Local-Evals/codex-with-harness-p03-r1-20260802T055755838Z/workspace/data/boi/private/0000000/notes/sources/public-knowledge-review-web-clip.md) 하나에 기록했습니다.
+- [일정 지식](C:/Users/choku/AppData/Local/BoI-Wiki-Local-Evals/codex-with-harness-p03-r1-20260802T055755838Z/workspace/data/boi/private/0000000/notes/knowledge/review-schedule.md)에 `10`을 새 근거와 재확인 이력으로 추가했습니다.
+- [명칭 지식](C:/Users/choku/AppData/Local/BoI-Wiki-Local-Evals/codex-with-harness-p03-r1-20260802T055755838Z/workspace/data/boi/private/0000000/notes/knowledge/atlas-ledger.md)에 Atlas Ledger를 현재 명칭으로, Blue Ledger를 alias와 변경 이력으로 보존했습니다.
+- 색인 2개와 로컬 로그를 생성했고 필수 메타데이터를 검증했습니다. 모든 원본 해시는 유지됐으며 원격 업로드는 하지 않았습니다.

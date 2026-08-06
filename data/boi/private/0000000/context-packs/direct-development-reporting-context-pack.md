@@ -4,6 +4,13 @@ boi_profile_version: "0.1-local"
 type: boi/local-context-pack
 title: "직개발 Reporting PoC Context Pack"
 description: "SOP 이미지 기반 직개발 Reporting PoC를 수행하는 agent용 context pack"
+boi_id: boi:private:0000000:legacy:direct-development-reporting-context-pack:4913d508b0
+classification: internal
+owner: "0000000"
+artifact_visibility: working
+lifecycle_state: working
+memory_candidate: false
+cleanup_policy: keep
 timestamp: 2026-06-20T22:06:00+09:00
 employee_id: "0000000"
 local_owner_ref: local-private:0000000

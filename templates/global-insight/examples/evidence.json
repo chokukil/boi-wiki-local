@@ -1,0 +1,32 @@
+{
+  "artifact_kind": "evidence",
+  "case_id": "agentic-ai-change-radar",
+  "local_only": true,
+  "source_refs": [
+    {
+      "type": "public-source-record",
+      "ref": "cases/research/agentic-ai-change-radar/fixtures/sources/01-t0-anthropic-effective-agents.md",
+      "sha256": "ab34858a1c3227328e2142198f3eb8f227db69a8b85820d483b865bd8b1e31fb"
+    }
+  ],
+  "generated_from": [
+    {
+      "type": "public-source-record",
+      "ref": "cases/research/agentic-ai-change-radar/fixtures/sources/01-t0-anthropic-effective-agents.md",
+      "sha256": "ab34858a1c3227328e2142198f3eb8f227db69a8b85820d483b865bd8b1e31fb"
+    }
+  ],
+  "claims": [
+    {
+      "claim_ref": "AAI-001",
+      "claim": "단순 workflow와 자율 agent를 구분하고 복잡도에 따라 선택해야 한다.",
+      "supporting_evidence": ["PUB-AAI-RADAR-001-v1:01#verified-claims"],
+      "counterevidence": [],
+      "verification_level": "primary-source-record",
+      "uncertainty": "공개 일반론이며 특정 조직 적용성은 검증하지 않음",
+      "access_limitation": "source record 범위만 검증",
+      "unknown": ["특정 조직의 비용·보안·운영 적합성"],
+      "source_sha256": "ab34858a1c3227328e2142198f3eb8f227db69a8b85820d483b865bd8b1e31fb"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "boi-local-case-handoff/v1",
+  "title": "BoI Local Case role handoff",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "case_id",
+    "run_id",
+    "from_role",
+    "to_role",
+    "input_refs",
+    "output_files",
+    "unknowns",
+    "blockers",
+    "review_questions",
+    "source_integrity"
+  ],
+  "properties": {
+    "schema": {"const": "boi-local-case-handoff/v1"},
+    "case_id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+    "run_id": {"type": "string", "minLength": 1},
+    "from_role": {"type": "string", "minLength": 1},
+    "to_role": {"type": "string", "minLength": 1},
+    "input_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "output_files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256", "bytes"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "bytes": {"type": "integer", "minimum": 0}
+        }
+      }
+    },
+    "unknowns": {"type": "array", "items": {"type": "string"}},
+    "blockers": {"type": "array", "items": {"type": "string"}},
+    "review_questions": {"type": "array", "items": {"type": "string"}},
+    "source_integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["before_manifest_sha256", "after_manifest_sha256", "changed_source_files"],
+      "properties": {
+        "before_manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "after_manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "changed_source_files": {"type": "array", "maxItems": 0}
+      }
+    }
+  }
+}

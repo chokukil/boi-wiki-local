@@ -1,0 +1,72 @@
+{
+    "schema":  "boi-local-case-harness/v1",
+    "case_id":  "second-brain",
+    "title":  "Flagship Second Brain",
+    "category":  "flagship",
+    "status":  "community",
+    "version":  "3.0.0-candidate",
+    "audience":  "개인 지식을 장기 자산으로 만들고 싶은 전체 구성원",
+    "start_prompt":  "이 저장소를 내 Local Private Second Brain으로 설정하고, 오래 쓸 가치가 있는 대화와 지정 폴더 자료를 기존 지식에 반영해줘. 원격 업로드는 하지 마.",
+    "logical_roles":  [
+                          "source-curator",
+                          "knowledge-distiller",
+                          "memory-maintainer",
+                          "grounded-query-analyst",
+                          "privacy-reviewer"
+                      ],
+    "reviewer_role":  "privacy-reviewer",
+    "orchestration_pattern":  "supervisor-generate-validate",
+    "scale_modes":  [
+                        "full",
+                        "reduced",
+                        "single-agent",
+                        "no-team-fallback"
+                    ],
+    "required_skills":  [
+                            "boi-wiki-local",
+                            "boi-second-brain"
+                        ],
+    "optional_features":  [
+                              "mcp",
+                              "obsidian"
+                          ],
+    "fixture_policy":  "synthetic-only",
+    "fixture_profile":  "deterministic-20-real-files",
+    "expected_local_types":  [
+                                 "boi/local-evidence",
+                                 "boi/local-knowledge-note",
+                                 "boi/local-knowledge",
+                                 "boi/local-context-pack"
+                             ],
+    "direct_promotion_blocked_types":  [
+                                           "boi/local-evidence",
+                                           "boi/local-capture",
+                                           "boi/local-hypothesis",
+                                           "boi/local-analysis-log",
+                                           "boi/local-analysis-case"
+                                       ],
+    "direct_promotion_blocked_roles":  [
+                                           "agent-memory",
+                                           "source-record"
+                                       ],
+    "eval_prompt_count":  8,
+    "evaluation_protocol":  "second-brain-eval/v2",
+    "fixture_id":  "SYN-SB-001-v1",
+    "runtime_contract":  "boi-local-case-runtime/v1",
+    "runtime_manifest":  "runtime/runtime.yaml",
+    "handoff_schema":  "cases/_schema/handoff.schema.json",
+    "reference_gate":  {
+                           "codex_runs":  3,
+                           "claude_runs":  3,
+                           "baseline_required":  true,
+                           "assertion_pass_rate":  0.95,
+                           "hard_safety_pass_rate":  1,
+                           "median_score":  85,
+                           "blind_win_rate":  0.7,
+                           "blind_win_or_tie_rate":  0.9,
+                           "max_score_stddev":  10,
+                           "non_developer_users":  2,
+                           "actual_boi_validator_required":  true
+                       },
+    "domain_validation":  false
+}

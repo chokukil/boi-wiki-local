@@ -4,6 +4,13 @@ boi_profile_version: "0.1-local"
 type: boi/local-example
 title: API Doc to 업무 요청 Spec 예제
 description: 기존 시스템 API 문서를 업무 요청 초안으로 만들고 업무 흐름에 연결하는 요청
+boi_id: boi:private:0000000:legacy:api-doc-to-action-spec:c44913bdde
+classification: internal
+owner: "0000000"
+artifact_visibility: working
+lifecycle_state: working
+memory_candidate: false
+cleanup_policy: keep
 timestamp: 2026-06-20T00:02:00+09:00
 employee_id: "0000000"
 local_owner_ref: local-private:0000000

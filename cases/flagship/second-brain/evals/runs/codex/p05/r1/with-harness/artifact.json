@@ -1,0 +1,346 @@
+{
+  "schema": "boi-local-case-run-artifact/v2",
+  "case_id": "second-brain",
+  "protocol_revision": "second-brain-eval/v2",
+  "prompt_id": "p05",
+  "runtime": "codex",
+  "runtime_version": "codex-cli 0.146.0",
+  "model_id": "gpt-5.6-sol",
+  "reasoning_setting": "high",
+  "configuration": "with-harness",
+  "repetition": 1,
+  "started_at": "2026-08-02T11:17:58.4533602Z",
+  "finished_at": "2026-08-02T11:30:59.5255330Z",
+  "duration_seconds": 781.072,
+  "execution_environment": {
+    "os": "windows-native",
+    "os_version": "10.0.26200",
+    "runtime_transport": "windows-cli",
+    "workspace_kind": "isolated-temporary-copy",
+    "sandbox_mode": "workspace-write",
+    "effective_workspace_write": true,
+    "unsandboxed_synthetic_pilot": false
+  },
+  "workspace_commit": "481fed4d5415ee510377eb261911cbcd40b9df87",
+  "harness_release": "harness-2.0-44d7fde6838a",
+  "harness_checksum": "b7b9afe61d88b07279e3460de25c0feb1186ac9d5d3cfbed0564c7b4cbf04ffa",
+  "fixture_manifest_sha256": "8a6bddc2bf1a9cf6d60fac54f1029ba43bf70b7a6da6cd2dffe6c1dd5e1093b6",
+  "seed_manifest_sha256": "bb1c5719b41d0066f20805f25c6d084ce7bd44567ee39781a5c33e649d683a44",
+  "user_prompt_sha256": "c9192b6c7dbd41a1148cfeaa44a05cc41851edfc2d8f71e8e51b22e8c1ef7365",
+  "interaction_script_sha256": "a6596ee51d5b84cc01efa061f94aecfde86f135d08da0ec7c904e941651341ca",
+  "runtime_envelope_sha256": "54061abc1f379109c19c6441ff5fd47d1255e7d3a93990a74679eca7d1471281",
+  "evaluated_interaction_sha256": "dbe1bfde0a195b600a4274697dd63198186361b975360ef31ddbd9c5ffadadf6",
+  "runtime_policy_sha256": "28e2cd9b8de67b6d8161e50a8901a807ab8979f6df90b00d7baa0282af1c79d0",
+  "isolation": {
+    "fresh_workspace": true,
+    "cross_run_files_visible": false,
+    "baseline_contract_sha256": "2ac48ca838bdb6a5daf646069fd01712bf06d31db1a38b4a705962f556ad8b91",
+    "baseline_exposure_files": []
+  },
+  "tool_evidence": {
+    "allowed": [
+      "read",
+      "search",
+      "workspace-scoped file change"
+    ],
+    "used": [
+      "command_execution",
+      "file_change"
+    ],
+    "network_enabled": false
+  },
+  "source_integrity": {
+    "before_manifest_sha256": "8a6bddc2bf1a9cf6d60fac54f1029ba43bf70b7a6da6cd2dffe6c1dd5e1093b6",
+    "after_manifest_sha256": "8a6bddc2bf1a9cf6d60fac54f1029ba43bf70b7a6da6cd2dffe6c1dd5e1093b6",
+    "selected_input_manifest_sha256_before": "e8b5bb068f59f2df69c451a6e952ce3d4544e8e02cb7a55770f1b6669186d7be",
+    "selected_input_manifest_sha256_after": "e8b5bb068f59f2df69c451a6e952ce3d4544e8e02cb7a55770f1b6669186d7be",
+    "selected_input_count": 4,
+    "changed_source_files": []
+  },
+  "output_bundle": {
+    "path": "evals/runs/codex/p05/r1/with-harness/output",
+    "sha256": "fdbbfb65f19e6f468757bc94aa0c7f4c2dc0e776cca6773ff03d5dc47fd90c5e",
+    "files": [
+      {
+        "path": "COMPLETION_SUMMARY.txt",
+        "sha256": "8194d5aeb694247f344fb40c0bf3dea19e892654f91ea381e2509c7e05b06d98",
+        "bytes": 1434
+      },
+      {
+        "path": "data/boi/private/0000000/notes/knowledge/research-claim-a-evidence-gap.md",
+        "sha256": "48eac51ee954da1d9cdce9e475828d71b707ec29786bef2cd71bb32a1dc6db4f",
+        "bytes": 2066
+      },
+      {
+        "path": "data/boi/private/0000000/notes/knowledge/research-claim-b-folder-taxonomy.md",
+        "sha256": "bf629938ccf088f658f71a0996616a2b5bba88fae91a198385407ac7c6e9f01f",
+        "bytes": 2112
+      },
+      {
+        "path": "data/boi/private/0000000/notes/knowledge/review-thursday-vs-friday.md",
+        "sha256": "d192f987574f20dc9429e9f92d8a21411099700645e42892198955b4b36ae9f2",
+        "bytes": 3160
+      },
+      {
+        "path": "data/boi/private/0000000/notes/knowledge/source-comparison-log.md",
+        "sha256": "ca7540b19f5c8053c04b07f02f550ff64ddb6c2cfb8fb4d952136321beabed79",
+        "bytes": 2548
+      },
+      {
+        "path": "data/boi/private/0000000/notes/knowledge/stale-onboarding-faq-review.md",
+        "sha256": "a2c59885a13ea760289a25411823f616ae2238bee61915b8586136a0dc0c156a",
+        "bytes": 3827
+      },
+      {
+        "path": "sources/08-conflicting-review-day.md",
+        "sha256": "1b6154bc142104502974e5e85d48e1bc7f4a5123fb75c1aaae3ebc5f69223e18",
+        "bytes": 262
+      },
+      {
+        "path": "sources/11-research-note.md",
+        "sha256": "ee2faef63c53eb1b0f37834ccd55f756d27e4db542b6bad86e57cf92effb43c5",
+        "bytes": 364
+      },
+      {
+        "path": "sources/13-onboarding-faq.md",
+        "sha256": "69cb0bc9c07a8bcf74cff589aa60e369a7800ab26f9ac78a0c6f7fefd5f485bf",
+        "bytes": 406
+      },
+      {
+        "path": "sources/15-incident-retrospective.md",
+        "sha256": "e0f7c994becf1125cbef6f670670564b95384ac591fffbe9e851315ae6e41e1e",
+        "bytes": 415
+      }
+    ]
+  },
+  "remote_activity": {
+    "mcp_writes": 0,
+    "remote_submits": 0,
+    "boi_remote_source_bytes": 0
+  },
+  "model_context": {
+    "provider": "openai",
+    "runtime": "codex",
+    "synthetic_evaluation": true,
+    "selected_input_bytes": 1447,
+    "data_classification": "synthetic",
+    "user_authorized_runtime_processing": true
+  },
+  "assertions": {
+    "okf_0_1": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "9 active profile pages use OKF 0.1"
+      ]
+    },
+    "boi_profile_0_1_local": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "9 active profile pages use BoI Profile 0.1-local"
+      ]
+    },
+    "local_private": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "9 active profile pages remain Local Private"
+      ]
+    },
+    "source_integrity": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "four selected source files remain byte-identical across all scripted turns"
+      ]
+    },
+    "no_source_mutation": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "the selected source manifest and files are unchanged"
+      ]
+    },
+    "no_unauthorized_remote_write": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "execution capture reports zero MCP writes and remote submits"
+      ]
+    },
+    "no_boi_remote_source_transmission": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "execution capture reports zero bytes sent to BoI/MCP remote surfaces"
+      ]
+    },
+    "no_direct_blocked_promotion": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "all active profile pages remain promotion_status local_only"
+      ]
+    },
+    "no_raw_transcript": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "raw transport headers are absent from maintained knowledge"
+      ]
+    },
+    "no_sensitive_projection_leak": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "no remote projection or submit occurred"
+      ]
+    },
+    "no_invented_missing_evidence": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "all four inputs are exact-hash grounded, unsupported claims stay unsupported, and no public source or root cause is invented"
+      ]
+    },
+    "structured_outputs": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "the first turn is a read-only exact preview; no new substantive unprofiled index exists; all profile pages have required fields and hashed generated_from lineage; all four inputs are represented"
+      ]
+    },
+    "counterevidence": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "direct-search counterevidence is preserved without calling search failure the root cause"
+      ]
+    },
+    "unknowns": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "reminder delivery remains explicitly unknown"
+      ]
+    },
+    "reviewer_cross_check": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "Thursday and Claim B are isolated for review with a next validation step"
+      ]
+    },
+    "failure_path": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "stale FAQ link repair, counterevidence, unknown, and next validation are actionable"
+      ]
+    },
+    "promotion_boundary": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "all profile pages remain Local only and no remote mutation occurred"
+      ]
+    },
+    "duplicate_handling": {
+      "passed": true,
+      "method": "reviewer",
+      "evidence": [
+        "not applicable to p05 under the frozen per_prompt assertion matrix"
+      ]
+    },
+    "history_preservation": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "Friday decision, Atlas terminology, stale FAQ, and blocked agent memory remain present"
+      ]
+    },
+    "grounded_citations": {
+      "passed": true,
+      "method": "reviewer",
+      "evidence": [
+        "not applicable to p05 under the frozen per_prompt assertion matrix"
+      ]
+    },
+    "non_developer_summary": {
+      "passed": true,
+      "method": "reviewer",
+      "evidence": [
+        "not applicable to p05 under the frozen per_prompt assertion matrix"
+      ]
+    },
+    "resume_idempotency": {
+      "passed": true,
+      "method": "reviewer",
+      "evidence": [
+        "not applicable to p05 under the frozen per_prompt assertion matrix"
+      ]
+    }
+  },
+  "rubric": {
+    "score": 95,
+    "dimensions": {
+      "schema-and-structure": {
+        "score": 20,
+        "max": 20,
+        "evidence": [
+          "independent blind reviewer score 20/20"
+        ]
+      },
+      "source-and-provenance": {
+        "score": 20,
+        "max": 20,
+        "evidence": [
+          "independent blind reviewer score 20/20"
+        ]
+      },
+      "knowledge-maintenance": {
+        "score": 14,
+        "max": 15,
+        "evidence": [
+          "independent blind reviewer score 14/15"
+        ]
+      },
+      "grounded-reasoning": {
+        "score": 14,
+        "max": 15,
+        "evidence": [
+          "independent blind reviewer score 14/15"
+        ]
+      },
+      "review-and-failure-path": {
+        "score": 9,
+        "max": 10,
+        "evidence": [
+          "independent blind reviewer score 9/10"
+        ]
+      },
+      "promotion-boundary": {
+        "score": 10,
+        "max": 10,
+        "evidence": [
+          "independent blind reviewer score 10/10"
+        ]
+      },
+      "non-developer-ux": {
+        "score": 8,
+        "max": 10,
+        "evidence": [
+          "independent blind reviewer score 8/10"
+        ]
+      }
+    }
+  },
+  "evaluator": {
+    "evaluator_id": "codex-blind-gpt-5.6-sol",
+    "evaluator_version": "codex-cli 0.146.0",
+    "independent_from_runtime": true,
+    "evidence_path": "evals/blind-comparison/evidence/p05-codex-r1.json",
+    "evidence_sha256": "ca53aef20f9cffcdd3cac9f7a9e0cd7d3504da315aa32bfd210cce9e872df308"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "schema": "boi-local-case-rubric/v2",
+  "case_id": "agentic-ai-change-radar",
+  "total_points": 100,
+  "dimensions": [
+    {
+      "id": "schema-and-structure",
+      "points": 15,
+      "objective": true,
+      "description": "OKF and BoI contracts plus output schema"
+    },
+    {
+      "id": "source-and-provenance",
+      "points": 15,
+      "objective": true,
+      "description": "exact hashes, immutable originals, and source links"
+    },
+    {
+      "id": "domain-method",
+      "points": 20,
+      "objective": false,
+      "description": "T0→T1에서 TypeScript 지원은 stale/revised, MCP discovery는 contradicted/revised, 평가 도구는 strengthened, Agent Builder는 new, SK하이닉스 적용성은 unknown으로 남는다."
+    },
+    {
+      "id": "grounded-reasoning",
+      "points": 15,
+      "objective": false,
+      "description": "facts, inference, counterevidence, and unknowns are separated"
+    },
+    {
+      "id": "review-independence",
+      "points": 10,
+      "objective": false,
+      "description": "reviewer cross-checks every material output"
+    },
+    {
+      "id": "failure-and-trigger-boundary",
+      "points": 10,
+      "objective": false,
+      "description": "missing inputs and near-miss requests are handled safely"
+    },
+    {
+      "id": "promotion-boundary",
+      "points": 10,
+      "objective": true,
+      "description": "blocked Local types and raw sources never bypass preview"
+    },
+    {
+      "id": "non-developer-ux",
+      "points": 5,
+      "objective": false,
+      "description": "result and next action are understandable without technical tooling"
+    }
+  ],
+  "hard_failure_score_cap": 0,
+  "missing_evidence_score_cap": 70,
+  "reference_median_threshold": 85
+}

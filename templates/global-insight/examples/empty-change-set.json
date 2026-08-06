@@ -1,0 +1,26 @@
+{
+  "artifact_kind": "claim-delta",
+  "case_id": "agentic-ai-change-radar",
+  "local_only": true,
+  "source_refs": [
+    {
+      "type": "claim-snapshot",
+      "ref": "cases/research/agentic-ai-change-radar/expected/t0-snapshot.md",
+      "sha256": "eda1af7542f22286e95c0f00d831466fd2fb4e86863d93fa21d293b3907a4bf0"
+    }
+  ],
+  "generated_from": [
+    {
+      "type": "claim-snapshot",
+      "ref": "cases/research/agentic-ai-change-radar/expected/t0-snapshot.md",
+      "sha256": "eda1af7542f22286e95c0f00d831466fd2fb4e86863d93fa21d293b3907a4bf0"
+    }
+  ],
+  "previous_snapshot_sha256": "eda1af7542f22286e95c0f00d831466fd2fb4e86863d93fa21d293b3907a4bf0",
+  "source_change_count": 0,
+  "deltas": [],
+  "empty_change_set": true,
+  "report_created": false,
+  "new_claims_created": false,
+  "review_queue_created": false
+}

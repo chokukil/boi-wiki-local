@@ -1,0 +1,4 @@
+interface:
+  display_name: "BoI Harness Builder"
+  short_description: "업무 흐름을 검증 가능한 BoI Case Harness로 전환"
+  default_prompt: "Use $boi-harness-builder to audit this work and design a reusable Local Private BoI Harness. Show a plain-language change preview before editing anything."

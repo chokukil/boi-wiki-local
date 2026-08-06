@@ -1,0 +1,50 @@
+## 결론
+
+실제 조직의 “현재 상태”는 확인할 수 없습니다. 검색 가능한 자료가 `employee_id: 0000000`, `synthetic: true`, `remote_enabled: false`인 합성 평가용 Local Wiki뿐이며, 공용 Wiki/MCP 결과는 없었습니다.
+
+| 항목 | 로컬 픽스처에서 확정 | 아직 미확인 |
+|---|---|---|
+| 검토 일정 | 매주 금요일 15:00. 후속 메일도 “변경 없음”으로 재확인 | 실제 조직 일정, 캘린더 반영 여부 |
+| 문서 재검토일 | 일정·명칭 문서의 `review_after`는 2026-08-09 | 이는 주간 회의 시간이 아니라 문서 검토 기준일 |
+| Atlas Ledger | `Blue Ledger → Atlas Ledger` 변경 지시는 존재 | 사전 소유자 최종 승인과 공용 Wiki 표준어 반영 |
+| 기존 명칭 | Blue Ledger를 alias로 유지하는 후보안 존재 | alias 목록의 최종 승인 |
+
+## Local 출처와 exact SHA256
+
+- 합성 자료임을 밝히는 [seed.json](C:/Users/choku/AppData/Local/BoI-Wiki-Local-Evals/codex-with-harness-p06-r1-20260802T114651393Z/workspace/data/boi/private/0000000/seed.json:2)  
+  `8614eca74f6c6d937e483cd75646537c4582b55473bcb6ba6fad0c218d6bd2d8`
+- 금요일 15:00 결정 원문 [01-decision-chat.txt](C:/Users/choku/AppData/Local/BoI-Wiki-Local-Evals/codex-with-harness-p06-r1-20260802T114651393Z/workspace/sources/01-decision-chat.txt:3)  
+  `5be16cc0e29d799b9ed63670979e18a88ae2c849beb55d3dbb59bac09b216463`
+- 일정·명칭 변경 후속 메일 [02-project-update.eml](C:/Users/choku/AppData/Local/BoI-Wiki-Local-Evals/codex-with-harness-p06-r1-20260802T114651393Z/workspace/sources/02-project-update.eml:9)  
+  `b1f652f17ac06c5fcb45cb489ed887ff92af7187e480618c6d6029bd1bf6165c`
+- 검토된 일정 문서 [review-schedule.md](C:/Users/choku/AppData/Local/BoI-Wiki-Local-Evals/codex-with-harness-p06-r1-20260802T114651393Z/workspace/data/boi/private/0000000/notes/knowledge/review-schedule.md:33)  
+  `a7e5af255a4f8bea4fe9ee57e950de4b01146a19f1d55b386f0a3dfe6c58c2bd`
+- 명칭 검토 문서 [atlas-ledger.md](C:/Users/choku/AppData/Local/BoI-Wiki-Local-Evals/codex-with-harness-p06-r1-20260802T114651393Z/workspace/data/boi/private/0000000/notes/knowledge/atlas-ledger.md:33)  
+  `c50d55d03676c8271641932d982d62f78263fe8a5f1a03af5776f69df94371d7`
+- 사전 후보안 [16-dictionary.md](C:/Users/choku/AppData/Local/BoI-Wiki-Local-Evals/codex-with-harness-p06-r1-20260802T114651393Z/workspace/sources/16-dictionary.md:3)  
+  `02f6b5e44f5a684fa7dd0dc7f64e5a9b3eeda4b77878dc27548f42441364c6e7`
+
+## 반증
+
+[08-conflicting-review-day.md](C:/Users/choku/AppData/Local/BoI-Wiki-Local-Evals/codex-with-harness-p06-r1-20260802T114651393Z/workspace/sources/08-conflicting-review-day.md:3)는 목요일 15:00을 주장합니다. SHA256은 `1b6154bc142104502974e5e85d48e1bc7f4a5123fb75c1aaae3ebc5f69223e18`입니다. 다만 작성자·회의 링크·결정 기록이 없고 문서 자체도 “금요일 결정을 덮어쓰지 말라”고 명시하므로 현재 판정을 변경하지 않습니다. Atlas Ledger 변경을 직접 부정하는 자료는 발견되지 않았습니다.
+
+## 누락 자료
+
+- 일정 재확인을 뒷받침한다고 인용된 `sources/10-review-day-reconfirmation.txt`가 없습니다. 메타데이터상 예상 SHA256은 `99c99d87357b5a76b2212bc184606877878eb5ce37b77dd600b474f64317c1c0`이지만 현재 파일 해시로 검증할 수 없습니다.
+- `sources/13-onboarding-faq.md`도 없습니다. 예상 SHA256은 `69cb0bc9c07a8bcf74cff589aa60e369a7800ab26f9ac78a0c6f7fefd5f485bf`입니다.
+- 변경 메일이 언급한 첨부 체크리스트가 없습니다.
+- 사전 소유자의 최종 승인 기록·승인 일시·공용 Wiki revision이 없습니다.
+- 공용 Wiki 연결 결과가 없어 실제 운영 상태와의 대조가 불가능합니다.
+
+## 다음 확인
+
+1. 공용 Wiki/사전에서 Atlas Ledger와 Blue Ledger의 현재 canonical term, alias, 승인자, revision을 확인합니다.
+2. 금요일 일정의 캘린더 또는 최신 결정 기록으로 목요일 주장을 종결합니다.
+3. 누락된 체크리스트와 `sources/10-*`를 확보해 후속 재확인을 검증합니다.
+
+## 신뢰도
+
+- 합성 Local 픽스처 내 금요일 15:00 판정: **높음**
+- 명칭 변경 지시가 존재한다는 판정: **높음**
+- Atlas Ledger의 최종 표준어 승인: **미확인**
+- 실제 조직의 현재 일정·명칭 상태: **판정 불가 — Wiki 근거 부족**

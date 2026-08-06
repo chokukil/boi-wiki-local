@@ -1,0 +1,41 @@
+{
+  "schema": "boi-local-case-eval-plan/v2",
+  "case_id": "scientific-foundation-model-knowledge",
+  "protocol_revision": "case-eval/v2",
+  "prompt_count": 5,
+  "runtimes": [
+    "codex",
+    "claude"
+  ],
+  "repetitions": 3,
+  "configurations": [
+    "with-harness",
+    "baseline"
+  ],
+  "required_executions": 60,
+  "fresh_workspace_per_execution": true,
+  "cross_run_state_allowed": false,
+  "network_enabled": false,
+  "pair_order": {
+    "1": [
+      "with-harness",
+      "baseline"
+    ],
+    "2": [
+      "baseline",
+      "with-harness"
+    ],
+    "3": [
+      "with-harness",
+      "baseline"
+    ]
+  },
+  "baseline_contract": "baseline.md",
+  "run_artifact_schema": "run-artifact.schema.json",
+  "rubric": "rubric.json",
+  "fixture_manifest": "../fixtures/manifest.json",
+  "seed_catalog": "seeds/seed-catalog.json",
+  "blinded_comparison": true,
+  "non_developer_users": 2,
+  "actual_boi_validator_required": true
+}

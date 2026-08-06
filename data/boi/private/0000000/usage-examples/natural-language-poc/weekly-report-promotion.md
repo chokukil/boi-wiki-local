@@ -4,6 +4,13 @@ boi_profile_version: "0.1-local"
 type: boi/local-example
 title: "팀 주간보고 승격 예제"
 description: "Local Private 주간보고를 Team visibility 후보로 정리하는 예제"
+boi_id: boi:private:0000000:legacy:weekly-report-promotion:c28b128d50
+classification: internal
+owner: "0000000"
+artifact_visibility: working
+lifecycle_state: working
+memory_candidate: false
+cleanup_policy: keep
 timestamp: 2026-06-20T21:58:00+09:00
 employee_id: "0000000"
 local_owner_ref: local-private:0000000

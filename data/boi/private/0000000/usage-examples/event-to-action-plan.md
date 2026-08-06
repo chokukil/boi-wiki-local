@@ -4,6 +4,13 @@ boi_profile_version: "0.1-local"
 type: boi/local-example
 title: 업무 흐름 계획 예제
 description: 업무 이벤트가 발생했을 때 필요한 업무 BoI, SOP 또는 업무 흐름, 업무 요청, 수동 조치를 계획하는 요청
+boi_id: boi:private:0000000:legacy:event-to-action-plan:5d084f5cf9
+classification: internal
+owner: "0000000"
+artifact_visibility: working
+lifecycle_state: working
+memory_candidate: false
+cleanup_policy: keep
 timestamp: 2026-06-20T00:01:00+09:00
 employee_id: "0000000"
 local_owner_ref: local-private:0000000

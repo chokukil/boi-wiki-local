@@ -4,6 +4,13 @@ boi_profile_version: "0.1-local"
 type: boi/local-example
 title: Local Only Mode 예제
 description: MCP 설정 없이 Local Private workspace만 사용하는 요청
+boi_id: boi:private:0000000:legacy:local-only-mode:b1cb9502bd
+classification: internal
+owner: "0000000"
+artifact_visibility: working
+lifecycle_state: working
+memory_candidate: false
+cleanup_policy: keep
 timestamp: 2026-06-20T00:05:00+09:00
 employee_id: "0000000"
 local_owner_ref: local-private:0000000

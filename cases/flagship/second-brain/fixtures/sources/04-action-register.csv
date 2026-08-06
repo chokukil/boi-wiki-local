@@ -1,0 +1,6 @@
+action_id,title,owner_role,status,due_date,source
+SYN-A01,Confirm Atlas Ledger aliases,knowledge-steward,open,2026-08-07,meeting
+SYN-A02,Recover missing email checklist,project-owner,blocked,2026-08-05,email
+SYN-A03,Review stale onboarding FAQ,onboarding-owner,open,2026-08-14,weekly-review
+SYN-A04,Publish approved read-only API note,api-owner,draft,2026-08-21,api-note
+SYN-A05,Delete lunch reminder,none,not-knowledge,2026-08-02,chat

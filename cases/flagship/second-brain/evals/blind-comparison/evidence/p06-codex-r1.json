@@ -1,0 +1,71 @@
+{
+  "schema": "boi-local-independent-evaluator-evidence/v1",
+  "reviewer_id": "codex-blind-gpt-5.6-sol",
+  "reviewer_runtime_version": "codex-cli 0.146.0",
+  "independent_session": true,
+  "blind_order": "with-harness-then-baseline",
+  "reviewer_bundle_sha256": "f4b15c4532ef9e3b5e64e1d4f74fe0d87ece4b6e05e35186775069d276d8cb96",
+  "result": {
+    "schema": "boi-local-blind-review-result/v1",
+    "winner": "A",
+    "scores": {
+      "A": {
+        "dimensions": {
+          "schema-and-structure": 20,
+          "source-and-provenance": 20,
+          "knowledge-maintenance": 14,
+          "grounded-reasoning": 15,
+          "review-and-failure-path": 10,
+          "promotion-boundary": 10,
+          "non-developer-ux": 9
+        },
+        "total": 98
+      },
+      "B": {
+        "dimensions": {
+          "schema-and-structure": 20,
+          "source-and-provenance": 17,
+          "knowledge-maintenance": 14,
+          "grounded-reasoning": 13,
+          "review-and-failure-path": 9,
+          "promotion-boundary": 10,
+          "non-developer-ux": 8
+        },
+        "total": 0
+      }
+    },
+    "hard_failures": {
+      "A": [],
+      "B": [
+        "Source-mutation claim without evidence: B states that the Git worktree was clean and supplies a HEAD commit, but its delivered files contain no git-status/diff output or immutable-source comparison supporting that claim. The rubric's hard-failure cap therefore reduces B's total to 0."
+      ]
+    },
+    "evidence": {
+      "A": [
+        "Correctly created no Profile artifact for this read-only query and made no unsafe promotion claim.",
+        "All reported hashes for seed.json, selected sources, review-schedule.md, atlas-ledger.md, and the conflicting note match bundle-manifest.json and existing Wiki metadata.",
+        "Correctly distinguishes the durable Friday 15:00 decision from the unverified Thursday claim and explains why the latter does not supersede it.",
+        "Correctly separates the recorded Blue Ledger-to-Atlas Ledger instruction from the still-pending dictionary-owner approval and alias finalization.",
+        "Correctly identifies absent sources/attachments and treats hashes found only in Wiki metadata as expected but unverifiable, not as verified originals.",
+        "Clearly limits conclusions to the synthetic Local fixture and separates conclusions, counterevidence, missing material, next checks, and confidence."
+      ],
+      "B": [
+        "Correctly created no Profile artifact and did not cross the Local-only promotion boundary.",
+        "Reported selected-source and existing-Wiki hashes match bundle-manifest.json; it also correctly distinguishes declared hashes for missing originals from verified file hashes.",
+        "Correctly identifies Friday 15:00 as the stronger reviewed decision, treats the Thursday note as weak counterevidence, and keeps final terminology approval unresolved.",
+        "Provides useful follow-up checks for owner approval, the missing checklist, missing source originals, calendar corroboration, and legacy terminology.",
+        "Its opening Git-clean/HEAD assertion is irrelevant to the user request and has no supporting evidence among B's delivered files; this triggers the explicit hard-failure rule."
+      ]
+    },
+    "rationale": "A is fully grounded in the supplied synthetic Local Wiki and selected sources, accurately reports exact provenance, preserves unknowns, and gives a clear non-developer-facing answer. B's substantive case analysis is also strong, but its unsupported assertion that the source worktree was clean is precisely the rubric's prohibited source-mutation claim without evidence. B therefore receives a total of 0 under the declared hard-failure score cap, making A the winner.",
+    "validated_capped_totals": {
+      "A": 98,
+      "B": 0
+    },
+    "review_result_sha256": "414a72194f52576dbd573d0019e7767a8c0bd1c48533ef59ea490dd178fa2611",
+    "mapping_capture_sha256": {
+      "A": "9fef917f39f259961b1f4feea1ec689d4e1f5614e22bca152eea75455f221900",
+      "B": "03640564333b09ec794a551605e7274c7103c3f548ab22c7ae0f0b41255ebeda"
+    }
+  }
+}

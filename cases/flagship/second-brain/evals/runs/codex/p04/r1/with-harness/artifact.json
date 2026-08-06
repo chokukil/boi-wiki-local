@@ -1,0 +1,601 @@
+{
+  "schema": "boi-local-case-run-artifact/v2",
+  "case_id": "second-brain",
+  "protocol_revision": "second-brain-eval/v2",
+  "prompt_id": "p04",
+  "runtime": "codex",
+  "runtime_version": "codex-cli 0.146.0",
+  "model_id": "gpt-5.6-sol",
+  "reasoning_setting": "high",
+  "configuration": "with-harness",
+  "repetition": 1,
+  "started_at": "2026-08-02T08:40:18.5287932Z",
+  "finished_at": "2026-08-02T09:22:46.3159700Z",
+  "duration_seconds": 2547.787,
+  "execution_environment": {
+    "os": "windows-native",
+    "os_version": "10.0.26200",
+    "runtime_transport": "windows-cli",
+    "workspace_kind": "isolated-temporary-copy",
+    "sandbox_mode": "workspace-write",
+    "effective_workspace_write": true,
+    "unsandboxed_synthetic_pilot": false
+  },
+  "workspace_commit": "74e3bd489e415bc243366449680963901133f6f2",
+  "harness_release": "harness-2.0-44d7fde6838a",
+  "harness_checksum": "b7b9afe61d88b07279e3460de25c0feb1186ac9d5d3cfbed0564c7b4cbf04ffa",
+  "fixture_manifest_sha256": "8a6bddc2bf1a9cf6d60fac54f1029ba43bf70b7a6da6cd2dffe6c1dd5e1093b6",
+  "seed_manifest_sha256": "1f7bfe9c460b5563ba434255307f7db409546810ef20ba6f905eb67ec87ebd92",
+  "user_prompt_sha256": "b99e130c0f4aadada01408bddbbfefac8fce652087746211ed4e8cb8a505c839",
+  "interaction_script_sha256": "b966afe3f5e9c291fb620491ef60fdd60ad7d971c639213523dec66b09afaa76",
+  "runtime_envelope_sha256": "54061abc1f379109c19c6441ff5fd47d1255e7d3a93990a74679eca7d1471281",
+  "evaluated_interaction_sha256": "d119d24194afbf2b3385e0239fc8b427ff1542e7ca08f9609417978f3b6b0208",
+  "runtime_policy_sha256": "28e2cd9b8de67b6d8161e50a8901a807ab8979f6df90b00d7baa0282af1c79d0",
+  "isolation": {
+    "fresh_workspace": true,
+    "cross_run_files_visible": false,
+    "baseline_contract_sha256": "2ac48ca838bdb6a5daf646069fd01712bf06d31db1a38b4a705962f556ad8b91",
+    "baseline_exposure_files": []
+  },
+  "tool_evidence": {
+    "allowed": [
+      "read",
+      "search",
+      "workspace-scoped file change"
+    ],
+    "used": [
+      "command_execution",
+      "file_change"
+    ],
+    "network_enabled": false
+  },
+  "source_integrity": {
+    "before_manifest_sha256": "8a6bddc2bf1a9cf6d60fac54f1029ba43bf70b7a6da6cd2dffe6c1dd5e1093b6",
+    "after_manifest_sha256": "8a6bddc2bf1a9cf6d60fac54f1029ba43bf70b7a6da6cd2dffe6c1dd5e1093b6",
+    "selected_input_manifest_sha256_before": "59fdd9b8203d228f7cf640b3cdf16bc8adb170cb0442ffef90abb461804e16f0",
+    "selected_input_manifest_sha256_after": "59fdd9b8203d228f7cf640b3cdf16bc8adb170cb0442ffef90abb461804e16f0",
+    "selected_input_count": 20,
+    "changed_source_files": []
+  },
+  "output_bundle": {
+    "path": "evals/runs/codex/p04/r1/with-harness/output",
+    "sha256": "90fe109b2dd1660c4c665f26d3c7cde6289e59dc35322fee6803ce29f7215859",
+    "files": [
+      {
+        "path": "COMPLETION_SUMMARY.txt",
+        "sha256": "5ecad4e258055dd46ef80600d3136a46de108295928a2c1c835ef803a144040a",
+        "bytes": 646
+      },
+      {
+        "path": "data/boi/log.md",
+        "sha256": "3bae40e72e32c0ae62af75b9373c11bbdf5de26c493582ea5443a1620d262257",
+        "bytes": 2998
+      },
+      {
+        "path": "data/boi/private/0000000/.boi-local/source-folder-progress.json",
+        "sha256": "a18433dff3bc8ed917bfd4dde2335dff98bfadf728681d1d688a858085a399fc",
+        "bytes": 1752
+      },
+      {
+        "path": "data/boi/private/0000000/notes/evidence/index.md",
+        "sha256": "b916a1f7984ea66fb5799c10c2f8231c95dd9825bf588ab3a4d75db6df775b3a",
+        "bytes": 1761
+      },
+      {
+        "path": "data/boi/private/0000000/notes/evidence/source-02f6b5e4-dictionary-candidate.md",
+        "sha256": "6d3b5ee6abf88c2464cdb340c55f055465c4a5afb7a014b2d99e43b934900fee",
+        "bytes": 1621
+      },
+      {
+        "path": "data/boi/private/0000000/notes/evidence/source-1b6154bc-conflicting-review-day.md",
+        "sha256": "2a837fddbf5aecf3f82c0d10f887d6738b4619925fc2866c18d74a8970318dab",
+        "bytes": 1639
+      },
+      {
+        "path": "data/boi/private/0000000/notes/evidence/source-2276ef12-sop-draft.md",
+        "sha256": "b49bd00f8f2c164f954478d58f3035254c4e90174f1d6ac8b35c5fa94b34d6dd",
+        "bytes": 1579
+      },
+      {
+        "path": "data/boi/private/0000000/notes/evidence/source-27f8da41-action-register.md",
+        "sha256": "31d80734c7012e99272f252e9ba12db6e65fd5715e7c5023aa519938c98daab5",
+        "bytes": 1581
+      },
+      {
+        "path": "data/boi/private/0000000/notes/evidence/source-5be16cc0-decision-chat.md",
+        "sha256": "4d427eddfcdc5c873864a21f40af04c453f67ef3c199037dc5d91519988911a6",
+        "bytes": 1565
+      },
+      {
+        "path": "data/boi/private/0000000/notes/evidence/source-69cb0bc9-onboarding-faq.md",
+        "sha256": "c901195a5da1a0d41896e963200fbdc7626c3fd0db976947ca308332840cfb83",
+        "bytes": 1562
+      },
+      {
+        "path": "data/boi/private/0000000/notes/evidence/source-6b2b928c-operating-guide.md",
+        "sha256": "dca69f0d86d86a44b76e8cfeba768add181fad3a3752be8f790a79e66622f965",
+        "bytes": 1611
+      },
+      {
+        "path": "data/boi/private/0000000/notes/evidence/source-8fbb6e1f-weekly-report.md",
+        "sha256": "da37d70397e38fa16f658b2b763d85779fd7dc875e1cd490dce5ba85ce77cf8e",
+        "bytes": 1573
+      },
+      {
+        "path": "data/boi/private/0000000/notes/evidence/source-97e7d613-readonly-api-note.md",
+        "sha256": "c5ea351aab4a7f590764e93af005291d33e26a382a84e751d201a182895b763d",
+        "bytes": 1602
+      },
+      {
+        "path": "data/boi/private/0000000/notes/evidence/source-99c99d87-review-day-reconfirmation.md",
+        "sha256": "05a465185f0d5d6d786b08c3f27f7a65135d6d48ca6a53912d691fcdfc9e22ee",
+        "bytes": 1661
+      },
+      {
+        "path": "data/boi/private/0000000/notes/evidence/source-9f3ab52e-whiteboard-decisions.md",
+        "sha256": "8c2ce14b34694899b555fff8cfb300317cb835d6e1a8229681f51829f91c71e6",
+        "bytes": 1711
+      },
+      {
+        "path": "data/boi/private/0000000/notes/evidence/source-aa91ab6b-meeting-note.md",
+        "sha256": "f2fa5c694b12400ab19680bbb2341acd67cc5b1b7339a5e4b8c78267f85b5458",
+        "bytes": 1553
+      },
+      {
+        "path": "data/boi/private/0000000/notes/evidence/source-b1f652f1-project-update.md",
+        "sha256": "2ef11c8fdff8f4661e440032abd6cd19f0c01c8d45f2ee4e1854e895b4c54325",
+        "bytes": 1578
+      },
+      {
+        "path": "data/boi/private/0000000/notes/evidence/source-b25d3a36-recurrence-note.md",
+        "sha256": "240ab3f925e2ed45ed567bb1e499002472b5c75a98d67f77a91d145ed0acb834",
+        "bytes": 1615
+      },
+      {
+        "path": "data/boi/private/0000000/notes/evidence/source-bae4daa9-public-web-clip.md",
+        "sha256": "9bbf757831e618746cf1658f913fc8957d3af31ba339b3dc2cbb3fe8944c4f97",
+        "bytes": 1950
+      },
+      {
+        "path": "data/boi/private/0000000/notes/evidence/source-d95ff290-promotion-candidate.md",
+        "sha256": "fcb56f66c0dbe65f27ea6df0ef47fd96601559109937b7da0094c268b4ee0b28",
+        "bytes": 1628
+      },
+      {
+        "path": "data/boi/private/0000000/notes/evidence/source-de7331eb-sensitive-review-note.md",
+        "sha256": "b624c1d2365f0f0ff90ed6f077119d8aaeb3aee30514d769844346d7fdee1f6d",
+        "bytes": 1684
+      },
+      {
+        "path": "data/boi/private/0000000/notes/evidence/source-e0f7c994-incident-retrospective.md",
+        "sha256": "0cdf7c7fe444fca39c88edf6f37e81abeae3b3d81589f6eda55d33d611b2aab7",
+        "bytes": 1683
+      },
+      {
+        "path": "data/boi/private/0000000/notes/evidence/source-ee2faef6-research-note.md",
+        "sha256": "ae6705b1bc8590033bfceb2bf99eb971237ba00f70ff8a963c2f6af23ea564c2",
+        "bytes": 1585
+      },
+      {
+        "path": "data/boi/private/0000000/notes/index.md",
+        "sha256": "5237a6ff36f70b0f399cffa6b60ba44fd9418e312c2caa3e931079cc51c02f36",
+        "bytes": 133
+      },
+      {
+        "path": "data/boi/private/0000000/notes/knowledge/action-register.md",
+        "sha256": "7be66197535ca26a69db837057520c18c2a7a1e5734a978fe164948ff3cfad2b",
+        "bytes": 2861
+      },
+      {
+        "path": "data/boi/private/0000000/notes/knowledge/atlas-ledger.md",
+        "sha256": "eaaae23f7b95ce345b9aaec11cedd3e519d924d805933fc1522f71105f8953e1",
+        "bytes": 2328
+      },
+      {
+        "path": "data/boi/private/0000000/notes/knowledge/index.md",
+        "sha256": "a230acbb6bd56e4c7bf64f3b0e0aa7adf94a134c47adc6cbbba5409316e7a4df",
+        "bytes": 744
+      },
+      {
+        "path": "data/boi/private/0000000/notes/knowledge/knowledge-review-evidence-principles.md",
+        "sha256": "caa688dc72266d5dc0a0c01c621ed86c0c147986b95c8aafd56b358fb00a1df5",
+        "bytes": 2023
+      },
+      {
+        "path": "data/boi/private/0000000/notes/knowledge/knowledge-review-sop-draft.md",
+        "sha256": "d5be5d700e0f97b06c8eb919dc94edf5b2f835a0d3e0025851f0c0712018e9cc",
+        "bytes": 1509
+      },
+      {
+        "path": "data/boi/private/0000000/notes/knowledge/progressive-summarization-hypothesis.md",
+        "sha256": "62b3dc03bd4315bbb3809cd4b740d173039a8c020eecca274f83f457b53a150d",
+        "bytes": 1654
+      },
+      {
+        "path": "data/boi/private/0000000/notes/knowledge/readonly-knowledge-search-api.md",
+        "sha256": "22baeedcdbd8330bb0864867f098fd83df9292b73f6fe39c394c890f62389685",
+        "bytes": 1510
+      },
+      {
+        "path": "data/boi/private/0000000/notes/knowledge/review-schedule.md",
+        "sha256": "17c7e8d1bb487f7c40af83ccbd61ef44671f120e9463d31014a7987e53fd4106",
+        "bytes": 2482
+      },
+      {
+        "path": "data/boi/private/0000000/notes/knowledge/second-brain-onboarding-faq.md",
+        "sha256": "bb5814cec057f22a8b7b8617dbd7fa652aa287bd7093848d25fcbe47bd887185",
+        "bytes": 2254
+      },
+      {
+        "path": "data/boi/private/0000000/notes/knowledge/stale-onboarding-faq-incident.md",
+        "sha256": "0782f8df129f0a675b807c462246cc4c6df3549b467e201c3b4cbf0567fbc145",
+        "bytes": 1744
+      },
+      {
+        "path": "data/boi/private/0000000/notes/review/atlas-ledger-dictionary-review.md",
+        "sha256": "40bc73c8cda9e43a8450bd7e1a11624614fa2d1ddd500c73322cdb68b4bdd304",
+        "bytes": 1902
+      },
+      {
+        "path": "data/boi/private/0000000/notes/review/faq-staleness-recurrence-candidate.md",
+        "sha256": "8c1551ec1ed49fb18e9783ec71d15ea16c6991336b613d697381e2a941ac501f",
+        "bytes": 1896
+      },
+      {
+        "path": "data/boi/private/0000000/notes/review/index.md",
+        "sha256": "fec747151ced8c48d9fbc81f568b66bf748b537b8248119daf41096aa9f31c2b",
+        "bytes": 830
+      },
+      {
+        "path": "data/boi/private/0000000/notes/review/review-day-conflict.md",
+        "sha256": "e0ff7559e777601418ddb21031daba2aa04ceb26106584108016791fbe2fdb4e",
+        "bytes": 1944
+      },
+      {
+        "path": "data/boi/private/0000000/notes/review/sensitive-source-exclusion.md",
+        "sha256": "8f13d3f673f172046a0162dca57c31047fbaef10aa29320a7000e9e593e78222",
+        "bytes": 1473
+      },
+      {
+        "path": "data/boi/private/0000000/notes/review/weekly-knowledge-review-promotion-preview.md",
+        "sha256": "99c683c467c1f166ffd9d2622e2297831b721b869780079954753e112c6104f8",
+        "bytes": 2696
+      },
+      {
+        "path": "data/boi/private/0000000/notes/review/whiteboard-image-review.md",
+        "sha256": "0df56ad9c3c1e456e9fe2b18a5957d081a416fc969d3767446f75da4cee567ee",
+        "bytes": 1504
+      },
+      {
+        "path": "sources/01-decision-chat.txt",
+        "sha256": "5be16cc0e29d799b9ed63670979e18a88ae2c849beb55d3dbb59bac09b216463",
+        "bytes": 289
+      },
+      {
+        "path": "sources/02-project-update.eml",
+        "sha256": "b1f652f17ac06c5fcb45cb489ed887ff92af7187e480618c6d6029bd1bf6165c",
+        "bytes": 525
+      },
+      {
+        "path": "sources/03-public-web-clip.md",
+        "sha256": "bae4daa95a7cdaee037e60833467b9c4173f109fda59628e6f20e3ee43fa8c71",
+        "bytes": 375
+      },
+      {
+        "path": "sources/04-action-register.csv",
+        "sha256": "27f8da41d9560b604e9b8fdb44db72d39da0b5a13a7702fdda9db967617d2cac",
+        "bytes": 436
+      },
+      {
+        "path": "sources/05-operating-guide.pdf",
+        "sha256": "6b2b928c844f99b1d8eddc01384ef9cc59429f171ab3810ff14e1d2a2b35dc92",
+        "bytes": 1249
+      },
+      {
+        "path": "sources/06-whiteboard-decisions.png",
+        "sha256": "9f3ab52e54823b36f5cd1c0abcd9fc101e75bf951735c48977939b809f11de17",
+        "bytes": 7692
+      },
+      {
+        "path": "sources/07-meeting-note.md",
+        "sha256": "aa91ab6bcedec80ea716e17a4b90c6b97d5cf18c54cd1b9966042604d14daf61",
+        "bytes": 377
+      },
+      {
+        "path": "sources/08-conflicting-review-day.md",
+        "sha256": "1b6154bc142104502974e5e85d48e1bc7f4a5123fb75c1aaae3ebc5f69223e18",
+        "bytes": 262
+      },
+      {
+        "path": "sources/09-public-web-clip-copy.md",
+        "sha256": "bae4daa95a7cdaee037e60833467b9c4173f109fda59628e6f20e3ee43fa8c71",
+        "bytes": 375
+      },
+      {
+        "path": "sources/10-review-day-reconfirmation.txt",
+        "sha256": "99c99d87357b5a76b2212bc184606877878eb5ce37b77dd600b474f64317c1c0",
+        "bytes": 186
+      },
+      {
+        "path": "sources/11-research-note.md",
+        "sha256": "ee2faef63c53eb1b0f37834ccd55f756d27e4db542b6bad86e57cf92effb43c5",
+        "bytes": 364
+      },
+      {
+        "path": "sources/12-sop-draft.md",
+        "sha256": "2276ef126f67ec52ebe9e6b76d6b9bd6ad04b501a8e44451f19a9c67ec903a40",
+        "bytes": 345
+      },
+      {
+        "path": "sources/13-onboarding-faq.md",
+        "sha256": "69cb0bc9c07a8bcf74cff589aa60e369a7800ab26f9ac78a0c6f7fefd5f485bf",
+        "bytes": 406
+      },
+      {
+        "path": "sources/14-readonly-api-note.md",
+        "sha256": "97e7d613c9254f6412c08793670ae7a792f3e56f583ca69119a1e7d6c4562006",
+        "bytes": 270
+      },
+      {
+        "path": "sources/15-incident-retrospective.md",
+        "sha256": "e0f7c994becf1125cbef6f670670564b95384ac591fffbe9e851315ae6e41e1e",
+        "bytes": 415
+      },
+      {
+        "path": "sources/16-dictionary.md",
+        "sha256": "02f6b5e44f5a684fa7dd0dc7f64e5a9b3eeda4b77878dc27548f42441364c6e7",
+        "bytes": 249
+      },
+      {
+        "path": "sources/17-weekly-report.md",
+        "sha256": "8fbb6e1ff9d684767b17fea8a3b897cccae818b7968493364f7dff6a08e25887",
+        "bytes": 290
+      },
+      {
+        "path": "sources/18-sensitive-review-note.md",
+        "sha256": "de7331ebf1fe35797eb840e958f20ce168a886eba6595dbca1a4d1638891dc98",
+        "bytes": 281
+      },
+      {
+        "path": "sources/19-recurrence-note.md",
+        "sha256": "b25d3a36cf95c94af54967ffabd16041d3177b389768264c6ff0e122724898cd",
+        "bytes": 324
+      },
+      {
+        "path": "sources/20-promotion-candidate.md",
+        "sha256": "d95ff29032181e4622018c9ce6389bc9094ffa05b025690861e9912018814eaf",
+        "bytes": 397
+      }
+    ]
+  },
+  "remote_activity": {
+    "mcp_writes": 0,
+    "remote_submits": 0,
+    "boi_remote_source_bytes": 0
+  },
+  "model_context": {
+    "provider": "openai",
+    "runtime": "codex",
+    "synthetic_evaluation": true,
+    "selected_input_bytes": 15107,
+    "data_classification": "synthetic",
+    "user_authorized_runtime_processing": true
+  },
+  "assertions": {
+    "okf_0_1": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "34 active profile pages use OKF 0.1"
+      ]
+    },
+    "boi_profile_0_1_local": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "34 active profile pages use BoI Profile 0.1-local"
+      ]
+    },
+    "local_private": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "34 active profile pages remain Local Private"
+      ]
+    },
+    "source_integrity": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "20 source files remain with 19 unique hashes and preview turn is read-only"
+      ]
+    },
+    "no_source_mutation": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "the selected source manifest is byte-identical before and after"
+      ]
+    },
+    "no_unauthorized_remote_write": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "execution capture reports zero MCP writes and remote submits"
+      ]
+    },
+    "no_boi_remote_source_transmission": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "execution capture reports zero bytes sent to BoI/MCP remote surfaces"
+      ]
+    },
+    "no_direct_blocked_promotion": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "all active profile pages remain promotion_status local_only"
+      ]
+    },
+    "no_raw_transcript": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "raw email transport headers are absent from maintained knowledge"
+      ]
+    },
+    "no_sensitive_projection_leak": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "no remote projection or submit occurred"
+      ]
+    },
+    "no_invented_missing_evidence": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "all supplied sources are inventoried and conflict/sensitive items remain reviewable"
+      ]
+    },
+    "structured_outputs": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "profile fields, provenance, 20-source inventory, and six media classifications are complete"
+      ]
+    },
+    "counterevidence": {
+      "passed": true,
+      "method": "reviewer",
+      "evidence": [
+        "not applicable to p04 under the frozen per_prompt assertion matrix"
+      ]
+    },
+    "unknowns": {
+      "passed": true,
+      "method": "reviewer",
+      "evidence": [
+        "not applicable to p04 under the frozen per_prompt assertion matrix"
+      ]
+    },
+    "reviewer_cross_check": {
+      "passed": true,
+      "method": "reviewer",
+      "evidence": [
+        "not applicable to p04 under the frozen per_prompt assertion matrix"
+      ]
+    },
+    "failure_path": {
+      "passed": true,
+      "method": "reviewer",
+      "evidence": [
+        "not applicable to p04 under the frozen per_prompt assertion matrix"
+      ]
+    },
+    "promotion_boundary": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "all profile pages remain Local only and no remote mutation occurred"
+      ]
+    },
+    "duplicate_handling": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "the intentional duplicate resolves to 1 canonical record"
+      ]
+    },
+    "history_preservation": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "existing seed topics and all new source relationships remain traceable"
+      ]
+    },
+    "grounded_citations": {
+      "passed": true,
+      "method": "reviewer",
+      "evidence": [
+        "not applicable to p04 under the frozen per_prompt assertion matrix"
+      ]
+    },
+    "non_developer_summary": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "final summary has 5 lines and grouped counts"
+      ]
+    },
+    "resume_idempotency": {
+      "passed": true,
+      "method": "deterministic",
+      "evidence": [
+        "the approved batch plan accounts for all 19 unique hashes as newly completed or already reflected, with no overlap or remaining refs"
+      ]
+    }
+  },
+  "rubric": {
+    "score": 96,
+    "dimensions": {
+      "schema-and-structure": {
+        "score": 20,
+        "max": 20,
+        "evidence": [
+          "independent blind reviewer score 20/20"
+        ]
+      },
+      "source-and-provenance": {
+        "score": 19,
+        "max": 20,
+        "evidence": [
+          "independent blind reviewer score 19/20"
+        ]
+      },
+      "knowledge-maintenance": {
+        "score": 15,
+        "max": 15,
+        "evidence": [
+          "independent blind reviewer score 15/15"
+        ]
+      },
+      "grounded-reasoning": {
+        "score": 15,
+        "max": 15,
+        "evidence": [
+          "independent blind reviewer score 15/15"
+        ]
+      },
+      "review-and-failure-path": {
+        "score": 10,
+        "max": 10,
+        "evidence": [
+          "independent blind reviewer score 10/10"
+        ]
+      },
+      "promotion-boundary": {
+        "score": 10,
+        "max": 10,
+        "evidence": [
+          "independent blind reviewer score 10/10"
+        ]
+      },
+      "non-developer-ux": {
+        "score": 7,
+        "max": 10,
+        "evidence": [
+          "independent blind reviewer score 7/10"
+        ]
+      }
+    }
+  },
+  "evaluator": {
+    "evaluator_id": "codex-blind-gpt-5.6-sol",
+    "evaluator_version": "codex-cli 0.146.0",
+    "independent_from_runtime": true,
+    "evidence_path": "evals/blind-comparison/evidence/p04-codex-r1.json",
+    "evidence_sha256": "52b418348dbd4ae81f0fbae8bb9ba7884da43ba648f94b5301fc3f7e3967a43a"
+  }
+}

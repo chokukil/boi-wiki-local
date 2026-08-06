@@ -1,0 +1,61 @@
+{
+  "schema": "boi-local-case-harness/v1",
+  "case_id": "agentic-ai-change-radar",
+  "title": "SK하이닉스 Agentic AI Change Radar",
+  "category": "research",
+  "status": "community",
+  "version": "0.1.0",
+  "audience": "공개 자료로 Agentic AI 변화와 적용 가설을 검토하는 연구·기술기획 구성원",
+  "start_prompt": "이번 주 Agentic AI에서 바뀐 내용만 기존 지식과 비교해 변경 세트와 검토 목록으로 보여줘.",
+  "logical_roles": [
+    "research-coordinator",
+    "source-researcher",
+    "evidence-analyst",
+    "change-curator",
+    "independent-reviewer"
+  ],
+  "reviewer_role": "independent-reviewer",
+  "orchestration_pattern": "supervisor-compare-review",
+  "scale_modes": [
+    "full",
+    "reduced",
+    "single-agent",
+    "no-team-fallback"
+  ],
+  "required_skills": [
+    "boi-wiki-local"
+  ],
+  "optional_features": [
+    "boi-second-brain",
+    "mcp",
+    "obsidian"
+  ],
+  "fixture_policy": "public-only",
+  "expected_local_types": [
+    "boi/local-knowledge-note",
+    "boi/local-guide"
+  ],
+  "direct_promotion_blocked_types": [
+    "boi/local-evidence",
+    "boi/local-capture",
+    "boi/local-hypothesis",
+    "boi/local-analysis-log",
+    "boi/local-analysis-case"
+  ],
+  "direct_promotion_blocked_roles": [
+    "agent-memory",
+    "source-record"
+  ],
+  "eval_prompt_count": 5,
+  "evaluation_protocol": "case-eval/v2",
+  "fixture_id": "PUB-AAI-RADAR-001-v1",
+  "runtime_contract": "boi-local-case-runtime/v1",
+  "runtime_manifest": "runtime/runtime.yaml",
+  "handoff_schema": "cases/_schema/handoff.schema.json",
+  "reference_gate": {
+    "codex_runs": 3,
+    "claude_runs": 3,
+    "baseline_required": true
+  },
+  "domain_validation": false
+}

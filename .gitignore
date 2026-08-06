@@ -3,6 +3,24 @@
 Thumbs.db
 .cache/
 .tmp/
+__pycache__/
 .boi-trash/
+# Ship only the verified offline Harness package and its sanitized attestation.
+# Runtime bootstrap/cache files stay local.
+.boi-harness/*
+!.boi-harness/package.json
+!.boi-harness/sync-state.json
+!.boi-harness/core-runtime-manifest.json
+!.boi-harness/bootstrap/
+!.boi-harness/bootstrap/*.json
+.obsidian/
 *.bak
 *.log
+
+# Real employee workspaces are Local Private. Keep only the 0000000 template in Git.
+data/boi/private/*/
+!data/boi/private/0000000/
+!data/boi/private/0000000/**
+data/boi/private/0000000/.obsidian/
+# Guide update backups prove local rollback but are never part of a release.
+data/boi/private/0000000/_archive/

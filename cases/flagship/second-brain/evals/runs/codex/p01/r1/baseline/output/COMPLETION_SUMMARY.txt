@@ -1,0 +1,4 @@
+- Local Profile `0000000`에 승인된 로컬·자동 정리 설정을 [적용했습니다](data/boi/private/0000000/profile.json).
+- 자료 폴더는 `sources`, 원격 기능은 비활성 상태입니다.
+- [장기 지식](decisions/weekly-knowledge-review.md)에 매주 금요일 15:00 리뷰 결정과 이유를 보존했습니다.
+- 일회성 점심 주문 내용이 지식·설정에 없음을 검증했으며 원격 업로드는 하지 않았습니다.

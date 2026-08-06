@@ -4,6 +4,13 @@ boi_profile_version: "0.1-local"
 type: boi/local-example
 title: "SOP Mermaid 프로세스 플로우 예제"
 description: "SOP 초안을 Mermaid flowchart로 변환하는 자연어 요청 예제"
+boi_id: boi:private:0000000:legacy:sop-mermaid-flow:6a6932e468
+classification: internal
+owner: "0000000"
+artifact_visibility: working
+lifecycle_state: working
+memory_candidate: false
+cleanup_policy: keep
 timestamp: 2026-06-20T21:53:00+09:00
 employee_id: "0000000"
 local_owner_ref: local-private:0000000

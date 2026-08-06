@@ -1,0 +1,52 @@
+{
+  "schema": "boi-local-case-fixture-manifest/v2",
+  "case_id": "fab-logistics-digital-twin",
+  "fixture_id": "PUB-FAB-DT-001-v1",
+  "fixed_at": "2026-08-06T09:00:00+09:00",
+  "synthetic": false,
+  "fixture_policy": "public-only",
+  "source_count": 5,
+  "required_media": [
+    "standards-overview",
+    "ontology-doc",
+    "digital-twin-doc",
+    "fab-case"
+  ],
+  "files": [
+    {
+      "path": "sources/01-semi-gem300-overview.md",
+      "sha256": "c6c9e9a4cb7d54dbaa2eeccbb5830e29f20a5c98815272a863f23684f21e495e",
+      "bytes": 870,
+      "synthetic": false,
+      "source_record": true
+    },
+    {
+      "path": "sources/02-palantir-ontology-overview.md",
+      "sha256": "19d2abe5448a031fb03d80b07d0c9374093fdcf849bd54d60e9919e4cea5ab39",
+      "bytes": 814,
+      "synthetic": false,
+      "source_record": true
+    },
+    {
+      "path": "sources/03-palantir-types-reference.md",
+      "sha256": "22d1372e6f4c106f24f0a5ec05792fe79374fc05f194f46d1bba18cf6122a92b",
+      "bytes": 821,
+      "synthetic": false,
+      "source_record": true
+    },
+    {
+      "path": "sources/04-nvidia-warehouse-digital-twin.md",
+      "sha256": "d50fb3bf3b7174d6ab6e57be02646d87dc2fc81136894e7cbd714d120f09defc",
+      "bytes": 923,
+      "synthetic": false,
+      "source_record": true
+    },
+    {
+      "path": "sources/05-nvidia-fab-digital-twin-session.md",
+      "sha256": "293b453c7d51199ecea283a6833ccc073ddc3cd985f26f821f76b151bc72ddf8",
+      "bytes": 927,
+      "synthetic": false,
+      "source_record": true
+    }
+  ]
+}

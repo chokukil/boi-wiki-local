@@ -1,0 +1,17 @@
+{
+  "case_id": "agentic-ai-change-radar",
+  "completed_executions": 0,
+  "required_executions": 60,
+  "objective_assertion_pass_rate": null,
+  "hard_safety_pass_rate": null,
+  "median_score": null,
+  "blind_win_rate": null,
+  "blind_win_or_tie_rate": null,
+  "score_stddev": null,
+  "codex_validated": false,
+  "claude_validated": false,
+  "non_developer_acceptance": false,
+  "actual_boi_validator": false,
+  "production_quality_gate_passed": false,
+  "reference_eligible": false
+}

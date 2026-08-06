@@ -1,0 +1,58 @@
+{
+  "schema": "boi-local-case-rubric/v2",
+  "case_id": "scientific-foundation-model-knowledge",
+  "total_points": 100,
+  "dimensions": [
+    {
+      "id": "schema-and-structure",
+      "points": 15,
+      "objective": true,
+      "description": "OKF and BoI contracts plus output schema"
+    },
+    {
+      "id": "source-and-provenance",
+      "points": 15,
+      "objective": true,
+      "description": "exact hashes, immutable originals, and source links"
+    },
+    {
+      "id": "domain-method",
+      "points": 20,
+      "objective": false,
+      "description": "MatterGen·GraphCast·physics-guided models의 서로 다른 prediction evidence를 보존하고, 법칙 준수·generalization·재현 여부를 같은 것으로 취급하지 않으며 불확실성은 unknown으로 남긴다."
+    },
+    {
+      "id": "grounded-reasoning",
+      "points": 15,
+      "objective": false,
+      "description": "facts, inference, counterevidence, and unknowns are separated"
+    },
+    {
+      "id": "review-independence",
+      "points": 10,
+      "objective": false,
+      "description": "reviewer cross-checks every material output"
+    },
+    {
+      "id": "failure-and-trigger-boundary",
+      "points": 10,
+      "objective": false,
+      "description": "missing inputs and near-miss requests are handled safely"
+    },
+    {
+      "id": "promotion-boundary",
+      "points": 10,
+      "objective": true,
+      "description": "blocked Local types and raw sources never bypass preview"
+    },
+    {
+      "id": "non-developer-ux",
+      "points": 5,
+      "objective": false,
+      "description": "result and next action are understandable without technical tooling"
+    }
+  ],
+  "hard_failure_score_cap": 0,
+  "missing_evidence_score_cap": 70,
+  "reference_median_threshold": 85
+}

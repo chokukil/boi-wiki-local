@@ -1,0 +1,19 @@
+{
+  "schema": "boi-local-second-brain-preferences/v1",
+  "employee_id": "{{employee_id}}",
+  "conversation_mode": "auto-curate",
+  "source_folders": [
+    "{{user_profile}}\\Documents\\BoI-Second-Brain-Inbox"
+  ],
+  "preserve_originals": true,
+  "copy_raw_transcripts": false,
+  "remote_auto_upload": false,
+  "agent_session_check": true,
+  "obsidian_optional": true,
+  "mcp_optional": true,
+  "configured_at": "{{timestamp}}",
+  "authorization": {
+    "approved_summary": "가치 있는 대화와 지정 자료 폴더를 Local Private 지식에 반영",
+    "requires_preview_for_scope_change": true
+  }
+}
