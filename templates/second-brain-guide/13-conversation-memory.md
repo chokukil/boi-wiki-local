@@ -23,7 +23,7 @@ memory_candidate: false
 cleanup_policy: keep
 review_after: {{review_after}}
 contains_sensitive: false
-guide_release: "3.0.0"
+guide_release: "3.1.0"
 guide_audience: "AI와 업무 대화를 하는 구성원"
 guide_duration_minutes: 6
 guide_prerequisites: "Second Brain 초기 설정"

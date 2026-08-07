@@ -15,7 +15,7 @@ from pathlib import Path
 
 from boi_local_common import now_kst, private_root, relative_to_root, workspace_employee_id
 
-GUIDE_RELEASE = "3.0.0"
+GUIDE_RELEASE = "3.1.0"
 GUIDE_RELEASE_TIMESTAMP = "2026-08-02T00:00:00+09:00"
 GUIDE_REVIEW_AFTER = "2027-02-01"
 OBSIDIAN_MANIFEST = "boi-wiki-local-managed.json"
@@ -150,6 +150,7 @@ def render_guide(template: Path, employee_id: str, repo_url: str) -> str:
         .replace("{{timestamp}}", GUIDE_RELEASE_TIMESTAMP)
         .replace("{{review_after}}", GUIDE_REVIEW_AFTER)
         .replace("{{repository_url}}", repo_url)
+        .replace("](../../cases/", "](../../../../../../cases/")
     )
 
 

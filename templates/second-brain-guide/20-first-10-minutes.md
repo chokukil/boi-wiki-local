@@ -23,7 +23,7 @@ memory_candidate: false
 cleanup_policy: keep
 review_after: {{review_after}}
 contains_sensitive: false
-guide_release: "3.0.0"
+guide_release: "3.1.0"
 guide_audience: "첫 지식을 만드는 사용자"
 guide_duration_minutes: 10
 guide_prerequisites: "Local Private 초기 설정 완료"

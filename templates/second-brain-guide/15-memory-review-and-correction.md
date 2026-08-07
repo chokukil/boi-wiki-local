@@ -23,7 +23,7 @@ memory_candidate: false
 cleanup_policy: keep
 review_after: {{review_after}}
 contains_sensitive: false
-guide_release: "3.0.0"
+guide_release: "3.1.0"
 guide_audience: "자동 정리 결과를 검토하는 구성원"
 guide_duration_minutes: 5
 guide_prerequisites: "대화 또는 자료 폴더 정리를 한 번 수행함"

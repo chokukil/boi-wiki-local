@@ -23,7 +23,7 @@ memory_candidate: false
 cleanup_policy: keep
 review_after: {{review_after}}
 contains_sensitive: false
-guide_release: "3.0.0"
+guide_release: "3.1.0"
 guide_audience: "Obsidian 확장 기능을 검토하는 사용자"
 guide_duration_minutes: 7
 guide_prerequisites: "Obsidian Core 기능 확인"

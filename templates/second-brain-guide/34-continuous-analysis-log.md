@@ -23,7 +23,7 @@ memory_candidate: true
 cleanup_policy: keep
 review_after: "{{review_after}}"
 contains_sensitive: false
-guide_release: "3.0.0"
+guide_release: "3.1.0"
 guide_audience: "여러 세션이나 교대에 걸쳐 조사하는 구성원"
 guide_duration_minutes: 6
 guide_prerequisites: "출처가 있는 조사 또는 업무 주제"

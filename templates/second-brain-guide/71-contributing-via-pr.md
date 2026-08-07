@@ -23,7 +23,7 @@ cleanup_policy: keep
 review_after: {{review_after}}
 archive_status: active
 contains_sensitive: false
-guide_release: "3.0.0"
+guide_release: "3.1.0"
 guide_audience: "가이드·템플릿 개선 기여자"
 guide_duration_minutes: 10
 guide_prerequisites: "Git branch와 PR 권한"

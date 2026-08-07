@@ -23,7 +23,7 @@ memory_candidate: false
 cleanup_policy: keep
 review_after: {{review_after}}
 contains_sensitive: false
-guide_release: "3.0.0"
+guide_release: "3.1.0"
 guide_audience: "배포 관리자, knowledge steward, 비개발자 pilot"
 guide_duration_minutes: 30
 guide_prerequisites: "승인된 GitHub 또는 사내 Bitbucket 저장소와 Windows test PC"

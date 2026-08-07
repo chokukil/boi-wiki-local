@@ -23,7 +23,7 @@ memory_candidate: false
 cleanup_policy: keep
 review_after: {{review_after}}
 contains_sensitive: false
-guide_release: "3.0.0"
+guide_release: "3.1.0"
 guide_audience: "배포 관리자와 문제 해결 담당자"
 guide_duration_minutes: 10
 guide_prerequisites: "Harness·Skill 구조와 에이전트 정책을 이해함"

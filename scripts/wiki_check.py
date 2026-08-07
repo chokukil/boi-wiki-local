@@ -10,7 +10,7 @@ import re
 import struct
 from pathlib import Path
 
-GUIDE_RELEASE = "3.0.0"
+GUIDE_RELEASE = "3.1.0"
 MEDIA_SCHEMA = "boi-local-guide-media/v1"
 MAX_MEDIA_BYTES = 600 * 1024
 MAX_MEDIA_WIDTH = 1760

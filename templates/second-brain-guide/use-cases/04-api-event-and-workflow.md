@@ -23,7 +23,7 @@ cleanup_policy: keep
 review_after: {{review_after}}
 archive_status: active
 contains_sensitive: false
-guide_release: "3.0.0"
+guide_release: "3.1.0"
 guide_audience: "API 연계와 반복 업무를 설계하는 구성원"
 guide_duration_minutes: 15
 guide_prerequisites: "비밀값이 제거된 API 또는 업무 단계 자료"

@@ -23,7 +23,7 @@ memory_candidate: true
 cleanup_policy: keep
 review_after: "{{review_after}}"
 contains_sensitive: false
-guide_release: "3.0.0"
+guide_release: "3.1.0"
 guide_audience: "원인 후보를 비교하고 검토하는 구성원과 reviewer"
 guide_duration_minutes: 8
 guide_prerequisites: "조사 질문과 출처가 있는 자료"

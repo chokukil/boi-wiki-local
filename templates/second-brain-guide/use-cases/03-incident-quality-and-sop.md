@@ -23,7 +23,7 @@ cleanup_policy: keep
 review_after: {{review_after}}
 archive_status: active
 contains_sensitive: false
-guide_release: "3.0.0"
+guide_release: "3.1.0"
 guide_audience: "장애 대응, 설비, 품질 업무 구성원"
 guide_duration_minutes: 15
 guide_prerequisites: "비민감 합성 또는 승인된 Local 원문"

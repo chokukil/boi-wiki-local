@@ -1,6 +1,6 @@
 {
     "schema":  "boi-local-guide-media/v1",
-    "guide_release":  "3.0.0",
+    "guide_release":  "3.1.0",
     "items":  [
                   {
                       "id":  "screen-01",

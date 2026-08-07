@@ -23,7 +23,7 @@ memory_candidate: false
 cleanup_policy: keep
 review_after: {{review_after}}
 contains_sensitive: false
-guide_release: "3.0.0"
+guide_release: "3.1.0"
 guide_audience: "Core Search의 한계를 확인한 사용자와 배포 관리자"
 guide_duration_minutes: 5
 guide_prerequisites: "Obsidian Core Search와 AI 검색 사용 기록"

@@ -187,6 +187,29 @@ $authorizationSummary = switch ($Mode) {
     "explicit-only" { "명시적으로 요청한 대화와 자료 폴더 작업만 Local Private 지식에 반영" }
 }
 
+$sourceSelectorPath = Join-Path $repoRoot "scripts\select-repository-source.ps1"
+if (Test-Path -LiteralPath (Join-Path $repoRoot ".git")) {
+    if (!(Test-Path -LiteralPath $sourceSelectorPath -PathType Leaf)) {
+        throw "저장소 선택 도구가 없습니다. 개인 설정을 만들지 않았습니다."
+    }
+    $sourcePreviewJson = & powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -File $sourceSelectorPath -Mode Preview -Root $repoRoot -RepositoryId "boi-wiki-local"
+    if ($LASTEXITCODE -ne 0) { throw "저장소 위치를 판정하지 못했습니다. 개인 설정을 만들지 않았습니다." }
+    $sourcePreview = $sourcePreviewJson | ConvertFrom-Json
+    if ([string]$sourcePreview.action -eq "blocked") {
+        throw "저장소 위치 판정이 중단되었습니다: $([string]$sourcePreview.blocker) 개인 설정을 만들지 않았습니다."
+    }
+} else {
+    $plainBytes = [Text.UTF8Encoding]::new($false).GetBytes("plain-folder-local-only")
+    $plainSha = [Security.Cryptography.SHA256]::Create()
+    try { $plainPlanHash = -join ($plainSha.ComputeHash($plainBytes) | ForEach-Object { $_.ToString("x2") }) }
+    finally { $plainSha.Dispose() }
+    $sourcePreview = [pscustomobject]@{
+        repository_id = "boi-wiki-local"; state = "plain-folder-local-only"; action = "no-change"
+        selected_origin = ""; stable_branch = ""; remote_revision = ""; manifest_sha256 = ""
+        plan_hash = $plainPlanHash; blocker = ""
+    }
+}
+
 $setupPlan = [ordered]@{
     schema = "boi-local-setup-plan/v1"
     employee_id = $EmployeeId
@@ -198,6 +221,17 @@ $setupPlan = [ordered]@{
     agent_session_check = ($Mode -ne "explicit-only")
     harness_release = [string]$harnessPackage.release
     harness_checksum = [string]$harnessPackage.checksum
+    repository_source = [ordered]@{
+        repository_id = [string]$sourcePreview.repository_id
+        state = [string]$sourcePreview.state
+        action = [string]$sourcePreview.action
+        selected_origin = [string]$sourcePreview.selected_origin
+        stable_branch = [string]$sourcePreview.stable_branch
+        remote_revision = [string]$sourcePreview.remote_revision
+        manifest_sha256 = [string]$sourcePreview.manifest_sha256
+        plan_hash = [string]$sourcePreview.plan_hash
+        external_fallback_is_not_push_approval = $true
+    }
 }
 $setupPlanJson = $setupPlan | ConvertTo-Json -Depth 5 -Compress
 $setupPlanBytes = [System.Text.UTF8Encoding]::new($false).GetBytes($setupPlanJson)
@@ -224,6 +258,9 @@ Write-Host "- 자료 폴더: $Inbox"
 Write-Host "- 원본 보존: 켜짐"
 Write-Host "- 원격 자동 업로드: 꺼짐"
 Write-Host "- Obsidian/MCP: 없어도 정상 동작"
+Write-Host "- 저장소 위치: $([string]$sourcePreview.state)"
+Write-Host "- origin 변경: $([string]$sourcePreview.action)"
+Write-Host "- 외부 fallback은 push 승인 아님"
 
 if ($ConfirmPlanHash) {
     if ($ConfirmPlanHash -notmatch '^[0-9a-f]{64}$' -or $ConfirmPlanHash -cne $setupPlanHash) {
@@ -239,6 +276,13 @@ if (-not $Approve) {
         Write-Host "취소했습니다. 파일을 변경하지 않았습니다."
         exit 2
     }
+}
+
+if ([string]$sourcePreview.action -eq "set-origin") {
+    $sourceApplyJson = & powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -File $sourceSelectorPath -Mode Apply -Root $repoRoot -RepositoryId "boi-wiki-local" -ConfirmPlanHash ([string]$sourcePreview.plan_hash)
+    if ($LASTEXITCODE -ne 0) { throw "승인된 저장소 origin 변경에 실패했습니다. 개인 설정을 만들지 않았습니다." }
+    $sourceApply = $sourceApplyJson | ConvertFrom-Json
+    if ($sourceApply.ok -ne $true) { throw "저장소 origin 변경 검증에 실패했습니다. 개인 설정을 만들지 않았습니다." }
 }
 
 $folders = @(
@@ -376,6 +420,7 @@ if (Test-Path -LiteralPath $guideSource) {
                 $content = $content.Replace("{{timestamp}}", (Get-Date).ToString("o"))
                 $content = $content.Replace("{{review_after}}", (Get-Date).AddMonths(6).ToString("yyyy-MM-dd"))
                 $content = $content.Replace("{{repository_url}}", "<현재 Git origin>")
+                $content = $content.Replace("](../../cases/", "](../../../../../../cases/")
                 [System.IO.File]::WriteAllText($target, $content, [System.Text.UTF8Encoding]::new($false))
             } else {
                 Copy-Item -LiteralPath $_.FullName -Destination $target

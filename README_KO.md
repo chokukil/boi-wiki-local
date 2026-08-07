@@ -115,6 +115,10 @@ promotion compiler 경계에서만 `boi_profile_version: "0.1"`과 `team` 또는
 
 ## 7. 선택 기능: Obsidian과 MCP
 
+`MCP 설치해줘` 또는 `BoI Wiki MCP 연결해줘`라고 자연어로 요청하면 AI가 먼저 저장소 source를 판정하고, 저장소에 고정된 MCP connection descriptor로 Codex·Claude 설정 preview를 만듭니다. 사내 Bitbucket은 실제 읽기 성공 때 우선하며 DNS·라우팅·연결 실패일 때만 GitHub로 fallback합니다. 사내 호스트의 인증·저장소 권한 실패는 fallback하지 않습니다. Git source와 MCP endpoint는 별도 계약이며 endpoint는 `BOI_WIKI_MCP_EXTERNAL_URL`, 승인된 배포 descriptor 또는 사용자가 준 주소에서만 선택합니다. 설정 적용과 재시작 뒤 `initialize`·`tools/list`까지 확인해야 연결 완료입니다.
+
+두 저장소를 함께 검증하는 관리자·CI는 `scripts/check-repository-source-contract.ps1 -PeerRoot <boi-wiki 경로>`로 공통 manifest, selector, MCP connector와 descriptor의 SHA256 일치를 확인합니다. 일반 사용자는 이 명령을 직접 실행하지 않습니다.
+
 | 구성 | 하는 일 | 하지 않는 일 |
 |---|---|---|
 | 둘 다 없음 | Local 작성·검색·정리·review·promotion preview | 사내 Wiki 조회·원격 등록 |

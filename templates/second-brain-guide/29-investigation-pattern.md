@@ -23,7 +23,7 @@ memory_candidate: false
 cleanup_policy: keep
 review_after: {{review_after}}
 contains_sensitive: false
-guide_release: "3.0.0"
+guide_release: "3.1.0"
 guide_audience: "조사·장애·품질·감사·기술 검토를 수행하는 구성원"
 guide_duration_minutes: 8
 guide_prerequisites: "첫 설정 완료; 정리할 자료가 하나 이상 있음"

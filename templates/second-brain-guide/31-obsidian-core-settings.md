@@ -23,7 +23,7 @@ memory_candidate: false
 cleanup_policy: keep
 review_after: {{review_after}}
 contains_sensitive: false
-guide_release: "3.0.0"
+guide_release: "3.1.0"
 guide_audience: "Obsidian Core 사용자"
 guide_duration_minutes: 10
 guide_prerequisites: "Windows-native Vault 연결 완료"

@@ -23,7 +23,7 @@ cleanup_policy: keep
 review_after: {{review_after}}
 archive_status: active
 contains_sensitive: false
-guide_release: "3.0.0"
+guide_release: "3.1.0"
 guide_audience: "Obsidian을 쓰지 않는 사용자"
 guide_duration_minutes: 5
 guide_prerequisites: "텍스트 편집기 또는 로컬 에이전트"

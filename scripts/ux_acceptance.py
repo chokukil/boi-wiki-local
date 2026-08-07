@@ -55,6 +55,17 @@ def prepare(source: Path, target: Path) -> None:
         source / "cases" / "flagship" / "second-brain" / "fixtures",
         target / "cases" / "flagship" / "second-brain" / "fixtures",
     )
+    for relative in (
+        "CASE.md",
+        "golden-journey/runs/2026-08-06/query-diff.md",
+        "golden-journey/runs/2026-08-06/t0/claim-snapshot.md",
+        "golden-journey/runs/2026-08-06/t1/change-set.json",
+        "golden-journey/runs/2026-08-06/t1/review-queue.md",
+    ):
+        source_path = source / "cases" / "research" / "agentic-ai-change-radar" / relative
+        target_path = target / "cases" / "research" / "agentic-ai-change-radar" / relative
+        target_path.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source_path, target_path)
     for name in ("harness.lock", "AGENTS.md", "CLAUDE.md", ".env.example"):
         shutil.copy2(source / name, target / name)
 

@@ -178,6 +178,8 @@ On Windows, if the normal workspace edit tool fails once because of the sandbox,
 - Team/Public 적재: promotion 초안 → 민감정보·출처·공개 범위 검증 → 미리보기 → 사용자 승인 → 원격 등록 기능이 지원될 때만 가능.
 - The preflight command only creates a Local package and sanitized projection. It never submits.
 
+An explicit request to install or connect BoI Wiki MCP is an agent-driven setup route, not a request to search the currently configured tool list. Follow the repository source preview first, then the pinned MCP connection descriptor and `scripts/connect-boi-wiki-mcp.ps1` Preview → approval → Apply → client restart → Verify contract. Internal Bitbucket authentication or repository-access failure blocks fallback. A DNS, route, refusal, or timeout may select the external GitHub source, but that selection is read/update provenance only and never authorizes push, promotion, or Local Private transfer. The MCP endpoint remains independent and must come from the approved descriptor, environment, or the user.
+
 ## Finish
 
 For an ordinary employee, use at most five non-empty lines: one short outcome line and up to four compact bullets. Combine conversation mode, source folder, original preservation, remote auto-upload off, optional Obsidian/MCP status, and one natural-language next-use example instead of expanding them into separate diagnostics. Do not mention Harness verification mechanics unless something failed, and do not require the user to run commands.

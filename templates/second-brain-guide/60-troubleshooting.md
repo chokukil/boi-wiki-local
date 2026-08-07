@@ -23,7 +23,7 @@ memory_candidate: false
 cleanup_policy: keep
 review_after: {{review_after}}
 contains_sensitive: false
-guide_release: "3.0.0"
+guide_release: "3.1.0"
 guide_audience: "오류를 해결하는 사용자와 지원 담당자"
 guide_duration_minutes: 10
 guide_prerequisites: "오류 메시지와 현재 모드 확인"
@@ -93,6 +93,10 @@ WSL 경로나 파일 감시 문제가 예상되면 설정을 바꾸지 말고 �
 ## MCP가 없으면 사용할 수 없나요?
 
 아닙니다. MCP는 사내 BoI Wiki 검색·참조를 확장하는 선택 기능입니다. 로컬 수집, 정제, 검색, review, promotion 초안은 MCP 없이 동작합니다.
+
+AI에게 MCP 설치를 요청했는데 “그런 도구가 없다”고 답하면, 현재 등록된 도구 목록만 보지 말고 저장소의 `boi-wiki-mcp-connection` descriptor와 MCP 연결 가이드를 확인하도록 요청합니다. endpoint는 Git origin에서 추정하지 않습니다. 사내 Bitbucket DNS·라우팅이 실패하면 GitHub source를 사용할 수 있지만, 사내 호스트에 도달한 뒤 `401`, `403`, credential failure 또는 저장소 권한 오류가 나면 Bitbucket 로그인과 `BOI` 프로젝트의 해당 저장소 Read 권한을 먼저 해결합니다.
+
+연결 적용 후에도 MCP가 보이지 않으면 AI 클라이언트를 재시작하고 `initialize`와 `tools/list`를 다시 확인합니다. 토큰은 환경 변수로만 참조하며 값 자체를 명령이나 로그에 넣지 않습니다.
 
 ## Obsidian을 지우면 문서도 없어지나요?
 

@@ -23,7 +23,7 @@ memory_candidate: true
 cleanup_policy: keep
 review_after: "{{review_after}}"
 contains_sensitive: false
-guide_release: "3.0.0"
+guide_release: "3.1.0"
 guide_audience: "Second Brain의 지식을 정기적으로 갱신하고 검토하는 구성원"
 guide_duration_minutes: 15
 guide_prerequisites: "검토할 주제 또는 승인된 기준 지식"
@@ -38,13 +38,6 @@ source_refs:
   - type: local-community-case
     ref: cases/research/agentic-ai-change-radar/CASE.md
     note: "Community 상태의 공개 Golden Journey 재현성 사례"
-generated_from:
-  - type: local-document
-    ref: cases/research/agentic-ai-change-radar/CASE.md
-    sha256: 2ed579e252873a22179bb04f8c54c356197ece7d9a9f2d17f2f333e45df23284
-  - type: local-document
-    ref: cases/research/agentic-ai-change-radar/golden-journey/runs/2026-08-06/query-diff.md
-    sha256: 2ba91556128a4c0f93470a3d2c872e7dc6aeffa6fbc06a0ba5198181ebf22f7c
 ---
 
 # 지식 변화 운영과 사용자 프롬프트 가이드

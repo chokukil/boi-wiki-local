@@ -23,7 +23,7 @@ memory_candidate: false
 cleanup_policy: keep
 review_after: {{review_after}}
 contains_sensitive: false
-guide_release: "3.0.0"
+guide_release: "3.1.0"
 guide_audience: "반복 capture를 단축하려는 사용자"
 guide_duration_minutes: 10
 guide_prerequisites: "사내 허용 정책, 호환성 검사, 사용자 설치 승인"

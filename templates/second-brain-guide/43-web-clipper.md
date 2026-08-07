@@ -23,7 +23,7 @@ memory_candidate: false
 cleanup_policy: keep
 review_after: {{review_after}}
 contains_sensitive: false
-guide_release: "3.0.0"
+guide_release: "3.1.0"
 guide_audience: "공개 웹 자료를 Local Second Brain에 모으는 사용자"
 guide_duration_minutes: 10
 guide_prerequisites: "지원 브라우저, Obsidian Vault, 사용자 설치 승인"

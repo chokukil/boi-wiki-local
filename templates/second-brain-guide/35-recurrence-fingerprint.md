@@ -23,7 +23,7 @@ memory_candidate: true
 cleanup_policy: keep
 review_after: "{{review_after}}"
 contains_sensitive: false
-guide_release: "3.0.0"
+guide_release: "3.1.0"
 guide_audience: "반복되는 문제와 업무 신호를 재사용 지식으로 남기는 구성원"
 guide_duration_minutes: 6
 guide_prerequisites: "사람의 검토가 끝난 지식 또는 조사 기록"
