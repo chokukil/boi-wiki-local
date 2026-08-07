@@ -23,7 +23,7 @@ memory_candidate: false
 cleanup_policy: keep
 review_after: {{review_after}}
 contains_sensitive: false
-guide_release: "3.0.0"
+guide_release: "3.1.0"
 guide_audience: "Windows 신규 사용자"
 guide_duration_minutes: 10
 guide_prerequisites: "Git for Windows, 배포 Git 저장소 접근 권한, 7자리 Local Profile 식별자"

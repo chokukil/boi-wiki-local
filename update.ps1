@@ -1,7 +1,8 @@
 param(
   [string]$Root = $PSScriptRoot,
   [switch]$Apply,
-  [string]$ConfirmGuideRelease = ""
+  [string]$ConfirmGuideRelease = "",
+  [string]$ConfirmSourcePlanHash = ""
 )
 
 $ErrorActionPreference = "Stop"
@@ -351,6 +352,33 @@ if (!(Get-Command git -ErrorAction SilentlyContinue)) { Fail "Git for Windows가
 
 Verify-HarnessSnapshot $Root
 Verify-CoreRuntimeWorktree $Root
+
+$sourceSelector = Join-Path $Root "scripts\select-repository-source.ps1"
+if (Test-Path -LiteralPath $sourceSelector -PathType Leaf) {
+  $sourcePreviewJson = & powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -File $sourceSelector -Mode Preview -Root $Root -RepositoryId "boi-wiki-local"
+  if ($LASTEXITCODE -ne 0) { Fail "저장소 위치 판정에 실패했습니다." }
+  $sourcePreview = $sourcePreviewJson | ConvertFrom-Json
+} else {
+  $sourcePreview = [pscustomobject]@{
+    state = "legacy-existing-origin"; selection_reason = "selector-arrives-with-update"
+    action = "no-change"; plan_hash = "not-required"; blocker = ""
+  }
+}
+Write-Host "Repository source state: $([string]$sourcePreview.state)"
+Write-Host "Repository source reason: $([string]$sourcePreview.selection_reason)"
+Write-Host "Repository source action: $([string]$sourcePreview.action)"
+Write-Host "Repository source plan hash: $([string]$sourcePreview.plan_hash)"
+Write-Host "External fallback is not push approval."
+if ([string]$sourcePreview.action -eq "blocked") { Fail ([string]$sourcePreview.blocker) }
+if ($Apply -and [string]$sourcePreview.action -eq "set-origin") {
+  if (!$ConfirmSourcePlanHash -or $ConfirmSourcePlanHash -cne [string]$sourcePreview.plan_hash) {
+    Fail "origin 변경 후보가 있습니다. 현재 source plan hash를 --confirm-source-plan으로 승인한 뒤 다시 실행하세요."
+  }
+  $sourceApplyJson = & powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -File $sourceSelector -Mode Apply -Root $Root -RepositoryId "boi-wiki-local" -ConfirmPlanHash $ConfirmSourcePlanHash
+  if ($LASTEXITCODE -ne 0) { Fail "승인된 origin 변경 또는 검증에 실패했습니다." }
+  $sourceApply = $sourceApplyJson | ConvertFrom-Json
+  if ($sourceApply.ok -ne $true) { Fail "origin 변경 후 검증에 실패했습니다." }
+}
 
 $origin = (& git -C $Root remote get-url origin 2>$null).Trim()
 if ($LASTEXITCODE -ne 0 -or !$origin) { Fail "Git origin이 없습니다. GitHub 또는 사내 Bitbucket mirror 주소를 설정하세요." }

@@ -42,6 +42,7 @@ GEM300의 Carrier·Substrate·Control Job 공개 개념을 twin 상태·event와
 - Second Brain이 없어도 현재 실행, review queue와 promotion preview까지 완료됩니다.
 - 연결하면 검토된 durable knowledge만 기존 주제와 비교해 보강·교정하고 다음 Query와 Update에 재사용합니다.
 - raw source, intermediate와 agent-memory는 기억으로 복사하거나 직접 promotion하지 않습니다.
+- 사용자 용어로 기준 지식, 업데이트 후보, 현재 지식과 이후 revision을 운영하는 방법은 [지식 변화 운영과 사용자 프롬프트 가이드](https://github.com/chokukil/boi-wiki-local/blob/main/templates/second-brain-guide/38-knowledge-change-operations.md)를 참고합니다.
 
 ## Local/Remote 경계
 

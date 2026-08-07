@@ -11,7 +11,7 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
-GUIDE_RELEASE = "3.0.0"
+GUIDE_RELEASE = "3.1.0"
 MAX_WIDTH = 1760
 MAX_BYTES = 600 * 1024
 

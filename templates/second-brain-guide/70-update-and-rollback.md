@@ -23,7 +23,7 @@ cleanup_policy: keep
 review_after: {{review_after}}
 archive_status: active
 contains_sensitive: false
-guide_release: "3.0.0"
+guide_release: "3.1.0"
 guide_audience: "기존 설치 업데이트 사용자"
 guide_duration_minutes: 10
 guide_prerequisites: "clean stable branch와 Git for Windows"
@@ -46,8 +46,16 @@ source_refs:
 ```powershell
 .\update.cmd
 .\update.cmd --apply
-.\update.cmd --apply --confirm-guide-release 3.0.0
+.\update.cmd --apply --confirm-guide-release 3.1.0
 ```
+
+update preview는 fetch 전에 사내 Bitbucket을 우선 검사하고 `Repository source state`, 선택 이유, origin 변경 후보와 일회성 승인 코드를 보여줍니다. 사내망에 도달하지 못할 때만 GitHub로 fallback하며, 사내 인증·저장소 권한 실패는 우회하지 않습니다. origin 변경 후보가 있으면 다음처럼 그 preview 승인 코드를 함께 전달합니다.
+
+```powershell
+.\update.cmd --apply --confirm-source-plan <preview에 표시된 승인 코드>
+```
+
+origin drift, mirror revision 불일치 또는 승인 코드 변경이 감지되면 적용하지 않고 새 preview를 요구합니다. feature branch와 작업 파일은 바꾸지 않으며, 외부 origin 선택은 push 승인으로 취급하지 않습니다.
 
 첫 명령은 현재 `origin`을 fetch하고 incoming commit/file만 보여줍니다. Apply는 stable branch에서 `git pull --ff-only`만 사용합니다. 가이드 적용은 release 문자열을 명시할 때만 수행하며 기존 가이드는 `_archive/guides/<시각>/`에 백업됩니다.
 

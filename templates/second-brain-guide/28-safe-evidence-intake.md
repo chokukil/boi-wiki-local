@@ -23,7 +23,7 @@ memory_candidate: true
 cleanup_policy: keep
 review_after: "{{review_after}}"
 contains_sensitive: false
-guide_release: "3.0.0"
+guide_release: "3.1.0"
 guide_audience: "여러 형식의 업무 자료를 Local Second Brain에 넣는 구성원"
 guide_duration_minutes: 8
 guide_prerequisites: "Windows 설치 완료와 승인된 Local 자료"

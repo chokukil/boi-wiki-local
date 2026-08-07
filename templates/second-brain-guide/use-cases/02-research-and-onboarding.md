@@ -23,7 +23,7 @@ cleanup_policy: keep
 review_after: {{review_after}}
 archive_status: active
 contains_sensitive: false
-guide_release: "3.0.0"
+guide_release: "3.1.0"
 guide_audience: "기술 조사자와 인수인계 담당자"
 guide_duration_minutes: 15
 guide_prerequisites: "출처 URL 또는 Local 자료"

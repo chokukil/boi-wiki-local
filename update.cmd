@@ -3,6 +3,7 @@ setlocal
 cd /d "%~dp0"
 set "APPLY_ARG="
 set "GUIDE_ARG="
+set "SOURCE_ARG="
 
 :parse
 if "%~1"=="" goto run
@@ -21,9 +22,19 @@ if /i "%~1"=="--confirm-guide-release" (
   shift
   goto parse
 )
+if /i "%~1"=="--confirm-source-plan" (
+  if "%~2"=="" (
+    echo ERROR --confirm-source-plan requires a plan hash.
+    exit /b 2
+  )
+  set "SOURCE_ARG=-ConfirmSourcePlanHash %~2"
+  shift
+  shift
+  goto parse
+)
 echo ERROR unknown option: %~1
 exit /b 2
 
 :run
-powershell.exe -NoLogo -NoProfile -ExecutionPolicy RemoteSigned -File "%~dp0update.ps1" -Root "%~dp0" %APPLY_ARG% %GUIDE_ARG%
+powershell.exe -NoLogo -NoProfile -ExecutionPolicy RemoteSigned -File "%~dp0update.ps1" -Root "%~dp0" %APPLY_ARG% %GUIDE_ARG% %SOURCE_ARG%
 exit /b %ERRORLEVEL%

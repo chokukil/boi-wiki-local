@@ -47,6 +47,17 @@ class SecondBrainCliTests(unittest.TestCase):
         (self.root / "data" / "boi").mkdir(parents=True)
         (self.root / "data" / "boi" / "log.md").write_text("# Local BoI Log\n", encoding="utf-8")
         shutil.copytree(REPO / "templates", self.root / "templates")
+        for relative in (
+            "CASE.md",
+            "golden-journey/runs/2026-08-06/query-diff.md",
+            "golden-journey/runs/2026-08-06/t0/claim-snapshot.md",
+            "golden-journey/runs/2026-08-06/t1/change-set.json",
+            "golden-journey/runs/2026-08-06/t1/review-queue.md",
+        ):
+            source = REPO / "cases" / "research" / "agentic-ai-change-radar" / relative
+            target = self.root / "cases" / "research" / "agentic-ai-change-radar" / relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(source, target)
         shutil.copy2(REPO / "harness.lock", self.root / "harness.lock")
         (self.root / ".env.example").write_text("BOI_LOCAL_ROOT=.\nBOI_LOCAL_EMPLOYEE_ID=0000000\nBOI_WIKI_PAT=\n", encoding="utf-8")
         self.employee_id = "7654321"
@@ -671,7 +682,7 @@ class SecondBrainCliTests(unittest.TestCase):
             [
                 "powershell.exe", "-NoLogo", "-NoProfile", "-ExecutionPolicy", "RemoteSigned",
                 "-File", str(REPO / "update.ps1"), "-Root", str(checkout), "-Apply",
-                "-ConfirmGuideRelease", "3.0.0",
+                "-ConfirmGuideRelease", "3.1.0",
             ],
             cwd=checkout,
             text=True,
@@ -2744,7 +2755,7 @@ class SecondBrainCliTests(unittest.TestCase):
                 "--employee-id",
                 self.employee_id,
                 "--confirm-guide-release",
-                "3.0.0",
+                "3.1.0",
             ).stdout
         )
         self.assertTrue(update["backup"])
@@ -2771,7 +2782,7 @@ class SecondBrainCliTests(unittest.TestCase):
                 "--employee-id",
                 self.employee_id,
                 "--confirm-guide-release",
-                "3.0.0",
+                "3.1.0",
             ).stdout
         )
         self.assertIn(relative_media, asset_update["guide_asset_updates_available"])

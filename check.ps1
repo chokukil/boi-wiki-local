@@ -211,6 +211,11 @@ Check-File "update.cmd"
 Check-File "check.cmd"
 Check-File "update.ps1"
 Check-File "scripts/setup-native.ps1"
+Check-File "repository-sources.json"
+Check-File "scripts/select-repository-source.ps1"
+Check-File "scripts/connect-boi-wiki-mcp.ps1"
+Check-File "scripts/check-repository-source-contract.ps1"
+Check-File "templates/mcp/boi-wiki-mcp-connection.json"
 Check-File "templates/agent-memory-template.md"
 Check-File "templates/source-knowledge-template.md"
 Check-File "templates/source-record-template.md"
@@ -232,6 +237,15 @@ Check-File "templates/second-brain-guide/60-troubleshooting.md"
 Check-File "templates/second-brain-guide/70-update-and-rollback.md"
 Check-File "templates/second-brain-guide/41-quickadd.md"
 Check-File "templates/second-brain-guide/42-omnisearch.md"
+
+if (Test-Path -LiteralPath (Join-Path $Root "scripts/check-repository-source-contract.ps1")) {
+  try {
+    & (Join-Path $Root "scripts/check-repository-source-contract.ps1") -Root $Root | Out-Null
+  } catch {
+    Write-Host "ERROR repository source contract check failed: $($_.Exception.Message)"
+    $status = 1
+  }
+}
 
 $python = Get-Command python -ErrorAction SilentlyContinue
 

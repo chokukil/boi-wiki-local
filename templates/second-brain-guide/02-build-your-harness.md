@@ -23,7 +23,7 @@ cleanup_policy: keep
 review_after: {{review_after}}
 archive_status: active
 contains_sensitive: false
-guide_release: "3.0.0"
+guide_release: "3.1.0"
 guide_audience: "AI로 반복 업무를 더 잘 수행하고 싶은 비개발자 포함 전 구성원"
 guide_duration_minutes: 10
 guide_prerequisites: "00-start-here.md와 01-meta-harness-map.md 확인"

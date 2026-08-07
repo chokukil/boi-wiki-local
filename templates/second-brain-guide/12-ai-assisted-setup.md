@@ -23,7 +23,7 @@ memory_candidate: false
 cleanup_policy: keep
 review_after: {{review_after}}
 contains_sensitive: false
-guide_release: "3.0.0"
+guide_release: "3.1.0"
 guide_audience: "처음 설치하는 전사 구성원"
 guide_duration_minutes: 5
 guide_prerequisites: "Windows-native 저장소 폴더 자체를 열 수 있는 Codex 또는 Claude"
@@ -85,7 +85,10 @@ AI는 다음처럼 다섯 줄 이내로 설명합니다.
 - 원본 보존: 켜짐
 - 원격 자동 업로드: 꺼짐
 - Obsidian/MCP: 없어도 정상 동작
+- 저장소 위치: 사내 Bitbucket 또는 사외 GitHub fallback, origin 변경 여부
 ```
+
+AI는 먼저 사내 Bitbucket의 해당 저장소를 실제로 읽을 수 있는지 확인합니다. DNS·라우팅·연결 실패일 때만 GitHub를 읽기 source로 선택합니다. 사내 주소에 도달했지만 로그인이나 `BOI` 프로젝트 Read 권한이 없으면 GitHub로 우회하지 않고 해결해야 할 권한 문제로 알려줍니다. origin 변경 후보가 있어도 같은 설정 미리보기의 hash를 승인하기 전에는 바꾸지 않으며, GitHub 선택은 외부 push나 Local Private 공유 승인이 아닙니다.
 
 승인하기 전에는 개인 Profile과 설정을 바꾸지 않습니다. 승인 후에도 Explorer, 브라우저, Obsidian, 터미널 창을 띄우지 않습니다.
 

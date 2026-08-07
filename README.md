@@ -41,3 +41,5 @@ Core lifecycle: `Audit → Frame → Capture·Distill·Query·Lint·Review 설�
 - Global Insight 검증 상태: [research/global-insight-implementation-status.md](research/global-insight-implementation-status.md)
 
 Python·Obsidian·MCP는 일반 사용자 필수 요구사항이 아닙니다. Local Private 원문은 자동으로 원격 등록되지 않으며, Team/Public는 정제·검증·미리보기·사용자 승인 후 지원되는 기능에서만 등록할 수 있습니다.
+
+설치와 업데이트는 사내 Bitbucket 읽기를 우선 확인하고 네트워크로 도달할 수 없을 때만 GitHub source를 사용합니다. 사내 인증 또는 저장소 권한 실패는 fallback하지 않습니다. `MCP 설치해줘`라는 자연어 요청은 고정된 connection descriptor를 이용한 Codex·Claude 설정 preview로 라우팅되며, Git origin에서 MCP endpoint를 추정하거나 Local Private 자료를 전송하지 않습니다.

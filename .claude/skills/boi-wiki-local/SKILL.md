@@ -12,7 +12,7 @@ Use this skill for Local Private BoI work.
 1. Read `AGENTS.md`.
 2. Read `data/boi/index.md`.
 3. Read the closest folder `index.md` for the target area.
-4. Use MCP only if it is already configured or the user asks for remote lookup.
+4. Use MCP only if it is already configured, the user asks to install or connect it, or the user asks for remote lookup.
    - Use `dictionary_resolve` for terms and acronyms.
    - Prefer `ontology_search` for broad shared Wiki lookup.
    - Prefer `boi_agent_chat` for page-aware BoI Agent questions.
@@ -34,6 +34,10 @@ Use this skill for Local Private BoI work.
 ## Remote MCP Policy
 
 The official optional MCP is shared BoI Wiki MCP. Do not require a local MCP server. Use remote write or execution tools only after explicit user confirmation.
+
+When the user says `MCP 설치해줘`, `BoI Wiki MCP 연결해줘`, or an equivalent natural-language request, do not conclude that the MCP does not exist merely because no tool is currently configured. First run `scripts/select-repository-source.ps1 -Mode Preview` through the agent's hidden shell and read the selected BoI Wiki provenance. If the internal host is reachable but authentication or repository access fails, stop without GitHub fallback and explain that Bitbucket login and BOI repository Read access are required. Repository selection never selects or guesses an MCP endpoint.
+
+Next read `templates/mcp/boi-wiki-mcp-connection.json`, resolve the endpoint only from an explicit user value, `BOI_WIKI_MCP_EXTERNAL_URL`, or an approved deployment descriptor, and run `scripts/connect-boi-wiki-mcp.ps1 -Mode Preview` for Codex or Claude Code. Show the selected client, sanitized endpoint, authentication mode, configuration target, restart requirement, and exact plan hash. Apply only after approval of that preview with the same hash. Never put token values in a command, diff, receipt, or log. After the client restarts, verify MCP `initialize` and `tools/list`; report a missing endpoint, login, or required tool as a precise pending gate. Installing a connection does not upload Local Private content and is not promotion approval.
 
 Do not publish Local Private source text to BoI Wiki or MCP write tools unless the user explicitly asks for remote validation/promotion and approves the preview. A user-selected AI runtime may process selected content under the approved provider and company policy; disclose that separately from BoI remote activity. For local-only work, build a local context pack first.
 
