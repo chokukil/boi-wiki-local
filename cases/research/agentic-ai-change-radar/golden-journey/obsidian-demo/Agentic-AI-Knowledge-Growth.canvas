@@ -1,0 +1,18 @@
+{
+  "nodes": [
+    {"id":"home","type":"file","file":"obsidian-demo/00-Golden-Journey.md","x":0,"y":0,"width":420,"height":280},
+    {"id":"t0","type":"file","file":"obsidian-demo/01-T0-Baseline.md","x":500,"y":-220,"width":360,"height":240},
+    {"id":"t1","type":"file","file":"obsidian-demo/02-T1-Update.md","x":500,"y":100,"width":360,"height":240},
+    {"id":"diff","type":"file","file":"obsidian-demo/03-Same-Query-Diff.md","x":940,"y":-120,"width":360,"height":240},
+    {"id":"review","type":"file","file":"obsidian-demo/04-Review-Queue.md","x":1380,"y":-120,"width":360,"height":240},
+    {"id":"boundary","type":"text","text":"사람 승인 전에는 현재 지식 revision을 증가시키거나 Local Private 원문을 promotion하지 않습니다.","x":940,"y":220,"width":800,"height":160,"color":"4"}
+  ],
+  "edges": [
+    {"id":"e1","fromNode":"home","fromSide":"right","toNode":"t0","toSide":"left","label":"기준 지식"},
+    {"id":"e2","fromNode":"home","fromSide":"right","toNode":"t1","toSide":"left","label":"새 자료"},
+    {"id":"e3","fromNode":"t0","fromSide":"right","toNode":"diff","toSide":"left","label":"같은 Query"},
+    {"id":"e4","fromNode":"t1","fromSide":"right","toNode":"diff","toSide":"left","label":"같은 Query"},
+    {"id":"e5","fromNode":"diff","fromSide":"right","toNode":"review","toSide":"left","label":"변화 검토"},
+    {"id":"e6","fromNode":"review","fromSide":"bottom","toNode":"boundary","toSide":"top","label":"승인 경계"}
+  ]
+}

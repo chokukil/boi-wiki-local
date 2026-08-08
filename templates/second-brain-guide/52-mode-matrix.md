@@ -23,7 +23,7 @@ cleanup_policy: keep
 review_after: {{review_after}}
 archive_status: active
 contains_sensitive: false
-guide_release: "3.1.0"
+guide_release: "3.2.0"
 guide_audience: "구성별 기능을 선택하는 사용자"
 guide_duration_minutes: 5
 guide_prerequisites: "없음"

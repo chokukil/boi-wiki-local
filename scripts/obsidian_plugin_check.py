@@ -79,6 +79,7 @@ def evaluate(snapshot: dict, app_version: str, *, app_version_source: str = "exp
                 "distribution_policy": policy,
                 "selected": selected,
                 "latest": plugin.get("candidates", [None])[0],
+                "distribution_artifacts": (selected or {}).get("distribution_artifacts", []),
                 "required_settings": plugin.get("required_settings", {}),
                 "requires_user_install_confirmation": True,
                 "sources": plugin.get("sources", []),

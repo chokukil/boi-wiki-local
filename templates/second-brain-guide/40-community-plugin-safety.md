@@ -23,7 +23,7 @@ memory_candidate: false
 cleanup_policy: keep
 review_after: {{review_after}}
 contains_sensitive: false
-guide_release: "3.1.0"
+guide_release: "3.2.0"
 guide_audience: "Obsidian 확장 기능을 검토하는 사용자"
 guide_duration_minutes: 7
 guide_prerequisites: "Obsidian Core 기능 확인"
@@ -64,4 +64,4 @@ Web Clipper는 Obsidian 커뮤니티 플러그인이 아니라 브라우저 확�
 
 문제가 있는 확장 하나만 Disable하고, Markdown과 evidence 원본은 삭제하지 않습니다. Core Search 또는 AI에게 `이 키워드와 관련된 Local 문서를 근거와 함께 찾아줘`라고 요청해 업무가 계속되는지 확인한 뒤 해당 확장만 제거합니다. `.obsidian/plugins/` 전체를 삭제하거나 Vault를 새로 만들지 않습니다.
 
-이전: [Obsidian Core 기능 설정](31-obsidian-core-settings.md) · 다음: [QuickAdd](41-quickadd.md)
+이전: [Obsidian Golden Journey](32-obsidian-golden-journey.md) · 다음: [QuickAdd](41-quickadd.md)

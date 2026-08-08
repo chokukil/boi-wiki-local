@@ -23,7 +23,7 @@ memory_candidate: false
 cleanup_policy: keep
 review_after: {{review_after}}
 contains_sensitive: false
-guide_release: "3.1.0"
+guide_release: "3.2.0"
 guide_audience: "자동 정리 결과를 검토하는 구성원"
 guide_duration_minutes: 5
 guide_prerequisites: "대화 또는 자료 폴더 정리를 한 번 수행함"
@@ -71,8 +71,6 @@ Second Brain 자동 관리를 다시 켜줘.
 
 다음: [첫 10분 Capture·검색·정제](20-first-10-minutes.md)
 
-## 화면 34 — 충돌은 자동으로 덮어쓰지 않음
+## 충돌을 실제 공개 사례로 검토하기
 
-![기존 결정과 새 자료의 충돌을 자동 덮어쓰지 않고 확인 필요로 둔 합성 화면](_media/34-conflict-needs-review.webp)
-
-[화면 34를 원본 크기로 열기](_media/34-conflict-needs-review.webp)
+[Obsidian Golden Journey](32-obsidian-golden-journey.md)의 query diff와 review queue 화면에서 MCP discovery 방식의 충돌, stale·폐기 검토 후보와 unknown이 자동으로 덮어써지지 않는 모습을 확인할 수 있습니다.

@@ -23,7 +23,7 @@ cleanup_policy: keep
 review_after: {{review_after}}
 archive_status: active
 contains_sensitive: false
-guide_release: "3.1.0"
+guide_release: "3.2.0"
 guide_audience: "업무 사례를 찾는 전 구성원"
 guide_duration_minutes: 5
 guide_prerequisites: "기본 Local lifecycle 이해"

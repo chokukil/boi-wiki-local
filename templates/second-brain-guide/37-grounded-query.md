@@ -23,7 +23,7 @@ memory_candidate: true
 cleanup_policy: keep
 review_after: "{{review_after}}"
 contains_sensitive: false
-guide_release: "3.1.0"
+guide_release: "3.2.0"
 guide_audience: "Second Brain에 질문하고 출처까지 검증하려는 모든 구성원"
 guide_duration_minutes: 8
 guide_prerequisites: "정제 문서와 evidence가 연결된 Local Case 또는 지식 문서"

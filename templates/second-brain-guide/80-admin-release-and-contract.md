@@ -23,7 +23,7 @@ cleanup_policy: keep
 review_after: {{review_after}}
 archive_status: active
 contains_sensitive: false
-guide_release: "3.1.0"
+guide_release: "3.2.0"
 guide_audience: "배포 관리자와 BoI Wiki maintainer"
 guide_duration_minutes: 30
 guide_prerequisites: "실제 boi-wiki-run, Windows test clone, pinned Harness"

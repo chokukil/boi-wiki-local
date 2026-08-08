@@ -23,7 +23,7 @@ memory_candidate: false
 cleanup_policy: keep
 review_after: {{review_after}}
 contains_sensitive: false
-guide_release: "3.1.0"
+guide_release: "3.2.0"
 guide_audience: "사내 Wiki 참조·공유 사용자"
 guide_duration_minutes: 10
 guide_prerequisites: "정제 Local 문서와 권한 범위 이해"
@@ -39,6 +39,12 @@ source_refs:
 
 # MCP 연결과 Team·Public 공유
 
+가장 짧게는 다음처럼 요청합니다.
+
+```text
+BoI Wiki MCP를 현재 AI 클라이언트에 연결해줘.
+```
+
 ## AI에게 MCP 연결 맡기기
 
 MCP가 아직 도구 목록에 보이지 않아도 서버나 설치 경로가 없다는 뜻은 아닙니다. 다음처럼 요청하면 AI가 저장소 source와 연결 descriptor를 확인하고, Codex 또는 Claude 설정의 exact preview부터 만듭니다.
@@ -51,7 +57,9 @@ MCP 주소는 저장소 주소에서 추정하지 말고 승인된 descriptor, B
 토큰 값과 Local Private 자료는 명령, 로그, 설정 preview 또는 MCP 검증 요청에 넣지 마.
 ```
 
-승인 후 AI는 클라이언트 설정만 반영합니다. 클라이언트를 재시작한 뒤 MCP `initialize`와 `tools/list`를 확인해야 연결 완료입니다. endpoint가 없으면 주소 입력 대기, 인증이 필요하면 로그인 대기, 필수 도구가 빠지면 배포 확인 대기로 정확히 남깁니다. 저장소 선택은 descriptor의 출처를 정할 뿐 MCP endpoint를 정하지 않습니다.
+승인 후 AI는 클라이언트 설정만 반영합니다. 클라이언트를 재시작한 뒤 MCP `initialize`와 `tools/list`를 확인해야 연결 완료입니다. endpoint가 없으면 주소 입력 대기, 인증이 필요하면 로그인 대기, 필수 도구가 빠지면 배포 확인 대기로 구분하고 공통 상태는 `pending-external-system`으로 남깁니다. 저장소 선택은 descriptor의 출처를 정할 뿐 MCP endpoint를 정하지 않습니다.
+
+MCP 설정 때문에 필요한 재시작은 해당 MCP client에만 한정됩니다. 공통 원본 폴더를 다음 AI 작업 첫 응답에서 확인하는 기능은 Codex·Claude 앱이나 Obsidian 재시작을 요구하지 않습니다.
 
 | 상태 | 가능한 일 |
 |---|---|

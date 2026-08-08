@@ -23,7 +23,7 @@ memory_candidate: false
 cleanup_policy: keep
 review_after: {{review_after}}
 contains_sensitive: false
-guide_release: "3.1.0"
+guide_release: "3.2.0"
 guide_audience: "배포 관리자, knowledge steward, 비개발자 pilot"
 guide_duration_minutes: 30
 guide_prerequisites: "승인된 GitHub 또는 사내 Bitbucket 저장소와 Windows test PC"
@@ -39,12 +39,12 @@ source_refs:
 
 # 사내 배포 전 사용자 Acceptance
 
-대상은 배포 관리자, knowledge steward, 비개발자 pilot 사용자입니다. 약 30분이 필요하며 외부에서는 승인된 GitHub 저장소, 사내에서는 origin만 바꾼 Bitbucket mirror와 Windows test PC를 사용합니다. 실제 사번이나 업무 원문 대신 합성 자료를 사용합니다.
+대상은 배포 관리자, knowledge steward, 비개발자 pilot 사용자입니다. 약 30분이 필요하며 외부에서는 승인된 GitHub 저장소, 사내에서는 origin만 바꾼 Bitbucket mirror와 Windows test PC를 사용합니다. 실제 사번이나 업무 원문 대신 공개 Golden Journey와 비민감 연습 자료를 사용합니다.
 
 ## 비개발자 두 명의 여정
 
 1. 비개발자 A는 Codex에 [한 문장 설정 요청](12-ai-assisted-setup.md)을 전달하고 Obsidian 없이 대화 기억, 자료 폴더 정리, 검색, Team preview를 완료합니다.
-2. 비개발자 B는 Claude에 같은 요청을 전달하고 Obsidian Core로 같은 합성 여정을 수행한 뒤 Properties, Backlinks, Graph를 확인합니다.
+2. 비개발자 B는 Claude에 같은 요청을 전달하고 Obsidian Core로 공개 Golden Journey를 탐색한 뒤 Properties, Backlinks, Graph를 확인합니다.
 3. 두 사람 모두 Python과 터미널 명령을 직접 입력하지 않고, 질문은 최대 세 개이며, 승인 전 개인 Profile 변경이 없어야 합니다.
 4. 이름·사번·화면 녹화 대신 걸린 시간과 막힌 단계만 비식별 evidence에 남깁니다.
 5. `이 기억은 틀렸어` 요청으로 이력을 보존한 교정을 완료하고, 자동 기능을 자연어 한 문장으로 끄거나 변경합니다.
@@ -52,10 +52,11 @@ source_refs:
 각 사용자는 설치, 첫 지식 생성, promotion preview 시간을 따로 잽니다. 목표는 각각 10분, 10분, 5분이며 초과해도 결과를 숨기지 않습니다. 마법사의 UX 관찰에는 자유서술 대신 아래 고정 ID만 입력합니다.
 
 - 단계 ID: `ai-setup`, `preset`, `folder-curation`, `memory-correction`, `install`, `first-capture`, `distill`, `search`, `promotion-preview`, `vault-open`, `properties`, `backlinks`, `graph`, `bases`, `canvas`
-- 캡처 ID: `screen-01`부터 `screen-15`, `screen-28`부터 `screen-34`
+- 캡처 ID: `screen-01`부터 `screen-03`, `screen-05`부터 `screen-07`, `screen-09`부터 `screen-15`, `screen-35`부터 `screen-40`
+- `screen-35`부터 `screen-40`은 Obsidian 1.13.4의 sanitized 공개 Golden Journey 실제 화면이며 원본·결과 해상도와 SHA256을 media 기록에서 확인합니다.
 - 예: 막힌 단계 `graph`, 잘못 클릭한 단계 `vault-open`, 도움 된 화면 `screen-10`
 
-## 3.0.0 상태 분리
+## 3.2.0 상태 분리
 
 다음 상태는 독립적으로 기록합니다.
 
@@ -69,10 +70,10 @@ source_refs:
 
 ## Obsidian 지원을 표시할 때
 
-Obsidian은 최종 사용자에게 선택 사항입니다. 그러나 2.3 배포판이 선택 경로까지 안전하게 안내하는지 확인하기 위해 release acceptance에는 Obsidian Core 사용자 1명이 필요합니다. 다음 항목은 그 사용자의 evidence에서 확인합니다.
+Obsidian은 최종 사용자에게 선택 사항입니다. 그러나 3.2.0 배포판이 선택 경로까지 안전하게 안내하는지 확인하기 위해 release acceptance에는 Obsidian Core 사용자 1명이 필요합니다. 다음 항목은 그 사용자의 evidence에서 확인합니다.
 
 1. Windows-native Local Private 폴더를 Vault로 엽니다.
-2. 외부 편집기로 합성 Markdown을 만들고 재시작 없이 나타나는지 확인합니다.
+2. 외부 편집기로 비민감 연습용 Markdown을 만들고 재시작 없이 나타나는지 확인합니다.
 3. Properties, Backlinks, Graph가 실제 파일을 표시하는지 확인합니다.
 4. 플러그인은 [호환성 검사](41-quickadd.md)를 통과하고 사용자가 설치를 승인한 경우에만 별도로 확인합니다.
 

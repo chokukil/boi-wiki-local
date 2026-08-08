@@ -23,7 +23,7 @@ cleanup_policy: keep
 review_after: {{review_after}}
 archive_status: active
 contains_sensitive: false
-guide_release: "3.1.0"
+guide_release: "3.2.0"
 guide_audience: "Second Brain 운영 원리를 이해하려는 구성원"
 guide_duration_minutes: 8
 guide_prerequisites: "활용 사례 지도 확인"

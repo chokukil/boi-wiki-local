@@ -23,7 +23,7 @@ cleanup_policy: keep
 review_after: {{review_after}}
 archive_status: active
 contains_sensitive: false
-guide_release: "3.1.0"
+guide_release: "3.2.0"
 guide_audience: "Team/Public 후보 작성자"
 guide_duration_minutes: 10
 guide_prerequisites: "정제 문서, 공개 가능한 출처, reviewer, Team이면 team ID"

@@ -23,7 +23,7 @@ memory_candidate: false
 cleanup_policy: keep
 review_after: {{review_after}}
 contains_sensitive: false
-guide_release: "3.1.0"
+guide_release: "3.2.0"
 guide_audience: "오류를 해결하는 사용자와 지원 담당자"
 guide_duration_minutes: 10
 guide_prerequisites: "오류 메시지와 현재 모드 확인"
@@ -89,6 +89,16 @@ WSL 경로나 파일 감시 문제가 예상되면 설정을 바꾸지 말고 �
 ## 플러그인이 검색되지 않습니다
 
 인터넷과 회사 정책, Restricted Mode 상태를 확인합니다. 비공식 zip 파일을 대신 설치하지 않습니다.
+
+## Web Clipper 파일이 자동으로 처리되지 않습니다
+
+Web Clipper 전용 폴더나 상주 watcher는 없습니다. 클립이 Second Brain에서 이미 승인한 공통 원본 자료 폴더에 저장됐는지 확인합니다. `알아서 정리`와 `정리 전 확인`은 새 Codex·Claude 작업의 첫 AI 응답에서 한 번 확인하고, `요청할 때만`은 명시적으로 요청하기 전까지 폴더를 열지 않습니다.
+
+같은 대화에서 바로 처리하려면 `방금 저장한 웹 클립만 처리해줘. 같은 SHA256은 건너뛰고 원문은 변경하지 마`라고 요청합니다. 클립과 다른 문서의 bytes가 같으면 지식 후보를 하나만 만드는 것이 정상입니다.
+
+## 공통 원본 처리가 중단됐습니다
+
+AI에게 `승인했던 원본 자료 폴더 정리를 완료된 SHA256 다음부터 이어서 해줘`라고 요청합니다. 폴더 범위·원본 hash·자료 유형 제한과 Local/Remote 경계가 그대로면 실패 지점부터 재개합니다. 하나라도 바뀌었으면 쓰기 전에 새 미리보기를 보여주는 것이 정상입니다. 읽을 수 없는 파일은 내용을 추정하지 않고 검토 필요 상태로 남깁니다.
 
 ## MCP가 없으면 사용할 수 없나요?
 

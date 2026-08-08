@@ -23,7 +23,7 @@ cleanup_policy: keep
 review_after: {{review_after}}
 archive_status: active
 contains_sensitive: false
-guide_release: "3.1.0"
+guide_release: "3.2.0"
 guide_audience: "회의와 정기 보고를 수행하는 구성원"
 guide_duration_minutes: 12
 guide_prerequisites: "첫 capture와 distill 완료"

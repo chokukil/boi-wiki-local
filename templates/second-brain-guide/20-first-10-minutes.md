@@ -23,11 +23,11 @@ memory_candidate: false
 cleanup_policy: keep
 review_after: {{review_after}}
 contains_sensitive: false
-guide_release: "3.1.0"
+guide_release: "3.2.0"
 guide_audience: "첫 지식을 만드는 사용자"
 guide_duration_minutes: 10
 guide_prerequisites: "Local Private 초기 설정 완료"
-guide_execution: "합성 메모를 capture하고 distill, search, review한다"
+guide_execution: "연습용 메모를 capture하고 distill, search, review한다"
 guide_success: "원문과 정제 문서가 분리되고 검색 근거가 나온다"
 guide_failure_page: "60-troubleshooting.md"
 guide_next_page: "23-capture-distill-review.md"
@@ -75,12 +75,8 @@ AI는 정제 문서를 먼저 찾고, 답변에 실제 Local 문서 경로와 �
 오래된 초안, 기억 후보, promotion 후보를 보여줄 뿐 자동 삭제하거나 공유하지 않습니다.
 
 이전: [첫 설정과 확인](11-first-setup.md) · 다음 선택: [Obsidian 설치](30-obsidian-install-and-vault.md) 또는 [MCP와 공유](50-mcp-and-promotion.md)
-## 화면 08 — Core Search로 다시 찾기
+## Golden Journey에서 검색과 비교 연습하기
 
-![Obsidian Core Search에서 합성 품질 지식을 다시 찾는 화면](_media/08-core-search.webp)
-
-[화면 08을 원본 크기로 열기](_media/08-core-search.webp)
-
-검색어를 입력하면 capture, 정제 지식, 사례 Wiki가 함께 나타납니다. 검색 결과가 너무 많으면 `path:notes/knowledge`를 더합니다.
+[Obsidian Golden Journey](32-obsidian-golden-journey.md)에서 동일 Query의 T0·T1 답변, query diff와 review queue를 순서대로 엽니다. 개인 자료를 만들지 않고도 승인 전 후보와 현재 지식을 구분하는 검색·비교 흐름을 연습할 수 있습니다.
 
 다음: [Capture에서 정제·검토까지](23-capture-distill-review.md)
