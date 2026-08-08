@@ -23,7 +23,7 @@ memory_candidate: false
 cleanup_policy: keep
 review_after: {{review_after}}
 contains_sensitive: false
-guide_release: "3.1.0"
+guide_release: "3.2.0"
 guide_audience: "처음 설치하는 전사 구성원"
 guide_duration_minutes: 5
 guide_prerequisites: "Windows-native 저장소 폴더 자체를 열 수 있는 Codex 또는 Claude"
@@ -56,6 +56,15 @@ Codex와 Claude 모두 같은 문장을 사용합니다. AI는 기존 설정을 
 3. 자료를 넣을 폴더—없으면 나중에 정해도 됨
 
 선택한 방식은 실제 자동 확인 범위도 바꿉니다. `알아서 정리`는 AI 세션 시작·종료 때 확인하고, `정리 전 확인`은 확인 결과를 먼저 보여줍니다. `요청할 때만`은 세션 시작 때 자료 폴더나 대화를 자동 확인하지 않으며, 사용자가 자연어로 요청한 작업만 수행합니다.
+
+자료 폴더는 Web Clipper 전용 폴더가 아니라 이메일, Markdown·TXT, CSV, PDF, 이미지와 지원 문서가 함께 들어오는 공통 원본 폴더입니다. `알아서 정리`와 `정리 전 확인`은 새 Codex·Claude 작업의 첫 AI 응답에서 이 폴더를 한 번 확인합니다. 같은 작업에서 반복 감시하지 않고, AI가 실행되지 않을 때는 watcher나 background 처리가 없습니다.
+
+```text
+내가 지정한 원본 자료 폴더를 새 AI 세션이 시작될 때 확인해줘.
+웹 클립, 문서, 메일, 표와 이미지를 원문 그대로 보존하고,
+새 자료만 OKF + BoI Profile 지식 후보와 review queue로 정리해.
+승인 전에는 현재 지식이나 원격 Wiki에 반영하지 마.
+```
 
 ## AI가 가장 먼저 확인하는 폴더
 
@@ -104,16 +113,6 @@ AI는 먼저 파일을 바꾸지 않는 설정 확인을 실행합니다. 채팅
 
 다음: [대화에서 오래 쓸 지식 남기기](13-conversation-memory.md)
 
-## 화면으로 따라가기
+## 공개 사례로 설정 이후 흐름 확인하기
 
-![Codex·Claude에 한 문장으로 BoI Wiki 호환 Harness와 Local Private Second Brain 설정을 요청하는 합성 교육 화면](_media/28-agent-setup-request.webp)
-
-[화면 28을 원본 크기로 열기](_media/28-agent-setup-request.webp)
-
-![알아서 정리·정리 전 확인·요청할 때만 세 가지 방식을 선택하는 합성 교육 화면](_media/29-curation-presets.webp)
-
-[화면 29를 원본 크기로 열기](_media/29-curation-presets.webp)
-
-![외부 창 없이 완료된 대화 관리·자료 폴더·원본 보존·원격 업로드 차단 설정 요약](_media/30-zero-ui-setup-complete.webp)
-
-[화면 30을 원본 크기로 열기](_media/30-zero-ui-setup-complete.webp)
+설정을 마치면 [Obsidian Golden Journey](32-obsidian-golden-journey.md)에서 기준 지식, 업데이트 후보, 동일 Query의 답변 변화와 사람 Review 흐름을 실제 공개 화면으로 확인합니다. 이 사례는 Community 재현성 예시이며 사용자의 승인된 현재 지식이나 실제 운영 검증 결과가 아닙니다.

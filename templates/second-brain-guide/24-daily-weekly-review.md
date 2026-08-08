@@ -23,7 +23,7 @@ cleanup_policy: keep
 review_after: {{review_after}}
 archive_status: active
 contains_sensitive: false
-guide_release: "3.1.0"
+guide_release: "3.2.0"
 guide_audience: "지식을 꾸준히 관리하는 사용자"
 guide_duration_minutes: 10
 guide_prerequisites: "capture와 distill 경험"

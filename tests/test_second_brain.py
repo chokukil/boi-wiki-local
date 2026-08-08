@@ -141,9 +141,9 @@ class SecondBrainCliTests(unittest.TestCase):
         self.assertTrue((base / "notes" / "guide" / "00-start-here.md").exists())
         self.assertTrue((base / "notes" / "guide" / "use-cases" / "04-api-event-and-workflow.md").exists())
         self.assertTrue((base / "notes" / "guide" / "29-investigation-pattern.md").exists())
-        self.assertEqual(22, len(list((base / "notes" / "guide" / "_media").glob("*.webp"))))
+        self.assertEqual(19, len(list((base / "notes" / "guide" / "_media").glob("*.webp"))))
         self.assertTrue((base / "notes" / "guide" / "_media" / "manifest.json").exists())
-        self.assertEqual(23, len(desired_guide_assets(self.root, self.employee_id)))
+        self.assertEqual(20, len(desired_guide_assets(self.root, self.employee_id)))
         self.assertEqual([base / "usage-examples" / "index.md"], list((base / "usage-examples").glob("*.md")))
         profile_index = (base / "index.md").read_text(encoding="utf-8")
         self.assertIn("# 내 BoI Wiki Local", profile_index)
@@ -298,6 +298,7 @@ class SecondBrainCliTests(unittest.TestCase):
             ).stdout
         )
         self.assertFalse(blocked["ok"])
+
         self.assertIn(
             "Local-only boundary wording remains in the canonical candidate; provide sanitized body and metadata",
             blocked["blockers"],
@@ -344,6 +345,25 @@ class SecondBrainCliTests(unittest.TestCase):
         self.assertNotIn("data/boi/private", serialized_projection)
         self.assertNotIn("Local Private", serialized_projection)
         self.assertFalse(projection["submit_contract"]["remote_submit_allowed"])
+
+    def test_web_clipper_template_uses_common_source_contract_without_remote_processing(self) -> None:
+        template_path = REPO / "templates" / "obsidian" / "web-clipper" / "boi-common-source.json"
+        template = json.loads(template_path.read_text(encoding="utf-8"))
+        self.assertEqual("0.1.0", template["schemaVersion"])
+        self.assertEqual("create", template["behavior"])
+        self.assertEqual("", template["path"])
+        properties = {item["name"]: item["value"] for item in template["properties"]}
+        self.assertEqual("web-clip", properties["source_kind"])
+        for required in (
+            "source_url", "source_title", "source_author", "source_site",
+            "published_at", "captured_at",
+        ):
+            self.assertIn(required, properties)
+        serialized = json.dumps(template, ensure_ascii=False)
+        self.assertNotIn('{{"', serialized)
+        self.assertNotIn("interpreter", serialized.lower())
+        self.assertNotIn("endpoint", serialized.lower())
+        self.assertNotIn("web-clips/", serialized.lower())
 
     def test_inspected_pdf_and_image_use_one_valid_source_knowledge_profile_each(self) -> None:
         self.setup_workspace()
@@ -682,7 +702,7 @@ class SecondBrainCliTests(unittest.TestCase):
             [
                 "powershell.exe", "-NoLogo", "-NoProfile", "-ExecutionPolicy", "RemoteSigned",
                 "-File", str(REPO / "update.ps1"), "-Root", str(checkout), "-Apply",
-                "-ConfirmGuideRelease", "3.1.0",
+                "-ConfirmGuideRelease", "3.2.0",
             ],
             cwd=checkout,
             text=True,
@@ -1067,14 +1087,15 @@ class SecondBrainCliTests(unittest.TestCase):
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
         manifest["items"][0].pop("capture_method", None)
         manifest["items"][1]["capture_source"] = ""
-        manifest["items"][15]["capture_method"] = "invalid-capture-method"
+        target = next(item for item in manifest["items"] if item["id"] == "screen-35")
+        target["capture_method"] = "invalid-capture-method"
         manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         result = json.loads(self.run_cli("wiki_check.py", "--root", str(self.root), expected=1).stdout)
         issues = "\n".join(item["issue"] for item in result["errors"])
         self.assertIn("manifest capture_method is missing or invalid", issues)
         self.assertIn("manifest capture_source is empty", issues)
         self.assertIn("manifest capture_method is missing or invalid", issues)
-        self.assertIn("agent journey capture_method must be synthetic-training-mockup or windows-graphics-capture", issues)
+        self.assertIn("capture_method must be windows-graphics-capture", issues)
 
     def test_every_guide_screen_has_a_full_size_markdown_link(self) -> None:
         guide = self.root / "templates" / "second-brain-guide"
@@ -1090,11 +1111,11 @@ class SecondBrainCliTests(unittest.TestCase):
         self.assertIn("missing full-size image link: _media/02-notepad-markdown.webp", issues)
 
     @unittest.skipIf(Image is None, "Pillow is optional and not installed")
-    def test_large_training_screens_enforce_readable_width(self) -> None:
+    def test_golden_journey_screens_enforce_readable_width(self) -> None:
         guide = self.root / "templates" / "second-brain-guide"
         manifest_path = guide / "_media" / "manifest.json"
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-        item = next(value for value in manifest["items"] if value["id"] == "screen-28")
+        item = next(value for value in manifest["items"] if value["id"] == "screen-35")
         image_path = guide / "_media" / item["file"]
         with Image.open(image_path) as image:
             resized = image.resize((1024, round(image.height * 1024 / image.width)), Image.Resampling.LANCZOS)
@@ -1134,7 +1155,9 @@ class SecondBrainCliTests(unittest.TestCase):
         guide = (REPO / "templates" / "second-brain-guide" / "27-research-backed-second-brain.md").read_text(encoding="utf-8")
         playbook = (REPO / "templates" / "second-brain-guide" / "25-use-case-playbook.md").read_text(encoding="utf-8")
         self.assertNotIn("| https://", ledger)
-        self.assertIn("최소 Obsidian 1.13.3", ledger)
+        self.assertIn("Core Search의 재현 가능한 부족이 확인될 때만 검토", ledger)
+        self.assertIn("QuickAdd", ledger)
+        self.assertIn("SHA256", ledger)
         self.assertIn("YouTube 직접 페이지는 429·fetch 제한", ledger)
         self.assertIn("oembed-metadata-only", ledger)
         self.assertIn("transcript는 검토하지 않았으므로", ledger)
@@ -1556,11 +1579,18 @@ class SecondBrainCliTests(unittest.TestCase):
         snapshot = json.loads((REPO / "research" / "obsidian-plugin-compatibility.json").read_text(encoding="utf-8"))
         result = evaluate_obsidian_plugins(snapshot, "1.13.4", app_version_source="fixture-runtime-asar")
         selected = {item["id"]: item["selected"]["version"] for item in result["plugins"]}
-        self.assertEqual("2.20.0", selected["quickadd"])
+        self.assertEqual("2.21.0", selected["quickadd"])
         self.assertEqual("1.30.1", selected["omnisearch"])
         statuses = {item["id"]: item["status"] for item in result["plugins"]}
         self.assertEqual("deferred-until-core-search-gap", statuses["omnisearch"])
         self.assertEqual("fixture-runtime-asar", result["app_version_source"])
+        quickadd = next(item for item in result["plugins"] if item["id"] == "quickadd")
+        artifacts = {item["file"]: item for item in quickadd["distribution_artifacts"]}
+        self.assertEqual({"main.js", "manifest.json", "styles.css"}, set(artifacts))
+        self.assertEqual(
+            "8636198aef29cd64b53def1bf921baef5ddf83070c8a77c5457c9276617a81ad",
+            artifacts["main.js"]["sha256"],
+        )
 
     def test_obsidian_runtime_detection_prefers_newest_appdata_asar(self) -> None:
         appdata = self.root / "AppData" / "Roaming"
@@ -2067,6 +2097,22 @@ class SecondBrainCliTests(unittest.TestCase):
             self.assertTrue(intake["local_only"])
             self.assertFalse(intake["remote_submitted"])
         self.assertEqual(set(expected_types), seen_extensions)
+
+        ordinary_markdown = self.root / "ordinary-note.md"
+        ordinary_markdown.write_text(
+            "---\nsource_kind: meeting-note\n---\n\n# Ordinary Markdown\n",
+            encoding="utf-8",
+        )
+        ordinary = json.loads(
+            self.run_cli(
+                "local_intake.py",
+                "--root", str(self.root),
+                "--employee-id", self.employee_id,
+                "--case-id", case_id,
+                "--source", str(ordinary_markdown),
+            ).stdout
+        )
+        self.assertEqual("meeting-note", ordinary["evidence_type"])
 
         unsupported = self.root / "unsupported.bin"
         unsupported.write_bytes(b"synthetic unsupported evidence")
@@ -2755,7 +2801,7 @@ class SecondBrainCliTests(unittest.TestCase):
                 "--employee-id",
                 self.employee_id,
                 "--confirm-guide-release",
-                "3.1.0",
+                "3.2.0",
             ).stdout
         )
         self.assertTrue(update["backup"])
@@ -2782,7 +2828,7 @@ class SecondBrainCliTests(unittest.TestCase):
                 "--employee-id",
                 self.employee_id,
                 "--confirm-guide-release",
-                "3.1.0",
+                "3.2.0",
             ).stdout
         )
         self.assertIn(relative_media, asset_update["guide_asset_updates_available"])

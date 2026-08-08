@@ -23,14 +23,14 @@ memory_candidate: false
 cleanup_policy: keep
 review_after: {{review_after}}
 contains_sensitive: false
-guide_release: "3.1.0"
+guide_release: "3.2.0"
 guide_audience: "Obsidian Core 사용자"
 guide_duration_minutes: 10
 guide_prerequisites: "Windows-native Vault 연결 완료"
 guide_execution: "Search, Properties, Backlinks, Graph, Bases, Canvas와 Core 설정을 확인한다"
 guide_success: "플러그인 없이 Local Wiki 탐색이 가능하다"
 guide_failure_page: "60-troubleshooting.md"
-guide_next_page: "40-community-plugin-safety.md"
+guide_next_page: "32-obsidian-golden-journey.md"
 guide_boundary: "optional-obsidian-local"
 source_refs:
   - type: official-doc
@@ -75,7 +75,7 @@ Graph에서는 다음 경로를 제외하면 개인 지식 연결을 보기 쉽�
 
 자동 설정을 사용했다면 변경 전 `obsidian-preview`, 변경 후 `obsidian-recover-preview`를 실행할 수 있습니다. 복구는 managed manifest에 기록된 파일 중 사용자가 수정하지 않은 파일만 대상으로 합니다.
 
-이전: [Obsidian 설치와 Vault](30-obsidian-install-and-vault.md) · 다음: [커뮤니티 플러그인 보안](40-community-plugin-safety.md)
+이전: [Obsidian 설치와 Vault](30-obsidian-install-and-vault.md) · 다음: [Obsidian Golden Journey](32-obsidian-golden-journey.md)
 ## 화면 09 — Backlinks와 원문 연결
 
 ![정제 지식의 Backlinks 패널과 연결된 원문을 확인하는 화면](_media/09-backlinks-outgoing.webp)

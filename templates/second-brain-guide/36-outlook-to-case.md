@@ -23,7 +23,7 @@ memory_candidate: true
 cleanup_policy: keep
 review_after: "{{review_after}}"
 contains_sensitive: false
-guide_release: "3.1.0"
+guide_release: "3.2.0"
 guide_audience: "업무 메일을 Second Brain 자료로 쓰는 구성원"
 guide_duration_minutes: 7
 guide_prerequisites: "Windows Outlook과 Local 보관이 승인된 메일"

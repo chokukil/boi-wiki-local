@@ -1503,19 +1503,18 @@ Claim B는 근거 없음으로 기각한다. 모델 기억으로 빈 출처를 �
             for item in manifest["items"]
             if item.get("requires_recapture_for_release") is True
         }
-        self.assertEqual({f"screen-{number:02d}" for number in range(28, 35)}, pending)
+        self.assertEqual(set(), pending)
         captured = {item["id"] for item in manifest["items"]}
-        self.assertTrue({"screen-01", "screen-04"}.issubset(captured))
+        self.assertTrue({"screen-01", "screen-35", "screen-40"}.issubset(captured))
         by_id = {item["id"]: item for item in manifest["items"]}
         self.assertEqual("windows-graphics-capture", by_id["screen-01"]["capture_method"])
-        self.assertEqual("windows-graphics-capture", by_id["screen-04"]["capture_method"])
-        for media_id in pending:
-            self.assertEqual("synthetic-training-mockup", by_id[media_id]["capture_method"])
+        for media_id in {f"screen-{number:02d}" for number in range(35, 41)}:
+            self.assertEqual("windows-graphics-capture", by_id[media_id]["capture_method"])
 
         automated = {
             "ux": {"ok": True, "checks": {"actual_boi_contract_checked": True}},
             "query_quality": {"ok": True},
-            "wiki": {"release_screen_ready": False},
+            "wiki": {"release_screen_ready": True},
             "origin": {"host": "bitbucket.internal.example"},
             "case_harness": inspect(REPO),
         }
@@ -1528,8 +1527,8 @@ Claim B는 근거 없음으로 기각한다. 모델 기억으로 빈 출처를 �
                 "domain_example_validated": True,
             },
         )
-        self.assertFalse(result["release_screen_ready"])
-        self.assertFalse(result["obsidian_support_ready"])
+        self.assertTrue(result["release_screen_ready"])
+        self.assertTrue(result["obsidian_support_ready"])
         self.assertFalse(result["full_release_ready"])
 
 

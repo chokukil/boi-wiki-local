@@ -4,6 +4,37 @@ BoI Wiki Local은 사용자의 업무를 BoI Wiki용 Harness로 구성하고, �
 
 한국어 전체 안내: [README_KO.md](README_KO.md)
 
+## Choose the easiest path
+
+| Choice | What it enables | Extra install |
+|---|---|---|
+| Local only | Common-source intake, curation, Query, Review | None |
+| + Obsidian | Golden Journey, Backlinks, Bases, Canvas | Obsidian |
+| + MCP | Read shared BoI Wiki within the principal ACL | MCP client connection |
+| Both | Explore Local knowledge and query shared Wiki | Obsidian + MCP |
+
+Copy one request into Codex or Claude:
+
+```text
+이 저장소를 설치하고 Second Brain을 설정해줘.
+```
+
+```text
+Obsidian으로 Golden Journey를 안전하게 열어줘.
+```
+
+```text
+QuickAdd와 Web Clipper 설치 preview를 보여줘.
+```
+
+```text
+BoI Wiki MCP를 현재 AI 클라이언트에 연결해줘.
+```
+
+![Sanitized Agentic AI Golden Journey in Obsidian 1.13.4](templates/second-brain-guide/_media/35-golden-journey-home.webp)
+
+Walkthrough: [Obsidian Golden Journey](templates/second-brain-guide/32-obsidian-golden-journey.md)
+
 Windows 배포에서는 `C:\Users\<계정>\Projects\boi-wiki-local` clone 자체를 Codex·Claude의 작업 폴더로 엽니다. WSL 사본이나 다른 폴더에는 이 clone의 project Skill이 자동 활성화되지 않습니다.
 
 ## 가장 쉬운 시작
@@ -42,4 +73,4 @@ Core lifecycle: `Audit → Frame → Capture·Distill·Query·Lint·Review 설�
 
 Python·Obsidian·MCP는 일반 사용자 필수 요구사항이 아닙니다. Local Private 원문은 자동으로 원격 등록되지 않으며, Team/Public는 정제·검증·미리보기·사용자 승인 후 지원되는 기능에서만 등록할 수 있습니다.
 
-설치와 업데이트는 사내 Bitbucket 읽기를 우선 확인하고 네트워크로 도달할 수 없을 때만 GitHub source를 사용합니다. 사내 인증 또는 저장소 권한 실패는 fallback하지 않습니다. `MCP 설치해줘`라는 자연어 요청은 고정된 connection descriptor를 이용한 Codex·Claude 설정 preview로 라우팅되며, Git origin에서 MCP endpoint를 추정하거나 Local Private 자료를 전송하지 않습니다.
+설치와 업데이트는 사내 Bitbucket 읽기를 우선 확인하고 네트워크로 도달할 수 없을 때만 GitHub source를 사용합니다. 사내 인증 또는 저장소 권한 실패는 fallback하지 않습니다. `MCP 설치해줘`라는 자연어 요청은 고정된 connection descriptor를 이용한 Codex·Claude 설정 preview로 라우팅되며, Git origin에서 MCP endpoint를 추정하거나 Local Private 자료를 전송하지 않습니다. endpoint·인증·필수 도구가 없으면 성공을 꾸미지 않고 `pending-external-system`으로 남깁니다.

@@ -23,7 +23,7 @@ memory_candidate: false
 cleanup_policy: keep
 review_after: {{review_after}}
 contains_sensitive: false
-guide_release: "3.1.0"
+guide_release: "3.2.0"
 guide_audience: "설치를 마친 사용자"
 guide_duration_minutes: 5
 guide_prerequisites: "설치 완료, 7자리 사번"

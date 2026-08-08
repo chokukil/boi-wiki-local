@@ -23,7 +23,7 @@ cleanup_policy: keep
 review_after: {{review_after}}
 archive_status: active
 contains_sensitive: false
-guide_release: "3.1.0"
+guide_release: "3.2.0"
 guide_audience: "promotion 작성자와 reviewer"
 guide_duration_minutes: 10
 guide_prerequisites: "promotion preview"

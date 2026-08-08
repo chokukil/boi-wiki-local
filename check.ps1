@@ -226,12 +226,20 @@ Check-File "templates/second-brain-preferences.example.json"
 Check-File "templates/global-insight/native-fast-gate.md"
 Check-File "templates/global-insight/harness-card-template.md"
 Check-File "scripts/global_insight_native_check.ps1"
+Check-File "scripts/common-source-intake.ps1"
+Check-File "scripts/common-source-intake-check.ps1"
+Check-File "scripts/obsidian-golden-journey.ps1"
+Check-File "scripts/obsidian-golden-journey-check.ps1"
+Check-File "scripts/obsidian-optional-tools-preview.ps1"
+Check-File "scripts/obsidian-optional-tools-preview-check.ps1"
+Check-File "templates/obsidian/web-clipper/boi-common-source.json"
 Check-File "cases/catalog.json"
 Check-File "cases/flagship/second-brain/CASE.md"
 Check-File "templates/second-brain-guide/00-start-here.md"
 Check-File "templates/second-brain-guide/02-build-your-harness.md"
 Check-File "templates/second-brain-guide/12-ai-assisted-setup.md"
 Check-File "templates/second-brain-guide/30-obsidian-install-and-vault.md"
+Check-File "templates/second-brain-guide/32-obsidian-golden-journey.md"
 Check-File "templates/second-brain-guide/50-mcp-and-promotion.md"
 Check-File "templates/second-brain-guide/60-troubleshooting.md"
 Check-File "templates/second-brain-guide/70-update-and-rollback.md"
@@ -278,6 +286,21 @@ if (Get-Command git -ErrorAction SilentlyContinue) {
 
 if (Test-Path -LiteralPath (Join-Path $Root "scripts/global_insight_native_check.ps1")) {
   & (Join-Path $Root "scripts/global_insight_native_check.ps1") -Root $Root
+  if ($LASTEXITCODE -ne 0) { $status = 1 }
+}
+
+if (Test-Path -LiteralPath (Join-Path $Root "scripts/common-source-intake-check.ps1")) {
+  & (Join-Path $Root "scripts/common-source-intake-check.ps1") -Root $Root
+  if ($LASTEXITCODE -ne 0) { $status = 1 }
+}
+
+if (Test-Path -LiteralPath (Join-Path $Root "scripts/obsidian-golden-journey-check.ps1")) {
+  & (Join-Path $Root "scripts/obsidian-golden-journey-check.ps1") -Root $Root
+  if ($LASTEXITCODE -ne 0) { $status = 1 }
+}
+
+if (Test-Path -LiteralPath (Join-Path $Root "scripts/obsidian-optional-tools-preview-check.ps1")) {
+  & (Join-Path $Root "scripts/obsidian-optional-tools-preview-check.ps1") -Root $Root
   if ($LASTEXITCODE -ne 0) { $status = 1 }
 }
 

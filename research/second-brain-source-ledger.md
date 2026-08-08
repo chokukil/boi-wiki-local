@@ -32,8 +32,8 @@
 
 | 후보 | 판단 |
 |---|---|
-| [QuickAdd](https://github.com/chhoumann/quickadd) · [manifest](https://raw.githubusercontent.com/chhoumann/quickadd/master/manifest.json) | 기본 후보. 2026-08-01 확인값은 2.20.0, 최소 Obsidian 1.13.0이다. 입력 시작점 하나만 사용하고 JavaScript macro, 외부 API, 시스템 명령은 사용하지 않는다. |
-| [Omnisearch](https://github.com/scambier/obsidian-omnisearch) · [manifest](https://raw.githubusercontent.com/scambier/obsidian-omnisearch/master/manifest.json) | 기본 후보. 2026-08-01 호환성 snapshot의 선택값은 1.30.1, 최소 Obsidian 1.13.3이다. 로컬 검색만 사용하고 opt-in HTTP server는 비활성화한다. |
+| [QuickAdd](https://github.com/chhoumann/quickadd) · [manifest](https://raw.githubusercontent.com/chhoumann/quickadd/master/manifest.json) · [2.21.0 release](https://github.com/chhoumann/quickadd/releases/tag/2.21.0) | 선택 후보. 2026-08-08 확인값은 2.21.0, 최소 Obsidian 1.13.0이다. 공식 release의 `main.js`·`manifest.json`·`styles.css` 크기와 SHA256을 compatibility snapshot에 고정했다. 승인한 sanitized 데모 Vault와 공통 원본 폴더의 입력 시작점으로만 사용하고 startup macro, JavaScript macro, 외부 API, 시스템 명령은 사용하지 않는다. |
+| [Omnisearch](https://github.com/scambier/obsidian-omnisearch) · [manifest](https://raw.githubusercontent.com/scambier/obsidian-omnisearch/master/manifest.json) | 보류 후보. Core Search의 재현 가능한 부족이 확인될 때만 검토한다. opt-in HTTP server는 기본 비활성화한다. |
 | [Tasks](https://github.com/obsidian-tasks-group/obsidian-tasks) | 선택 기능. 지식 관리와 업무 실행을 섞지 않도록 별도 활성화한다. |
 | [Dataview](https://github.com/blacksmithgu/obsidian-dataview) | Bases로 부족할 때만 검토한다. DataviewJS는 기본 제외한다. |
 | [Templater](https://github.com/SilentVoid13/Templater) | 기본 제외. JavaScript와 시스템 명령 실행 범위가 현재 필요보다 넓다. |

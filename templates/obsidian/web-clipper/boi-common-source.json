@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "0.1.0",
+  "name": "BoI Common Raw Source",
+  "behavior": "create",
+  "noteNameFormat": "{{date|date:\"YYYY-MM-DD\"}} {{title|safe_name}}",
+  "path": "",
+  "properties": [
+    {
+      "name": "source_kind",
+      "value": "web-clip",
+      "type": "text"
+    },
+    {
+      "name": "source_url",
+      "value": "{{url}}",
+      "type": "text"
+    },
+    {
+      "name": "source_title",
+      "value": "{{title}}",
+      "type": "text"
+    },
+    {
+      "name": "source_author",
+      "value": "{{author}}",
+      "type": "text"
+    },
+    {
+      "name": "source_site",
+      "value": "{{site}}",
+      "type": "text"
+    },
+    {
+      "name": "published_at",
+      "value": "{{published}}",
+      "type": "text"
+    },
+    {
+      "name": "captured_at",
+      "value": "{{time}}",
+      "type": "text"
+    }
+  ],
+  "triggers": [],
+  "noteContentFormat": "# {{title}}\n\n> 원문: {{url}}\n\n{{content}}"
+}

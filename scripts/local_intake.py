@@ -26,7 +26,7 @@ from local_case import refresh_case_hub_evidence
 
 SUPPORTED_TYPES = {
     ".eml": "email",
-    ".md": "web-clip",
+    ".md": "document",
     ".txt": "meeting-note",
     ".csv": "tabular-data",
     ".pdf": "document",
@@ -59,6 +59,33 @@ DEPRECATED_EVIDENCE_TYPES = {
     "external-source-note": "web-clip",
 }
 CASE_RE = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]{2,63}")
+
+
+def detected_evidence_type(source: Path) -> str:
+    """Classify by explicit provenance first, then by the file format.
+
+    A Markdown file is not inherently a web clip.  The common source folder can
+    contain ordinary notes and Web Clipper output side by side, so only an
+    explicit ``source_kind: web-clip`` marker may select the web-clip type.
+    """
+    detected = SUPPORTED_TYPES.get(source.suffix.lower(), "")
+    if source.suffix.lower() != ".md":
+        return detected
+    try:
+        metadata = parse_frontmatter(source.read_text(encoding="utf-8-sig", errors="replace"))
+    except OSError:
+        return detected
+    source_kind = str(metadata.get("source_kind", "")).strip().lower()
+    explicit_types = {
+        "web-clip": "web-clip",
+        "meeting-note": "meeting-note",
+        "document": "document",
+        "markdown": "document",
+        "text": "document",
+    }
+    if source_kind in explicit_types:
+        return explicit_types[source_kind]
+    return detected
 
 
 def unique_target(directory: Path, name: str, digest: str) -> Path:
@@ -94,7 +121,7 @@ def main() -> int:
     source = Path(args.source).expanduser().resolve()
     if not source.is_file():
         raise SystemExit(f"source file is missing: {source}")
-    detected_type = SUPPORTED_TYPES.get(source.suffix.lower(), "")
+    detected_type = detected_evidence_type(source)
     if not detected_type:
         raise SystemExit(f"unsupported evidence extension: {source.suffix.lower() or '<none>'}")
     evidence_type = args.evidence_type or detected_type

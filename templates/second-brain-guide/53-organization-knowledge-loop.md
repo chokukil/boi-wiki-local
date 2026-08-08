@@ -23,7 +23,7 @@ cleanup_policy: keep
 review_after: {{review_after}}
 archive_status: active
 contains_sensitive: false
-guide_release: "3.1.0"
+guide_release: "3.2.0"
 guide_audience: "개인 지식을 조직지식으로 연결하는 사용자"
 guide_duration_minutes: 10
 guide_prerequisites: "정제 문서와 promotion 기본 이해"

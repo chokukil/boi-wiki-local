@@ -23,7 +23,7 @@ cleanup_policy: keep
 review_after: {{review_after}}
 archive_status: active
 contains_sensitive: false
-guide_release: "3.1.0"
+guide_release: "3.2.0"
 guide_audience: "공유 후보 작성자와 reviewer"
 guide_duration_minutes: 7
 guide_prerequisites: "OKF와 BoI Profile 기본 이해"

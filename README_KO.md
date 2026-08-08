@@ -4,6 +4,37 @@ BoI Wiki Local은 사용자의 업무 설명을 **BoI Wiki를 잘 쓰기 위한 
 
 별도 서비스나 Python 프로그램이 아닙니다. 비개발자도 Codex·Claude 같은 AI에게 자연어로 요청하면, 저장소의 Harness와 Skill을 사용해 역할·작업 흐름·산출물·검토 기준을 구성할 수 있습니다.
 
+## 가장 쉬운 시작
+
+| 선택 | 가능한 작업 | 추가 설치 |
+|---|---|---|
+| Local only | 공통 원본 수집·지식 정제·Query·Review | 없음 |
+| + Obsidian | Golden Journey·Backlinks·Bases·Canvas 탐색 | Obsidian |
+| + MCP | 권한 범위의 공유 BoI Wiki 조회 | MCP client 연결 |
+| 둘 다 | Local 지식 탐색과 공유 Wiki 조회 | Obsidian + MCP |
+
+AI에게 원하는 문장을 그대로 전달합니다.
+
+```text
+이 저장소를 설치하고 Second Brain을 설정해줘.
+```
+
+```text
+Obsidian으로 Golden Journey를 안전하게 열어줘.
+```
+
+```text
+QuickAdd와 Web Clipper 설치 preview를 보여줘.
+```
+
+```text
+BoI Wiki MCP를 현재 AI 클라이언트에 연결해줘.
+```
+
+![Obsidian 1.13.4에서 공개 Agentic AI Golden Journey 홈과 sanitized 파일 트리를 보는 화면](templates/second-brain-guide/_media/35-golden-journey-home.webp)
+
+[Obsidian Golden Journey 전체 화면과 사용법](templates/second-brain-guide/32-obsidian-golden-journey.md)
+
 Windows 설치 후에는 `C:\Users\<내계정>\Projects\boi-wiki-local` clone 자체를 Codex·Claude의 작업 폴더로 엽니다. WSL 사본이나 다른 폴더에서 시작한 작업에는 Windows clone의 project Skill이 자동으로 나타나지 않으므로, Skill을 전역 복사하지 말고 Windows clone을 새 작업으로 연 뒤 같은 자연어 요청을 전달합니다.
 
 ## 1. BoI Wiki Local은 무엇인가
@@ -83,6 +114,29 @@ AI에게 다음 문장을 그대로 전달합니다.
 
 지식 업데이트를 실제 공개 사례로 따라 하려면 [지식 변화 운영과 사용자 프롬프트 가이드](templates/second-brain-guide/38-knowledge-change-operations.md)와 [Agentic AI Change Radar Golden Journey](cases/research/agentic-ai-change-radar/CASE.md)를 함께 봅니다.
 
+공통 원본 폴더에 웹 클립, 문서, 메일, 표와 이미지를 함께 넣어 정리하려면 다음 요청을 사용합니다. Web Clipper도 같은 폴더의 `web-clip` 유형이며 전용 inbox를 만들지 않습니다.
+
+```text
+내가 지정한 원본 자료 폴더를 새 AI 세션이 시작될 때 확인해줘.
+웹 클립, 문서, 메일, 표와 이미지를 원문 그대로 보존하고,
+새 자료만 OKF + BoI Profile 지식 후보와 review queue로 정리해.
+승인 전에는 현재 지식이나 원격 Wiki에 반영하지 마.
+```
+
+```text
+방금 원본 자료 폴더에 넣은 새 자료만 처리해줘.
+이전에 같은 SHA256으로 처리한 자료는 건너뛰고, 원문과 지식 후보를 분리해줘.
+```
+
+```text
+방금 저장한 웹 클립만 처리해줘.
+같은 SHA256으로 이미 반영된 자료는 건너뛰고 원문은 변경하지 마.
+```
+
+```text
+지난 세션 이후 추가된 원본과 처리 대기·실패·검토 항목을 자료 유형별로 보여줘.
+```
+
 ## 5. Local 지식에서 조직 지식으로
 
 Local Private 원문은 BoI Wiki에 자동 적재되지 않습니다.
@@ -115,7 +169,7 @@ promotion compiler 경계에서만 `boi_profile_version: "0.1"`과 `team` 또는
 
 ## 7. 선택 기능: Obsidian과 MCP
 
-`MCP 설치해줘` 또는 `BoI Wiki MCP 연결해줘`라고 자연어로 요청하면 AI가 먼저 저장소 source를 판정하고, 저장소에 고정된 MCP connection descriptor로 Codex·Claude 설정 preview를 만듭니다. 사내 Bitbucket은 실제 읽기 성공 때 우선하며 DNS·라우팅·연결 실패일 때만 GitHub로 fallback합니다. 사내 호스트의 인증·저장소 권한 실패는 fallback하지 않습니다. Git source와 MCP endpoint는 별도 계약이며 endpoint는 `BOI_WIKI_MCP_EXTERNAL_URL`, 승인된 배포 descriptor 또는 사용자가 준 주소에서만 선택합니다. 설정 적용과 재시작 뒤 `initialize`·`tools/list`까지 확인해야 연결 완료입니다.
+`MCP 설치해줘` 또는 `BoI Wiki MCP 연결해줘`라고 자연어로 요청하면 AI가 먼저 저장소 source를 판정하고, 저장소에 고정된 MCP connection descriptor로 Codex·Claude 설정 preview를 만듭니다. 사내 Bitbucket은 실제 읽기 성공 때 우선하며 DNS·라우팅·연결 실패일 때만 GitHub로 fallback합니다. 사내 호스트의 인증·저장소 권한 실패는 fallback하지 않습니다. Git source와 MCP endpoint는 별도 계약이며 endpoint는 `BOI_WIKI_MCP_EXTERNAL_URL`, 승인된 배포 descriptor 또는 사용자가 준 주소에서만 선택합니다. 설정 적용과 재시작 뒤 `initialize`·`tools/list`까지 확인해야 연결 완료이며, endpoint·인증·필수 도구가 없으면 `pending-external-system`으로 남깁니다.
 
 두 저장소를 함께 검증하는 관리자·CI는 `scripts/check-repository-source-contract.ps1 -PeerRoot <boi-wiki 경로>`로 공통 manifest, selector, MCP connector와 descriptor의 SHA256 일치를 확인합니다. 일반 사용자는 이 명령을 직접 실행하지 않습니다.
 

@@ -23,7 +23,7 @@ cleanup_policy: keep
 review_after: {{review_after}}
 archive_status: active
 contains_sensitive: false
-guide_release: "3.1.0"
+guide_release: "3.2.0"
 guide_audience: "기존 설치 업데이트 사용자"
 guide_duration_minutes: 10
 guide_prerequisites: "clean stable branch와 Git for Windows"
@@ -46,7 +46,7 @@ source_refs:
 ```powershell
 .\update.cmd
 .\update.cmd --apply
-.\update.cmd --apply --confirm-guide-release 3.1.0
+.\update.cmd --apply --confirm-guide-release 3.2.0
 ```
 
 update preview는 fetch 전에 사내 Bitbucket을 우선 검사하고 `Repository source state`, 선택 이유, origin 변경 후보와 일회성 승인 코드를 보여줍니다. 사내망에 도달하지 못할 때만 GitHub로 fallback하며, 사내 인증·저장소 권한 실패는 우회하지 않습니다. origin 변경 후보가 있으면 다음처럼 그 preview 승인 코드를 함께 전달합니다.

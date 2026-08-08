@@ -10,14 +10,14 @@ import re
 import struct
 from pathlib import Path
 
-GUIDE_RELEASE = "3.1.0"
+GUIDE_RELEASE = "3.2.0"
 MEDIA_SCHEMA = "boi-local-guide-media/v1"
 MAX_MEDIA_BYTES = 600 * 1024
 MAX_MEDIA_WIDTH = 1760
 MIN_MEDIA_WIDTH = 800
-EXPECTED_MEDIA_COUNT = 22
-ALLOWED_CAPTURE_METHODS = {"windows-graphics-capture", "synthetic-training-mockup"}
-LARGE_CASE_SCREEN_IDS = {f"screen-{number:02d}" for number in range(19, 35)}
+EXPECTED_MEDIA_COUNT = 19
+ALLOWED_CAPTURE_METHODS = {"windows-graphics-capture"}
+LARGE_CASE_SCREEN_IDS = {f"screen-{number:02d}" for number in range(35, 41)}
 MIN_LARGE_SCREEN_WIDTH = 1400
 LINK_RE = re.compile(r"(?<!!)\[[^\]]+\]\(([^)]+)\)")
 IMAGE_RE = re.compile(r"!\[([^\]]*)\]\(([^)]+)\)")
@@ -62,6 +62,7 @@ REQUIRED_PAGES = {
     "29-investigation-pattern.md",
     "30-obsidian-install-and-vault.md",
     "31-obsidian-core-settings.md",
+    "32-obsidian-golden-journey.md",
     "33-hypothesis-evidence-review.md",
     "34-continuous-analysis-log.md",
     "35-recurrence-fingerprint.md",
@@ -214,27 +215,16 @@ def check_media(
             errors.append({"path": item_path, "issue": "manifest capture_method is missing or invalid"})
         if not str(item.get("capture_source", "")).strip():
             errors.append({"path": item_path, "issue": "manifest capture_source is empty"})
-        agent_journey_screen_ids = {f"screen-{number:02d}" for number in range(28, 35)}
-        if media_id in agent_journey_screen_ids:
-            if capture_method == "synthetic-training-mockup":
-                if item.get("requires_recapture_for_release") is not True:
-                    errors.append(
-                        {
-                            "path": item_path,
-                            "issue": "synthetic agent journey screen must remain marked for release recapture",
-                        }
-                    )
-            elif capture_method != "windows-graphics-capture":
-                errors.append(
-                    {
-                        "path": item_path,
-                        "issue": "agent journey capture_method must be synthetic-training-mockup or windows-graphics-capture",
-                    }
-                )
-        elif capture_method and capture_method != "windows-graphics-capture":
+        if capture_method and capture_method != "windows-graphics-capture":
             errors.append({"path": item_path, "issue": "capture_method must be windows-graphics-capture"})
         if item.get("synthetic_data") is not True or item.get("contains_sensitive") is not False:
-            errors.append({"path": item_path, "issue": "screenshots must be synthetic and non-sensitive"})
+            errors.append({"path": item_path, "issue": "screenshots must use non-sensitive demonstration data"})
+        if item.get("synthetic_ui") is not False:
+            errors.append({"path": item_path, "issue": "screenshots must be actual application UI, not synthetic UI"})
+        if item.get("readability_verified") is not True:
+            errors.append({"path": item_path, "issue": "screenshot readability must be explicitly verified"})
+        if item.get("local_private_included") is not False:
+            errors.append({"path": item_path, "issue": "screenshot must not include Local Private material"})
         references = image_refs.get(item_path, [])
         if item.get("requires_recapture_for_release") is True and not references:
             continue

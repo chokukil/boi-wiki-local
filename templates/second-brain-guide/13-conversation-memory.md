@@ -23,7 +23,7 @@ memory_candidate: false
 cleanup_policy: keep
 review_after: {{review_after}}
 contains_sensitive: false
-guide_release: "3.1.0"
+guide_release: "3.2.0"
 guide_audience: "AI와 업무 대화를 하는 구성원"
 guide_duration_minutes: 6
 guide_prerequisites: "Second Brain 초기 설정"
@@ -73,8 +73,6 @@ Second Brain은 채팅 보관함이 아닙니다. AI는 대화가 끝나기 전�
 
 다음: [자료 폴더에 파일 넣고 정리하기](14-folder-auto-curation.md)
 
-## 화면 32 — 같은 주제의 기존 지식 보강
+## 승인된 지식이 자라는 모습 보기
 
-![같은 주제의 기존 지식에 새 근거와 변경 이력이 보강된 전후 비교 합성 화면](_media/32-memory-before-after.webp)
-
-[화면 32를 원본 크기로 열기](_media/32-memory-before-after.webp)
+[Obsidian Golden Journey](32-obsidian-golden-journey.md)의 T0·T1 동일 Query 비교는 기존 판단을 지우지 않고 새 근거와 변경 이력을 보존하는 모습을 공개 사례로 보여 줍니다. 개인 대화 기억은 이 공개 사례와 분리된 Local Private 후보로 유지합니다.

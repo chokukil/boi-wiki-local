@@ -1,6 +1,6 @@
 # BoI Wiki Local Meta Harness 현재 단계 상태
 
-기준일: 2026-08-03
+기준일: 2026-08-08
 
 이 문서는 active 상태로 진행 중인 제품 작업을 사용자 기능과 관리자 평가 evidence로 분리해 기록합니다. benchmark 횟수는 제품 정의를 결정하지 않습니다.
 
@@ -60,7 +60,7 @@ Meta Harness Core는 Phase 0–7의 `Audit → Frame → Skill·지식 흐름 �
 - p08 및 새 oracle 확장
 - 신규 Reference Case와 도메인 fixture
 - 커뮤니티 플러그인 설치
-- 새 화면 촬영
+- 개인 Vault 또는 실제 업무 자료를 사용한 화면 촬영
 - remote submit와 MCP write
 - 평가 통과를 위한 fixture 특화 Skill 수정
 
@@ -107,13 +107,13 @@ Action Author, Context Pack Builder, Dictionary Author, Event Workflow Planner, 
 
 ## 화면 상태
 
-- 현재 제품 범위와 맞지 않는 과거 도메인 전용 화면은 media manifest와 배포 자산에서 제거했습니다.
-- screen-01은 최대화된 Windows File Explorer에서 Windows clone과 `setup.cmd`를 보여 주는 1760px 화면으로 재촬영했습니다.
-- screen-04는 Obsidian 1.13.4에서 Harness-first Start Here를 보여 주는 1760px 화면으로 재촬영했습니다.
-- 두 화면은 Wiki 본문과 원본 크기 링크에 다시 연결했고 media manifest SHA256·크기·합성 여부 검사를 통과했습니다.
-- screen-28~34는 실제 Codex·Claude 앱 캡처가 아니라 흐름 설명용 합성 교육 이미지입니다. 현재 가이드의 보조 그림으로는 유지하지만 실제 사용자 화면으로 오인하지 않도록 모두 재촬영 대상으로 표시했습니다.
-- 기능과 Wiki 계약이 동결된 뒤 현재 Windows Codex 또는 Claude 앱에서 이 7장을 다시 촬영해야 합니다. 그전까지 `release_screen_ready: false`이며, 이번 정리에서는 이미지 파일이나 hash를 변경하지 않았습니다.
-- guide release `3.0.0`을 합성 Profile `0000000`에 preview → confirmation → backup → apply 순서로 동기화했습니다. 화면 28~34의 `requires_recapture_for_release: true`가 설치본 media manifest에도 반영됐고, 재확인 preview는 변경 0건입니다. 이전 manifest는 `_archive/guides/20260803-024950/`에 보존했으며 이미지 bytes는 변경하지 않았습니다.
+- 현재 제품 범위와 맞지 않는 과거 도메인 전용 화면, 기존 generic 시작 화면과 합성 교육 mockup은 media manifest와 배포 자산에서 제거했습니다.
+- screen-01~03, 05~07, 09~15는 기존 Windows 실제 화면을 유지합니다. 이 화면의 예제 데이터는 비민감 연습 자료이며 실제 업무 자료가 아닙니다.
+- screen-35~40은 Windows 로컬 sanitized Community 데모 Vault를 실제 Obsidian 1.13.4에서 연 1760px Golden Journey 화면입니다. T0/T1 Query 비교, query diff, review queue, Bases·Canvas·Local Graph, 선택형 도구 preview와 raw/candidate 분리를 보여 줍니다.
+- README와 Start Here의 대표 화면은 screen-35이며, Canvas·Graph 선은 시각화일 뿐 provenance는 Markdown 링크와 `source_refs`·`generated_from`입니다.
+- 모든 남은 화면은 `windows-graphics-capture`이고 파일 SHA256·크기·원본 및 결과 해상도·민감정보 부재를 manifest와 Wiki 검사에서 확인합니다. 합성 UI mockup이나 release 재촬영 대기 항목은 없습니다.
+- 따라서 media 자체의 `release_screen_ready`는 true입니다. 이는 비개발자 Acceptance, 사내 Bitbucket, 실제 MCP endpoint 또는 production-ready 상태를 뜻하지 않습니다.
+- guide release `3.2.0`은 clean checkout 설치 자산으로 검증합니다. 기존 개인 Profile이나 과거 archive는 자동 동기화하거나 수정하지 않습니다.
 
 ## Obsidian 선택 경로 감사
 

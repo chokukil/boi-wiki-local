@@ -1,7 +1,7 @@
 {
   "schema": "boi-obsidian-plugin-compatibility/v1",
-  "verified_at": "2026-08-02",
-  "reference_app_version": "1.12.7",
+  "verified_at": "2026-08-08",
+  "reference_app_version": "1.13.4",
   "selection_rule": "Use the first candidate whose min_app_version is not greater than the installed Obsidian version.",
   "plugins": [
     {
@@ -10,12 +10,38 @@
       "optional": true,
       "distribution_policy": "optional-manual-install",
       "candidates": [
-        {"version": "2.20.0", "min_app_version": "1.13.0", "channel": "latest"},
+        {
+          "version": "2.21.0",
+          "min_app_version": "1.13.0",
+          "channel": "latest",
+          "release_url": "https://github.com/chhoumann/quickadd/releases/tag/2.21.0",
+          "distribution_artifacts": [
+            {
+              "file": "main.js",
+              "url": "https://github.com/chhoumann/quickadd/releases/download/2.21.0/main.js",
+              "bytes": 1309273,
+              "sha256": "8636198aef29cd64b53def1bf921baef5ddf83070c8a77c5457c9276617a81ad"
+            },
+            {
+              "file": "manifest.json",
+              "url": "https://github.com/chhoumann/quickadd/releases/download/2.21.0/manifest.json",
+              "bytes": 372,
+              "sha256": "0ba9b423bb47ee29de20854f9006c4806f775085d7b9b582e09f8cd4baced231"
+            },
+            {
+              "file": "styles.css",
+              "url": "https://github.com/chhoumann/quickadd/releases/download/2.21.0/styles.css",
+              "bytes": 33270,
+              "sha256": "729d8362fc6c518633c12caae1c7bb5051a9ebe9aaf62cfe39fb895002fe04b7"
+            }
+          ]
+        },
         {"version": "2.12.3", "min_app_version": "1.11.4", "channel": "latest-compatible-for-1.12.7"}
       ],
       "sources": [
         "https://raw.githubusercontent.com/chhoumann/quickadd/master/manifest.json",
-        "https://raw.githubusercontent.com/chhoumann/quickadd/master/versions.json"
+        "https://raw.githubusercontent.com/chhoumann/quickadd/master/versions.json",
+        "https://github.com/chhoumann/quickadd/releases/tag/2.21.0"
       ]
     },
     {

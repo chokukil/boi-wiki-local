@@ -1,0 +1,14 @@
+filters:
+  and:
+    - 'file.hasTag("golden-journey")'
+views:
+  - type: table
+    name: Knowledge growth
+    order:
+      - file.name
+      - demo_stage
+      - demo_status
+      - review_state
+    sort:
+      - property: demo_order
+        direction: ASC

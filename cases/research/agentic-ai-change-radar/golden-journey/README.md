@@ -21,6 +21,7 @@
 - [변경 세트](runs/2026-08-06/t1/change-set.json)
 - [검토 목록](runs/2026-08-06/t1/review-queue.md)
 - [source-first reviewer 판정](runs/2026-08-06/review/reviewer-report.json)
+- [Obsidian sanitized walkthrough](obsidian-demo/00-Golden-Journey.md)
 
 ## 재현
 

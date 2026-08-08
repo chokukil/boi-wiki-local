@@ -23,7 +23,7 @@ memory_candidate: false
 cleanup_policy: keep
 review_after: {{review_after}}
 contains_sensitive: false
-guide_release: "3.1.0"
+guide_release: "3.2.0"
 guide_audience: "전체 구성원"
 guide_duration_minutes: 3
 guide_prerequisites: "없음"
@@ -41,11 +41,34 @@ source_refs:
 
 BoI Wiki Local은 사용자의 업무 설명을 **BoI Wiki를 잘 쓰기 위한 Harness**로 구성하고, 개인 지식을 Local Private에서 안전하게 축적한 뒤 검토된 조직 지식으로 연결하는 **Meta Harness**입니다. 별도 앱이나 Python 프로그램이 아니므로 비개발자도 AI에게 자연어로 요청할 수 있습니다.
 
-![Obsidian에서 BoI Wiki Local 시작 페이지와 다음 여정 링크를 보는 화면](_media/04-obsidian-start-here.webp)
+![Obsidian 1.13.4에서 sanitized Agentic AI Golden Journey 홈과 공개 파일 트리를 보는 화면](_media/35-golden-journey-home.webp)
 
-[화면 04를 원본 크기로 열기](_media/04-obsidian-start-here.webp)
+[화면 35를 원본 크기로 열기](_media/35-golden-journey-home.webp)
 
-화면은 선택 기능인 Obsidian 예시입니다. Obsidian이 없어도 아래 요청문과 연결 문서를 일반 Markdown으로 그대로 사용할 수 있습니다.
+대표 화면은 공개 자료만 담은 Agentic AI Change Radar Community Golden Journey를 실제 Obsidian 1.13.4에서 연 예시입니다. Obsidian이 없어도 아래 요청문과 연결 문서를 일반 Markdown으로 그대로 사용할 수 있습니다.
+
+| 선택 | 가능한 작업 | 추가 설치 |
+|---|---|---|
+| Local only | 공통 원본 수집·지식 정제·Query·Review | 없음 |
+| + Obsidian | Golden Journey·Backlinks·Bases·Canvas 탐색 | Obsidian |
+| + MCP | 권한 범위의 공유 BoI Wiki 조회 | MCP client 연결 |
+| 둘 다 | Local 지식 탐색과 공유 Wiki 조회 | Obsidian + MCP |
+
+```text
+이 저장소를 설치하고 Second Brain을 설정해줘.
+```
+
+```text
+Obsidian으로 Golden Journey를 안전하게 열어줘.
+```
+
+```text
+QuickAdd와 Web Clipper 설치 preview를 보여줘.
+```
+
+```text
+BoI Wiki MCP를 현재 AI 클라이언트에 연결해줘.
+```
 
 ## 1. 업무용 BoI Harness 구성
 
@@ -82,6 +105,7 @@ AI는 필요한 질문만 최대 3개 하고, 변경 내용을 쉬운 말로 보
 - 여러 자료로 근거·가설·판정을 관리하려면 [범용 Investigation Pattern](29-investigation-pattern.md)
 - Obsidian 없이 사용하려면 [Obsidian 없는 사용법](26-no-obsidian.md)
 - Obsidian으로 링크·Graph·Bases·Canvas를 보려면 [Obsidian 설치와 Vault 연결](30-obsidian-install-and-vault.md)
+- 공개 Golden Journey를 실제 화면으로 따라 하려면 [Obsidian Golden Journey](32-obsidian-golden-journey.md)
 - 사내 Wiki 조회와 조직 공유 경계를 보려면 [MCP와 Team·Public 공유](50-mcp-and-promotion.md)
 - GitHub clone을 사내 Bitbucket origin으로 바꾸거나 업데이트하려면 [업데이트와 rollback](70-update-and-rollback.md)
 - 문제가 생기면 [문제 해결과 FAQ](60-troubleshooting.md)

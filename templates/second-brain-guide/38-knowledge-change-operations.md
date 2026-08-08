@@ -23,7 +23,7 @@ memory_candidate: true
 cleanup_policy: keep
 review_after: "{{review_after}}"
 contains_sensitive: false
-guide_release: "3.1.0"
+guide_release: "3.2.0"
 guide_audience: "Second Brain의 지식을 정기적으로 갱신하고 검토하는 구성원"
 guide_duration_minutes: 15
 guide_prerequisites: "검토할 주제 또는 승인된 기준 지식"

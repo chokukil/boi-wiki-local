@@ -3,7 +3,7 @@ okf_version: "0.1"
 boi_profile_version: "0.1-local"
 type: boi/local-guide
 title: "장애·품질 이상과 SOP 사례"
-description: "합성 장애와 품질 이상 기록을 재발 방지 지식과 검토 가능한 SOP 후보로 만드는 방법"
+description: "연습용 장애와 품질 이상 기록을 재발 방지 지식과 검토 가능한 SOP 후보로 만드는 방법"
 tags: [LocalPrivate, Incident, Quality, SOP, UseCase]
 timestamp: {{timestamp}}
 boi_id: boi:private:{{employee_id}}:guide:use-case-incident-quality
@@ -23,10 +23,10 @@ cleanup_policy: keep
 review_after: {{review_after}}
 archive_status: active
 contains_sensitive: false
-guide_release: "3.1.0"
+guide_release: "3.2.0"
 guide_audience: "장애 대응, 설비, 품질 업무 구성원"
 guide_duration_minutes: 15
-guide_prerequisites: "비민감 합성 또는 승인된 Local 원문"
+guide_prerequisites: "비민감 연습 자료 또는 승인된 Local 원문"
 guide_execution: "관찰·타임라인·가설·검증·조치를 분리하고 재발 방지 SOP 후보를 만든다"
 guide_success: "사실과 가설이 구분되고 human checkpoint가 있는 SOP 초안이 만들어졌다"
 guide_failure_page: "../60-troubleshooting.md"
@@ -46,15 +46,15 @@ source_refs:
 ## 첫 요청문
 
 ```text
-이 합성 장애 기록을 수정하지 않는 원문으로 수집하고 관찰 사실, 타임라인,
+이 연습용 장애 기록을 수정하지 않는 원문으로 수집하고 관찰 사실, 타임라인,
 가설, 가설별 검증, 수행 조치, 결과, 미확인 위험으로 정제해줘.
 원인으로 확정되지 않은 내용은 후보로 표시해줘.
 ```
 
-합성 품질 이상에는 다음처럼 요청합니다.
+품질 이상에는 다음처럼 요청합니다.
 
 ```text
-설비 A의 합성 응답 추세 이상 사례를 Event 후보, 확인 단계, 자동화 가능한 Action,
+설비 A의 응답 추세 이상 사례를 Event 후보, 확인 단계, 자동화 가능한 Action,
 사람이 판정해야 하는 지점으로 나눠 SOP 초안을 만들어줘. 실제 실행은 하지 마.
 ```
 
