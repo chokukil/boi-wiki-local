@@ -1,0 +1,42 @@
+{
+  "schema": "boi-second-brain-query-pack/v4",
+  "query_mode": "local-current",
+  "user_question_sha256": "<64-lowercase-hex>",
+  "topic_refs": [],
+  "manifest_hashes": [],
+  "local_evidence": [],
+  "shared_evidence": [],
+  "local_counterevidence": [],
+  "citation_contract": {
+    "display_map": [],
+    "original_identity_bindings": [],
+    "receipt_map": [],
+    "citation_set_sha256": "<64-lowercase-hex>"
+  },
+  "excluded_summary": {},
+  "runtime": {
+    "executor": "native-agent",
+    "selected_sources": [],
+    "context_budget": {
+      "max_answer_sources": 5,
+      "accounting_method": "utf8-byte-upper-bound",
+      "context_utf8_bytes": 0,
+      "max_context_utf8_bytes": 16384,
+      "within_budget": true
+    },
+    "writes_performed": false
+  },
+  "answer_contract": {
+    "direct_judgment": "",
+    "knowledge_state": "approved-current-or-labeled-local-synthesis",
+    "evidence_coverage": "partial",
+    "conflict_state": "none",
+    "unknowns": [],
+    "provenance_separated": true,
+    "in_turn_quality_check": {
+      "performed": true,
+      "repair_count": 0,
+      "max_repairs": 1
+    }
+  }
+}
