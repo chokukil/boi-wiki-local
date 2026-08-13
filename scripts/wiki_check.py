@@ -15,7 +15,20 @@ MEDIA_SCHEMA = "boi-local-guide-media/v1"
 MAX_MEDIA_BYTES = 600 * 1024
 MAX_MEDIA_WIDTH = 1760
 MIN_MEDIA_WIDTH = 800
-EXPECTED_MEDIA_COUNT = 19
+EXPECTED_SCREENSHOT_COUNT = 19
+ORIGINAL_BROADCAST_INFOGRAPHIC_KIND = "original-broadcast-infographic"
+ORIGINAL_BROADCAST_INFOGRAPHICS = {
+    "infographic-16": {
+        "file": "16-personal-to-organization-knowledge.png",
+        "sha256": "fd9b0f55f7bc0a454a5f87a719ab17e9dd873515b7d00d316e008a18af70eea8",
+    },
+    "infographic-17": {
+        "file": "17-ai-native-workflow-knowledge-loop.png",
+        "sha256": "a56a478415a50e44543d9d2954effb04d4205388fb74a94cfeca91723aebfa31",
+    },
+}
+MAX_ORIGINAL_BROADCAST_INFOGRAPHIC_BYTES = 2 * 1024 * 1024
+MAX_ORIGINAL_BROADCAST_INFOGRAPHIC_WIDTH = 1920
 ALLOWED_CAPTURE_METHODS = {"windows-graphics-capture"}
 LARGE_CASE_SCREEN_IDS = {f"screen-{number:02d}" for number in range(35, 41)}
 MIN_LARGE_SCREEN_WIDTH = 1400
@@ -104,6 +117,7 @@ GUIDE_BOUNDARIES = {
     "optional-obsidian-local",
     "local-with-optional-mcp-read",
     "promotion-preview-only",
+    "public-research-description-only",
     "release-validation-only",
 }
 
@@ -127,6 +141,12 @@ def webp_dimensions(data: bytes) -> tuple[int, int]:
     if chunk == b"VP8 " and data[23:26] == b"\x9d\x01\x2a":
         return struct.unpack_from("<H", data, 26)[0] & 0x3FFF, struct.unpack_from("<H", data, 28)[0] & 0x3FFF
     raise ValueError("unsupported WebP encoding")
+
+
+def png_dimensions(data: bytes) -> tuple[int, int]:
+    if len(data) < 24 or data[:8] != b"\x89PNG\r\n\x1a\n" or data[12:16] != b"IHDR":
+        raise ValueError("not a PNG file")
+    return struct.unpack(">II", data[16:24])
 
 
 def relative_page(guide: Path, path: Path) -> str:
@@ -155,8 +175,16 @@ def check_media(
     if not isinstance(items, list):
         errors.append({"path": "_media/manifest.json", "issue": "items must be a list"})
         return 0, []
-    if len(items) != EXPECTED_MEDIA_COUNT:
-        errors.append({"path": "_media/manifest.json", "issue": f"expected {EXPECTED_MEDIA_COUNT} screenshots, found {len(items)}"})
+    infographic_ids = {
+        str(item.get("id", "")).strip()
+        for item in items
+        if isinstance(item, dict) and item.get("asset_kind") == ORIGINAL_BROADCAST_INFOGRAPHIC_KIND
+    }
+    if infographic_ids != set(ORIGINAL_BROADCAST_INFOGRAPHICS):
+        errors.append({"path": "_media/manifest.json", "issue": "original broadcast infographic declarations do not match the approved set"})
+    screenshot_count = len(items) - len(infographic_ids)
+    if screenshot_count != EXPECTED_SCREENSHOT_COUNT:
+        errors.append({"path": "_media/manifest.json", "issue": f"expected {EXPECTED_SCREENSHOT_COUNT} screenshots, found {screenshot_count}"})
     seen_ids: set[str] = set()
     seen_files: set[str] = set()
     recapture_required: list[dict[str, str]] = []
@@ -186,17 +214,29 @@ def check_media(
             errors.append({"path": item_path, "issue": "manifest file is missing"})
             continue
         data = media_path.read_bytes()
-        if len(data) > MAX_MEDIA_BYTES:
-            errors.append({"path": item_path, "issue": f"file exceeds {MAX_MEDIA_BYTES} bytes"})
+        is_original_infographic = item.get("asset_kind") == ORIGINAL_BROADCAST_INFOGRAPHIC_KIND
+        expected_infographic = ORIGINAL_BROADCAST_INFOGRAPHICS.get(media_id)
+        if is_original_infographic and (
+            expected_infographic is None
+            or filename != expected_infographic["file"]
+            or item.get("sha256") != expected_infographic["sha256"]
+        ):
+            errors.append({"path": item_path, "issue": "original broadcast infographic identity does not match the approved asset"})
+        if not is_original_infographic and item.get("asset_kind") not in (None, "screenshot"):
+            errors.append({"path": item_path, "issue": "unsupported media asset_kind"})
+        max_bytes = MAX_ORIGINAL_BROADCAST_INFOGRAPHIC_BYTES if is_original_infographic else MAX_MEDIA_BYTES
+        if len(data) > max_bytes:
+            errors.append({"path": item_path, "issue": f"file exceeds {max_bytes} bytes"})
         if item.get("bytes") != len(data):
             errors.append({"path": item_path, "issue": "manifest byte count mismatch"})
         digest = hashlib.sha256(data).hexdigest()
         if item.get("sha256") != digest:
             errors.append({"path": item_path, "issue": "manifest SHA256 mismatch"})
         try:
-            width, height = webp_dimensions(data)
-            if width > MAX_MEDIA_WIDTH:
-                errors.append({"path": item_path, "issue": f"image width exceeds {MAX_MEDIA_WIDTH}px"})
+            width, height = png_dimensions(data) if is_original_infographic else webp_dimensions(data)
+            max_width = MAX_ORIGINAL_BROADCAST_INFOGRAPHIC_WIDTH if is_original_infographic else MAX_MEDIA_WIDTH
+            if width > max_width:
+                errors.append({"path": item_path, "issue": f"image width exceeds {max_width}px"})
             if width < MIN_MEDIA_WIDTH:
                 errors.append({"path": item_path, "issue": f"guide screen width must be at least {MIN_MEDIA_WIDTH}px"})
             if media_id in LARGE_CASE_SCREEN_IDS and width < MIN_LARGE_SCREEN_WIDTH:
@@ -211,15 +251,18 @@ def check_media(
             if not str(item.get(required, "")).strip():
                 errors.append({"path": item_path, "issue": f"manifest {required} is empty"})
         capture_method = str(item.get("capture_method", "")).strip()
-        if capture_method not in ALLOWED_CAPTURE_METHODS:
+        allowed_capture_methods = {"image-generation-original"} if is_original_infographic else ALLOWED_CAPTURE_METHODS
+        if capture_method not in allowed_capture_methods:
             errors.append({"path": item_path, "issue": "manifest capture_method is missing or invalid"})
         if not str(item.get("capture_source", "")).strip():
             errors.append({"path": item_path, "issue": "manifest capture_source is empty"})
-        if capture_method and capture_method != "windows-graphics-capture":
+        if not is_original_infographic and capture_method and capture_method != "windows-graphics-capture":
             errors.append({"path": item_path, "issue": "capture_method must be windows-graphics-capture"})
         if item.get("synthetic_data") is not True or item.get("contains_sensitive") is not False:
             errors.append({"path": item_path, "issue": "screenshots must use non-sensitive demonstration data"})
-        if item.get("synthetic_ui") is not False:
+        if is_original_infographic and item.get("synthetic_ui") is not True:
+            errors.append({"path": item_path, "issue": "original broadcast infographic must declare synthetic UI"})
+        if not is_original_infographic and item.get("synthetic_ui") is not False:
             errors.append({"path": item_path, "issue": "screenshots must be actual application UI, not synthetic UI"})
         if item.get("readability_verified") is not True:
             errors.append({"path": item_path, "issue": "screenshot readability must be explicitly verified"})
