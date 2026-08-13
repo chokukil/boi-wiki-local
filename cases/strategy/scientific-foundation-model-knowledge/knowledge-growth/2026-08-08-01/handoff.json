@@ -1,0 +1,14 @@
+{
+  "artifact_kind": "handoff",
+  "case_id": "scientific-foundation-model-knowledge",
+  "run_id": "scientific-fm-knowledge-growth-2026-08-08-01",
+  "phase": "human-review",
+  "input_snapshot": {"id":"scientific-fm-community-baseline-20260806","query_sha256":"b66901942407663686649a185adce920a40fda22eb0f53b42edcbafa9125a207"},
+  "output_status_sha256": "197dacbd75dd2825d21cf98489cf211c16c94dd8381fbcffe7d0e743dd40eeaf",
+  "supported_claims": ["SFM-D01","SFM-D02","SFM-D03","SFM-D04"],
+  "retained_unknown": ["SFM-D05","independent reproduction","semiconductor application"],
+  "retained_contradictions": ["broad generalization framing versus bounded task scope","artifact availability versus reproduction success"],
+  "next_phase_condition": "human accepts named delta IDs against unchanged source and candidate hashes",
+  "promotion_boundary": "only reviewed atomic claims, source links and verification state may enter a sanitized preview; no paper copies, dataset archives or unverified application advice",
+  "remote_effect": "none"
+}

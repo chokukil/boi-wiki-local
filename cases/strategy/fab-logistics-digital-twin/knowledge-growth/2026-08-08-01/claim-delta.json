@@ -1,0 +1,18 @@
+{
+  "artifact_kind": "claim-delta",
+  "case_id": "fab-logistics-digital-twin",
+  "run_id": "fab-dt-knowledge-growth-2026-08-08-01",
+  "baseline_snapshot_id": "fab-dt-community-baseline-20260806",
+  "candidate_snapshot_id": "fab-dt-community-candidate-20260808",
+  "current_snapshot_changed": false,
+  "deltas": [
+    {"delta_id":"FAB-D01","delta_type":"strengthened","previous":"공개 GEM300 개념을 twin vocabulary 후보로 사용한다.","candidate":"GEM300 vocabulary와 함께 AAS metamodel·API·data·security·package part의 exact revision을 고정한다.","impact":"Digital Twin을 단일 모델 파일이 아니라 versioned interoperability contract로 검토한다.","sources":["FAB-U01"]},
+    {"delta_id":"FAB-D02","delta_type":"new","previous":"표준 transport mapping은 구체화되지 않았다.","candidate":"OPC UA for AAS mapping을 asset·submodel·event·operation의 vendor-neutral transport 후보로 추가한다.","impact":"ontology 제품 모델과 설비 transport를 분리해 비교할 수 있다.","sources":["FAB-U02"]},
+    {"delta_id":"FAB-D03","delta_type":"revised","previous":"Object·Property·Link·Action을 twin 상태와 업무 결정의 후보 모델로 둔다.","candidate":"Object·Link·Action은 표준 identity와 authoritative state 위의 application semantic/action layer로 제한한다.","impact":"특정 vendor ontology를 canonical plant model로 조기 확정하지 않는다.","sources":["FAB-U03","FAB-U04","FAB-U05"],"contradiction":"통합 운영 모델의 편의와 vendor-neutral interoperability 요구가 동시에 존재한다."},
+    {"delta_id":"FAB-D04","delta_type":"strengthened","previous":"관측·시각화에서 시작해 simulation 또는 control로 확장한다.","candidate":"read-only event mirror → time-aligned replay → simulation → decision proposal → separately approved action 순서를 사용한다.","impact":"첫 pilot의 안전·검증 경계와 중단 지점을 명확히 한다.","sources":["FAB-U01","FAB-U02","FAB-U04","FAB-U05"]},
+    {"delta_id":"FAB-D05","delta_type":"unknown","previous":"실제 FAB 적용성과 효과는 unknown이다.","candidate":"표준·ontology 연결은 구체화됐지만 실제 identity, event semantics, data quality, baseline KPI와 효과는 계속 unknown이다.","impact":"공개 지식으로 vendor 선정이나 운영 효과를 주장하지 않는다.","sources":[]}
+  ],
+  "counts": {"new":1,"strengthened":2,"revised":1,"contradicted":0,"stale":0,"retirement-candidate":0,"unknown":1},
+  "approval_effect": "none",
+  "requires_human_review": true
+}

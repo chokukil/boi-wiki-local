@@ -6,6 +6,7 @@ param(
 $Root = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($Root)
 
 $EnvironmentId = ([string]$env:BOI_LOCAL_EMPLOYEE_ID).Trim()
+$EnvironmentIdWasSet = Test-Path Env:BOI_LOCAL_EMPLOYEE_ID
 $DotenvId = ""
 $dotenv = Join-Path $Root ".env"
 if (Test-Path -LiteralPath $dotenv) {
@@ -26,9 +27,9 @@ if ($EnvironmentId -notin @("", "0000000") -and
   exit 1
 }
 
-if ($EnvironmentId -and $EnvironmentId -ne "0000000") {
-  $EmployeeId = $EnvironmentId
-  $EmployeeSource = "environment"
+if ($EnvironmentIdWasSet) {
+  $EmployeeId = if ($EnvironmentId) { $EnvironmentId } else { "0000000" }
+  $EmployeeSource = if ($EmployeeId -eq "0000000") { "environment-template" } else { "environment" }
 } elseif ($DotenvId -and $DotenvId -ne "0000000") {
   $EmployeeId = $DotenvId
   $EmployeeSource = "dotenv"
@@ -66,6 +67,8 @@ if (Test-Path (Join-Path $Root "data/boi/private/$legacyId")) {
 if ($status -ne 0) {
   exit $status
 }
+
+Write-Host "INFO validation target: $EmployeeId ($EmployeeSource)"
 
 $baseRel = "data/boi/private/$EmployeeId"
 $basePath = Join-Path $Root $baseRel
@@ -343,8 +346,24 @@ if ($NativeOnly) {
   if ($LASTEXITCODE -ne 0) { $status = 1 }
   & $python.Source (Join-Path $Root "scripts/build_case_runtime_cards.py") --check | Out-Null
   if ($LASTEXITCODE -ne 0) { $status = 1 }
-  & $python.Source -m unittest discover -s (Join-Path $Root "tests") -p "test_*.py" | Out-Null
-  if ($LASTEXITCODE -ne 0) { $status = 1 }
+  $previousGitConfigCount = [Environment]::GetEnvironmentVariable("GIT_CONFIG_COUNT", "Process")
+  $gitConfigIndex = 0
+  if ($previousGitConfigCount -match '^\d+$') { $gitConfigIndex = [int]$previousGitConfigCount }
+  $gitConfigKeyName = "GIT_CONFIG_KEY_$gitConfigIndex"
+  $gitConfigValueName = "GIT_CONFIG_VALUE_$gitConfigIndex"
+  $previousGitConfigKey = [Environment]::GetEnvironmentVariable($gitConfigKeyName, "Process")
+  $previousGitConfigValue = [Environment]::GetEnvironmentVariable($gitConfigValueName, "Process")
+  try {
+    [Environment]::SetEnvironmentVariable("GIT_CONFIG_COUNT", [string]($gitConfigIndex + 1), "Process")
+    [Environment]::SetEnvironmentVariable($gitConfigKeyName, "core.autocrlf", "Process")
+    [Environment]::SetEnvironmentVariable($gitConfigValueName, "false", "Process")
+    & $python.Source -m unittest discover -s (Join-Path $Root "tests") -p "test_*.py" | Out-Null
+    if ($LASTEXITCODE -ne 0) { $status = 1 }
+  } finally {
+    [Environment]::SetEnvironmentVariable("GIT_CONFIG_COUNT", $previousGitConfigCount, "Process")
+    [Environment]::SetEnvironmentVariable($gitConfigKeyName, $previousGitConfigKey, "Process")
+    [Environment]::SetEnvironmentVariable($gitConfigValueName, $previousGitConfigValue, "Process")
+  }
   $compileTargets = @(
     "scripts/boi_local_common.py", "scripts/boi_setup.py", "scripts/build_guide_media.py", "scripts/local_capture.py", "scripts/local_intake.py", "scripts/local_case.py",
     "scripts/local_distill.py", "scripts/local_search.py", "scripts/local_review.py",

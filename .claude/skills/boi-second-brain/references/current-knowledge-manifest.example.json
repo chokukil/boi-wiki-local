@@ -1,0 +1,30 @@
+{
+  "schema": "boi-current-knowledge-manifest/v1",
+  "topic_id": "example-question-topic",
+  "current_scope": "question-or-decision",
+  "aliases": [
+    "example question"
+  ],
+  "current_revision": 1,
+  "current_snapshot_id": "example-question-topic-r1-<snapshot-id>",
+  "current_snapshot_path": "history/example-question-topic-r1-<snapshot-id>.json",
+  "current_snapshot_sha256": "<64-lowercase-hex>",
+  "last_reviewed_at": "<rfc3339>",
+  "approved_local_artifacts": [
+    {
+      "knowledge_key": "question/approved-answer",
+      "path": "<local-private-relative-path>",
+      "sha256": "<64-lowercase-hex>",
+      "claim_status": "decision",
+      "evidence_coverage": "partial",
+      "conflict_state": "none",
+      "freshness": "current"
+    }
+  ],
+  "approved_remote_artifacts": [],
+  "open_review_refs": [],
+  "previous_snapshot_ref": null,
+  "previous_snapshot_sha256": null,
+  "local_only": true,
+  "remote_auto_upload": false
+}

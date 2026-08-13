@@ -289,6 +289,53 @@
       "local_private_included": false
     },
     {
+      "id": "infographic-16",
+      "asset_kind": "original-broadcast-infographic",
+      "file": "16-personal-to-organization-knowledge.png",
+      "alt": "개인 Local 지식이 검토와 승인을 거쳐 조직 재사용 후보로 이어지는 Korean infographic",
+      "app": "image generation",
+      "app_version": "original asset",
+      "captured_at": "2026-08-14T00:00:00+09:00",
+      "capture_method": "image-generation-original",
+      "capture_source": "offline broadcast asset",
+      "target_pages": [
+        "54-broadcast-hub.md"
+      ],
+      "sha256": "fd9b0f55f7bc0a454a5f87a719ab17e9dd873515b7d00d316e008a18af70eea8",
+      "bytes": 1316685,
+      "width": 1672,
+      "height": 941,
+      "synthetic_data": true,
+      "synthetic_ui": true,
+      "readability_verified": true,
+      "contains_sensitive": false,
+      "local_private_included": false
+    },
+    {
+      "id": "infographic-17",
+      "asset_kind": "original-broadcast-infographic",
+      "file": "17-ai-native-workflow-knowledge-loop.png",
+      "alt": "SOP/Event 판단과 기록이 다음 업무로 이어지는 Korean infographic",
+      "app": "image generation",
+      "app_version": "original asset",
+      "captured_at": "2026-08-14T00:00:00+09:00",
+      "capture_method": "image-generation-original",
+      "capture_source": "offline broadcast asset",
+      "target_pages": [
+        "54-broadcast-hub.md",
+        "57-broadcaster-reply.md"
+      ],
+      "sha256": "a56a478415a50e44543d9d2954effb04d4205388fb74a94cfeca91723aebfa31",
+      "bytes": 1396298,
+      "width": 1672,
+      "height": 941,
+      "synthetic_data": true,
+      "synthetic_ui": true,
+      "readability_verified": true,
+      "contains_sensitive": false,
+      "local_private_included": false
+    },
+    {
       "id": "screen-35",
       "file": "35-golden-journey-home.webp",
       "alt": "Obsidian 1.13.4에서 sanitized Agentic AI Golden Journey 홈과 공개 파일 트리를 보는 화면",

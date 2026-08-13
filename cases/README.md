@@ -17,7 +17,9 @@
 - [FAB Logistics Digital Twin](strategy/fab-logistics-digital-twin/CASE.md) — 두 번째 전략 Case
 - [Scientific Foundation Model Knowledge](strategy/scientific-foundation-model-knowledge/CASE.md) — 세 번째 장기 지식 Case
 
-현재 Flagship Second Brain의 일부 Codex 실행만 실제 Windows evidence를 보유합니다. 새 세 Case는 public source record, 정적 계약과 frozen evaluation protocol까지 갖춘 `community` 상태이며 실제 Codex·Claude 반복, 비개발자 Acceptance와 실제 BoI Wiki contract는 `pending external gate`입니다. 이 gate들은 Case 산출물 자체의 blocker가 아니지만, 통과 전에는 어떤 Case도 Verified·Reference·production-ready로 표시하지 않습니다.
+세 사례의 Meta Harness 실행, Second Brain revision 성장과 BoI Wiki promotion 경계를 한 흐름으로 보려면 [세 Golden Journey 통합 지도](GOLDEN-JOURNEYS.md)를 봅니다.
+
+현재 Flagship Second Brain의 일부 Codex 실행만 실제 Windows evidence를 보유합니다. 세 Global Insight Case에는 public source record와 정적 계약뿐 아니라 baseline→후보 delta, source-first review와 동일 Query 비교를 포함한 knowledge-growth artifact가 있습니다. 다만 실제 Codex·Claude 반복, 비개발자 Acceptance, domain review와 실제 BoI Wiki contract는 `pending external gate`입니다. 이 gate들은 Case 산출물 자체의 blocker가 아니지만, 통과 전에는 어떤 Case도 Verified·Reference·production-ready로 표시하지 않습니다.
 
 세 Case가 존재한다는 사실만으로 새 generic Skill을 만들지 않습니다. 동일한 stable operation, baseline 개선, cross-Case regression과 maintainer 승인이 실제 evidence로 확인된 뒤에만 Meta Factory가 Skill 승격을 제안합니다.
 

@@ -143,7 +143,7 @@ class SecondBrainCliTests(unittest.TestCase):
         self.assertTrue((base / "notes" / "guide" / "29-investigation-pattern.md").exists())
         self.assertEqual(19, len(list((base / "notes" / "guide" / "_media").glob("*.webp"))))
         self.assertTrue((base / "notes" / "guide" / "_media" / "manifest.json").exists())
-        self.assertEqual(20, len(desired_guide_assets(self.root, self.employee_id)))
+        self.assertEqual(22, len(desired_guide_assets(self.root, self.employee_id)))
         self.assertEqual([base / "usage-examples" / "index.md"], list((base / "usage-examples").glob("*.md")))
         profile_index = (base / "index.md").read_text(encoding="utf-8")
         self.assertIn("# 내 BoI Wiki Local", profile_index)

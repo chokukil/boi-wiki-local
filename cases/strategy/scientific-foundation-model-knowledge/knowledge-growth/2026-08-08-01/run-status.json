@@ -1,0 +1,23 @@
+{
+  "artifact_kind": "run-status",
+  "case_id": "scientific-foundation-model-knowledge",
+  "run_id": "scientific-fm-knowledge-growth-2026-08-08-01",
+  "status": "awaiting-human-review",
+  "current_snapshot": "scientific-fm-community-baseline-20260806",
+  "candidate_snapshot": "scientific-fm-community-candidate-20260808",
+  "current_snapshot_changed": false,
+  "artifacts": {
+    "source-manifest.json": "15036788d269844f7da3173338460d3238020d5a6f79de7bb19d1106b2f3d60e",
+    "evidence.json": "8ea1551623bb0bea61d001ddab0412b56ddf607ee39470c5ff2ccbe64af85604",
+    "claim-delta.json": "6235ddfe9d6116f669e751bb67a9a26b51b8f9458ea0586a8a72a31f6c8d1745",
+    "reviewer-report.json": "2ce6a5527bcbafe423abe63193bd1503d06300f9196f6cda42e1fb6f491a1f04",
+    "review-queue.md": "1216c68e96d8ba4435fda677d48142accf6124888c5ab289703c4fcbbe2acc2e",
+    "query-candidate.md": "ccc77f4f1b431c751b4f6a2870c3602bd5a4b8eb6ed647ef19ca248d59c0f213",
+    "query-diff.md": "91dd18c3e2204cb525d62b5ed7aaeef5774816aa4a663a37e84d6ec883287b30"
+  },
+  "partial_items": ["preprint full texts and supplementary files not reviewed", "publisher raw article bytes unavailable", "no independent reproduction"],
+  "resume_checkpoint": {"phase":"human-review","source_manifest_sha256":"15036788d269844f7da3173338460d3238020d5a6f79de7bb19d1106b2f3d60e","claim_delta_sha256":"6235ddfe9d6116f669e751bb67a9a26b51b8f9458ea0586a8a72a31f6c8d1745"},
+  "hash_invalidation": "changed source bytes, publication status, delta text or review scope invalidates dependent review",
+  "promotion_status": "not-requested",
+  "remote_effect": "none"
+}

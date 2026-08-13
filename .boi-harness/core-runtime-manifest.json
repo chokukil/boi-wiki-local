@@ -13,7 +13,12 @@
     ],
     "boi-second-brain": [
       "SKILL.md",
-      "agents/openai.yaml"
+      "agents/openai.yaml",
+      "references/answer-surface-contract.md",
+      "references/citation-surface-contract.md",
+      "references/current-knowledge-manifest.example.json",
+      "references/local-current-query.md",
+      "references/query-pack-v4.example.json"
     ],
     "boi-wiki-local": [
       "SKILL.md"

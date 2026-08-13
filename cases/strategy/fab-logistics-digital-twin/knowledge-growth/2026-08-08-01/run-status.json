@@ -1,0 +1,23 @@
+{
+  "artifact_kind": "run-status",
+  "case_id": "fab-logistics-digital-twin",
+  "run_id": "fab-dt-knowledge-growth-2026-08-08-01",
+  "status": "awaiting-human-review",
+  "current_snapshot": "fab-dt-community-baseline-20260806",
+  "candidate_snapshot": "fab-dt-community-candidate-20260808",
+  "current_snapshot_changed": false,
+  "artifacts": {
+    "source-manifest.json": "46165e70af0c7f52efc1daf88511ba35d6033427851355d53d4ee5fa36ac04eb",
+    "evidence.json": "1d6fe123d978c4657c31e2e953fd811871fbe351873fcef1193756ee68861974",
+    "claim-delta.json": "f18e7e5f1571ffbbe311aba19c5189614e7dd33b2b1614f683e6310b770211c8",
+    "reviewer-report.json": "ffb0a88cce3f4e8b80933a754ce8f95854b7a8f3c1fa25ce8461ffeba73770a4",
+    "review-queue.md": "78076b0e7aa61809ab9074c63a9076cf4aa2e67e468e2f2c36ff9fcafed780ea",
+    "query-candidate.md": "77cc131e3425dfecee60f00f41d176306d68af6337fcca3dcae203f3bfe897b6",
+    "query-diff.md": "7166be763e817cbd2a37e39c3536503cf7a0e114acbbbff0620c130df988ab51"
+  },
+  "partial_items": ["SEMI normative text not accessed", "no live FAB data or domain review"],
+  "resume_checkpoint": {"phase":"human-review","source_manifest_sha256":"46165e70af0c7f52efc1daf88511ba35d6033427851355d53d4ee5fa36ac04eb","claim_delta_sha256":"f18e7e5f1571ffbbe311aba19c5189614e7dd33b2b1614f683e6310b770211c8"},
+  "hash_invalidation": "changed source bytes, standard revision, delta text or review scope invalidates dependent review",
+  "promotion_status": "not-requested",
+  "remote_effect": "none"
+}
