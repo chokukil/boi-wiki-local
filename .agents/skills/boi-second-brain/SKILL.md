@@ -70,6 +70,19 @@ At minimum, preserve the template values for `okf_version: "0.1"`, `boi_profile_
 - `정리 전 확인` (`suggest`): set `agent_session_check` to `true` and show a short grouped preview before changing knowledge.
 - `요청할 때만` (`explicit-only`): set `agent_session_check` to `false` and act only after natural-language requests such as `기억해줘`, `정리해줘`, or `이 기억은 틀렸어`.
 
+## Auto-curate knowledge and approval boundary
+
+`auto-curate` creates and maintains **Local auto-managed knowledge** inside the approved Local Private scope. It does not require document-by-document human approval before low-risk knowledge can be searched or used in a Local answer.
+
+For administrator/reference verification only, `scripts/local_wiki.py curate-knowledge` is an explicit Local-only CLI: it previews by default and requires `--apply-local` before writing. It validates the declared Local source and evidence SHA256 values, Local-path provenance, and case identity; it never starts a runtime service or submits Remote changes.
+
+- Source integrity status, Local knowledge status, and sharing status are separate axes. A hash-verified source may support Local knowledge even when nothing has been promoted to Team/Public.
+- `observed` and `inferred` describe how a claim was formed; neither value means “unusable until reviewed.”
+- Automatically maintain hash-verified source knowledge and non-conflicting topic synthesis. Reinforce and correct them when the new evidence stays inside the existing Local scope and does not materially change a Current conclusion.
+- Do not put every source-derived or inferred page in the Review Queue. Queue only conflict, low confidence, unsupported inference, material Current change, sensitive content, or sharing-scope change.
+- Current is question- or decision-scoped. It is a reviewed baseline for a bounded judgment, not a lifecycle state applied to every source or topic page.
+- A missing Current baseline never makes all Local knowledge pending. It means the agent may provide a clearly labeled Local synthesis, but must not call that synthesis an approved Current answer.
+
 Never say `hook`, `manifest`, `sidecar`, `plan hash`, `NOOP`, or `supersede` in the ordinary user flow. Say `AI 시작·종료 시 자동 확인`, `처리 현황`, `원본 정보 문서`, `승인한 변경 확인값`, `이미 반영됨`, and `이전 내용을 보존하고 최신 내용으로 교체`.
 
 ## Automatic conversation maintenance

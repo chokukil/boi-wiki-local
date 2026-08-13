@@ -1,0 +1,12 @@
+{
+  "artifact_kind": "evidence",
+  "case_id": "scientific-foundation-model-knowledge",
+  "run_id": "scientific-fm-knowledge-growth-2026-08-08-01",
+  "claims": [
+    {"claim_ref":"SFM-D01","claim":"Scientific Foundation Model의 물리 grounding은 representation, training objective, differentiable physics module, synthetic data와 evaluation constraint 중 어디에 들어가는지 분해해 기록해야 한다.","supporting_evidence":["SFM-U01","SFM-U03","SFM-U05"],"counterevidence":["세 접근 모두 저자 보고 범위에서 강한 empirical result 또는 generalization을 주장한다."],"verification_level":"abstract-and-publication-metadata-checked","unknown":["공통 law-violation metric","cross-domain constraint transfer"]},
+    {"claim_ref":"SFM-D02","claim":"CLOUD-DEBYE 사례는 thermodynamic consistency가 foundation model 전체의 보편 속성이 아니라 특정 differentiable downstream module에서 명시적으로 강제될 수 있음을 보여준다.","supporting_evidence":["SFM-U03","SFM-U04"],"counterevidence":["확인 범위는 저자·publisher 설명이며 다른 properties와 regimes의 consistency를 보장하지 않는다."],"verification_level":"abstract-and-publisher-page-checked","unknown":["module 밖 prediction의 law violation rate","independent reproduction"]},
+    {"claim_ref":"SFM-D03","claim":"MetaFO의 zero/few-shot 및 OOD 주장은 graph-based metamaterial, 정해진 basis unit cells, materials와 compression-response scope 안에서 해석해야 한다.","supporting_evidence":["SFM-U01","SFM-U02"],"counterevidence":["publisher article은 해당 범위에서 generalization, uncertainty와 inverse design 결과를 보고한다."],"verification_level":"publisher-page-checked","unknown":["continuous geometry","complex loading histories","manufacturability regime의 외적 타당성"]},
+    {"claim_ref":"SFM-D04","claim":"NEP89의 89-element 범위와 공개 dataset·demo·fine-tuning artifact는 평가 가능성을 높이지만 universal accuracy나 독립 재현을 뜻하지 않는다.","supporting_evidence":["SFM-U05","SFM-U06","SFM-U07"],"counterevidence":["저자와 publisher는 다양한 benchmark, 속도와 fine-tuning 성능을 보고한다."],"verification_level":"publication-and-artifact-catalog-checked","unknown":["archive 무결성 재검증","independent benchmark reproduction","reaction barrier·phase transition failure envelope"]},
+    {"claim_ref":"SFM-D05","claim":"세 사례는 기존의 task-specific evidence 분리 원칙을 강화하지만 semiconductor process·device physics 적용성을 결정하지 못한다.","supporting_evidence":["SFM-U01","SFM-U03","SFM-U05"],"counterevidence":[],"verification_level":"unknown-by-scope","unknown":["대상 방정식과 boundary condition","허용 오차","실험·simulation baseline","domain-specific failure cost"]}
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "artifact_kind": "source-manifest",
+  "case_id": "fab-logistics-digital-twin",
+  "run_id": "fab-dt-knowledge-growth-2026-08-08-01",
+  "visibility": "public-case",
+  "baseline": {
+    "snapshot_id": "fab-dt-community-baseline-20260806",
+    "fixed_query_sha256": "a5346d896245d8e38e6bebbb4eda77555c0a793e689a5376f9c54cccb880c964",
+    "source_manifest_sha256": "bbcc2daddb5b0a28b115d77dc808fa58ead28a23653b8939a170b8671088b6fc",
+    "evidence_sha256": "a6c562b01a34f7213871d6228d74e825177c2b2bfd564a5abb34aef116a13279",
+    "query_answer_sha256": "0ef470244e89b6cc929d869542faaa13b4168534a131295ee024daa77ead490e"
+  },
+  "checked_at": "2026-08-08T17:10:00+09:00",
+  "sources": [
+    {"source_ref":"FAB-U01","url":"https://industrialdigitaltwin.org/en/content-hub/aasspecifications","source_class":"standards-organization","published_at":"2026-01","version":"Release 26-01","access_status":"accessed","verified_scope":"specification catalog page; metamodel, API, data specification, security and AASX package parts","verification_level":"primary-checked","bytes":282663,"sha256":"8580bcb222f5a7f547fd65f88c0e8d02f0845baabdf9196f417405de664d15ff"},
+    {"source_ref":"FAB-U02","url":"https://reference.opcfoundation.org/specs/OPC-30270/4.1","source_class":"official-standard","version":"OPC UA for AAS v1.00","access_status":"accessed","verified_scope":"public specification navigation, AAS introduction, metamodel mapping, ObjectTypes, events, operations and conformance sections","verification_level":"primary-checked","bytes":29839,"sha256":"6b80c6cbcb2a211e78773f79b37b457f17b12b0feaff1fa7a287808fa70bfc83"},
+    {"source_ref":"FAB-U03","url":"https://www.palantir.com/docs/foundry/ontology/overview","source_class":"vendor-documentation","access_status":"accessed","verified_scope":"objects, properties, links, actions, functions, dynamic security and governance overview","verification_level":"primary-vendor-checked","bytes":432928,"sha256":"26a539e9cb3dc82d4b359b2b434975ad53be70df57145474087abb302c252b11"},
+    {"source_ref":"FAB-U04","url":"https://www.palantir.com/docs/foundry/action-types/action-log","source_class":"vendor-documentation","access_status":"accessed","verified_scope":"action submissions, decision context, linked objects and audit log behavior","verification_level":"primary-vendor-checked","bytes":437784,"sha256":"84180a20f84df18d683106bc553a8388918f2425f47d2c69e5b37e0c18b66cbb"},
+    {"source_ref":"FAB-U05","url":"https://www.palantir.com/docs/foundry/action-types/permissions","source_class":"vendor-documentation","access_status":"accessed","verified_scope":"action permission surface and governance constraints","verification_level":"primary-vendor-checked","bytes":437844,"sha256":"79e628cca85dc76ab32da132486f28b1f03e957c68d645b76fa05e5f3cb9ce92"}
+  ],
+  "access_limitations": [
+    "SEMI GEM300 normative text was not accessed; existing public overview remains the only SEMI vocabulary source.",
+    "Palantir documentation describes a vendor implementation and is not evidence of FAB suitability or vendor-neutral interoperability.",
+    "No live equipment, MES, AMHS or manufacturing data was accessed."
+  ]
+}

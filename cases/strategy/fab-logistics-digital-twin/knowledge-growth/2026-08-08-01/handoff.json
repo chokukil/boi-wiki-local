@@ -1,0 +1,14 @@
+{
+  "artifact_kind": "handoff",
+  "case_id": "fab-logistics-digital-twin",
+  "run_id": "fab-dt-knowledge-growth-2026-08-08-01",
+  "phase": "human-review",
+  "input_snapshot": {"id":"fab-dt-community-baseline-20260806","query_sha256":"0ef470244e89b6cc929d869542faaa13b4168534a131295ee024daa77ead490e"},
+  "output_status_sha256": "8d4420ea1501d1257150c4c4a790505fe9a5f1120ecc764b47b28903b1b38d21",
+  "supported_claims": ["FAB-D01","FAB-D02","FAB-D03","FAB-D04"],
+  "retained_unknown": ["FAB-D05","SEMI normative mapping","live FAB data and domain validation"],
+  "retained_contradictions": ["integrated vendor ontology convenience versus vendor-neutral identity and interoperability"],
+  "next_phase_condition": "human accepts named delta IDs against unchanged source and candidate hashes",
+  "promotion_boundary": "only reviewed concept mappings and explicit validation assumptions may enter a sanitized preview; no normative text, internal data, operational action or vendor selection",
+  "remote_effect": "none"
+}

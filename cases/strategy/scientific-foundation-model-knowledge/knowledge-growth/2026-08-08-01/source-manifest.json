@@ -1,0 +1,28 @@
+{
+  "artifact_kind": "source-manifest",
+  "case_id": "scientific-foundation-model-knowledge",
+  "run_id": "scientific-fm-knowledge-growth-2026-08-08-01",
+  "visibility": "public-case",
+  "baseline": {
+    "snapshot_id": "scientific-fm-community-baseline-20260806",
+    "fixed_query_sha256": "9de99466e4c5872585ab6934cab4931d65951a27779235cc6af58c32ba4af548",
+    "source_manifest_sha256": "4e4252641c8c1b9a379e48115ed0da9ff54f0a0e4543475ce63d9d3c9e2e61e3",
+    "evidence_sha256": "4ff4325e3c1131caf49139fc140234902b2d66530a884dff2fbfc5bf5970a760",
+    "query_answer_sha256": "b66901942407663686649a185adce920a40fda22eb0f53b42edcbafa9125a207"
+  },
+  "checked_at": "2026-08-08T17:25:00+09:00",
+  "sources": [
+    {"source_ref":"SFM-U01","url":"https://arxiv.org/abs/2507.02436","source_class":"author-preprint","arxiv_id":"2507.02436","version":"observed 2026-08-08","access_status":"accessed","verified_scope":"abstract page and version metadata; full text not reviewed in this run","verification_level":"abstract-checked","bytes":42220,"sha256":"61f55d0ffa1e095b89334538d9cb2bee97462981048167bd90fecca76266e170"},
+    {"source_ref":"SFM-U02","url":"https://www.nature.com/articles/s41524-025-01925-7","source_class":"peer-reviewed-publication-page","published_at":"2025-12-29","version_of_record":"2026-01-27","access_status":"native-render-accessed","verified_scope":"publication metadata, abstract, stated dataset scope and limitations; raw article bytes unavailable through direct fetch","verification_level":"publisher-page-checked","sha256":null,"hash_status":"article bytes not captured; dependent claims also bind to SFM-U01"},
+    {"source_ref":"SFM-U03","url":"https://arxiv.org/abs/2506.17345","source_class":"author-preprint","arxiv_id":"2506.17345","version":"observed 2026-08-08","access_status":"accessed","verified_scope":"abstract page and version metadata; full text not reviewed in this run","verification_level":"abstract-checked","bytes":45358,"sha256":"0d4e36ad5ed0d09c5122c7617716ef57607f1a1558c480b9abb7e504a58c67d6"},
+    {"source_ref":"SFM-U04","url":"https://www.nature.com/articles/s41467-026-70467-3","source_class":"peer-reviewed-publication-page","published_at":"2026","access_status":"native-render-accessed","verified_scope":"publication metadata and rendered article summary; raw article bytes unavailable through direct fetch","verification_level":"publisher-page-checked","sha256":null,"hash_status":"article bytes not captured; dependent claims also bind to SFM-U03"},
+    {"source_ref":"SFM-U05","url":"https://arxiv.org/abs/2504.21286","source_class":"author-preprint","arxiv_id":"2504.21286","version":"observed 2026-08-08","access_status":"accessed","verified_scope":"abstract page and version metadata; full text not reviewed in this run","verification_level":"abstract-checked","bytes":47671,"sha256":"9ca5503bb4a1245f3b5623bd28df5dfeb89df274260c37146716577b6545789d"},
+    {"source_ref":"SFM-U06","url":"https://www.nature.com/articles/s43588-026-01009-6","source_class":"peer-reviewed-publication-page","published_at":"2026","access_status":"native-render-accessed","verified_scope":"publication metadata and rendered article summary; raw article bytes unavailable through direct fetch","verification_level":"publisher-page-checked","sha256":null,"hash_status":"article bytes not captured; dependent claims also bind to SFM-U05"},
+    {"source_ref":"SFM-U07","url":"https://zenodo.org/records/19536370","source_class":"research-artifact-repository","published_at":"2026-04-07","access_status":"accessed","verified_scope":"record metadata, listed dataset, demos, source data and fine-tuning workflow artifacts; large archives not downloaded or executed","verification_level":"artifact-catalog-checked","bytes":146472,"sha256":"2308e39408139e3de007027e36293d5d466196ad83be439d3b7ff6e10b2be98e"}
+  ],
+  "access_limitations": [
+    "Preprint full texts and supplementary files were not reviewed in this run.",
+    "Publisher article bytes were not captured by the direct fetch path; publication claims are cross-bound to the author preprint and publisher metadata.",
+    "NEP89 archives were not downloaded or executed, so artifact availability is not reproduction evidence."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "artifact_kind": "review-decision",
+  "case_id": "fab-logistics-digital-twin",
+  "run_id": "fab-dt-knowledge-growth-2026-08-08-01",
+  "reviewer": "source-first-pass",
+  "decision": "partial",
+  "candidate_ready_for_human_review": ["FAB-D01","FAB-D02","FAB-D03","FAB-D04"],
+  "retained_unknown": ["FAB-D05"],
+  "findings": [
+    "AAS catalog와 OPC UA mapping은 공개 표준 근거이나 GEM300 normative mapping의 증거는 아니다.",
+    "Palantir Object·Link·Action과 action log는 vendor implementation evidence다.",
+    "read-only pilot 순서는 공개 근거에서 도출한 안전 가설이며 실제 FAB 성능 evidence가 아니다.",
+    "유료 SEMI 전문, 내부 data와 실제 equipment conformance는 확인하지 않았다."
+  ],
+  "contradictions": [
+    {"ref":"FAB-D03","status":"retained","reason":"integrated vendor operational model convenience versus vendor-neutral identity and interoperability"}
+  ],
+  "human_review_required": true,
+  "current_snapshot_changed": false,
+  "self_approval": false,
+  "remote_effect": "none"
+}

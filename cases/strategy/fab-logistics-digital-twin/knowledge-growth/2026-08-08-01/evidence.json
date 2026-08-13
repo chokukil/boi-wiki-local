@@ -1,0 +1,12 @@
+{
+  "artifact_kind": "evidence",
+  "case_id": "fab-logistics-digital-twin",
+  "run_id": "fab-dt-knowledge-growth-2026-08-08-01",
+  "claims": [
+    {"claim_ref":"FAB-D01","claim":"AAS Release 26-01은 metamodel만이 아니라 API, data specification, security와 package format을 분리하므로 Digital Twin 지식에는 각 part의 exact revision과 compatibility를 함께 고정해야 한다.","supporting_evidence":["FAB-U01"],"counterevidence":["AAS 채택 자체가 semiconductor material handling semantics 또는 현장 적합성을 보장하지 않는다."],"verification_level":"primary-checked","unknown":["GEM300 entity와 AAS submodel의 normative mapping","Release part별 구현 호환성"]},
+    {"claim_ref":"FAB-D02","claim":"OPC UA for AAS는 asset, submodel, relationship, event와 operation을 OPC UA information model에 매핑하므로 vendor-neutral transport 후보를 구체화한다.","supporting_evidence":["FAB-U02"],"counterevidence":["표준 mapping의 존재는 실제 장비 conformance, latency 또는 semantic completeness를 증명하지 않는다."],"verification_level":"primary-checked","unknown":["실제 장비 OPC UA/AAS profile 지원","Carrier·Control Job event round-trip loss"]},
+    {"claim_ref":"FAB-D03","claim":"Object·Link·Action ontology는 분석과 운영 workflow를 연결할 수 있지만 표준 자산 identity와 authoritative equipment state 위에 놓이는 application semantic layer로 취급해야 한다.","supporting_evidence":["FAB-U03","FAB-U04","FAB-U05"],"counterevidence":["해당 구조와 action governance는 Palantir 제품 문서이며 다른 runtime으로의 이식성이 확인되지 않았다."],"verification_level":"primary-vendor-checked","unknown":["vendor-neutral action contract","object identity reconciliation","cross-platform rollback"]},
+    {"claim_ref":"FAB-D04","claim":"첫 pilot은 read-only event mirror와 replay에서 시작해 simulation과 decision proposal을 거친 뒤, 권한·로그·복구가 검증된 action으로 단계화해야 한다.","supporting_evidence":["FAB-U01","FAB-U02","FAB-U04","FAB-U05"],"counterevidence":["공개 자료에는 FAB-specific pilot 결과나 단계별 효과가 없다."],"verification_level":"inferred-from-primary-sources","unknown":["event clock alignment","state freshness SLO","approval latency","safe rollback"]},
+    {"claim_ref":"FAB-D05","claim":"공개 자료만으로 SK하이닉스 FAB 물류의 canonical object map, bottleneck, baseline KPI와 효과를 판단할 수 없다.","supporting_evidence":[],"counterevidence":[],"verification_level":"unknown-by-scope","unknown":["실제 Carrier·Substrate·Control Job identifiers","MES·AMHS·equipment source of truth","data quality","business KPI"]}
+  ]
+}

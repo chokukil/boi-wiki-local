@@ -1,0 +1,18 @@
+{
+  "artifact_kind": "claim-delta",
+  "case_id": "scientific-foundation-model-knowledge",
+  "run_id": "scientific-fm-knowledge-growth-2026-08-08-01",
+  "baseline_snapshot_id": "scientific-fm-community-baseline-20260806",
+  "candidate_snapshot_id": "scientific-fm-community-candidate-20260808",
+  "current_snapshot_changed": false,
+  "deltas": [
+    {"delta_id":"SFM-D01","delta_type":"strengthened","previous":"task별 empirical prediction과 explicit physics consistency를 분리한다.","candidate":"각 claim에 physics가 representation·objective·module·data·evaluation 중 어디에 들어가는지 명시한다.","impact":"physics-informed라는 label만으로 법칙 준수를 승인하지 않는다.","sources":["SFM-U01","SFM-U03","SFM-U05"]},
+    {"delta_id":"SFM-D02","delta_type":"new","previous":"명시적 법칙 준수의 구현 위치가 구체화되지 않았다.","candidate":"CLOUD-DEBYE처럼 differentiable downstream module에서 강제한 consistency를 model-wide 보장과 분리한다.","impact":"법칙, property와 regime별 검증 단위를 만들 수 있다.","sources":["SFM-U03","SFM-U04"]},
+    {"delta_id":"SFM-D03","delta_type":"revised","previous":"OOD·generalization claim을 task 범위 안에서 검토한다.","candidate":"geometry, basis set, material family, loading history와 manufacturability 경계를 claim에 함께 저장한다.","impact":"zero-shot 또는 universal 표현을 scope 밖으로 확대하지 않는다.","sources":["SFM-U01","SFM-U02"]},
+    {"delta_id":"SFM-D04","delta_type":"strengthened","previous":"독립 재현과 code·data 공개 여부를 분리한다.","candidate":"공개 dataset·demo·fine-tuning artifact는 reproducibility readiness로 기록하되 reproduction success와 구분한다.","impact":"artifact availability를 근거 상향 신호로 쓰되 검증 완료로 오인하지 않는다.","sources":["SFM-U05","SFM-U06","SFM-U07"]},
+    {"delta_id":"SFM-D05","delta_type":"unknown","previous":"semiconductor physics·chemistry 적용성은 unknown이다.","candidate":"새 사례가 원칙을 강화했지만 대상 방정식·boundary condition·오차·baseline이 없어 적용성은 계속 unknown이다.","impact":"관련성이 높다는 이유만으로 도메인 채택 결론을 만들지 않는다.","sources":[]}
+  ],
+  "counts": {"new":1,"strengthened":2,"revised":1,"contradicted":0,"stale":0,"retirement-candidate":0,"unknown":1},
+  "approval_effect": "none",
+  "requires_human_review": true
+}

@@ -243,6 +243,366 @@ def apply_ingest(root: Path, employee_id: str, case_id: str, evidence_id: str, c
     }
 
 
+def curate_knowledge(
+    root: Path,
+    employee_id: str,
+    *,
+    case_id: str,
+    title: str,
+    claim: str,
+    source_path: Path,
+    source_sha256: str,
+    evidence_sha256: str,
+    claim_status: str,
+    current_path: Path | None,
+    material_change: bool,
+    conflict: bool,
+    confidence: str,
+    inference_support: str,
+    contains_sensitive: bool,
+    sharing_scope_change: bool,
+    apply_local: bool,
+) -> dict[str, object]:
+    """Preview or apply Local-only curation without changing Current or Remote."""
+    case_id = require_case_id(case_id)
+    if claim_status not in {"observed", "inferred"}:
+        raise ValueError("curation claim_status must be observed or inferred")
+    if not title.strip() or not claim.strip():
+        raise ValueError("curation title and claim are required")
+    if confidence not in {"low", "medium", "high"}:
+        raise ValueError("curation confidence must be low, medium, or high")
+    if inference_support not in {"supported", "unsupported"}:
+        raise ValueError("curation inference_support must be supported or unsupported")
+
+    base = private_root(root, employee_id).resolve()
+
+    def local_file(path: Path, label: str) -> Path:
+        resolved = path.resolve()
+        try:
+            resolved.relative_to(base)
+        except ValueError as exc:
+            raise ValueError(f"{label} must stay inside the Local Private profile") from exc
+        if not resolved.is_file():
+            raise FileNotFoundError(f"{label} is missing: {resolved}")
+        return resolved
+
+    def local_document(path: Path, label: str) -> Path:
+        resolved = local_file(path, label)
+        if resolved.suffix.lower() != ".md":
+            raise FileNotFoundError(f"{label} is not Markdown: {resolved}")
+        return resolved
+
+    def required_sha256(value: str, label: str) -> str:
+        normalized = value.lower()
+        if not re.fullmatch(r"[0-9a-f]{64}", normalized):
+            raise ValueError(f"{label} must be a SHA256 digest")
+        return normalized
+
+    source = local_document(source_path, "curation source")
+    declared_source_sha = required_sha256(source_sha256, "declared source SHA256")
+    actual_source_sha = sha256_file(source)
+    if actual_source_sha != declared_source_sha:
+        raise ValueError("declared source SHA256 does not match curation source bytes")
+    source_meta = parse_frontmatter(source.read_text(encoding="utf-8", errors="replace"))
+    if source_meta.get("case_id", "") != case_id:
+        raise ValueError("curation source case_id does not match the requested case")
+
+    declared_evidence_sha = required_sha256(evidence_sha256, "declared evidence SHA256")
+    source_evidence_sha = required_sha256(source_meta.get("evidence_sha256", ""), "source evidence SHA256")
+    if source_evidence_sha != declared_evidence_sha:
+        raise ValueError("declared evidence SHA256 does not match the source provenance")
+    source_raw_path = source_meta.get("raw_path", "")
+    if not source_raw_path:
+        raise ValueError("curation source is missing raw_path provenance")
+    raw_path = Path(source_raw_path)
+    if not raw_path.is_absolute():
+        raw_path = root / raw_path
+    raw = local_file(raw_path, "curation source evidence")
+    if sha256_file(raw) != declared_evidence_sha:
+        raise ValueError("declared evidence SHA256 does not match curation evidence bytes")
+    if not source_meta.get("evidence_id", ""):
+        raise ValueError("curation source is missing evidence_id provenance")
+
+    def structured_ref_matches(entry: dict[str, str]) -> bool:
+        declared_ref = entry.get("ref", "")
+        if not declared_ref or entry.get("sha256", "").lower() != declared_evidence_sha:
+            return False
+        declared_path = Path(declared_ref)
+        if not declared_path.is_absolute():
+            declared_path = root / declared_path
+        return (
+            declared_path.resolve() == raw
+            and entry.get("evidence_id", "") == source_meta["evidence_id"]
+            and entry.get("type", "") == "local-file"
+        )
+
+    structured_provenance = [
+        *parse_frontmatter_list(source.read_text(encoding="utf-8", errors="replace"), "source_refs"),
+        *parse_frontmatter_list(source.read_text(encoding="utf-8", errors="replace"), "generated_from"),
+    ]
+    if not any(structured_ref_matches(entry) for entry in structured_provenance):
+        raise ValueError("curation source is missing structured provenance binding for the declared evidence")
+
+    current: Path | None = None
+    current_meta: dict[str, str] = {}
+    if current_path is not None:
+        current = local_document(current_path, "Current baseline")
+        current_meta = parse_frontmatter(current.read_text(encoding="utf-8", errors="replace"))
+        if current_meta.get("case_id", "") != case_id:
+            raise ValueError("Current baseline case_id does not match the requested case")
+
+    source_ref = {
+        "type": "local-document",
+        "ref": relative_to_root(root, source),
+        "sha256": actual_source_sha,
+    }
+    evidence_ref = {
+        "type": "local-file",
+        "ref": relative_to_root(root, raw),
+        "sha256": declared_evidence_sha,
+        "evidence_id": source_meta["evidence_id"],
+    }
+    current_ref = (
+        {
+            "type": "local-document",
+            "ref": relative_to_root(root, current),
+            "sha256": sha256_file(current),
+        }
+        if current is not None
+        else None
+    )
+    reasons = []
+    if material_change:
+        reasons.append("material-change")
+    if conflict:
+        reasons.append("conflict")
+    if confidence == "low":
+        reasons.append("low-confidence")
+    if inference_support == "unsupported":
+        reasons.append("unsupported-inference")
+    if contains_sensitive:
+        reasons.append("sensitive-content")
+    if sharing_scope_change:
+        reasons.append("sharing-scope-change")
+    review_required = bool(reasons)
+    effective_claim_status = "conflicted" if conflict else claim_status
+    target_dir = base / "notes" / ("review" if review_required else "knowledge")
+    prefix = "review-" if review_required else ""
+    target = target_dir / f"{prefix}{slugify(title)}.md"
+    curation_status = "review-required" if review_required else "auto-managed"
+
+    def matching_existing_curation(path: Path) -> bool:
+        text = path.read_text(encoding="utf-8", errors="replace")
+        meta = parse_frontmatter(text)
+        if meta.get("case_id", "") != case_id or meta.get("curation_status", "") not in {
+            "auto-managed",
+            "review-required",
+        }:
+            return False
+        refs = [
+            *parse_frontmatter_list(text, "source_refs"),
+            *parse_frontmatter_list(text, "generated_from"),
+        ]
+        source_bound = any(
+            entry.get("type", "") == source_ref["type"]
+            and entry.get("ref", "") == source_ref["ref"]
+            and entry.get("sha256", "").lower() == source_ref["sha256"]
+            for entry in refs
+        )
+        evidence_bound = any(
+            entry.get("type", "") == evidence_ref["type"]
+            and entry.get("ref", "") == evidence_ref["ref"]
+            and entry.get("sha256", "").lower() == evidence_ref["sha256"]
+            and entry.get("evidence_id", "") == evidence_ref["evidence_id"]
+            for entry in refs
+        )
+        return source_bound and evidence_bound
+
+    active_matches = [
+        path
+        for directory in (base / "notes" / "knowledge", base / "notes" / "review")
+        for path in (sorted(directory.glob("*.md")) if directory.is_dir() else [])
+        if matching_existing_curation(path)
+    ]
+    same_state = [
+        path
+        for path in active_matches
+        if parse_frontmatter(path.read_text(encoding="utf-8", errors="replace")).get("curation_status")
+        == curation_status
+    ]
+    stale_active = [path for path in active_matches if path not in same_state]
+    if len(same_state) == 1 and not stale_active:
+        existing = same_state[0]
+        return {
+            "ok": True,
+            "status": "no-change",
+            "proposed_status": "no-change",
+            "path": relative_to_root(root, existing),
+            "review_created": False,
+            "current_path": current_ref["ref"] if current_ref else "",
+            "current_sha256": current_ref["sha256"] if current_ref else "",
+            "source_sha256": actual_source_sha,
+            "evidence_sha256": declared_evidence_sha,
+            "review_reasons": reasons,
+            "preview": not apply_local,
+            "local_only": True,
+            "remote_submitted": False,
+        }
+    if target.exists() and (not target.is_file() or not matching_existing_curation(target)):
+        raise ValueError(
+            f"curation target belongs to a different curation identity: {relative_to_root(root, target)}"
+        )
+    fm = local_frontmatter(
+        employee_id=employee_id,
+        doc_type="boi/local-knowledge-note",
+        title=title.strip(),
+        description="Local knowledge curation result with an optional question-scoped Current boundary.",
+        boi_id=f"boi:private:{employee_id}:curation:{case_id.lower()}:{slugify(title)}",
+        tags=["second-brain", "knowledge-curation", case_id.lower(), curation_status],
+        source_refs=[source_ref, evidence_ref, *([current_ref] if review_required and current_ref else [])],
+        generated_from=[source_ref, evidence_ref],
+        artifact_visibility="working" if review_required else "memory",
+        lifecycle_state="working" if review_required else "memory",
+        memory_candidate=not review_required,
+        review_after_days=7 if review_required else 30,
+        contains_sensitive="true" if contains_sensitive else "false",
+        extra={
+            "case_id": case_id,
+            "knowledge_role": "comparison",
+            "claim_status": effective_claim_status,
+            "curation_status": curation_status,
+            **(
+                {
+                    "current_baseline_path": current_ref["ref"],
+                    "current_baseline_sha256": current_ref["sha256"],
+                }
+                if current_ref
+                else {}
+            ),
+            "review_reason": "|".join(reasons),
+            "confidence": confidence,
+            "inference_support": inference_support,
+            "sharing_scope_change": sharing_scope_change,
+        },
+    )
+    boundary = (
+        "This is a Review candidate. A human decision is required before any Current baseline changes."
+        if review_required and current_ref
+        else "This is a Review candidate. It is not an approved Current, and no Current baseline is invented."
+        if review_required
+        else "This conflict-free Local knowledge is immediately available to Local search; it does not change Current."
+        if current_ref
+        else "This conflict-free Local synthesis is immediately available to Local search; it is not an approved Current."
+    )
+    current_link = (
+        f"- Current baseline: [{current_meta.get('title', current.stem)}]"
+        f"({Path(os.path.relpath(current, target_dir)).as_posix()})\n"
+        if current is not None
+        else ""
+    )
+    body = (
+        f"\n# {title.strip()}\n\n"
+        f"## Claim\n\n{claim.strip()}\n\n"
+        "## Governance boundary\n\n"
+        f"{boundary}\n\n"
+        f"{current_link}"
+        f"- Source: [{source_meta.get('title', source.stem)}]({Path(os.path.relpath(source, target_dir)).as_posix()})\n"
+    )
+    result = {
+        "ok": True,
+        "status": curation_status if apply_local else "preview",
+        "proposed_status": curation_status,
+        "path": relative_to_root(root, target),
+        "review_created": review_required if apply_local else False,
+        "current_path": current_ref["ref"] if current_ref else "",
+        "current_sha256": current_ref["sha256"] if current_ref else "",
+        "source_sha256": actual_source_sha,
+        "evidence_sha256": declared_evidence_sha,
+        "review_reasons": reasons,
+        "preview": not apply_local,
+        "local_only": True,
+        "remote_submitted": False,
+    }
+    if not apply_local:
+        return result
+    archived: list[str] = []
+    transition_time = now_kst().strftime("%Y%m%d-%H%M%S-%f")
+    duplicates = same_state[1:] if same_state else []
+    archive_moves = []
+    for stale in [*stale_active, *duplicates]:
+        archive = (
+            base
+            / "_archive"
+            / "knowledge-curation"
+            / case_id.lower()
+            / transition_time
+            / stale.parent.name
+            / stale.name
+        )
+        if archive.exists():
+            raise FileExistsError(archive)
+        archive_moves.append((stale, archive))
+    archive_plan = []
+    for stale, archive in archive_moves:
+        stale_text = stale.read_text(encoding="utf-8")
+        frontmatter_match = re.match(r"\A(---\r?\n.*?\r?\n---\r?\n)(.*)\Z", stale_text, re.DOTALL)
+        if frontmatter_match is None:
+            raise ValueError(f"active curation is missing valid frontmatter: {relative_to_root(root, stale)}")
+
+        def rebase_link(match: re.Match[str]) -> str:
+            raw_target = match.group(2)
+            wrapped = raw_target.startswith("<") and raw_target.endswith(">")
+            link_target = raw_target[1:-1] if wrapped else raw_target
+            path_part, separator, fragment = link_target.partition("#")
+            if not path_part or Path(path_part).is_absolute() or re.match(r"^[a-z][a-z0-9+.-]*:", path_part, re.I):
+                return match.group(0)
+            resolved = (stale.parent / path_part).resolve()
+            rebased = Path(os.path.relpath(resolved, archive.parent)).as_posix()
+            rendered = f"{rebased}{separator}{fragment}" if separator else rebased
+            if wrapped:
+                rendered = f"<{rendered}>"
+            return f"[{match.group(1)}]({rendered})"
+
+        archived_body = re.sub(
+            r"(?<!!)\[([^\]]+)\]\(([^)]+)\)",
+            rebase_link,
+            frontmatter_match.group(2),
+        )
+        archived_text = frontmatter_match.group(1) + archived_body
+        archive_plan.append((stale, archive, stale_text, archived_text))
+    for stale, archive, stale_text, archived_text in archive_plan:
+        archive.parent.mkdir(parents=True, exist_ok=True)
+        stale.replace(archive)
+        if archived_text != stale_text:
+            atomic_write(archive, archived_text, overwrite=True)
+        index_path = stale.parent / "index.md"
+        if index_path.is_file():
+            index_text = index_path.read_text(encoding="utf-8")
+            kept = [
+                line
+                for line in index_text.splitlines()
+                if not re.search(rf"\]\({re.escape(stale.name)}(?:#[^)]*)?\)\s*$", line)
+            ]
+            updated = "\n".join(kept).rstrip() + "\n"
+            if updated != index_text.replace("\r\n", "\n"):
+                atomic_write(index_path, updated, overwrite=True)
+        archived.append(relative_to_root(root, archive))
+    if same_state:
+        target = same_state[0]
+        result["path"] = relative_to_root(root, target)
+        result["review_created"] = False
+    else:
+        atomic_write(target, fm + body)
+    append_index_link(target.parent / "index.md", title.strip(), target.name)
+    result["archived_paths"] = archived
+    append_log(
+        root,
+        f"Local knowledge curation: `{case_id}` / `{title.strip()}` / `{curation_status}`. "
+        f"Local archive transitions: {len(archived)}. Remote submission: none.",
+    )
+    return result
+
+
 def query_tokens(question: str) -> list[str]:
     return [token.lower() for token in re.findall(r"[0-9A-Za-z가-힣._-]+", question) if len(token) > 1]
 
@@ -527,6 +887,28 @@ def main() -> int:
     apply.add_argument("--evidence-id", required=True)
     apply.add_argument("--confirm-plan-hash", required=True)
 
+    curate = sub.add_parser(
+        "curate-knowledge",
+        help="administrator/reference Local-only curation; previews by default and never submits Remote changes",
+    )
+    curate.add_argument("--case-id", required=True)
+    curate.add_argument("--title", required=True)
+    curate.add_argument("--claim", required=True)
+    curate.add_argument("--claim-status", choices=["observed", "inferred"], required=True)
+    curate.add_argument("--source-path", required=True)
+    curate.add_argument("--source-sha256", required=True)
+    curate.add_argument("--evidence-sha256", required=True)
+    curate.add_argument("--current-path", default="")
+    curate.add_argument("--material-change", action="store_true")
+    curate.add_argument("--conflict", action="store_true")
+    curate.add_argument("--confidence", choices=["low", "medium", "high"], default="medium")
+    curate.add_argument("--inference-support", choices=["supported", "unsupported"], default="supported")
+    curate.add_argument("--contains-sensitive", action="store_true")
+    curate.add_argument("--sharing-scope-change", action="store_true")
+    curate_execution = curate.add_mutually_exclusive_group()
+    curate_execution.add_argument("--preview", action="store_true")
+    curate_execution.add_argument("--apply-local", action="store_true")
+
     query = sub.add_parser("query-pack")
     query.add_argument("--question", required=True)
     query.add_argument("--case-id", default="")
@@ -555,6 +937,26 @@ def main() -> int:
             payload = build_ingest_plan(root, employee_id, args.case_id, args.evidence_id)
         elif args.command == "ingest-apply":
             payload = apply_ingest(root, employee_id, args.case_id, args.evidence_id, args.confirm_plan_hash)
+        elif args.command == "curate-knowledge":
+            payload = curate_knowledge(
+                root,
+                employee_id,
+                case_id=args.case_id,
+                title=args.title,
+                claim=args.claim,
+                source_path=root / args.source_path,
+                source_sha256=args.source_sha256,
+                evidence_sha256=args.evidence_sha256,
+                claim_status=args.claim_status,
+                current_path=root / args.current_path if args.current_path else None,
+                material_change=args.material_change,
+                conflict=args.conflict,
+                confidence=args.confidence,
+                inference_support=args.inference_support,
+                contains_sensitive=args.contains_sensitive,
+                sharing_scope_change=args.sharing_scope_change,
+                apply_local=args.apply_local,
+            )
         elif args.command == "query-pack":
             payload = build_query_pack(root, employee_id, args.question, args.case_id, args.limit, args.remote_ref)
         elif args.command == "query-save":

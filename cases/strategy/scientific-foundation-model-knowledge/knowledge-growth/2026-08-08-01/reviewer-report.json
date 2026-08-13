@@ -1,0 +1,23 @@
+{
+  "artifact_kind": "review-decision",
+  "case_id": "scientific-foundation-model-knowledge",
+  "run_id": "scientific-fm-knowledge-growth-2026-08-08-01",
+  "reviewer": "source-first-pass",
+  "decision": "partial",
+  "candidate_ready_for_human_review": ["SFM-D01","SFM-D02","SFM-D03","SFM-D04"],
+  "retained_unknown": ["SFM-D05"],
+  "findings": [
+    "세 모델의 task와 물리 제약 위치가 달라 foundation model이라는 이름만으로 통합 결론을 만들 수 없다.",
+    "publisher metadata는 peer-reviewed publication 상태를 보강하지만 raw article bytes와 full-text review를 대신하지 않는다.",
+    "NEP89 artifact catalog는 공개 availability 증거이며 archive 실행이나 독립 reproduction 증거가 아니다.",
+    "semiconductor 적용성은 source scope 밖이다."
+  ],
+  "contradictions": [
+    {"ref":"SFM-D03","status":"retained","reason":"broad zero-shot or universal framing versus bounded geometry, material and loading scope"},
+    {"ref":"SFM-D04","status":"retained","reason":"artifact availability improves inspectability but does not prove independent reproducibility"}
+  ],
+  "human_review_required": true,
+  "current_snapshot_changed": false,
+  "self_approval": false,
+  "remote_effect": "none"
+}
