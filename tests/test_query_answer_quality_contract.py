@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -18,12 +19,23 @@ import query_quality
 from local_wiki import build_query_pack, query_facets, query_intent
 
 
+def powershell_executable() -> str:
+    """Resolve powershell.exe on PATH, else the WSL-mounted Windows copy."""
+    found = shutil.which("powershell.exe") or shutil.which("powershell")
+    if found:
+        return found
+    wsl_fallback = Path("/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe")
+    if wsl_fallback.exists():
+        return str(wsl_fallback)
+    return "powershell.exe"
+
+
 class QueryAnswerQualityContractTests(unittest.TestCase):
     def test_check_wrapper_explicit_template_environment_overrides_private_dotenv(self) -> None:
         environment = {**os.environ, "BOI_LOCAL_EMPLOYEE_ID": "0000000"}
         result = subprocess.run(
             [
-                "powershell.exe",
+                powershell_executable(),
                 "-NoLogo",
                 "-NoProfile",
                 "-ExecutionPolicy",

@@ -1406,18 +1406,32 @@ def create_answer_receipt(root: Path, employee_id: str, args: argparse.Namespace
         source = evidence_by_id.get(evidence_id)
         if source is None:
             raise ValueError(f"citation display map does not resolve to source evidence: {evidence_id}")
+        binding = source.get("original_identity_binding") or {}
+        if str(source.get("evidence_authority", "")) != "local-evidence":
+            missing = [
+                key
+                for key in ("evidence_id", "evidence_sha256", "expected_origin_ref")
+                if not str(binding.get(key, "")).strip()
+            ]
+            if missing or not source.get("origin_binding_valid"):
+                detail = (
+                    ", ".join(missing)
+                    if missing
+                    else "origin does not match the declared original identity"
+                )
+                raise ValueError(
+                    f"answer receipt requires a valid original identity binding for {evidence_id} "
+                    f"({detail}); provide --original-binding EVIDENCE_ID|SHA256|EXPECTED_ORIGIN_REF"
+                )
         evidence.append(
             {
                 "evidence_id": evidence_id,
                 "path": str(source.get("path", "")),
                 "sha256": str(source.get("sha256", "")),
                 "origin_ref": str(source.get("origin_ref", "")),
-                "original_identity_binding": dict(source.get("original_identity_binding", {})),
+                "original_identity_binding": dict(binding),
             }
         )
-        declared_binding = source.get("original_identity_binding") or {}
-        if declared_binding and not source.get("origin_binding_valid"):
-            raise ValueError(f"source origin does not match declared original identity: {evidence_id}")
 
     normalized_bindings: list[dict[str, object]] = []
     seen_indices: set[int] = set()
