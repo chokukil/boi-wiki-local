@@ -179,6 +179,28 @@ For administrator or benchmark validation, produce the sibling local generation 
 5. On the ordinary Answer Surface, cite actual source evidence with stable `[1]` through `[5]` display numbers and readable titles. Hide absolute paths and full SHA256 values there. Show exact relative paths and digests only in a requested Evidence Receipt, Review, audit, or promotion preview. Never cite an AI synthesis page as though it were the original evidence.
 6. Before a maintainer claims that a packaged example is production quality, require the repository benchmark and assertion evidence. This is a release gate, not an employee action.
 
+## Pitfalls (reproduced and verified)
+
+### Search strictness — why a multi-word query can return zero
+
+Reproduced against `scripts/local_wiki.py query-pack` on 2026-08-18 (fixture profile `0000000`, 139 documents):
+
+- Inclusion is **OR, not AND**: a document is kept when **at least one** query token matches. `품질 lint` returned 12 documents, and `품질 nonexistentterm` returned the same 12 — one present token is sufficient for inclusion.
+- A zero-result query happens only when **every** query token fails under exact-match semantics:
+  - English tokens are word-boundary exact matches with no stemming: querying `lints` returned 0 documents even though the corpus contains 22 occurrences of `lint`. Query the base form.
+  - Single-character tokens and non-alphabetic tokens are dropped by the tokenizer before matching.
+  - Scope filtering happens before matching: `ordinary` scope excludes `notes/review` pages and support artifacts, and a wrong `--case-id` silently drops every document with a different `case_id`.
+  - CJK tokens match by substring, so spacing variants usually work (`품질 시스템` matched spaced and unspaced text alike).
+- When a multi-word query returns zero or only weakly ranked documents, fall back in this order: (1) split-word search — re-run one high-value keyword per query; (2) field-level search — search `title`, `boi_id`, `case_id`, or a known exact frontmatter value; (3) adjust scope — `--query-scope support` only when support artifacts are the target, and correct `--case-id` for a curated case.
+- Never fill a zero-result search from model memory. State the exact condition ("no local document contains any of: …") and propose an intake or review step instead.
+
+### Empty identity binding — fail-closed, all three elements required
+
+- Every `original_identity_binding` entry in a receipt must declare all three elements: `evidence_id`, `evidence_sha256` (64 lowercase hex characters), and a canonical public `expected_origin_ref` (exact URL or accepted stable scholarly identifier).
+- An empty `{}` binding, a partial binding (missing SHA256 or origin), or a mismatched SHA256 raises `ValueError` in `normalize_original_identity_bindings` and fails the Answer Surface evidence axis. The receipt writer rejects the receipt instead of writing it.
+- CLI form: `--original-binding EVIDENCE_ID|SHA256|EXPECTED_ORIGIN_REF`.
+- Copy each value mechanically from the source-evidence row or the verified original file; never type digests from memory. Regression coverage: `tests/test_identity_binding_fail_closed.py`.
+
 ## Preserve the knowledge model
 
 - Use OKF `0.1` with local BoI Profile `0.1-local` for Local Private files.
