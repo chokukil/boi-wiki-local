@@ -1,7 +1,7 @@
 # Global Insight Meta Harness — requirement-by-requirement acceptance audit
 
-Audit date: 2026-08-06
-Branch: `codex/boi-wiki-local-rc-candidate`
+Audit date: 2026-08-08
+Branch: `codex/ai-radar-golden-journey`
 
 판정 기준:
 
@@ -54,8 +54,11 @@ Branch: `codex/boi-wiki-local-rc-candidate`
 | T1이 new·strengthened·revised·contradicted·stale·retirement-candidate·unknown 재현 | `expected/t1-change-set.md`; validator와 test | proven |
 | FAB Logistics Digital Twin이 GEM300·물류 twin·Object-Link-Action을 연결하고 유료 전문을 추정하지 않음 | FAB Case method, public fixture 5개, output contract | proven |
 | Scientific Foundation Model이 law·assumption·prediction·reproduction·counterexample을 분리 | Scientific Case method, public fixture 5개, output contract | proven |
+| AI Radar가 승인 revision 1을 보존하고 새 공개 근거를 revision 2 review 후보와 동일 Query diff로 연결 | `research/ai-radar/runs/2026-08-08-01/` | proven |
+| FAB Case가 baseline을 AAS·OPC UA·ontology action delta와 단계형 pilot 가설로 성장 | `cases/strategy/fab-logistics-digital-twin/knowledge-growth/2026-08-08-01/` | contract-proven |
+| Scientific Case가 baseline을 물리 제약 위치·scope·artifact/reproduction delta로 성장 | `cases/strategy/scientific-foundation-model-knowledge/knowledge-growth/2026-08-08-01/` | contract-proven |
 | 세 Case 모두 Community이며 generic Skill을 조기 생성하지 않음 | catalog, manifests, tests, `.agents/.claude` inventory | proven |
-| 3 Cases의 stable operation·baseline improvement·cross-Case regression 후에만 Skill 제안 | promotion rule과 frozen eval protocol은 존재; actual runs 없음 | pending-external |
+| 3 Cases의 stable operation·baseline improvement·cross-Case regression 후에만 Skill 제안 | knowledge-growth 후보는 존재하지만 frozen cross-runtime benchmark와 사람 Acceptance는 없음 | pending-external |
 
 ## 오류·resume와 검증 계층
 

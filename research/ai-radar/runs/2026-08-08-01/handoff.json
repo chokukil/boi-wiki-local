@@ -1,0 +1,16 @@
+{
+  "artifact_kind": "handoff",
+  "case_id": "ai-radar",
+  "run_id": "ai-radar-public-2026-08-08-01",
+  "phase": "human-review",
+  "input_snapshot": {"id":"ai-radar-r1-20260808","candidate_sha256":"2acd160023838e7128ba44dc0581200f93eb4b56cce97dcf5ad4935ca241e54e"},
+  "output_status_sha256": "49c2f6e74e5ac6aa05a1f629ae8a1dee5da6f2d193001952d31f5ec79c4805b6",
+  "supported_claims": ["RUN01-D01","RUN01-D02","RUN01-D03","RUN01-D04","RUN01-D05","RUN01-D06","RUN01-D07","RUN01-D08"],
+  "retained_unknown": ["RUN01-D09","organization-specific applicability, cost and ROI"],
+  "retained_contradictions": ["remote skill update convenience versus supply-chain burden","Halos full-stack framing versus early-access and certification-preparation status"],
+  "next_phase_condition": "human accepts all or named delta IDs against unchanged artifact hashes",
+  "on_accept": "archive revision 1 and create only the accepted revision 2 knowledge snapshot",
+  "on_reject_or_partial": "keep revision 1 current and preserve unresolved items in the review queue",
+  "promotion_boundary": "no raw source, evidence, private review record or candidate may be remotely submitted; approved atomic knowledge requires a separate exact sanitized preview",
+  "remote_effect": "none"
+}

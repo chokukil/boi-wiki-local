@@ -1,0 +1,25 @@
+{
+  "artifact_kind": "promotion-eligibility",
+  "evaluated_at": "2026-08-08T17:40:00+09:00",
+  "cases": [
+    {
+      "case_id": "fab-logistics-digital-twin",
+      "status": "blocked-before-preview",
+      "candidate_snapshot": "fab-dt-community-candidate-20260808",
+      "claim_delta_sha256": "f18e7e5f1571ffbbe311aba19c5189614e7dd33b2b1614f683e6310b770211c8",
+      "blockers": ["human-review-required", "domain-review-missing", "no-approved-current-revision", "exact-sanitized-candidate-not-created"],
+      "forbidden_content": ["SEMI normative text", "internal FAB data", "operational action", "vendor selection"],
+      "remote_submit_allowed": false
+    },
+    {
+      "case_id": "scientific-foundation-model-knowledge",
+      "status": "blocked-before-preview",
+      "candidate_snapshot": "scientific-fm-community-candidate-20260808",
+      "claim_delta_sha256": "6235ddfe9d6116f669e751bb67a9a26b51b8f9458ea0586a8a72a31f6c8d1745",
+      "blockers": ["human-review-required", "scientific-review-missing", "no-approved-current-revision", "exact-sanitized-candidate-not-created"],
+      "forbidden_content": ["paper full text copies", "dataset archives", "unverified reproduction claim", "application recommendation"],
+      "remote_submit_allowed": false
+    }
+  ],
+  "remote_effect": "none"
+}

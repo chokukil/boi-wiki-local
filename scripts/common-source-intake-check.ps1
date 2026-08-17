@@ -57,12 +57,45 @@ try {
     throw "explicit-only mode inspected the common source folder without a request"
   }
 
+  $manifestRows = @()
+  foreach ($item in @($inventory.items)) {
+    foreach ($observation in @($item.observations)) {
+      $manifestRows += [ordered]@{
+        bytes = [int64]$observation.size
+        path = [string]$observation.path
+        sha256 = [string]$item.sha256
+      }
+    }
+  }
+  $manifestRows = @($manifestRows | Sort-Object { [string]$_.path })
+  $planPath = Join-Path $tempRoot "source-folder-plan.json"
+  $plan = [ordered]@{
+    schema = "boi-local-source-folder-plan/v1"
+    employee_id = "0000000"
+    scope = "local-private"
+    preserve_originals = $true
+    remote_auto_upload = $false
+    user_confirmed = $true
+    source_folder = [IO.Path]::GetFullPath($source)
+    source_manifest_hash = [string]$inventory.source_manifest_hash
+    source_manifest = @($manifestRows)
+    ordered_batches = @(
+      [ordered]@{ batch_id = "batch-01"; source_refs = @("clip.md", "same-bytes.txt") },
+      [ordered]@{ batch_id = "batch-02"; source_refs = @("table.csv") }
+    )
+  }
+  [IO.File]::WriteAllText(
+    $planPath,
+    ($plan | ConvertTo-Json -Depth 8),
+    [Text.UTF8Encoding]::new($false)
+  )
+  $approvedPlanHash = (Get-FileHash -LiteralPath $planPath -Algorithm SHA256).Hash.ToLowerInvariant()
   $progressPath = Join-Path $tempRoot "source-folder-progress.json"
   [IO.File]::WriteAllText(
     $progressPath,
     (@{
       schema = "boi-local-source-folder-progress/v1"
-      approved_plan_hash = ("a" * 64)
+      approved_plan_hash = $approvedPlanHash
       source_manifest_hash = [string]$inventory.source_manifest_hash
       completed_sha256 = @($before)
       already_reflected_sha256 = @()

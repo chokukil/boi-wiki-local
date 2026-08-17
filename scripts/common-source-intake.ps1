@@ -107,6 +107,8 @@ function Get-RelativeSourcePath([string]$BasePath, [string]$FilePath) {
 $completed = @{}
 $reflected = @{}
 $progress = $null
+$resolvedProgress = ""
+$checkpointOverlap = $false
 if ($ProgressPath) {
   $resolvedProgress = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($ProgressPath)
   if (Test-Path -LiteralPath $resolvedProgress -PathType Leaf) {
@@ -114,7 +116,7 @@ if ($ProgressPath) {
     foreach ($digest in @($progress.completed_sha256)) { $completed[[string]$digest.ToLowerInvariant()] = $true }
     foreach ($digest in @($progress.already_reflected_sha256)) { $reflected[[string]$digest.ToLowerInvariant()] = $true }
     $overlap = @($completed.Keys | Where-Object { $reflected.ContainsKey($_) })
-    if ($overlap.Count -gt 0) { throw "completed_sha256 and already_reflected_sha256 overlap" }
+    $checkpointOverlap = $overlap.Count -gt 0
   }
 }
 
@@ -150,22 +152,20 @@ foreach ($file in @(Get-ChildItem -LiteralPath $resolvedSource -Recurse -File | 
 }
 
 $allItems = @($groups.Values)
-$sourceManifest = @($allItems | ForEach-Object {
-  [ordered]@{
-    sha256 = $_.sha256
-    source_kinds = @($_.source_kinds)
-    observations = @($_.observations | ForEach-Object {
-      [ordered]@{
-        path = $_.path
-        size = $_.size
-        modified_utc = $_.modified_utc
-        source_kind = $_.source_kind
-        supported = $_.supported
-      }
-    })
+$currentManifestRows = @()
+foreach ($item in $allItems) {
+  foreach ($observation in @($item.observations)) {
+    # This is the approved resume identity. Modification time and inferred kind
+    # remain useful inventory observations, but are deliberately not approval inputs.
+    $currentManifestRows += [ordered]@{
+      bytes = [int64]$observation.size
+      path = [string]$observation.path
+      sha256 = [string]$item.sha256
+    }
   }
-})
-$sourceManifestHash = Get-TextHash ($sourceManifest | ConvertTo-Json -Depth 10 -Compress)
+}
+$currentManifestRows = @($currentManifestRows | Sort-Object { [string]$_.path })
+$sourceManifestHash = Get-TextHash (ConvertTo-Json -InputObject @($currentManifestRows) -Depth 5 -Compress)
 $scope = [ordered]@{
   source_folder = [IO.Path]::GetFullPath($resolvedSource)
   requested_source_kind = $SourceKind.Trim().ToLowerInvariant()
@@ -175,8 +175,152 @@ $scope = [ordered]@{
 $scopeHash = Get-TextHash ($scope | ConvertTo-Json -Depth 5 -Compress)
 $resumeValid = $true
 $resumeReason = ""
-if ($null -ne $progress -and [string]$progress.source_manifest_hash) {
-  if ([string]$progress.source_manifest_hash -cne $sourceManifestHash) {
+
+if ($null -ne $progress) {
+  if ([string]$progress.schema -cne "boi-local-source-folder-progress/v1") {
+    $resumeValid = $false
+    $resumeReason = "progress-schema-invalid"
+  } elseif ($checkpointOverlap) {
+    $resumeValid = $false
+    $resumeReason = "checkpoint-hash-overlap"
+  }
+
+  $plan = $null
+  $planPath = Join-Path (Split-Path -Parent $resolvedProgress) "source-folder-plan.json"
+  if ($resumeValid -and -not (Test-Path -LiteralPath $planPath -PathType Leaf)) {
+    $resumeValid = $false
+    $resumeReason = "approved-plan-missing"
+  }
+  if ($resumeValid) {
+    $actualPlanHash = (Get-FileHash -LiteralPath $planPath -Algorithm SHA256).Hash.ToLowerInvariant()
+    if (-not [string]$progress.approved_plan_hash -or
+        [string]$progress.approved_plan_hash.ToLowerInvariant() -cne $actualPlanHash) {
+      $resumeValid = $false
+      $resumeReason = "approved-plan-hash-mismatch"
+    }
+  }
+  if ($resumeValid) {
+    try {
+      $plan = Get-Content -LiteralPath $planPath -Raw -Encoding UTF8 | ConvertFrom-Json
+    } catch {
+      $resumeValid = $false
+      $resumeReason = "approved-plan-invalid"
+    }
+  }
+  if ($resumeValid -and (
+      [string]$plan.schema -cne "boi-local-source-folder-plan/v1" -or
+      [string]$plan.scope -cne "local-private" -or
+      -not [bool]$plan.preserve_originals -or
+      [bool]$plan.remote_auto_upload -or
+      -not [bool]$plan.user_confirmed)) {
+    $resumeValid = $false
+    $resumeReason = "approved-plan-boundary-invalid"
+  }
+  if ($resumeValid -and [string]$plan.source_folder) {
+    $plannedSource = [IO.Path]::GetFullPath([string]$plan.source_folder).TrimEnd('\')
+    $currentSource = [IO.Path]::GetFullPath($resolvedSource).TrimEnd('\')
+    if (-not $plannedSource.Equals($currentSource, [StringComparison]::OrdinalIgnoreCase)) {
+      $resumeValid = $false
+      $resumeReason = "source-folder-changed"
+    }
+  }
+
+  $planManifestRows = @()
+  if ($resumeValid) {
+    foreach ($row in @($plan.source_manifest)) {
+      $planManifestRows += [ordered]@{
+        bytes = [int64]$row.bytes
+        path = [string]$row.path
+        sha256 = ([string]$row.sha256).ToLowerInvariant()
+      }
+    }
+    $planManifestHash = Get-TextHash (ConvertTo-Json -InputObject @($planManifestRows) -Depth 5 -Compress)
+    if (-not [string]$plan.source_manifest_hash -or
+        [string]$plan.source_manifest_hash.ToLowerInvariant() -cne $planManifestHash -or
+        -not [string]$progress.source_manifest_hash -or
+        [string]$progress.source_manifest_hash.ToLowerInvariant() -cne $planManifestHash) {
+      $resumeValid = $false
+      $resumeReason = "approved-manifest-hash-mismatch"
+    }
+  }
+
+  if ($resumeValid) {
+    $currentByPath = @{}
+    foreach ($row in $currentManifestRows) { $currentByPath[[string]$row.path] = $row }
+    if ($planManifestRows.Count -ne $currentManifestRows.Count) {
+      $resumeValid = $false
+      $resumeReason = "source-manifest-changed"
+    } else {
+      foreach ($row in $planManifestRows) {
+        $path = [string]$row.path
+        if (-not $currentByPath.ContainsKey($path)) {
+          $resumeValid = $false
+          $resumeReason = "source-manifest-changed"
+          break
+        }
+        $current = $currentByPath[$path]
+        if ([int64]$current.bytes -ne [int64]$row.bytes -or
+            [string]$current.sha256 -cne [string]$row.sha256) {
+          $resumeValid = $false
+          $resumeReason = "source-manifest-changed"
+          break
+        }
+      }
+    }
+    if ($resumeValid) { $sourceManifestHash = $planManifestHash }
+  }
+
+  if ($resumeValid) {
+    $remainingRefs = @()
+    foreach ($ref in @($progress.remaining_source_refs)) {
+      if ($null -ne $ref -and [string]$ref) { $remainingRefs += [string]$ref }
+    }
+    $nextRefs = @()
+    foreach ($ref in @($progress.next_batch.source_refs)) {
+      if ($null -ne $ref -and [string]$ref) { $nextRefs += [string]$ref }
+    }
+    if ($remainingRefs.Count -eq 0) {
+      if ($nextRefs.Count -ne 0) {
+        $resumeValid = $false
+        $resumeReason = "next-batch-invalid"
+      }
+    } elseif ($nextRefs.Count -eq 0 -or $nextRefs.Count -gt $remainingRefs.Count) {
+      $resumeValid = $false
+      $resumeReason = "next-batch-invalid"
+    } else {
+      for ($index = 0; $index -lt $nextRefs.Count; $index++) {
+        if ($nextRefs[$index] -cne $remainingRefs[$index]) {
+          $resumeValid = $false
+          $resumeReason = "next-batch-invalid"
+          break
+        }
+      }
+      if ($resumeValid) {
+        $batchId = [string]$progress.next_batch.batch_id
+        $plannedBatch = @($plan.ordered_batches | Where-Object { [string]$_.batch_id -ceq $batchId })
+        if (-not $batchId -or $plannedBatch.Count -ne 1) {
+          $resumeValid = $false
+          $resumeReason = "next-batch-invalid"
+        } else {
+          $plannedRefs = @($plannedBatch[0].source_refs | ForEach-Object { [string]$_ })
+          if ($plannedRefs.Count -ne $nextRefs.Count) {
+            $resumeValid = $false
+            $resumeReason = "next-batch-invalid"
+          } else {
+            for ($index = 0; $index -lt $nextRefs.Count; $index++) {
+              if ($plannedRefs[$index] -cne $nextRefs[$index]) {
+                $resumeValid = $false
+                $resumeReason = "next-batch-invalid"
+                break
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  if ($resumeValid -and [string]$progress.source_manifest_hash -cne $sourceManifestHash) {
     $resumeValid = $false
     $resumeReason = "source-manifest-changed"
   }
@@ -195,6 +339,16 @@ $newItems = @($selected | Where-Object { $_.status -eq "new" })
 $pendingOutsideFilter = if ($SourceKind.Trim()) {
   @($allItems | Where-Object { $_.sha256 -notin @($selected.sha256) -and $_.status -eq "new" }).Count
 } else { 0 }
+$outputRemainingRefs = [object[]]@()
+$outputNextBatch = [ordered]@{}
+if ($null -ne $progress) {
+  $outputRemainingRefs = [object[]]@(
+    foreach ($ref in @($progress.remaining_source_refs)) {
+      if ($null -ne $ref -and [string]$ref) { [string]$ref }
+    }
+  )
+  if ($null -ne $progress.next_batch) { $outputNextBatch = $progress.next_batch }
+}
 
 Write-Result ([ordered]@{
   schema = "boi-local-common-source-inventory/v1"
@@ -214,8 +368,8 @@ Write-Result ([ordered]@{
   resume_contract_checked = $null -ne $progress
   resume_contract_valid = $resumeValid
   resume_invalidation_reason = $resumeReason
-  remaining_source_refs = if ($null -ne $progress) { @($progress.remaining_source_refs) } else { @() }
-  next_batch = if ($null -ne $progress -and $null -ne $progress.next_batch) { $progress.next_batch } else { @{} }
+  remaining_source_refs = $outputRemainingRefs
+  next_batch = $outputNextBatch
   items = $selected
   writes_performed = $false
   source_bytes_changed = $false

@@ -1,0 +1,44 @@
+{
+  "artifact_kind": "promotion-preview",
+  "case_id": "ai-radar",
+  "candidate_path": "ai-radar-revision1-public-candidate.md",
+  "candidate_sha256": "d3aa3fd1e8b6c7718b11eb7a88fe7b433149fb3951d439ff4c215daa8dbbb93a",
+  "candidate_bytes": 2119,
+  "generated_from": {
+    "approved_revision": 1,
+    "snapshot_id": "ai-radar-r1-20260808",
+    "approval_receipt": "../../research/ai-radar/17-current-approved-knowledge.md",
+    "approval_receipt_sha256": "a5cdb689402f524b399e6bece003f094ba7cbf08d5fcd98fd9dc48156ea49458",
+    "approved_candidate_sha256": "2acd160023838e7128ba44dc0581200f93eb4b56cce97dcf5ad4935ca241e54e"
+  },
+  "reviewer": "pending-human-review",
+  "target_visibility": "public",
+  "target_scope": "boi-wiki-public-candidate",
+  "source_refs": [
+    {"type":"url","ref":"https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents"},
+    {"type":"url","ref":"https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents"},
+    {"type":"url","ref":"https://developers.googleblog.com/en/agents-adk-agent-engine-a2a-enhancements-google-io/"},
+    {"type":"url","ref":"https://deepmind.google/blog/gemini-robotics-brings-ai-into-the-physical-world/"},
+    {"type":"url","ref":"https://industrialdigitaltwin.org/en/content-hub/aasspecifications"}
+  ],
+  "sanitization": {
+    "private_identifiers": 0,
+    "private_paths": 0,
+    "raw_source_copies": 0,
+    "internal_operational_claims": 0,
+    "secret_hits": 0
+  },
+  "connection_descriptor": "templates/mcp/boi-wiki-mcp-connection.json",
+  "endpoint_status": "pending-external-system",
+  "blockers": [
+    "human-review-required",
+    "exact-preview-approval-required",
+    "live-boi-wiki-validator-not-run",
+    "live-endpoint-not-verified"
+  ],
+  "approved": false,
+  "submitted": false,
+  "remote_submit_allowed": false,
+  "approval_invalidated_when": ["candidate", "source", "reviewer", "target_scope", "candidate_sha256"],
+  "remote_effect": "none"
+}

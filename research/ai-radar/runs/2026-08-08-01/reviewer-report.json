@@ -1,0 +1,33 @@
+{
+  "artifact_kind": "review-decision",
+  "case_id": "ai-radar",
+  "run_id": "ai-radar-public-2026-08-08-01",
+  "reviewer": "source-first-pass",
+  "review_started_from": [
+    "source-manifest.json",
+    "original URLs and recorded verification scope",
+    "evidence.json",
+    "claim-delta.json"
+  ],
+  "producer_summary_used_as_authority": false,
+  "decision": "partial",
+  "candidate_ready_for_human_review": ["RUN01-D01","RUN01-D02","RUN01-D03","RUN01-D04","RUN01-D05","RUN01-D06","RUN01-D07","RUN01-D08"],
+  "retained_unknown": ["RUN01-D09"],
+  "findings": [
+    "MCP RC 상태는 최종 release source로 수정해야 한다.",
+    "Microsoft harness core release와 미출시 주변 기능을 분리한 표현은 source와 일치한다.",
+    "원격 Skill 배포는 experimental·vendor-specific 경계를 남겨야 한다.",
+    "HarnessOpt-Bench, DataSpace, HarnessAudit, W2-VLA와 DyPES-VLA는 abstract-only로 유지한다.",
+    "NVIDIA Physical AI와 Halos의 performance·readiness 문구는 vendor claim이며 independent production evidence가 아니다.",
+    "Git repository HEAD 변화 두 건은 승인 판단을 바꾸지 않아 change set에서 제외한 것이 타당하다."
+  ],
+  "contradictions": [
+    {"ref":"RUN01-D08","status":"retained","reason":"full-stack/certification-ready framing versus early-access and certification-preparation status"},
+    {"ref":"RUN01-D03","status":"retained","reason":"central update convenience versus experimental specification and supply-chain control burden"}
+  ],
+  "blockers": [],
+  "human_review_required": true,
+  "current_revision_changed": false,
+  "self_approval": false,
+  "next_condition": "사용자가 claim별 전체 또는 일부 변경을 승인하면 승인 범위만 revision 2로 반영한다."
+}

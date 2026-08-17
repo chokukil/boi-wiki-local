@@ -1,0 +1,42 @@
+{
+  "artifact_kind": "run-status",
+  "case_id": "ai-radar",
+  "run_id": "ai-radar-public-2026-08-08-01",
+  "status": "awaiting-human-review",
+  "visibility": "public-sanitized-case",
+  "completed_phases": [
+    "request-routing",
+    "baseline-load",
+    "multi-channel-discovery",
+    "source-validation",
+    "evidence-analysis",
+    "claim-delta",
+    "source-first-review",
+    "fixed-query-comparison"
+  ],
+  "current_revision": 1,
+  "candidate_revision": 2,
+  "current_revision_changed": false,
+  "artifacts": {
+    "request-contract.json": "b703f9f355ad59b475f457acab245f1f85213602d637556b36a376d58a8a3ad5",
+    "source-manifest.json": "4770c29692894a1e64c6a534c184683be4a6635ce602b112d6960ec41584886e",
+    "evidence.json": "d240123416417183f2bc603a01974b2708054d68226546b6872852deefaf6afe",
+    "claim-delta.json": "6ff3aa5bb7a87a93993dfdb641fccc5769a864452ddf96a80c33c64b811e23ae",
+    "reviewer-report.json": "adda26ee950885587d9577392bb8ef14f153a57c65f63e8123d95578b6fba05e",
+    "query-candidate.md": "d26830c85de671cf80008586b5087cf9ad865d6f7f67c45d8bbc2be6295855d6",
+    "query-diff.md": "7f56a2b8b304e3c59b10104079756bc94ecceddae7109ccf4240dfb1465d3afa",
+    "review-queue.md": "b50451be96a0802d86ca6cc566b2cb458eff282c8b96c12a9ceda2bfbeac2fba"
+  },
+  "partial_items": ["arXiv paper full text and independent reproduction not checked"],
+  "blocked_items": [],
+  "resume_checkpoint": {
+    "phase": "human-review",
+    "baseline_snapshot_id": "ai-radar-r1-20260808",
+    "source_manifest_sha256": "4770c29692894a1e64c6a534c184683be4a6635ce602b112d6960ec41584886e",
+    "claim_delta_sha256": "6ff3aa5bb7a87a93993dfdb641fccc5769a864452ddf96a80c33c64b811e23ae"
+  },
+  "resume_condition": "same baseline, source manifest, claim delta and review candidate hashes",
+  "hash_invalidation": "any changed source bytes, repository revision, delta text or review scope invalidates dependent review and approval",
+  "promotion_status": "not-requested",
+  "remote_effect": "none"
+}

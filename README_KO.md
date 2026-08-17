@@ -193,6 +193,8 @@ Obsidian은 선택형 Markdown 보기 도구이며 플러그인은 필수가 아
 
 세 Global Insight Case는 공개 1차 자료의 확인 범위와 SHA256을 고정한 source record, runtime-neutral 역할·DAG, 실패·resume와 frozen evaluation protocol을 포함합니다. 실제 runtime 반복과 비개발자 Acceptance 전에는 Verified·Reference를 주장하지 않습니다. 세 Case가 있다는 사실만으로 새 generic Skill을 만들지 않으며 stable operation과 baseline 개선이 검증된 뒤에만 승격을 검토합니다.
 
+세 사례가 Meta Harness 실행에서 끝나지 않고 Second Brain revision과 BoI Wiki 공유 경계까지 어떻게 이어지는지는 [세 Golden Journey 통합 지도](cases/GOLDEN-JOURNEYS.md)에서 봅니다. AI Radar는 승인 revision 1과 revision 2 검토 후보를, Digital Twin과 Scientific Case는 공개 baseline과 사람 검토 전 knowledge-growth 후보를 보존합니다.
+
 일곱 자연어 도구와 Python-free 계약: [SK하이닉스 Global Insight Meta Harness](templates/global-insight/README.md)
 
 구현 evidence와 아직 남은 외부 gate: [Global Insight implementation status](research/global-insight-implementation-status.md)

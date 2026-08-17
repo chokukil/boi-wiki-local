@@ -24,3 +24,6 @@ data/boi/private/*/
 data/boi/private/0000000/.obsidian/
 # Guide update backups prove local rollback but are never part of a release.
 data/boi/private/0000000/_archive/
+
+# Local agent workspace (drafts, generated docs) — never ship.
+_workspace/

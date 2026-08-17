@@ -1,0 +1,26 @@
+{
+  "artifact_kind": "claim-delta",
+  "case_id": "ai-radar",
+  "run_id": "ai-radar-public-2026-08-08-01",
+  "visibility": "public-sanitized-case",
+  "baseline_revision": 1,
+  "baseline_snapshot_id": "ai-radar-r1-20260808",
+  "baseline_candidate_sha256": "2acd160023838e7128ba44dc0581200f93eb4b56cce97dcf5ad4935ca241e54e",
+  "current_revision_changed": false,
+  "requires_human_review": true,
+  "deltas": [
+    {"delta_id":"RUN01-D01","delta_type":"revised","claim_refs":["A-K03"],"previous":"MCP 2026-07-28은 RC이므로 설계 검토에만 반영한다.","candidate":"MCP 2026-07-28은 정식 규격이다. migration과 deprecation을 명시적 검증 gate로 추가한다.","reason":"최종 specification release가 확인됐다.","impact":"MCP 구현 검토에서 RC 대기 대신 client/server 호환·migration 계획을 확인한다.","sources":["RUN01-P01"]},
+    {"delta_id":"RUN01-D02","delta_type":"revised","claim_refs":["A-K08"],"previous":"core·workflow 1.0과 일부 preview를 구분한다.","candidate":"core harness release 범위를 구체화하고 background agents·file access·looping·shell은 미출시 주변 surface로 분리한다.","reason":"공식 harness release가 안정·미출시 경계를 열거했다.","impact":"framework 전체를 production-ready로 묶어 평가하지 않는다.","sources":["RUN01-P02"]},
+    {"delta_id":"RUN01-D03","delta_type":"new","claim_refs":["A-K11"],"previous":"versioned harness system을 채택 단위로 본다.","candidate":"원격 Skill 배포는 source revision·content hash·trust policy·rollback까지 채택 단위에 포함한다.","reason":"MCP skill discovery와 서명 catalog가 중앙 배포 경로를 만들었다.","impact":"skill update를 재배포 편의가 아니라 supply-chain 변경으로 review한다.","sources":["RUN01-P03","RUN01-G13"]},
+    {"delta_id":"RUN01-D04","delta_type":"strengthened","claim_refs":["A-K07","A-K11"],"previous":"outcome·trajectory·tool call·recovery를 함께 평가한다.","candidate":"model+harness+environment를 고정하고 heterogeneous workspace 결과와 harness optimization까지 별도 평가한다.","reason":"HarnessOpt-Bench와 DataSpace가 harness 선택과 실행 환경의 효과를 명시했다.","impact":"모델 benchmark만으로 agent pilot을 선정하지 않는다.","sources":["RUN01-R01","RUN01-R02"]},
+    {"delta_id":"RUN01-D05","delta_type":"strengthened","claim_refs":["A-K10"],"previous":"agent security는 장기 trajectory 누적 위험을 다룬다.","candidate":"resource access·information flow monitor와 고위험 action 전 차단을 평가 gate에 포함한다.","reason":"trajectory safety audit와 live control roadmap이 결과 이후가 아닌 실행 중 통제를 강조했다.","impact":"보안 검증에 coverage·recall·time-to-response를 추가한다.","sources":["RUN01-R03","RUN01-P04"]},
+    {"delta_id":"RUN01-D06","delta_type":"strengthened","claim_refs":["P-K02","P-K06"],"previous":"world model과 VLA 결합은 유망하지만 제조 일반화는 미확인이다.","candidate":"world model·reward·simulation benchmark·human correction을 하나의 실험 loop로 평가할 수 있다.","reason":"LeRobot 0.6 공개 release가 loop 구성요소를 통합했다.","impact":"Physical AI pilot에서 failure-to-data와 human correction 경로를 함께 설계한다.","sources":["RUN01-P05"]},
+    {"delta_id":"RUN01-D07","delta_type":"strengthened","claim_refs":["C-K01","C-K02","A-K11"],"previous":"Digital Twin과 ontology는 evaluation·action contract 후보다.","candidate":"Agentic–Physical 연결은 우선 simulation·data·training·evaluation workflow를 signed/versioned skill로 실행하는 개발 계층에서 검증한다.","reason":"Physical AI workflow가 agent-executable tools·skills로 공개됐다.","impact":"로봇 자율 action보다 개발·검증 자동화부터 실험한다.","sources":["RUN01-P06","RUN01-G13"]},
+    {"delta_id":"RUN01-D08","delta_type":"strengthened","claim_refs":["P-K08"],"previous":"물리 action에는 승인·중단·복구·감사 가능한 trajectory gate가 필요하다.","candidate":"compute·sensor·OS·application·inspection·certification preparation을 잇는 system safety gate로 확장한다.","reason":"Halos가 full-stack safety surface를 제시했다.","impact":"early access와 인증 준비를 실제 인증 완료로 오해하지 않는 검토 항목을 추가한다.","sources":["RUN01-P07"],"contradiction":"full-stack·certification-ready라는 vendor framing과 early-access·실제 certification 미완료 경계가 함께 존재한다."},
+    {"delta_id":"RUN01-D09","delta_type":"unknown","claim_refs":["P-K01","P-K06"],"previous":"VLA 제조 일반화는 unknown이다.","candidate":"새 W2-VLA·DyPES-VLA 신호는 shortlist에 추가하지만 현재 판단은 유지한다.","reason":"abstract에서 fine-grained·cross-embodiment 개선을 보고했으나 독립 재현이 없다.","impact":"full text·code·dataset·independent real-robot evidence 전에는 채택 판단을 바꾸지 않는다.","sources":["RUN01-R04","RUN01-R05"]}
+  ],
+  "counts": {"new":1,"strengthened":5,"revised":2,"contradicted":0,"stale":0,"retirement-candidate":0,"unknown":1},
+  "excluded_non_material_changes": 2,
+  "approval_effect": "none",
+  "next_revision_if_approved": 2
+}

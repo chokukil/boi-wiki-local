@@ -1,0 +1,44 @@
+{
+  "artifact_kind": "source-manifest",
+  "case_id": "ai-radar",
+  "run_id": "ai-radar-public-2026-08-08-01",
+  "visibility": "public-sanitized-case",
+  "checked_at": "2026-08-08T16:27:35+09:00",
+  "baseline": {
+    "revision": 1,
+    "snapshot_id": "ai-radar-r1-20260808",
+    "candidate_sha256": "2acd160023838e7128ba44dc0581200f93eb4b56cce97dcf5ad4935ca241e54e"
+  },
+  "discovery_coverage": [
+    {"channel":"GeekNews","url":"https://news.hada.io/","status":"accessed","role":"signal-only","bytes":46256,"sha256":"fb722d56636595476e34340c45effe184af34ca37084492bf51b09fa269299a1"},
+    {"channel":"GitHub Trending","url":"https://github.com/trending","status":"accessed","role":"signal-only","bytes":636936,"sha256":"197ce55132922d9eee0d766ae17077b63ea7ed328a1edcc6375df5aebd8224f9"},
+    {"channel":"Hugging Face Daily Papers","url":"https://huggingface.co/papers","status":"accessed","role":"signal-only","bytes":450076,"sha256":"9a82014d96c795477304cef265df074c778ea26a7207add67f12ef58cae7f138"},
+    {"channel":"arXiv API","url":"https://export.arxiv.org/api/query?search_query=all:agent&start=0&max_results=1&sortBy=submittedDate&sortOrder=descending","status":"accessed","role":"discovery-index","bytes":2740,"sha256":"701061f05f621bd3290cebd977ebc64098e457b741cd1e5a60da237ffe033e72"},
+    {"channel":"official announcements and specifications","status":"accessed","role":"primary-evidence"}
+  ],
+  "sources": [
+    {"source_ref":"RUN01-P01","axis":"agentic","url":"https://blog.modelcontextprotocol.io/posts/2026-07-28/","source_class":"primary","published_at":"2026-07-28","access_status":"accessed","verified_scope":"full rendered article bytes and final release status","verification_level":"primary-checked","bytes":133679,"sha256":"9e3c347f359baa66725fffe8e88f348299905d236dea320cd8457e8c4619e520"},
+    {"source_ref":"RUN01-P02","axis":"agentic","url":"https://devblogs.microsoft.com/agent-framework/the-microsoft-agent-framework-harness-is-now-released/","source_class":"primary-vendor","published_at":"2026-07-22","access_status":"accessed","verified_scope":"full rendered release article; vendor readiness language retained as vendor claim","verification_level":"primary-checked","bytes":251741,"sha256":"1319d74556d00fcf97ac34f3a551c93a1331ce4f49e833fc62d7bda9c554428f"},
+    {"source_ref":"RUN01-P03","axis":"agentic","url":"https://devblogs.microsoft.com/agent-framework/discover-agent-skills-from-mcp-servers-in-net/","source_class":"primary-vendor","published_at":"2026-07-28","access_status":"accessed","verified_scope":"full rendered article; API and skill specification explicitly experimental","verification_level":"primary-checked","bytes":230097,"sha256":"444e50cb4f21d5672f63a8a1ff070193b8724a5d664445567898d303d219758c"},
+    {"source_ref":"RUN01-R01","axis":"agentic","url":"https://arxiv.org/abs/2608.06301","source_class":"primary-paper","published_at":"2026-08-06","version":"v1","access_status":"accessed","verified_scope":"abstract page only; PDF full text not reviewed","verification_level":"abstract-checked","bytes":43245,"sha256":"673fd86cbec3b5236f69ba76c0426a796e2a01740b19ae73e22827bdd298442c"},
+    {"source_ref":"RUN01-R02","axis":"agentic","url":"https://arxiv.org/abs/2608.03451","source_class":"primary-paper","published_at":"2026-08-04","version":"v1","access_status":"accessed","verified_scope":"abstract page only; PDF full text not reviewed","verification_level":"abstract-checked","bytes":45246,"sha256":"471a7af81038c3a228c11806c0c4123856bf3eba6935cc002def2b7bd0c6ed7b"},
+    {"source_ref":"RUN01-R03","axis":"agentic","url":"https://arxiv.org/abs/2605.14271","source_class":"primary-paper","published_at":"2026-05-14","version":"v1 observed","access_status":"accessed","verified_scope":"abstract page only; PDF full text not reviewed","verification_level":"abstract-checked","bytes":43934,"sha256":"d04b6ad465d0c328101fe4126748d419664092c2dfa5c3f2424f8042a76d078f"},
+    {"source_ref":"RUN01-P04","axis":"agentic","url":"https://deepmind.google/blog/securing-the-future-of-ai-agents/","source_class":"primary-vendor","published_at":"2026-06-18","access_status":"accessed","verified_scope":"full rendered article bytes; internal deployment claims treated as vendor evidence","verification_level":"primary-checked","bytes":139980,"sha256":"436e3ddce2176294970661b17c6fd5cb2b205b8cca8e2c697550cdae9227cee3"},
+    {"source_ref":"RUN01-P05","axis":"physical","url":"https://raw.githubusercontent.com/huggingface/blog/main/lerobot-release-v060.md","source_class":"primary-project-release","published_at":"2026-07-06","access_status":"accessed","verified_scope":"raw release Markdown","verification_level":"primary-checked","bytes":21874,"sha256":"1383fcb8ed53eb0fecec20a7a300b913bb49132a943aaf0772b48ef76d8809a8"},
+    {"source_ref":"RUN01-P06","axis":"cross","url":"https://nvidianews.nvidia.com/news/nvidia-releases-major-collection-of-open-source-agent-tools-and-skills-for-physical-ai","source_class":"primary-vendor","published_at":"2026-05-31","access_status":"accessed","verified_scope":"full rendered press release; customer and performance statements remain vendor claims","verification_level":"primary-checked","bytes":86948,"sha256":"65181049f8ae512dd36dff4e4fcaa04e3bf39294f5689373eba2bfde0aa289d7"},
+    {"source_ref":"RUN01-P07","axis":"physical","url":"https://nvidianews.nvidia.com/news/nvidia-announces-halos-for-robotics-the-industrys-first-full-stack-safety-system-for-physical-ai","source_class":"primary-vendor","published_at":"2026-06-22","access_status":"accessed","verified_scope":"full rendered press release; blueprint early-access and certification-preparation boundaries preserved","verification_level":"primary-checked","bytes":82541,"sha256":"c987a0212e640fdf6048169602c69aab1b917c9d4c76bd02ca303acd852861ed"},
+    {"source_ref":"RUN01-R04","axis":"physical","url":"https://arxiv.org/abs/2608.05369","source_class":"primary-paper","published_at":"2026-08-05","version":"v1","access_status":"accessed","verified_scope":"abstract page only; PDF full text and independent reproduction not reviewed","verification_level":"abstract-checked","bytes":42973,"sha256":"66d8fc523db362aa397d178dd157763a42a1959f697f8e4c9aea4288300d655a"},
+    {"source_ref":"RUN01-R05","axis":"physical","url":"https://arxiv.org/abs/2608.06374","source_class":"primary-paper","published_at":"2026-08-06","version":"v1","access_status":"accessed","verified_scope":"abstract page only; PDF full text and independent reproduction not reviewed","verification_level":"abstract-checked","bytes":44242,"sha256":"b37ff6df0a34eefeb74b3edbd922e1de0f1a06ea29076311f3e69cbbd91ebd25"},
+    {"source_ref":"RUN01-G13","axis":"cross","url":"https://github.com/NVIDIA/skills","source_class":"primary-repository","version":"a9ea6f987f3a2e5efbd6f94ad394dc0b64265719","access_status":"accessed","verified_scope":"remote HEAD and raw README; catalog governance claims are repository claims","verification_level":"primary-checked","bytes":49997,"sha256":"b6829a7d7c73659b66070b9c2f0f9acc2f75e793ac2712ea1073d8f6dffa9073"}
+  ],
+  "excluded_observations": [
+    {"source_ref":"G01","reason":"repository HEAD changed, but the observed documentation and narrow bugfix did not change the approved adoption judgment"},
+    {"source_ref":"G02","reason":"documentation-only HEAD change"},
+    {"source_ref":"signal-channels","reason":"rank, stars, reactions and community summaries are discovery signals, not claim evidence"}
+  ],
+  "access_limitations": [
+    "arXiv papers were checked at abstract-page scope only and are not described as full-text verified.",
+    "GeekNews, GitHub Trending and Hugging Face reactions remain signal-only.",
+    "Vendor readiness and performance statements remain vendor claims unless independently corroborated."
+  ]
+}
