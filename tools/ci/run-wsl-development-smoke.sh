@@ -44,10 +44,11 @@ prompt="${prompt_fields[1]}"
 
 cp -R "$fixture_root/evals/seeds/$seed_id/." "$work/data/boi/private/0000000/"
 for row in "${prompt_fields[@]:2}"; do
-  input="${row#INPUT=fixtures/}"
+  input="${row#INPUT=}"
   if [[ "$input" == "sources/*" ]]; then
-    cp -R "$fixture_root/fixtures/sources/." "$work/fixtures/sources/"
+    cp -R "$fixture_root/fixtures/sources/." "$work/fixtures/sources/."
   else
+    mkdir -p "$work/fixtures/$(dirname "$input")"
     cp "$fixture_root/fixtures/$input" "$work/fixtures/$input"
   fi
 done
