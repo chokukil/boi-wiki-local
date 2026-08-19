@@ -694,17 +694,21 @@ def markdown_link_label(value: object) -> str:
     return label.replace("\\", "\\\\").replace("[", "\\[").replace("]", "\\]")
 
 
-def local_discovery_state(profile_root: Path, path: Path, meta: dict[str, str]) -> str:
-    """Translate Local lifecycle metadata to a plain user-facing source state."""
+def local_markdown_state(profile_root: Path, path: Path, meta: dict[str, str]) -> str:
+    """Classify one Local Markdown source without treating memory retention as review authority."""
     parts = tuple(part.casefold() for part in path.resolve().relative_to(profile_root.resolve()).parts)
-    if "review" in parts or meta.get("curation_status", "").casefold() == "review-required":
-        return "review"
-    if "raw" in parts:
-        return "raw"
     if "history" in parts or "_archive" in parts:
         return "history"
+    if "raw" in parts:
+        return "raw"
     if meta.get("knowledge_role", "").casefold() == "saved-query":
         return "saved-query"
+    if "source-candidates" in parts:
+        return "candidate"
+    if "review" in parts or meta.get("curation_status", "").casefold() == "review-required":
+        return "review"
+    if parts[:2] == ("notes", "knowledge"):
+        return "reviewed"
     return "candidate"
 
 
@@ -722,7 +726,7 @@ def verified_local_discovery_evidence(
         raise ValueError(f"Markdown source changed during verification: {open_target}")
     text = raw.decode("utf-8", errors="replace")
     meta = parse_frontmatter(text)
-    state = local_discovery_state(profile_root, path, meta)
+    state = local_markdown_state(profile_root, path, meta)
     return {
         "type": "local-markdown-discovery-evidence",
         "layer": "discovery-evidence",
@@ -1183,11 +1187,7 @@ def build_query_pack(
             if source["matched_terms"]:
                 evidence_matches.append(source)
         else:
-            relative_parts = path.relative_to(base).parts
-            reviewed_local_knowledge = (
-                relative_parts[:2] == ("notes", "knowledge")
-                and meta.get("knowledge_role", "") != "saved-query"
-            )
+            reviewed_local_knowledge = local_markdown_state(base, path, meta) == "reviewed"
             if (
                 query_scope == "ordinary"
                 and not case_id

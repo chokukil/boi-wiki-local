@@ -177,6 +177,51 @@ AI Design Lab은 현업의 AI 활용 확산을 지원한다.
             self.assertEqual("내 자료 · 검토 전", evidence["status"])
             self.assertEqual("notes/ai-design-lab.md", evidence["open_target"])
 
+    def test_source_candidate_nested_under_knowledge_stays_discovery_only(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            profile = root / "data" / "boi" / "private" / "1234567"
+            candidates = profile / "notes" / "knowledge" / "source-candidates"
+            candidates.mkdir(parents=True)
+            candidate = candidates / "ai-design-lab.md"
+            candidate.write_text(
+                '''---
+type: boi/local-knowledge-note
+title: "SK하이닉스 AI Design Lab 채용·조직 소개"
+boi_id: boi:private:1234567:source-knowledge:ai-design-lab
+visibility: local-private
+local_only: true
+promotion_status: local_only
+archive_status: active
+artifact_visibility: memory
+lifecycle_state: memory
+memory_candidate: true
+claim_status: observed
+---
+
+AI Design Lab은 현업의 AI 활용 확산을 지원하는 조직으로 소개된다.
+''',
+                encoding="utf-8",
+            )
+            before = {path: path.read_bytes() for path in root.rglob("*") if path.is_file()}
+
+            pack = build_query_pack(root, "1234567", "AI Design Lab이 뭐니?", "", 8, [])
+
+            after = {path: path.read_bytes() for path in root.rglob("*") if path.is_file()}
+            self.assertEqual(before, after)
+            self.assertEqual([], pack["compiled_sources"])
+            self.assertEqual("ordinary-local-candidate", pack["retrieval_scope"])
+            self.assertEqual(1, len(pack["discovery_evidence"]))
+            evidence = pack["discovery_evidence"][0]
+            self.assertEqual("candidate", evidence["state"])
+            self.assertEqual("내 자료 · 검토 전", evidence["status"])
+            self.assertEqual(
+                "notes/knowledge/source-candidates/ai-design-lab.md",
+                evidence["open_target"],
+            )
+            self.assertEqual(hashlib.sha256(candidate.read_bytes()).hexdigest(), evidence["sha256"])
+            self.assertFalse(pack["runtime"]["writes_performed"])
+
     def test_profile_markdown_open_target_rejects_unsafe_or_non_markdown_paths(self) -> None:
         self.assertTrue(hasattr(local_wiki, "safe_profile_markdown_target"))
         with tempfile.TemporaryDirectory() as temp:
