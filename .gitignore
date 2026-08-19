@@ -3,6 +3,7 @@
 Thumbs.db
 .cache/
 .tmp/
+.worktrees/
 __pycache__/
 .boi-trash/
 # Ship only the verified offline Harness package and its sanitized attestation.
