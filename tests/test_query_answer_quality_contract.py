@@ -16,6 +16,7 @@ REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "scripts"))
 
 import query_quality
+import local_wiki
 from local_wiki import build_query_pack, query_facets, query_intent
 
 
@@ -31,6 +32,228 @@ def powershell_executable() -> str:
 
 
 class QueryAnswerQualityContractTests(unittest.TestCase):
+    def test_ordinary_query_falls_back_to_verified_review_markdown_without_writes(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            review = root / "data" / "boi" / "private" / "1234567" / "notes" / "review"
+            review.mkdir(parents=True)
+            candidate = review / "ai-design-lab.md"
+            candidate.write_text(
+                '''---
+type: boi/local-knowledge-note
+title: "SK하이닉스 AI Design Lab 채용·조직 소개"
+boi_id: boi:private:1234567:review:ai-design-lab
+knowledge_role: comparison
+claim_status: observed
+curation_status: review-required
+memory_candidate: true
+---
+
+AI Design Lab은 AI Board 운영과 현업의 AI 활용 확산을 지원하는 조직으로 소개된다.
+''',
+                encoding="utf-8",
+            )
+            before = {path: path.read_bytes() for path in root.rglob("*") if path.is_file()}
+
+            pack = build_query_pack(root, "1234567", "AI Design Lab이 뭐니?", "", 8, [])
+
+            after = {path: path.read_bytes() for path in root.rglob("*") if path.is_file()}
+            self.assertEqual(before, after)
+            self.assertEqual("ordinary-local-candidate", pack["retrieval_scope"])
+            self.assertEqual([], pack["compiled_sources"])
+            self.assertIn("discovery_evidence", pack)
+            self.assertEqual(1, len(pack["discovery_evidence"]))
+            evidence = pack["discovery_evidence"][0]
+            self.assertFalse(evidence["current_authority"])
+            self.assertEqual("review", evidence["state"])
+            self.assertEqual("내 자료 · 검토 중", evidence["status"])
+            self.assertEqual("notes/review/ai-design-lab.md", evidence["open_target"])
+            self.assertEqual(hashlib.sha256(candidate.read_bytes()).hexdigest(), evidence["sha256"])
+            self.assertEqual(
+                {
+                    "display_id": "[1]",
+                    "evidence_id": evidence["evidence_id"],
+                    "title": "SK하이닉스 AI Design Lab 채용·조직 소개",
+                    "open_target": "notes/review/ai-design-lab.md",
+                    "status": "내 자료 · 검토 중",
+                    "source_markdown": "[1] [SK하이닉스 AI Design Lab 채용·조직 소개](notes/review/ai-design-lab.md) — 내 자료 · 검토 중",
+                },
+                pack["citation_surface"]["display_map"][0],
+            )
+            answer = (
+                "AI Design Lab은 AI Board 운영과 현업의 AI 활용 확산을 지원하는 조직으로 소개돼 있어요.[1]\n"
+                "다만 이 답변은 아직 검토 중인 소개 자료를 바탕으로 했습니다.[1]\n\n"
+                "출처\n"
+                f"{pack['citation_surface']['display_map'][0]['source_markdown']}\n"
+            )
+            self.assertEqual(
+                [],
+                local_wiki.validate_answer_source_list(
+                    root / "data" / "boi" / "private" / "1234567",
+                    answer,
+                    pack["citation_surface"]["display_map"],
+                ),
+            )
+            for internal_term in ("Current", "Candidate", "Manifest", "승인 지식", "현재 채택", "자세히 보기"):
+                self.assertNotIn(internal_term, answer)
+            self.assertFalse(pack["runtime"]["writes_performed"])
+
+    def test_review_candidate_is_not_selected_when_reviewed_knowledge_matches(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            profile = root / "data" / "boi" / "private" / "1234567"
+            knowledge = profile / "notes" / "knowledge"
+            review = profile / "notes" / "review"
+            knowledge.mkdir(parents=True)
+            review.mkdir(parents=True)
+            (knowledge / "ai-design-lab.md").write_text(
+                '''---
+type: boi/local-knowledge-note
+title: "검토한 AI Design Lab 설명"
+boi_id: boi:private:1234567:knowledge:ai-design-lab
+knowledge_role: comparison
+case_id: ai-design-lab
+claim_status: direct
+memory_candidate: false
+---
+
+AI Design Lab은 현업 AI 활용을 지원한다.
+''',
+                encoding="utf-8",
+            )
+            (review / "ai-design-lab-change.md").write_text(
+                '''---
+type: boi/local-knowledge-note
+title: "AI Design Lab 변경 후보"
+boi_id: boi:private:1234567:review:ai-design-lab-change
+knowledge_role: comparison
+case_id: ai-design-lab
+claim_status: conflicted
+curation_status: review-required
+memory_candidate: true
+---
+
+AI Design Lab의 역할이 달라졌다는 검토 전 주장이다.
+''',
+                encoding="utf-8",
+            )
+
+            pack = build_query_pack(root, "1234567", "AI Design Lab은 무엇인가?", "ai-design-lab", 8, [])
+
+            self.assertEqual("ordinary-research", pack["retrieval_scope"])
+            self.assertEqual(
+                ["data/boi/private/1234567/notes/knowledge/ai-design-lab.md"],
+                [row["path"] for row in pack["compiled_sources"]],
+            )
+            self.assertEqual([], pack["discovery_evidence"])
+
+    def test_direct_local_markdown_is_labeled_discovery_not_reviewed_knowledge(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            notes = root / "data" / "boi" / "private" / "1234567" / "notes"
+            notes.mkdir(parents=True)
+            note = notes / "ai-design-lab.md"
+            note.write_text(
+                '''---
+type: boi/local-note
+title: "AI Design Lab 메모"
+boi_id: boi:private:1234567:note:ai-design-lab
+claim_status: observed
+memory_candidate: true
+---
+
+AI Design Lab은 현업의 AI 활용 확산을 지원한다.
+''',
+                encoding="utf-8",
+            )
+
+            pack = build_query_pack(root, "1234567", "AI Design Lab이 뭐니?", "", 8, [])
+
+            self.assertEqual([], pack["compiled_sources"])
+            self.assertEqual("ordinary-local-candidate", pack["retrieval_scope"])
+            self.assertEqual(1, len(pack["discovery_evidence"]))
+            evidence = pack["discovery_evidence"][0]
+            self.assertEqual("candidate", evidence["state"])
+            self.assertEqual("내 자료 · 검토 전", evidence["status"])
+            self.assertEqual("notes/ai-design-lab.md", evidence["open_target"])
+
+    def test_profile_markdown_open_target_rejects_unsafe_or_non_markdown_paths(self) -> None:
+        self.assertTrue(hasattr(local_wiki, "safe_profile_markdown_target"))
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            profile = root / "data" / "boi" / "private" / "1234567"
+            note = profile / "notes" / "knowledge" / "safe.md"
+            note.parent.mkdir(parents=True)
+            note.write_text("safe", encoding="utf-8")
+            outside = root / "outside.md"
+            outside.write_text("outside", encoding="utf-8")
+            text_file = profile / "notes" / "knowledge" / "unsafe.txt"
+            text_file.write_text("unsafe", encoding="utf-8")
+            anchored = profile / "notes" / "knowledge" / "unsafe#heading.md"
+            anchored.write_text("unsafe", encoding="utf-8")
+
+            self.assertEqual(
+                "notes/knowledge/safe.md",
+                local_wiki.safe_profile_markdown_target(profile, note),
+            )
+            with self.assertRaisesRegex(ValueError, "inside the Local Private profile"):
+                local_wiki.safe_profile_markdown_target(profile, outside)
+            with self.assertRaisesRegex(ValueError, "explicit .md extension"):
+                local_wiki.safe_profile_markdown_target(profile, text_file)
+            with self.assertRaisesRegex(ValueError, "heading anchors"):
+                local_wiki.safe_profile_markdown_target(profile, anchored)
+
+    def test_plain_source_block_is_not_treated_as_a_material_answer_paragraph(self) -> None:
+        text = (
+            "AI Design Lab은 현업의 AI 활용을 지원합니다.[1]\n\n"
+            "출처\n"
+            "[1] [AI Design Lab 소개](notes/review/ai-design-lab.md) — 내 자료 · 검토 전\n"
+        )
+        self.assertEqual(
+            ["AI Design Lab은 현업의 AI 활용을 지원합니다.[1]"],
+            local_wiki.answer_material_paragraphs(text),
+        )
+
+    def test_answer_source_list_rejects_manipulated_unused_and_dead_links(self) -> None:
+        self.assertTrue(hasattr(local_wiki, "validate_answer_source_list"))
+        with tempfile.TemporaryDirectory() as temp:
+            profile = Path(temp)
+            source = profile / "notes" / "review" / "ai-design-lab.md"
+            source.parent.mkdir(parents=True)
+            source.write_text("AI Design Lab source", encoding="utf-8")
+            display_map = [
+                {
+                    "display_id": "[1]",
+                    "evidence_id": "local-source",
+                    "title": "AI Design Lab 소개",
+                    "open_target": "notes/review/ai-design-lab.md",
+                    "status": "내 자료 · 검토 전",
+                    "source_markdown": "[1] [AI Design Lab 소개](notes/review/ai-design-lab.md) — 내 자료 · 검토 전",
+                }
+            ]
+            valid = (
+                "AI Design Lab은 현업의 AI 활용을 지원합니다.[1]\n\n"
+                "출처\n"
+                "[1] [AI Design Lab 소개](notes/review/ai-design-lab.md) — 내 자료 · 검토 전\n"
+            )
+            self.assertEqual([], local_wiki.validate_answer_source_list(profile, valid, display_map))
+
+            manipulated = valid.replace("[1] [AI Design", "[2] [AI Design")
+            self.assertIn(
+                "source-list-mismatch",
+                local_wiki.validate_answer_source_list(profile, manipulated, display_map),
+            )
+            unused = valid.replace(".[1]", ".")
+            self.assertIn(
+                "unused-source-line",
+                local_wiki.validate_answer_source_list(profile, unused, display_map),
+            )
+            source.unlink()
+            self.assertIn(
+                "dead-or-unsafe-open-target",
+                local_wiki.validate_answer_source_list(profile, valid, display_map),
+            )
+
     def test_check_wrapper_explicit_template_environment_overrides_private_dotenv(self) -> None:
         environment = {**os.environ, "BOI_LOCAL_EMPLOYEE_ID": "0000000"}
         result = subprocess.run(
@@ -91,6 +314,66 @@ class QueryAnswerQualityContractTests(unittest.TestCase):
 
             self.assertFalse(result["ok"], result)
             self.assertIn("citation_count", {row["name"] for row in result["checks"] if not row["ok"]})
+
+    def test_claims_bind_to_verified_discovery_evidence_not_search_results(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            note = root / "data" / "boi" / "private" / "1234567" / "notes" / "review" / "candidate.md"
+            note.parent.mkdir(parents=True)
+            note.write_text("Verified candidate bytes", encoding="utf-8")
+            digest = hashlib.sha256(note.read_bytes()).hexdigest()
+            answer_text = "This claim comes from a verified Local candidate. [1]\n"
+            answer = {
+                "ok": True,
+                "path": "data/boi/private/1234567/reports/answer.md",
+                "body": answer_text,
+                "text": answer_text,
+                "sha256": hashlib.sha256(answer_text.encode("utf-8")).hexdigest(),
+            }
+            display = [{"display_id": "[1]", "evidence_id": "local-candidate", "title": "Candidate"}]
+            evidence = {
+                "evidence_id": "local-candidate",
+                "path": "data/boi/private/1234567/notes/review/candidate.md",
+                "sha256": digest,
+                "layer": "discovery-evidence",
+                "source_integrity": "sha256-verified",
+                "current_authority": False,
+            }
+            item = {
+                "minimum_citations": 1,
+                "required_citation_ids": ["local-candidate"],
+                "citation_evidence_route": "local-discovery",
+            }
+
+            verified = query_quality.evaluate_evidence_binding(
+                root,
+                {
+                    "citation_surface": {"display_map": display},
+                    "evidence_sources": [],
+                    "discovery_results": [{"evidence_id": "local-candidate"}],
+                    "discovery_evidence": [evidence],
+                },
+                item,
+                answer,
+            )
+            self.assertTrue(verified["ok"], verified)
+            self.assertIn(
+                "citations_are_verified_discovery_evidence",
+                {row["name"] for row in verified["checks"] if row["ok"]},
+            )
+
+            search_only = query_quality.evaluate_evidence_binding(
+                root,
+                {
+                    "citation_surface": {"display_map": display},
+                    "evidence_sources": [],
+                    "discovery_results": [{"evidence_id": "local-candidate"}],
+                    "discovery_evidence": [],
+                },
+                item,
+                answer,
+            )
+            self.assertFalse(search_only["ok"], search_only)
 
     def test_question_purpose_is_not_a_keyword_vote(self) -> None:
         self.assertEqual(
@@ -813,7 +1096,9 @@ RAG retrieves evidence for a question; a maintained Wiki preserves reusable know
             answer.write_text(
                 "RAG retrieves evidence for the current question, while a maintained Wiki preserves reusable knowledge and its change history. [1]\n\n"
                 "This distinction does not prove that a Wiki is always superior; the right choice still depends on the question and maintenance cost. [1] [2]\n\n"
-                "Human review before changing an approved baseline is a declared Local operating boundary.\n",
+                "Human review before changing an approved baseline is a declared Local operating boundary.\n\n"
+                "출처\n"
+                "[1] [RAG paper](notes/knowledge/paper-source.md)\n",
                 encoding="utf-8",
             )
             bindings.write_text(

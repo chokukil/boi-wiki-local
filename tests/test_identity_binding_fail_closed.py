@@ -84,7 +84,9 @@ RAG retrieves evidence for a question; a maintained Wiki preserves reusable know
     )
     answer.write_text(
         "RAG retrieves evidence for the current question, while a maintained Wiki preserves reusable knowledge. [1]\n\n"
-        "Human review before changing an approved baseline is a declared Local operating boundary.\n",
+        "Human review before changing an approved baseline is a declared Local operating boundary.\n\n"
+        "출처\n"
+        "[1] [RAG paper](notes/knowledge/paper-source.md)\n",
         encoding="utf-8",
     )
     bindings.write_text(

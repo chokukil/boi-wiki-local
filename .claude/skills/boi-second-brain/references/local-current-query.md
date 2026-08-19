@@ -13,7 +13,7 @@ Use this operation only when the user asks for an answer from approved Local Cur
 
 ## Missing Current
 
-If no valid Manifest exists, do not call the result Current. The Local auto-managed source and topic knowledge remains queryable: return a clearly labeled synthesis such as “현재 승인된 기준 결론은 없으며, 다음은 확인된 공개 원문을 바탕으로 한 Local 종합입니다.” This state does not put every knowledge page into Review.
+If no valid Manifest exists, do not call the result Current. For an explicit reviewed-only request such as `검토한 내용만으로 답해줘`, report that no reviewed answer is available and do not substitute Review, raw, history, or newly discovered material. Ordinary questions use the bounded fallback defined in the main Skill instead; that fallback does not make every knowledge page reviewed.
 
 ## No-write behavior
 

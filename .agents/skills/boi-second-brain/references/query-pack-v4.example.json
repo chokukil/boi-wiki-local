@@ -5,6 +5,7 @@
   "topic_refs": [],
   "manifest_hashes": [],
   "local_evidence": [],
+  "discovery_evidence": [],
   "shared_evidence": [],
   "local_counterevidence": [],
   "citation_contract": {

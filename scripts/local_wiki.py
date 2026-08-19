@@ -36,6 +36,14 @@ from local_lint import active_markdown, lint_workspace
 INGEST_PLAN_SCHEMA = "boi-local-wiki-ingest-plan/v1"
 QUERY_PACK_SCHEMA = "boi-local-wiki-query-pack/v2"
 ANSWER_GENERATION_RECEIPT_SCHEMA = "boi-local-answer-generation-receipt/v1"
+LOCAL_DISCOVERY_STATUS = {
+    "candidate": "내 자료 · 검토 전",
+    "review": "내 자료 · 검토 중",
+    "raw": "원문 · 정리 전",
+    "history": "이전 내용",
+    "saved-query": "저장한 답변",
+    "shared": "조직 자료 · 새로 찾음",
+}
 REMOTE_REF_RE = re.compile(r"^[^|]+\|[^|]+\|(private|team|public)\|.+$")
 GENERIC_REVIEW_ROLES = {
     "comparison",
@@ -663,6 +671,74 @@ def term_occurrences(text: str, term: str) -> int:
     return lowered.count(term)
 
 
+def safe_profile_markdown_target(profile_root: Path, path: Path) -> str:
+    """Return a directly openable profile-relative Markdown target."""
+    resolved_profile = profile_root.resolve()
+    resolved_path = path.resolve()
+    try:
+        relative = resolved_path.relative_to(resolved_profile)
+    except ValueError as exc:
+        raise ValueError("Markdown source must stay inside the Local Private profile") from exc
+    if resolved_path.suffix.casefold() != ".md":
+        raise ValueError("Markdown source requires an explicit .md extension")
+    if "#" in relative.as_posix():
+        raise ValueError("Markdown source paths must not invent heading anchors")
+    if not resolved_path.is_file():
+        raise FileNotFoundError(resolved_path)
+    return relative.as_posix()
+
+
+def markdown_link_label(value: object) -> str:
+    """Escape a frontmatter title so it cannot alter the Markdown link destination."""
+    label = " ".join(str(value).split())
+    return label.replace("\\", "\\\\").replace("[", "\\[").replace("]", "\\]")
+
+
+def local_discovery_state(profile_root: Path, path: Path, meta: dict[str, str]) -> str:
+    """Translate Local lifecycle metadata to a plain user-facing source state."""
+    parts = tuple(part.casefold() for part in path.resolve().relative_to(profile_root.resolve()).parts)
+    if "review" in parts or meta.get("curation_status", "").casefold() == "review-required":
+        return "review"
+    if "raw" in parts:
+        return "raw"
+    if "history" in parts or "_archive" in parts:
+        return "history"
+    if meta.get("knowledge_role", "").casefold() == "saved-query":
+        return "saved-query"
+    return "candidate"
+
+
+def verified_local_discovery_evidence(
+    root: Path,
+    profile_root: Path,
+    path: Path,
+    terms: list[str],
+) -> dict[str, object]:
+    """Re-read one Markdown candidate and bind its excerpt to the bytes that were hashed."""
+    open_target = safe_profile_markdown_target(profile_root, path)
+    raw = path.read_bytes()
+    digest = hashlib.sha256(raw).hexdigest()
+    if sha256_file(path) != digest:
+        raise ValueError(f"Markdown source changed during verification: {open_target}")
+    text = raw.decode("utf-8", errors="replace")
+    meta = parse_frontmatter(text)
+    state = local_discovery_state(profile_root, path, meta)
+    return {
+        "type": "local-markdown-discovery-evidence",
+        "layer": "discovery-evidence",
+        "path": relative_to_root(root, path),
+        "open_target": open_target,
+        "sha256": digest,
+        "evidence_id": f"local-{digest}",
+        "title": meta.get("title", path.stem),
+        "excerpt": answer_excerpt(text, terms),
+        "state": state,
+        "status": LOCAL_DISCOVERY_STATUS[state],
+        "current_authority": False,
+        "source_integrity": "sha256-verified",
+    }
+
+
 def query_facets(question: str) -> list[str]:
     """Identify the material work requested by a question, not keyword votes."""
     text = " ".join(question.casefold().split())
@@ -1040,6 +1116,7 @@ def build_query_pack(
     normalized_origin_bindings = normalize_original_identity_bindings(original_identity_bindings)
     origin_bindings_by_id = {row["evidence_id"]: row for row in normalized_origin_bindings}
     compiled_matches: list[dict[str, object]] = []
+    discovery_matches: list[tuple[dict[str, object], Path]] = []
     evidence_matches: list[dict[str, object]] = []
     evidence_by_path: dict[str, dict[str, object]] = {}
     evidence_by_id: dict[str, dict[str, object]] = {}
@@ -1065,6 +1142,18 @@ def build_query_pack(
         if case_id and meta.get("case_id", "") not in {case_id, ""}:
             continue
         if query_scope == "ordinary" and path.relative_to(base).parts[:2] == ("notes", "review"):
+            candidate = query_source(
+                root,
+                path,
+                text,
+                meta,
+                terms,
+                intent,
+                case_id,
+                include_support=False,
+            )
+            if candidate is not None and candidate.get("matched_terms"):
+                discovery_matches.append((candidate, path))
             continue
         if curated_case_knowledge and query_scope == "ordinary":
             if path.relative_to(base).parts[:2] != ("notes", "knowledge"):
@@ -1094,7 +1183,20 @@ def build_query_pack(
             if source["matched_terms"]:
                 evidence_matches.append(source)
         else:
-            compiled_matches.append(source)
+            relative_parts = path.relative_to(base).parts
+            reviewed_local_knowledge = (
+                relative_parts[:2] == ("notes", "knowledge")
+                and meta.get("knowledge_role", "") != "saved-query"
+            )
+            if (
+                query_scope == "ordinary"
+                and not case_id
+                and not reviewed_local_knowledge
+                and source.get("matched_terms")
+            ):
+                discovery_matches.append((source, path))
+            else:
+                compiled_matches.append(source)
     parsed_remote: list[dict[str, str]] = []
     for raw in remote_refs:
         if not REMOTE_REF_RE.fullmatch(raw):
@@ -1104,6 +1206,27 @@ def build_query_pack(
             {"type": "remote-boi", "boi_id": boi_id, "revision": revision, "visibility": visibility, "title": title}
         )
     compiled = sorted(compiled_matches, key=lambda item: (-int(item["score"]), str(item["path"])))[: max(1, limit)]
+    ranked_discovery = sorted(
+        discovery_matches,
+        key=lambda pair: (-int(pair[0]["score"]), str(pair[0]["path"])),
+    )[: max(1, limit)]
+    discovery_results = [
+        {
+            "path": str(item["path"]),
+            "title": str(item.get("title", path.stem)),
+            "score": int(item["score"]),
+            "matched_terms": list(item.get("matched_terms", [])),
+            "current_authority": False,
+        }
+        for item, path in ranked_discovery
+    ]
+    discovery_evidence = (
+        [verified_local_discovery_evidence(root, base, path, terms) for _, path in ranked_discovery]
+        if query_scope == "ordinary" and not compiled
+        else []
+    )
+    if discovery_evidence:
+        retrieval_scope = "ordinary-local-candidate"
     source_evidence: list[dict[str, object]] = []
     source_evidence_keys: set[tuple[str, str]] = set()
     source_queue: list[tuple[str, str, int]] = []
@@ -1243,7 +1366,7 @@ def build_query_pack(
     evidence = [*source_evidence, *linked_evidence][:evidence_limit]
     citation_display: list[dict[str, str]] = []
     displayed: set[str] = set()
-    for item in evidence:
+    for item in [*discovery_evidence, *evidence]:
         evidence_id = str(item.get("evidence_id") or item.get("path", ""))
         if not evidence_id or evidence_id in displayed:
             continue
@@ -1253,12 +1376,29 @@ def build_query_pack(
             "evidence_id": evidence_id,
             "title": str(item.get("title", evidence_id)),
         }
+        open_target = str(item.get("open_target", ""))
+        if not open_target and item.get("path"):
+            candidate_path = root / str(item["path"])
+            try:
+                open_target = safe_profile_markdown_target(base, candidate_path)
+            except (FileNotFoundError, ValueError):
+                open_target = ""
+        if open_target:
+            status = str(item.get("status", ""))
+            display_row["open_target"] = open_target
+            if status:
+                display_row["status"] = status
+            status_suffix = f" — {status}" if status else ""
+            display_row["source_markdown"] = (
+                f"{display_row['display_id']} [{markdown_link_label(display_row['title'])}]"
+                f"({open_target}){status_suffix}"
+            )
         if item.get("layer") == "source-evidence" and item.get("original_identity_binding"):
             display_row["original_identity_binding"] = dict(item.get("original_identity_binding", {}))
         citation_display.append(display_row)
         if len(citation_display) == 5:
             break
-    local = [*compiled, *evidence]
+    local = [*compiled, *evidence, *discovery_evidence]
     return {
         "ok": True,
         "schema": QUERY_PACK_SCHEMA,
@@ -1274,6 +1414,8 @@ def build_query_pack(
         "profile_contract": {"okf_version": "0.1", "boi_profile_version": "0.1-local"},
         "compiled_sources": compiled,
         "evidence_sources": evidence,
+        "discovery_results": discovery_results,
+        "discovery_evidence": discovery_evidence,
         "citation_surface": {
             "display_map": citation_display,
             "rules": [
@@ -1319,6 +1461,7 @@ def build_query_pack(
         },
         "mcp_mode": "read-only-references-provided" if parsed_remote else "not-used",
         "remote_mutation_allowed": False,
+        "runtime": {"writes_performed": False},
     }
 
 
@@ -1342,10 +1485,72 @@ def answer_material_paragraphs(text: str) -> list[str]:
             if title in {"sources", "source", "citations", "citation", "출처", "인용"}:
                 in_sources = True
             continue
+        first_line = cleaned.splitlines()[0].strip().casefold()
+        if first_line in {"sources", "source", "citations", "citation", "출처", "인용"}:
+            in_sources = True
+            continue
         if in_sources:
             continue
         paragraphs.append(cleaned)
     return paragraphs
+
+
+def answer_source_lines(text: str) -> list[str]:
+    """Return the non-empty lines after the first Markdown or plain source heading."""
+    _, body = split_frontmatter(text)
+    lines: list[str] = []
+    in_sources = False
+    for raw_line in body.splitlines():
+        line = raw_line.strip()
+        heading = re.fullmatch(r"#{1,6}\s+(.+)", line)
+        heading_text = heading.group(1).strip().casefold() if heading else line.casefold()
+        if heading_text in {"sources", "source", "citations", "citation", "출처", "인용"}:
+            in_sources = True
+            continue
+        if in_sources and heading:
+            break
+        if in_sources and line:
+            lines.append(line)
+    return lines
+
+
+def validate_answer_source_list(
+    profile_root: Path,
+    answer_text: str,
+    display_map: list[dict[str, object]],
+) -> list[str]:
+    """Validate that the visible source block exactly matches cited, verified Markdown targets."""
+    errors: list[str] = []
+    narrative = "\n\n".join(answer_material_paragraphs(answer_text))
+    used_markers = list(dict.fromkeys(re.findall(r"\[\d+\]", narrative)))
+    rows_by_marker = {str(row.get("display_id", "")): row for row in display_map}
+    expected_lines: list[str] = []
+    for marker in used_markers:
+        row = rows_by_marker.get(marker)
+        if row is None:
+            errors.append("unknown-citation-marker")
+            continue
+        source_markdown = str(row.get("source_markdown", ""))
+        if not source_markdown:
+            errors.append("missing-source-markdown")
+            continue
+        expected_lines.append(source_markdown)
+        open_target = str(row.get("open_target", ""))
+        target_path = Path(open_target)
+        if not open_target or target_path.is_absolute() or ".." in target_path.parts:
+            errors.append("dead-or-unsafe-open-target")
+            continue
+        try:
+            safe_profile_markdown_target(profile_root, profile_root / target_path)
+        except (FileNotFoundError, ValueError):
+            errors.append("dead-or-unsafe-open-target")
+
+    actual_lines = answer_source_lines(answer_text)
+    if actual_lines and not used_markers:
+        errors.append("unused-source-line")
+    elif actual_lines != expected_lines:
+        errors.append("source-list-mismatch")
+    return list(dict.fromkeys(errors))
 
 
 def answer_receipt_path(answer_path: Path) -> Path:
@@ -1397,7 +1602,7 @@ def create_answer_receipt(root: Path, employee_id: str, args: argparse.Namespace
     }
     evidence_by_id = {
         str(row.get("evidence_id", "")): row
-        for row in pack.get("evidence_sources", [])
+        for row in [*pack.get("evidence_sources", []), *pack.get("discovery_evidence", [])]
         if row.get("evidence_id")
     }
     evidence: list[dict[str, str]] = []
@@ -1407,7 +1612,10 @@ def create_answer_receipt(root: Path, employee_id: str, args: argparse.Namespace
         if source is None:
             raise ValueError(f"citation display map does not resolve to source evidence: {evidence_id}")
         binding = source.get("original_identity_binding") or {}
-        if str(source.get("evidence_authority", "")) != "local-evidence":
+        if (
+            str(source.get("layer", "")) != "discovery-evidence"
+            and str(source.get("evidence_authority", "")) != "local-evidence"
+        ):
             missing = [
                 key
                 for key in ("evidence_id", "evidence_sha256", "expected_origin_ref")
@@ -1476,6 +1684,9 @@ def create_answer_receipt(root: Path, employee_id: str, args: argparse.Namespace
     if seen_indices != set(range(1, len(paragraphs) + 1)):
         raise ValueError("every material answer paragraph requires a claim binding")
     normalized_bindings.sort(key=lambda row: int(row["paragraph_index"]))
+    source_list_errors = validate_answer_source_list(base, answer_text, display_map)
+    if source_list_errors:
+        raise ValueError(f"answer source list does not match the verified citation map: {source_list_errors}")
 
     receipt_path = answer_receipt_path(answer_path)
     receipt = {

@@ -20,6 +20,7 @@ from local_wiki import (
     fingerprint_payload,
     normalize_original_identity_bindings,
     original_identity_binding_matches,
+    validate_answer_source_list,
 )
 
 BENCHMARK_SCHEMA = "boi-local-query-quality-benchmark/v2"
@@ -160,7 +161,7 @@ def contains_unnegated_claim(text: str, phrase: str) -> bool:
 def expected_receipt_evidence(pack: dict[str, object], root: Path) -> list[dict[str, str]]:
     sources = {
         evidence_id(source, root): source
-        for source in pack.get("evidence_sources", [])
+        for source in [*pack.get("evidence_sources", []), *pack.get("discovery_evidence", [])]
         if evidence_id(source, root)
     }
     rows: list[dict[str, str]] = []
@@ -376,14 +377,14 @@ def evaluate_evidence_binding(
     )
     sources = {
         evidence_id(source, root): source
-        for source in pack.get("evidence_sources", [])
+        for source in [*pack.get("evidence_sources", []), *pack.get("discovery_evidence", [])]
         if evidence_id(source, root)
     }
     cited_sources = [sources.get(item_id) for item_id in mapped_ids if item_id]
     citation_route = str(item.get("citation_evidence_route", "public-research"))
     record(
         "citation_evidence_route",
-        citation_route in {"public-research", "local-policy"},
+        citation_route in {"public-research", "local-policy", "local-discovery"},
         citation_route,
     )
     common_source_ok = bool(cited_sources) and all(
@@ -403,7 +404,16 @@ def evaluate_evidence_binding(
         }
         for index, source in enumerate(cited_sources)
     ]
-    if citation_route == "local-policy":
+    if citation_route == "local-discovery":
+        discovery_ok = bool(cited_sources) and all(
+            source is not None
+            and source.get("layer") == "discovery-evidence"
+            and source.get("source_integrity") == "sha256-verified"
+            and source.get("current_authority") is False
+            for source in cited_sources
+        )
+        record("citations_are_verified_discovery_evidence", discovery_ok, source_detail)
+    elif citation_route == "local-policy":
         record("citations_are_explicit_local_evidence", common_source_ok, source_detail)
     else:
         declared_bindings = normalize_original_identity_bindings(item.get("required_original_bindings", []))
@@ -449,7 +459,11 @@ def evaluate_evidence_binding(
         if source is None:
             byte_checks.append({"ok": False, "reason": "missing-source"})
             continue
-        raw_text = str(source.get("raw_path", ""))
+        raw_text = str(
+            source.get("path", "")
+            if source.get("layer") == "discovery-evidence"
+            else source.get("raw_path", "")
+        )
         raw = Path(raw_text).expanduser()
         if not raw.is_absolute():
             raw = root / raw
@@ -502,6 +516,12 @@ def evaluate_answer_surface(
     fixed = sorted(headings & FIXED_OUTLINE_HEADINGS)
     record("no_fixed_seven_section_outline", len(fixed) < 4, fixed)
     record("natural_expert_depth", 120 <= len(text) <= 5000, {"characters": len(text)})
+    source_list_errors = validate_answer_source_list(
+        private_root(root, employee_id),
+        str(answer.get("text", text)),
+        list((pack.get("citation_surface") or {}).get("display_map", [])),
+    )
+    record("markdown_source_list", not source_list_errors, source_list_errors)
     for phrase in item.get("must_include", []):
         record(f"must_include:{phrase}", str(phrase).casefold() in lowered, phrase)
     for phrase in item.get("must_not_include", []):

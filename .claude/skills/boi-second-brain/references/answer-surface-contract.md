@@ -7,12 +7,13 @@ The natural Answer Surface and the detailed Evidence Receipt are two views of th
 - The default overlay is `natural-expert`: professional, conversational Korean with depth and structure adapted to the question.
 - Answer the question in the first paragraph in professional, conversational Korean.
 - Direct answer, evidence, counterevidence, unknowns, next checks, confidence, and citations are analytical requirements, not a mandatory visible outline. Use headings only when they materially improve comprehension.
-- Use three to five plain numbered citations in deterministic first-use order when citations materially help. Never show internal L/S/D/C markers.
+- Use one to five plain numbered citations in deterministic first-use order when citations materially help: normally one or two for a simple answer and three to five for a substantive judgment or comparison. Never pad the count. Never show internal L/S/D/C markers.
 - Cite actual source evidence, not search results, indexes, Obsidian graphs, or AI synthesis pages.
 - Preserve material counterevidence, conflict, application limits, and unknowns in the narrative.
-- State whether the answer is Local auto-managed synthesis, approved Current, or an unapproved change candidate only when that status changes how it may be used.
+- When a source has not finished review, state the limitation once in ordinary language. Do not expose `Current`, `Candidate`, `Manifest`, `승인 지식`, or `현재 채택` as default user-facing vocabulary.
 - Hide Manifest, Query Pack, snapshot, revision, runtime names, absolute Local paths, employee identifiers, and full SHA256 values from the default answer.
-- Show a short source list with readable titles and human-readable status such as `공개 논문 원문 · 확인 완료`, `내 승인 지식`, or `조직 Wiki · 현재 채택`.
+- End with a plain `출처` block containing only sources actually cited. Reuse a document's first-use number and render a Local link as `[1] [문서 제목](notes/example.md)`. Use only the needed plain status: `내 자료 · 검토 전`, `내 자료 · 검토 중`, `원문 · 정리 전`, `이전 내용`, `저장한 답변`, or `조직 자료 · 새로 찾음`. Omit status when every source is reviewed.
+- Do not add `자세히 보기`, a source drawer, a side panel, or source cards. The Markdown link is the detail path.
 
 ## Evidence Receipt
 

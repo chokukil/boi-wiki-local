@@ -45,6 +45,9 @@ class SecondBrainKnowledgeGovernanceContractTests(unittest.TestCase):
             "references/citation-surface-contract.md",
             "references/query-pack-v4.example.json",
             "The Query Pack is an in-memory agent contract, not an application or resident runtime",
+            "ordinary question automatically continues with bounded Local discovery",
+            "검토한 내용만으로 답해줘",
+            "does not approve, promote, or write",
         ):
             self.assertIn(required, skill)
 
@@ -56,11 +59,13 @@ class SecondBrainKnowledgeGovernanceContractTests(unittest.TestCase):
             "Answer the question in the first paragraph",
             "`natural-expert`",
             "not a mandatory visible outline",
-            "three to five plain numbered citations",
+            "one to five plain numbered citations",
             "Never show internal L/S/D/C markers",
             "full SHA256",
             "at most one",
             "one meaning-preserving presentation repair",
+            "[1] [문서 제목](notes/example.md)",
+            "Do not add `자세히 보기`",
         ):
             self.assertIn(required, answer)
         for required in (
@@ -68,6 +73,8 @@ class SecondBrainKnowledgeGovernanceContractTests(unittest.TestCase):
             "AI synthesis never receives a source citation",
             "absolute Local paths",
             "material counterevidence or unknowns",
+            "profile-relative `.md`",
+            "source_markdown",
         ):
             self.assertIn(required, citation)
 
@@ -83,6 +90,7 @@ class SecondBrainKnowledgeGovernanceContractTests(unittest.TestCase):
         self.assertTrue(manifest["local_only"])
         self.assertEqual("boi-second-brain-query-pack/v4", pack["schema"])
         self.assertEqual("local-current", pack["query_mode"])
+        self.assertEqual([], pack["discovery_evidence"])
         self.assertFalse(pack["runtime"]["writes_performed"])
         self.assertEqual([], pack["shared_evidence"])
 
@@ -270,7 +278,15 @@ case_id: ai-research-second-brain
             )
             self.assertEqual("paper-source.md", Path(evidence["source_note_path"]).name)
             self.assertEqual(
-                [{"display_id": "[1]", "evidence_id": "rag-paper", "title": "Source 001"}],
+                [
+                    {
+                        "display_id": "[1]",
+                        "evidence_id": "rag-paper",
+                        "title": "Source 001",
+                        "open_target": "notes/knowledge/paper-source.md",
+                        "source_markdown": "[1] [Source 001](notes/knowledge/paper-source.md)",
+                    }
+                ],
                 pack["citation_surface"]["display_map"],
             )
 
